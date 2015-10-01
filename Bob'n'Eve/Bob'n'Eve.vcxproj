@@ -98,6 +98,15 @@
   <ItemGroup>
     <None Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\box2d.pdb" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\asset_manager.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\bob_n_eve.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="entity_composite.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\game.h" />
+    <ClInclude Include="render_options.h" />
+    <ClInclude Include="view.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

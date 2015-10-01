@@ -1,0 +1,3 @@
+struct render_options
+{
+};
