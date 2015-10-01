@@ -19,4 +19,10 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\Box2D.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\box2d.pdb" />
+  </ItemGroup>
 </Project>
