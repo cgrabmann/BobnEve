@@ -90,6 +90,12 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\EntityComposite.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Game.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="BobNEve.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -99,13 +105,14 @@
     <None Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\box2d.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\asset_manager.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\bob_n_eve.h" />
-    <ClInclude Include="entity.h" />
-    <ClInclude Include="entity_composite.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\game.h" />
-    <ClInclude Include="render_options.h" />
-    <ClInclude Include="view.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.h" />
+    <ClInclude Include="BobNEve.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="EntityComposite.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Game.h" />
+    <ClInclude Include="RenderOptions.h" />
+    <ClInclude Include="View.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

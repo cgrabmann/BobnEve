@@ -1,17 +1,40 @@
-#ifndef _ENTITY_H_
-#define _ENTITY_H_
+#pragma once
 
-#include "render_options.h"
+class Renderer;
 
-class entity
+class Entity
 {
+public:
+
+	enum TypeEnum
+	{
+		PLAYER,
+		ENEMY,
+		PLATFORM,
+		JUMPPAD,
+		PASSTHROUGH
+	};
+
+private:
+
+
 protected:
 	//z-buffer
-	float layer;
-public:
-	entity();
-	void draw(render_options options);
-	void update(int ms);
-};
+	float layer_;
+	int id_;
+	TypeEnum type_;
 
-#endif
+	//image
+	//physic object
+
+public:
+
+	Entity(float layer, int id, Entity::TypeEnum type);
+	virtual ~Entity();
+
+	virtual void Draw(Renderer& renderer);
+	virtual void Update(int ms);
+
+	int GetId() const;
+	void GetType(Entity::TypeEnum*& type);
+};

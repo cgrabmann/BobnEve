@@ -1,3 +1,0 @@
-struct render_options
-{
-};

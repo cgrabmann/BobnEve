@@ -1,19 +1,11 @@
-#ifndef _VIEW_H_
-#define _VIEW_H_
+#pragma once
 
-#include "entity_composite.h"
+#include "EntityComposite.h"
 
-class view : public entity_composite
+class View : public EntityComposite
 {
 protected:
 
 public:
-	view();
-	void init();
-	void draw(render_options options);
-	void update(int ms);
-	void add(entity e);
-	void remove(entity e);
+	View();
 };
-
-#endif

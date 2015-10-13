@@ -24,6 +24,24 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Quelldateien\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\game.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="BobNEve.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\EntityComposite.cpp">
+      <Filter>Quelldateien\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\Box2D.lib" />
@@ -35,22 +53,25 @@
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\game.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="entity_composite.h">
-      <Filter>Headerdateien\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\bob_n_eve.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\asset_manager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="render_options.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="view.h">
       <Filter>Headerdateien\Entity</Filter>
     </ClInclude>
     <ClInclude Include="entity.h">
+      <Filter>Headerdateien\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="BobNEve.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderOptions.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityComposite.h">
       <Filter>Headerdateien\Entity</Filter>
     </ClInclude>
   </ItemGroup>

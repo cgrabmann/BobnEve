@@ -1,21 +1,26 @@
-#ifndef _GAME_H_
-#define _GAME_H_
+#pragma once
 
-#include "view.h"
+class Entity;
 
-class game
+class Renderer;
+
+class Game
 {
+private:
+	Renderer renderer_;
+	Entity* view_;
+
 protected:
-	view my_view;
-	void loop();
-	void get_input();
+	void Loop();
+	void GetInput();
+
 public:
 	const static int FPS = 60;
 	const float MS_PER_UPDATE = (1000.0f / FPS);
 
-	game();
-	void start();
-	void stop();
-};
+	Game();
+	virtual ~Game();
 
-#endif
+	void Start();
+	void Stop();
+};
