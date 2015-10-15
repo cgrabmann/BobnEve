@@ -5,9 +5,6 @@
 
 class EntityComposite : public Entity
 {
-protected:
-	std::list<Entity> entities_;
-
 public:
 	EntityComposite(float layer, int id, Entity::TypeEnum type);
 	virtual ~EntityComposite();
@@ -17,4 +14,7 @@ public:
 
 	void Add(Entity* e);
 	void Remove(Entity* e);
+
+protected:
+	std::list<Entity> entities_;
 };

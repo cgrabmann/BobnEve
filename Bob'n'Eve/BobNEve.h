@@ -4,8 +4,6 @@ class Game;
 
 class BobNEve
 {
-protected:
-	Game* game_;
 public:
 	BobNEve();
 	virtual ~BobNEve();
@@ -13,4 +11,7 @@ public:
 	void Init();
 	void Launch();
 	void Start();
+
+protected:
+	Game* game_;
 };

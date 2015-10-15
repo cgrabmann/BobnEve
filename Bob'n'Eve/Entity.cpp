@@ -5,7 +5,7 @@
 #include "Renderer.h"
 
 
-Entity::Entity(float layer, int id, Entity::TypeEnum type)
+Entity::Entity(float layer, int8_t id, Entity::TypeEnum type)
 	: layer_(layer), id_(id), type_(type)
 {
 }
@@ -26,7 +26,7 @@ void Entity::Update(int ms)
 {
 }
 
-int Entity::GetId() const
+int8_t Entity::GetId() const
 {
 	return id_;
 }

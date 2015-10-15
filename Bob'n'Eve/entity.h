@@ -1,4 +1,5 @@
 #pragma once
+#include <atomic>
 
 class Renderer;
 
@@ -15,26 +16,22 @@ public:
 		PASSTHROUGH
 	};
 
-private:
-
-
-protected:
-	//z-buffer
-	float layer_;
-	int id_;
-	TypeEnum type_;
-
-	//image
-	//physic object
-
-public:
-
-	Entity(float layer, int id, Entity::TypeEnum type);
+	Entity(float layer, int8_t id, Entity::TypeEnum type);
 	virtual ~Entity();
 
 	virtual void Draw(Renderer& renderer);
 	virtual void Update(int ms);
 
-	int GetId() const;
+	int8_t GetId() const;
 	void GetType(Entity::TypeEnum*& type);
+
+protected:
+	//z-buffer
+	float layer_;
+	int8_t id_;
+	TypeEnum type_;
+
+	//image
+	//physic object
+
 };

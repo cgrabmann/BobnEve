@@ -7,7 +7,7 @@
 
 Renderer::Renderer()
 {
-	window_ = sf::RenderWindow(sf::VideoMode(200, 200), "SFML works!");
+	window_.create(sf::VideoMode(200, 200), "SFML works!");
 }
 
 

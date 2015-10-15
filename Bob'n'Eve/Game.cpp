@@ -7,7 +7,6 @@
 
 Game::Game()
 {
-	renderer_ = Renderer();
 	view_ = new EntityComposite(1.0f,0,Entity::TypeEnum::PLATFORM);
 }
 
@@ -38,6 +37,7 @@ void Game::GetInput()
 
 void Game::Start()
 {
+	Loop();
 }
 
 void Game::Stop()

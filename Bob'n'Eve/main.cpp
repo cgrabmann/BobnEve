@@ -28,7 +28,7 @@
 // with your rendering engine in your game engine.
 int main(int argc, char** argv)
 {
-	BobNEve bobNEve = BobNEve();
+	BobNEve bobNEve;
 	bobNEve.Launch();
 	bobNEve.Init();
 	bobNEve.Start();

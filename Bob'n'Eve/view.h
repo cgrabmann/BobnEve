@@ -4,8 +4,6 @@
 
 class View : public EntityComposite
 {
-protected:
-
 public:
 	View();
 };

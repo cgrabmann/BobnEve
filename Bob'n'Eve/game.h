@@ -1,19 +1,11 @@
 #pragma once
 
-class Entity;
+#include "Renderer.h"
 
-class Renderer;
+class Entity;
 
 class Game
 {
-private:
-	Renderer renderer_;
-	Entity* view_;
-
-protected:
-	void Loop();
-	void GetInput();
-
 public:
 	const static int FPS = 60;
 	const float MS_PER_UPDATE = (1000.0f / FPS);
@@ -23,4 +15,13 @@ public:
 
 	void Start();
 	void Stop();
+
+protected:
+	void Loop();
+	void GetInput();
+
+private:
+	Renderer renderer_;
+	Entity* view_;
+
 };
