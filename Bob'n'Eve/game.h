@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Renderer.h"
+#include <Box2D/Dynamics/b2World.h>
 
 class Entity;
 
@@ -23,5 +24,6 @@ protected:
 private:
 	Renderer renderer_;
 	Entity* view_;
+	b2World world_;
 
 };

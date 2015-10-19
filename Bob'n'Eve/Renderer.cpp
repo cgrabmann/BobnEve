@@ -15,15 +15,20 @@ Renderer::~Renderer()
 {
 }
 
-void Renderer::GetWindow(sf::RenderWindow*& window)
+sf::RenderWindow& Renderer::GetWindow()
 {
-	window = &window_;
+	return window_;
 }
 
-void Renderer::Render(Entity& drawable)
+sf::RenderTarget& Renderer::GetTarget()
+{
+	return window_;
+}
+
+void Renderer::Render(Entity& rootEntity)
 {
 	window_.clear();
-	drawable.Draw(*this);
+	rootEntity.Draw(*this);
 	window_.display();
 }
 

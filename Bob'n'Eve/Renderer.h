@@ -2,6 +2,7 @@
 #include <SFML/include/SFML/Graphics/RenderWindow.hpp>
 
 namespace sf{
+	class RenderTarget;
 	class Shape;
 }
 
@@ -14,7 +15,8 @@ public:
 	Renderer();
 	~Renderer();
 
-	void GetWindow(sf::RenderWindow*& window);
+	sf::RenderWindow& GetWindow();
+	sf::RenderTarget& GetTarget();
 	void Render(Entity& drawable);
 
 private:

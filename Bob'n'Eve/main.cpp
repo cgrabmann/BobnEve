@@ -16,7 +16,7 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-//#include <Box2D/Box2D.h>
+#include <Box2D/Box2D.h>
 
 #include <stdio.h>
 #include "BobNEve.h"
@@ -32,82 +32,85 @@ int main(int argc, char** argv)
 	bobNEve.Launch();
 	bobNEve.Init();
 	bobNEve.Start();
-	//B2_NOT_USED(argc);
-	//B2_NOT_USED(argv);
 
-	//// Define the gravity vector.
-	//b2Vec2 gravity(0.0f, -10.0f);
+#if 1
+	B2_NOT_USED(argc);
+	B2_NOT_USED(argv);
 
-	//// Construct a world object, which will hold and simulate the rigid bodies.
-	//b2World world(gravity);
+	// Define the gravity vector.
+	b2Vec2 gravity(0.0f, -10.0f);
 
-	//// Define the ground body.
-	//b2BodyDef groundBodyDef;
-	//groundBodyDef.position.Set(0.0f, -10.0f);
+	// Construct a world object, which will hold and simulate the rigid bodies.
+	b2World world(gravity);
 
-	//// Call the body factory which allocates memory for the ground body
-	//// from a pool and creates the ground box shape (also from a pool).
-	//// The body is also added to the world.
-	//b2Body* groundBody = world.CreateBody(&groundBodyDef);
+	// Define the ground body.
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(0.0f, -10.0f);
 
-	//// Define the ground box shape.
-	//b2PolygonShape groundBox;
+	// Call the body factory which allocates memory for the ground body
+	// from a pool and creates the ground box shape (also from a pool).
+	// The body is also added to the world.
+	b2Body* groundBody = world.CreateBody(&groundBodyDef);
 
-	//// The extents are the half-widths of the box.
-	//groundBox.SetAsBox(50.0f, 10.0f);
+	// Define the ground box shape.
+	b2PolygonShape groundBox;
 
-	//// Add the ground fixture to the ground body.
-	//groundBody->CreateFixture(&groundBox, 0.0f);
+	// The extents are the half-widths of the box.
+	groundBox.SetAsBox(50.0f, 10.0f);
 
-	//// Define the dynamic body. We set its position and call the body factory.
-	//b2BodyDef bodyDef;
-	//bodyDef.type = b2_dynamicBody;
-	//bodyDef.position.Set(0.0f, 4.0f);
-	//b2Body* body = world.CreateBody(&bodyDef);
+	// Add the ground fixture to the ground body.
+	groundBody->CreateFixture(&groundBox, 0.0f);
 
-	//// Define another box shape for our dynamic body.
-	//b2PolygonShape dynamicBox;
-	//dynamicBox.SetAsBox(1.0f, 1.0f);
+	// Define the dynamic body. We set its position and call the body factory.
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(0.0f, 4.0f);
+	b2Body* body = world.CreateBody(&bodyDef);
 
-	//// Define the dynamic body fixture.
-	//b2FixtureDef fixtureDef;
-	//fixtureDef.shape = &dynamicBox;
+	// Define another box shape for our dynamic body.
+	b2PolygonShape dynamicBox;
+	dynamicBox.SetAsBox(1.0f, 1.0f);
 
-	//// Set the box density to be non-zero, so it will be dynamic.
-	//fixtureDef.density = 1.0f;
+	// Define the dynamic body fixture.
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &dynamicBox;
 
-	//// Override the default friction.
-	//fixtureDef.friction = 0.3f;
+	// Set the box density to be non-zero, so it will be dynamic.
+	fixtureDef.density = 1.0f;
 
-	//// Add the shape to the body.
-	//body->CreateFixture(&fixtureDef);
+	// Override the default friction.
+	fixtureDef.friction = 0.3f;
 
-	//// Prepare for simulation. Typically we use a time step of 1/60 of a
-	//// second (60Hz) and 10 iterations. This provides a high quality simulation
-	//// in most game scenarios.
-	//float32 timeStep = 1.0f / 60.0f;
-	//int32 velocityIterations = 6;
-	//int32 positionIterations = 2;
+	// Add the shape to the body.
+	body->CreateFixture(&fixtureDef);
 
-	//// This is our little game loop.
-	//for (int32 i = 0; i < 60; ++i)
-	//{
-	//	// Instruct the world to perform a single step of simulation.
-	//	// It is generally best to keep the time step and iterations fixed.
-	//	world.Step(timeStep, velocityIterations, positionIterations);
+	// Prepare for simulation. Typically we use a time step of 1/60 of a
+	// second (60Hz) and 10 iterations. This provides a high quality simulation
+	// in most game scenarios.
+	float32 timeStep = 1.0f / 60.0f;
+	int32 velocityIterations = 6;
+	int32 positionIterations = 2;
 
-	//	// Now print the position and angle of the body.
-	//	b2Vec2 position = body->GetPosition();
-	//	float32 angle = body->GetAngle();
+	// This is our little game loop.
+	for (int32 i = 0; i < 60; ++i)
+	{
+		// Instruct the world to perform a single step of simulation.
+		// It is generally best to keep the time step and iterations fixed.
+		world.Step(timeStep, velocityIterations, positionIterations);
 
-	//	printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
-	//}
+		// Now print the position and angle of the body.
+		b2Vec2 position = body->GetPosition();
+		float32 angle = body->GetAngle();
 
-	//int x;
-	//x = scanf_s("%i", &x); 
-	//printf_s("%i", &x);
-	//// When the world destructor is called, all bodies and joints are freed. This can
-	//// create orphaned pointers, so be careful about your world management.
+		printf("%4.2f %4.2f %4.2f\n", position.x, position.y, angle);
+	}
+
+	int x;
+	x = scanf_s("%i", &x); 
+	printf_s("%i", &x);
+	// When the world destructor is called, all bodies and joints are freed. This can
+	// create orphaned pointers, so be careful about your world management.
+#endif
 
 	return 0;
 }
