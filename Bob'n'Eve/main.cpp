@@ -107,7 +107,7 @@ int main(int argc, char** argv)
 
 	int x;
 	x = scanf_s("%i", &x); 
-	printf_s("%i", &x);
+	printf_s("%i", x);
 	// When the world destructor is called, all bodies and joints are freed. This can
 	// create orphaned pointers, so be careful about your world management.
 #endif

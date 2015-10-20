@@ -5,7 +5,7 @@
 #include "Renderer.h"
 
 
-Entity::Entity(float layer, int8_t id, Entity::TypeEnum type)
+Entity::Entity(float layer, int32_t id, Entity::TypeEnum type)
 	: layer_(layer), id_(id), type_(type)
 {
 }
@@ -22,11 +22,11 @@ void Entity::Draw(Renderer& renderer)
 	renderer.Draw(shape);
 }
 
-void Entity::Update(int ms)
+void Entity::Update(int16_t ms)
 {
 }
 
-int8_t Entity::GetId() const
+int32_t Entity::GetId() const
 {
 	return id_;
 }
@@ -34,4 +34,9 @@ int8_t Entity::GetId() const
 void Entity::GetType(Entity::TypeEnum*& type)
 {
 	type = &this->type_;
+}
+
+void Entity::setPhysicBody(b2Body* body)
+{
+	body_ = body;
 }

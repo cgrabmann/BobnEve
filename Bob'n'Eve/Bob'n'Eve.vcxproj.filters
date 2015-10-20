@@ -42,6 +42,9 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\EntityComposite.cpp">
       <Filter>Quelldateien\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\Box2D.lib" />
@@ -73,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="EntityComposite.h">
       <Filter>Headerdateien\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

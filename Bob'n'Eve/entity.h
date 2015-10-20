@@ -1,10 +1,12 @@
 #pragma once
-#include <atomic>
+#include <stdint.h>
+#include <Box2D/Dynamics/b2Body.h>
 
 class Renderer;
 
 class Entity
 {
+	friend class PhysicManager;
 public:
 
 	enum TypeEnum
@@ -16,20 +18,24 @@ public:
 		PASSTHROUGH
 	};
 
-	Entity(float layer, int8_t id, Entity::TypeEnum type);
+	Entity(float layer, int32_t id, Entity::TypeEnum type);
 	virtual ~Entity();
 
 	virtual void Draw(Renderer& renderer);
-	virtual void Update(int ms);
+	virtual void Update(int16_t ms);
 
-	int8_t GetId() const;
+	int32_t GetId() const;
 	void GetType(Entity::TypeEnum*& type);
 
 protected:
 	//z-buffer
 	float layer_;
-	int8_t id_;
+	int32_t id_;
 	TypeEnum type_;
+
+	b2Body* body_;
+
+	void setPhysicBody(b2Body* body);
 
 	//image
 	//physic object

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Renderer.h"
-#include <Box2D/Dynamics/b2World.h>
+#include "PhysicManager.h"
 
 class Entity;
 
@@ -23,7 +23,7 @@ protected:
 
 private:
 	Renderer renderer_;
+	PhysicManager physicManager_;
 	Entity* view_;
-	b2World world_;
 
 };

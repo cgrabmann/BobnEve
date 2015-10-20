@@ -2,7 +2,7 @@
 
 #include "Renderer.h"
 
-EntityComposite::EntityComposite(float layer, int id, Entity::TypeEnum type) : Entity(layer, id, type)
+EntityComposite::EntityComposite(float layer, int32_t id, Entity::TypeEnum type) : Entity(layer, id, type)
 {
 }
 
@@ -10,7 +10,7 @@ EntityComposite::~EntityComposite()
 {
 }
 
-void EntityComposite::Update(int ms)
+void EntityComposite::Update(int16_t ms)
 {
 }
 
