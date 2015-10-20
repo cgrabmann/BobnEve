@@ -5,9 +5,8 @@
 #include "Entity.h"
 
 
-Renderer::Renderer()
+Renderer::Renderer() : window_(sf::VideoMode(200, 200), "SFML works!")
 {
-	window_.create(sf::VideoMode(200, 200), "SFML works!");
 }
 
 
