@@ -3,16 +3,13 @@
 #include <SFML/Graphics.hpp>
 
 #include "Renderer.h"
-#include "EntityComposite.h"
 
-Game::Game() : physicManager_(b2Vec2(0.f, -10.f)),
-	view_(new EntityComposite(1.0f, 0, Entity::TypeEnum::PLATFORM))
+Game::Game() : physicManager_(b2Vec2(0.f, -10.f))
 {
 }
 
 Game::~Game()
 {
-	delete view_;
 }
 
 void Game::Loop()

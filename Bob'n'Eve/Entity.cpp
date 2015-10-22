@@ -5,8 +5,8 @@
 #include "Renderer.h"
 
 
-Entity::Entity(float layer, int32_t id, Entity::TypeEnum type)
-	: layer_(layer), id_(id), type_(type)
+Entity::Entity(float layer, int32_t id)
+	: layer_(layer), id_(id)
 {
 }
 
@@ -29,11 +29,6 @@ void Entity::Update(int16_t ms)
 int32_t Entity::GetId() const
 {
 	return id_;
-}
-
-void Entity::GetType(Entity::TypeEnum*& type)
-{
-	type = &this->type_;
 }
 
 void Entity::setPhysicBody(b2Body* body)

@@ -91,7 +91,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\EntityComposite.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Game.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.cpp" />
@@ -111,7 +110,6 @@
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.h" />
     <ClInclude Include="BobNEve.h" />
     <ClInclude Include="Entity.h" />
-    <ClInclude Include="EntityComposite.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Game.h" />
     <ClInclude Include="RenderOptions.h" />
     <ClInclude Include="View.h" />

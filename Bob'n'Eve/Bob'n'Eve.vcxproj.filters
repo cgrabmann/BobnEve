@@ -39,9 +39,6 @@
     <ClCompile Include="BobNEve.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\EntityComposite.cpp">
-      <Filter>Quelldateien\Entity</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -73,9 +70,6 @@
     </ClInclude>
     <ClInclude Include="RenderOptions.h">
       <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityComposite.h">
-      <Filter>Headerdateien\Entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.h">
       <Filter>Headerdateien</Filter>
