@@ -24,6 +24,6 @@ protected:
 private:
 	Renderer renderer_;
 	PhysicManager physicManager_;
-	Entity* view_;
+	View* view_;
 
 };

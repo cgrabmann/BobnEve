@@ -2,8 +2,6 @@
 
 #include <SFML\Graphics.hpp>
 
-#include "Entity.h"
-
 
 Renderer::Renderer() : window_(sf::VideoMode(200, 200), "SFML works!")
 {
@@ -24,10 +22,10 @@ sf::RenderTarget& Renderer::GetTarget()
 	return window_;
 }
 
-void Renderer::Render(Entity& rootEntity)
+void Renderer::Render(View& view)
 {
 	window_.clear();
-	rootEntity.Draw(*this);
+	//view.Draw(*this);
 	window_.display();
 }
 

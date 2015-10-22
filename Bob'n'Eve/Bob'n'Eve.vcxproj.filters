@@ -13,11 +13,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Headerdateien\Entity">
-      <UniqueIdentifier>{7ea56f98-7b7c-46b3-a99f-61725333f2d7}</UniqueIdentifier>
+    <Filter Include="Headerdateien\Enemy">
+      <UniqueIdentifier>{a131dd8d-8ee8-44f5-9621-d3cdde1d017c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Quelldateien\Entity">
-      <UniqueIdentifier>{5574bee7-b2bd-4223-8fab-670b8d38c0c6}</UniqueIdentifier>
+    <Filter Include="Headerdateien\Platform">
+      <UniqueIdentifier>{b3a5729c-cb02-4b97-9429-dfb6b8a04959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Enemy">
+      <UniqueIdentifier>{7eb7d1df-fbf9-4652-bbea-68abb7c2c94d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Platform">
+      <UniqueIdentifier>{65116e14-fe4a-4cc9-b832-9b385a57ec7d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -26,9 +32,6 @@
     </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.cpp">
       <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="entity.cpp">
-      <Filter>Quelldateien\Entity</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\game.cpp">
       <Filter>Quelldateien</Filter>
@@ -42,6 +45,18 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Enemy.cpp">
+      <Filter>Quelldateien\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.cpp">
+      <Filter>Quelldateien\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\View.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\Box2D.lib" />
@@ -53,12 +68,6 @@
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\game.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="view.h">
-      <Filter>Headerdateien\Entity</Filter>
-    </ClInclude>
-    <ClInclude Include="entity.h">
-      <Filter>Headerdateien\Entity</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -68,10 +77,19 @@
     <ClInclude Include="BobNEve.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="RenderOptions.h">
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.h">
+    <ClInclude Include="Player.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.h">
+      <Filter>Headerdateien\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Enemy.h">
+      <Filter>Headerdateien\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\View.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

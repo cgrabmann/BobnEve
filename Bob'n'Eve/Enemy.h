@@ -4,15 +4,15 @@
 
 class Renderer;
 
-class Entity
+class Enemy
 {
 	friend class PhysicManager;
 public:
 
-	Entity(float layer, int32_t id);
-	virtual ~Entity();
+	Enemy(float layer, int32_t id);
+	virtual ~Enemy();
 
-	virtual void Draw(Renderer& renderer);
+	virtual void Draw(Renderer* renderer) const;
 	virtual void Update(int16_t ms);
 
 	int32_t GetId() const;
