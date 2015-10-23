@@ -1,32 +1,26 @@
 #pragma once
 #include <stdint.h>
 #include <Box2D/Dynamics/b2Body.h>
+#include "GameObject.h"
 
 class Renderer;
 
-class Player
+class Player : public GameObject
 {
 	friend class PhysicManager;
 public:
+	Player(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics);
+	~Player();
 
-	Player(float layer, int32_t id);
-	virtual ~Player();
+	virtual void Draw(Renderer& renderer) const override;
+	virtual void Update(int16_t ms) override;
 
-	virtual void Draw(Renderer* renderer) const;
-	virtual void Update(int16_t ms);
-
-	int32_t GetId() const;
+	virtual void MoveLeft();
+	virtual void MoveRight();
+	virtual void Jump();
 
 protected:
-	//z-buffer
-	float layer_;
-	int32_t id_;
-
-	b2Body* body_;
-
-	void setPhysicBody(b2Body* body);
-
-	//image
-	//physic object
-
+	InputComponent* input_;
+	PhysicsComponent* physics_;
+	GraphicsComponent* graphics_;
 };

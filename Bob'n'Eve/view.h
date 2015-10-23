@@ -11,7 +11,7 @@ public:
 
 	void Update(int16_t ms);
 
-	void Draw(Renderer* renderer) const;
+	void Draw(Renderer& renderer) const;
 
 private:
 	Player* player1_;

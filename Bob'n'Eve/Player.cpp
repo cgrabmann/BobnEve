@@ -5,9 +5,10 @@
 #include "Renderer.h"
 
 
-Player::Player(float layer, int32_t id)
-	: layer_(layer), id_(id)
+Player::Player(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics)
+	: GameObject(), input_(input), physics_(physics), graphics_(graphics)
 {
+
 }
 
 Player::~Player()
@@ -15,21 +16,30 @@ Player::~Player()
 	
 }
 
-void Player::Draw(Renderer* renderer) const
-{
-
-}
-
 void Player::Update(int16_t ms)
 {
+	input_->Update(*this, ms);
+	physics_->Update(*this, ms);
+	graphics_->Update(*this, ms);
 }
 
-int32_t Player::GetId() const
+void Player::Draw(Renderer& renderer) const
 {
-	return id_;
+	graphics_->Draw(*this, renderer);
 }
 
-void Player::setPhysicBody(b2Body* body)
+
+void Player::Jump()
 {
-	body_ = body;
+	this->position_.y -= 10;
+}
+
+void Player::MoveLeft()
+{
+	this->position_.x -= 10;
+}
+
+void Player::MoveRight()
+{
+	this->position_.x += 10;
 }

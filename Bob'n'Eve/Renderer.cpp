@@ -1,9 +1,10 @@
 #include "Renderer.h"
+#include "View.h"
 
 #include <SFML\Graphics.hpp>
 
 
-Renderer::Renderer() : window_(sf::VideoMode(200, 200), "SFML works!")
+Renderer::Renderer() : window_(sf::VideoMode::getFullscreenModes()[0], "SFML works!", sf::Style::Fullscreen)
 {
 }
 
@@ -25,7 +26,7 @@ sf::RenderTarget& Renderer::GetTarget()
 void Renderer::Render(View& view)
 {
 	window_.clear();
-	//view.Draw(*this);
+	view.Draw(*this);
 	window_.display();
 }
 
