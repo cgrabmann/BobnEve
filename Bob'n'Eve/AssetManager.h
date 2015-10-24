@@ -23,9 +23,9 @@ public:
 	void LoadSounds();
 	void LoadMusic();
 
-	void LoadTextureByName(std::string name);
-	void LoadSoundByName(std::string name);
-	void LoadMusicByName(std::string name);
+	bool LoadTextureByName(std::string name);
+	bool LoadSoundByName(std::string name);
+	bool LoadMusicByName(std::string name);
 
 private:
 	std::vector<std::string> GetFilesInDir(std::string dir);

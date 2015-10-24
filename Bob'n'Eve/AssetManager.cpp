@@ -49,32 +49,47 @@ void AssetManager::LoadMusic()
 	}
 }
 
-void AssetManager::LoadTextureByName(std::string name)
+bool AssetManager::LoadTextureByName(std::string name)
 {
 	std::string path = textureDir_ + name;
 
 	sf::Texture texture;
-	texture.loadFromFile(path);
+	if (!texture.loadFromFile(path))
+	{
+		return false;
+	}
+
 	texture.setSmooth(true);
 	textures_[name] = texture;
+	return true;
 }
 
-void AssetManager::LoadSoundByName(std::string name)
+bool AssetManager::LoadSoundByName(std::string name)
 {
 	std::string path = soundDir_ + name;
 
 	sf::SoundBuffer sound;
-	sound.loadFromFile(path);
+	if (!sound.loadFromFile(path))
+	{
+		return false;
+	}
+
 	sounds_[name] = sound;
+	return true;
 }
 
-void AssetManager::LoadMusicByName(std::string name)
+bool AssetManager::LoadMusicByName(std::string name)
 {
 	std::string path = musicDir_ + name;
 
 	sf::Music music;
-	music.openFromFile(path);
+	if (!music.openFromFile(path))
+	{
+		return false;
+	}
+
 	music_[name] = music;
+	return true;
 }
 
 std::vector<std::string> AssetManager::GetFilesInDir(std::string dir)
