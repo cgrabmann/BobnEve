@@ -6,18 +6,17 @@ namespace sf{
 	class Shape;
 }
 
-class Entity;
+class View;
 
 class Renderer
 {
-	friend class Entity;
 public:
 	Renderer();
 	~Renderer();
 
 	sf::RenderWindow& GetWindow();
 	sf::RenderTarget& GetTarget();
-	void Render(Entity& drawable);
+	void Render(View& drawable);
 
 private:
 	sf::RenderWindow window_;

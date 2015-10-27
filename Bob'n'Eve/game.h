@@ -22,8 +22,10 @@ protected:
 	void GetInput();
 
 private:
+
+	bool paused_;
 	Renderer renderer_;
 	PhysicManager physicManager_;
-	Entity* view_;
+	View* view_;
 
 };

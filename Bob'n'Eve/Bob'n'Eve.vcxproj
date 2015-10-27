@@ -91,10 +91,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Enemy.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Game.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GameObject.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponent.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponentBase.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JoystickInputComponent.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.cpp" />
+    <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.cpp" />
-    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\View.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="BobNEve.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\main.cpp" />
   </ItemGroup>
@@ -106,13 +115,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Enemy.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GameObject.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponent.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponentBase.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JoystickInputComponent.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.h" />
+    <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\View.h" />
     <ClInclude Include="BobNEve.h" />
-    <ClInclude Include="Entity.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Game.h" />
-    <ClInclude Include="RenderOptions.h" />
-    <ClInclude Include="View.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
