@@ -4,7 +4,7 @@
 
 #include "Entity.h"
 
-PhysicManager::PhysicManager(b2Vec2& gravity) : world_(gravity)
+PhysicManager::PhysicManager(float gravityX, float gravityY) : world_(b2Vec2(gravityX, gravityY))
 {
 }
 

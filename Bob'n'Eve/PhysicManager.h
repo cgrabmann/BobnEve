@@ -7,7 +7,7 @@ class Entity;
 class PhysicManager
 {
 public:
-	PhysicManager(b2Vec2& gravity);
+	PhysicManager(float gravityX, float gravityY);
 	virtual ~PhysicManager();
 
 	void RegisterEntity(Entity& entity, b2BodyDef* bodyDef);

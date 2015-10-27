@@ -4,7 +4,7 @@
 
 #include "Renderer.h"
 
-Game::Game() : physicManager_(b2Vec2(0.f, -10.f))
+Game::Game() : physicManager_(0.f, -10.f)
 {
 }
 
