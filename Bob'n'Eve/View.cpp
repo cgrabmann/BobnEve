@@ -1,6 +1,9 @@
 #include "View.h"
 #include <SFML/include/SFML/Window/Joystick.hpp>
 #include "JoystickInputComponent.h"
+#include <SFML/include/SFML/Graphics/Color.hpp>
+#include "PhysicsComponent.h"
+#include "GraphicsComponent.h"
 
 View::View() : platforms_(), enemys_()
 {
@@ -41,12 +44,12 @@ View::~View()
 
 void View::Update(int16_t ms)
 {
-	for (int i = 0; i < platforms_.size(); i++)
+	for (size_t i = 0; i < platforms_.size(); i++)
 	{
 		platforms_[i]->Update(ms);
 	}
 
-	for (int i = 0; i < enemys_.size(); i++)
+	for (size_t i = 0; i < enemys_.size(); i++)
 	{
 		enemys_[i]->Update(ms);
 	}
@@ -57,12 +60,12 @@ void View::Update(int16_t ms)
 
 void View::Draw(Renderer& renderer) const
 {
-	for (int i = 0; i < platforms_.size(); i++)
+	for (size_t i = 0; i < platforms_.size(); i++)
 	{
 		platforms_[i]->Draw(renderer);
 	}
 
-	for (int i = 0; i < enemys_.size(); i++)
+	for (size_t i = 0; i < enemys_.size(); i++)
 	{
 		enemys_[i]->Draw(renderer);
 	}

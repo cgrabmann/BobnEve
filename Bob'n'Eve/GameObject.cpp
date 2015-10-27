@@ -26,11 +26,3 @@ sf::Vector2f GameObject::GetPosition() const
 {
 	return position_;
 }
-
-
-
-void GameObject::setPhysicBody(b2Body* body)
-{
-	body_ = body;
-}
-

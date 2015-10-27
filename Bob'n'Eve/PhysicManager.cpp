@@ -1,6 +1,8 @@
 #include "PhysicManager.h"
 
 #include <Box2D/Common/b2Math.h>
+#include "GameObject.h"
+#include "PhysicsComponent.h"
 
 PhysicManager::PhysicManager(float gravityX, float gravityY) : world_(b2Vec2(gravityX, gravityY))
 {
@@ -10,7 +12,7 @@ PhysicManager::~PhysicManager()
 {
 }
 
-//void PhysicManager::RegisterEntity(Player& player, b2BodyDef* bodyDef)
-//{
-//	player.setPhysicBody(world_.CreateBody(bodyDef));
-//}
+void PhysicManager::createBody(PhysicsComponent& physicsComponent, b2BodyDef* bodyDef)
+{
+	physicsComponent.setPhysicBody(world_.CreateBody(bodyDef));
+}

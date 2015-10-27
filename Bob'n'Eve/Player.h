@@ -3,6 +3,8 @@
 #include <Box2D/Dynamics/b2Body.h>
 #include "GameObject.h"
 
+class GraphicsComponent;
+class InputComponent;
 class Renderer;
 
 class Player : public GameObject

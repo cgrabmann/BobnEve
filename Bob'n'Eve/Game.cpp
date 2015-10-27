@@ -42,7 +42,7 @@ void Game::Loop()
 
 		if (window.hasFocus() && !paused_)
 		{
-			view_->Update(16.6f);
+			view_->Update(16);
 		}
 
 		renderer_.Render(*view_);

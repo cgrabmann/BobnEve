@@ -3,6 +3,9 @@
 #include <SFML/Graphics.hpp>
 
 #include "Renderer.h"
+#include "InputComponent.h"
+#include "PhysicsComponent.h"
+#include "GraphicsComponent.h"
 
 
 Player::Player(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics)

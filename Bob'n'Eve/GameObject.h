@@ -1,16 +1,12 @@
 #pragma once
 #include <cinttypes>
-#include <Box2D/Dynamics/b2Body.h>
-#include "PhysicsComponent.h"
-#include "InputComponent.h"
-#include "GraphicsComponent.h"
 #include <SFML/include/SFML/System/Vector2.hpp>
 
+class PhysicsComponent;
 class Renderer;
 
 class GameObject
 {
-	friend class PhysicManager;
 public:
 	GameObject();
 	virtual ~GameObject();
@@ -26,9 +22,5 @@ protected:
 
 	//z-buffer
 	float layer_;
-
-	//pysics
-	b2Body* body_;
-	void setPhysicBody(b2Body* body);
 };
 
