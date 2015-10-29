@@ -18,6 +18,8 @@ public:
 	sf::Vector2f GetPosition() const;
 
 protected:
+	//top-left corner
+	//may be replaced by box2d::body
 	sf::Vector2f position_;
 
 	//z-buffer

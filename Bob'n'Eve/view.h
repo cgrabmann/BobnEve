@@ -2,6 +2,7 @@
 #include "Platform.h"
 #include "Enemy.h"
 #include <vector>
+#include "AssetManager.h"
 
 class View
 {
@@ -22,4 +23,6 @@ private:
 	std::vector<Enemy*> enemys_;
 
 	//std::vector<Background*> backgrounds;
+
+	AssetManager assets_;
 };

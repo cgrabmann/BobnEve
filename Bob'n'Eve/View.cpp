@@ -3,9 +3,9 @@
 #include "JoystickInputComponent.h"
 #include <SFML/include/SFML/Graphics/Color.hpp>
 #include "PhysicsComponent.h"
-#include "GraphicsComponent.h"
+#include "GraphicsComponentStatic.h"
 
-View::View() : platforms_(), enemys_()
+View::View() : platforms_(), enemys_(), assets_()
 {
 	InputComponent* inputPlayer1;
 	if (sf::Joystick::isConnected(0))
@@ -17,7 +17,7 @@ View::View() : platforms_(), enemys_()
 		inputPlayer1 = new InputComponent(1);
 	}
 	PhysicsComponent* physicsPlayer1 = new PhysicsComponent();
-	GraphicsComponent* graphicsPlayer1 = new GraphicsComponent(sf::Color::Red);
+	GraphicsComponentBase* graphicsPlayer1 = new GraphicsComponentStatic(assets_.GetSpriteByName("Test.png",0));
 
 	player1_ = new Player(inputPlayer1, physicsPlayer1, graphicsPlayer1);
 
@@ -31,7 +31,7 @@ View::View() : platforms_(), enemys_()
 		inputPlayer2 = new InputComponent(2);
 	}
 	PhysicsComponent* physicsPlayer2 = new PhysicsComponent();
-	GraphicsComponent* graphicsPlayer2 = new GraphicsComponent(sf::Color::Blue);
+	GraphicsComponentBase* graphicsPlayer2 = new GraphicsComponentStatic(assets_.GetSpriteByName("Test.png", 3));
 
 	player2_ = new Player(inputPlayer2, physicsPlayer2, graphicsPlayer2);
 }
