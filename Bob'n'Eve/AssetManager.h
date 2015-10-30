@@ -12,9 +12,7 @@
 class AssetManager
 {
 public:
-	//TODO: singleton
-	AssetManager();
-	~AssetManager();
+	static AssetManager* Instance();
 
 	sf::Sprite* GetSpriteByName(const std::string& name);
 	sf::Sprite* GetSpriteByName(const std::string& name, const uint8_t gid);
@@ -28,6 +26,12 @@ protected:
 	void LoadMusic();
 
 private:
+	static AssetManager* instance_;
+
+	AssetManager();
+	~AssetManager();
+
+
 	void LoadTextureByName(const std::string& name);
 	void LoadSoundByName(const std::string& name);
 	void LoadMusicByName(const std::string& name);
@@ -43,4 +47,17 @@ private:
 	std::string musicDir_;
 
 	const std::string errorTex = "Error.png";
+
+	class CGuard
+	{
+	public:
+		~CGuard()
+		{
+			if (NULL != AssetManager::instance_)
+			{
+				delete AssetManager::instance_;
+				AssetManager::instance_ = NULL;
+			}
+		}
+	};
 };

@@ -1,14 +1,13 @@
 #include "MapLoader.h"
 #include "Player.h"
 #include "InputComponentBase.h"
-#include <SFML/include/SFML/Graphics/Color.hpp>
-#include "GraphicsComponent.h"
 #include "PhysicsComponent.h"
 #include <vector>
 #include "Platform.h"
 #include "Enemy.h"
 #include "View.h"
 #include <pugixml/src/pugixml.hpp>
+#include "GraphicsComponentStatic.h"
 
 //MapLoader* MapLoader::instance_ = NULL;
 
@@ -37,8 +36,10 @@ View* MapLoader::LoadMap(const char* path)
 
 	assert(!result);
 
-	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponent(), new GraphicsComponent(sf::Color::Red));
-	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponent(), new GraphicsComponent(sf::Color::Blue));
+	AssetManager* asset = AssetManager::Instance();
+
+	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponent(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
+	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponent(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 3)));
 	std::vector<Platform*>* platforms = new std::vector<Platform*>;
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 

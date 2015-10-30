@@ -2,6 +2,16 @@
 #include "Global.h"
 #include <assert.h>
 
+AssetManager* AssetManager::instance_ = NULL;
+
+AssetManager* AssetManager::Instance()
+{
+	static CGuard g;   // Speicherbereinigung
+	if (!instance_)
+		instance_ = new AssetManager();
+	return instance_;
+}
+
 AssetManager::AssetManager() : textures_(), sounds_(), music_(),
 textureDir_(Global::AssetDir + "textures/"), soundDir_(Global::AssetDir + "sounds/"), musicDir_(Global::AssetDir + "music/")
 {

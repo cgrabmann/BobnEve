@@ -1,7 +1,6 @@
 #include <vector>
 #include "Platform.h"
 #include "Enemy.h"
-#include "AssetManager.h"
 
 class Player;
 
@@ -24,6 +23,4 @@ private:
 	std::vector<Enemy*>* enemys_;
 
 	//std::vector<Background*> backgrounds;
-
-	AssetManager assets_;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include <stddef.h>
+#include "AssetManager.h"
 
 class View;
 
