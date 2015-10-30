@@ -1,12 +1,13 @@
-#include "Player.h"
+#include <vector>
 #include "Platform.h"
 #include "Enemy.h"
-#include <vector>
+
+class Player;
 
 class View
 {
 public:
-	View();
+	View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies);
 	~View();
 
 	void Update(int16_t ms);
@@ -14,12 +15,12 @@ public:
 	void Draw(Renderer& renderer) const;
 
 private:
-	Player* player1_;
-	Player* player2_;
+	Player* bob_;
+	Player* eve_;
 
-	std::vector<Platform*> platforms_;
+	std::vector<Platform*>* platforms_;
 
-	std::vector<Enemy*> enemys_;
+	std::vector<Enemy*>* enemys_;
 
 	//std::vector<Background*> backgrounds;
 };

@@ -8,7 +8,7 @@
 #include "GraphicsComponent.h"
 
 
-Player::Player(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics)
+Player::Player(InputComponentBase* input, PhysicsComponent* physics, GraphicsComponent* graphics)
 	: GameObject(), input_(input), physics_(physics), graphics_(graphics)
 {
 

@@ -3,15 +3,15 @@
 #include <Box2D/Dynamics/b2Body.h>
 #include "GameObject.h"
 
+class InputComponentBase;
 class GraphicsComponent;
-class InputComponent;
 class Renderer;
 
 class Player : public GameObject
 {
 	friend class PhysicManager;
 public:
-	Player(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics);
+	Player(InputComponentBase* input, PhysicsComponent* physics, GraphicsComponent* graphics);
 	~Player();
 
 	virtual void Draw(Renderer& renderer) const override;
@@ -22,7 +22,7 @@ public:
 	virtual void Jump();
 
 protected:
-	InputComponent* input_;
+	InputComponentBase* input_;
 	PhysicsComponent* physics_;
 	GraphicsComponent* graphics_;
 };

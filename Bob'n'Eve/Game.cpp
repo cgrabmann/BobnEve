@@ -4,10 +4,10 @@
 
 #include "Renderer.h"
 #include "View.h"
+#include "MapLoader.h"
 
-Game::Game() : physicManager_(0.f, -10.f), paused_(false)
+Game::Game() : paused_(false), physicManager_(0.f, -10.f), view_(MapLoader::LoadMap(""))
 {
-	view_ = new View();
 }
 
 Game::~Game()

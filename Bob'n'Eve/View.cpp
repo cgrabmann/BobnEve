@@ -4,73 +4,59 @@
 #include <SFML/include/SFML/Graphics/Color.hpp>
 #include "PhysicsComponent.h"
 #include "GraphicsComponent.h"
+#include "Player.h"
 
-View::View() : platforms_(), enemys_()
+View::View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies):
+bob_(bob), eve_(eve), platforms_(platforms), enemys_(enemies)
 {
-	InputComponent* inputPlayer1;
-	if (sf::Joystick::isConnected(0))
-	{
-		inputPlayer1 = new JoystickInputComponent(1, 0);
-	}
-	else
-	{
-		inputPlayer1 = new InputComponent(1);
-	}
-	PhysicsComponent* physicsPlayer1 = new PhysicsComponent();
-	GraphicsComponent* graphicsPlayer1 = new GraphicsComponent(sf::Color::Red);
-
-	player1_ = new Player(inputPlayer1, physicsPlayer1, graphicsPlayer1);
-
-	InputComponent* inputPlayer2;
-	if (sf::Joystick::isConnected(1))
-	{
-		inputPlayer2 = new JoystickInputComponent(2, 1);
-	}
-	else
-	{
-		inputPlayer2 = new InputComponent(2);
-	}
-	PhysicsComponent* physicsPlayer2 = new PhysicsComponent();
-	GraphicsComponent* graphicsPlayer2 = new GraphicsComponent(sf::Color::Blue);
-
-	player2_ = new Player(inputPlayer2, physicsPlayer2, graphicsPlayer2);
 }
 
 View::~View()
 {
-	
+	delete bob_;
+	delete eve_;
+	for (size_t i = 0; i < platforms_->size(); i++)
+	{
+		delete platforms_->at(i);
+	}
+	delete platforms_;
+	for (size_t i = 0; i < enemys_->size(); i++)
+	{
+		delete enemys_->at(i);
+	}
+	delete enemys_;
 }
 
 
 void View::Update(int16_t ms)
 {
-	for (size_t i = 0; i < platforms_.size(); i++)
+	for (size_t i = 0; i < platforms_->size(); i++)
 	{
-		platforms_[i]->Update(ms);
+		platforms_->at(i)->Update(ms);
 	}
 
-	for (size_t i = 0; i < enemys_.size(); i++)
+	for (size_t i = 0; i < enemys_->size(); i++)
 	{
-		enemys_[i]->Update(ms);
+		enemys_->at(i)->Update(ms);
 	}
 
-	player1_->Update(ms);
-	player2_->Update(ms);
+	bob_->Update(ms);
+	eve_->Update(ms);
 }
 
 void View::Draw(Renderer& renderer) const
 {
-	for (size_t i = 0; i < platforms_.size(); i++)
+	for (size_t i = 0; i < platforms_->size(); i++)
 	{
-		platforms_[i]->Draw(renderer);
+		platforms_->at(i)->Draw(renderer);
 	}
 
-	for (size_t i = 0; i < enemys_.size(); i++)
+	for (size_t i = 0; i < enemys_->size(); i++)
 	{
-		enemys_[i]->Draw(renderer);
+		enemys_->at(i)->Draw(renderer);
 	}
 
-	player1_->Draw(renderer);
-	player2_->Draw(renderer);
+	bob_->Draw(renderer);
+	eve_->Draw(renderer);
 }
 

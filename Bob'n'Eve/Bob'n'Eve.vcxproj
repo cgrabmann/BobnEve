@@ -53,13 +53,13 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.\lib;.\lib\Box2D;.\lib\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\lib\pugixml\src;.\lib;.\lib\Box2D;.\lib\SFML\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>.\lib;.\lib\Box2D;.\lib\SFML\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;Box2D-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio-d.lib;sfml-graphics-d.lib;sfml-main-d.lib;sfml-system-d.lib;sfml-window-d.lib;Box2D-d.lib;pugixml-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(SolutionDir)Bob'n'Eve\lib\SFML\bin\$(Configuration)" "$(SolutionDir)$(Configuration)"</Command>
@@ -75,7 +75,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.\lib;.\lib\Box2D;.\lib\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\lib\pugixml\src;.\lib;.\lib\Box2D;.\lib\SFML\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -83,7 +83,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>.\lib;.\lib\Box2D;.\lib\SFML\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-audio.lib;sfml-graphics.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-audio.lib;sfml-graphics.lib;sfml-main.lib;sfml-system.lib;sfml-window.lib;Box2D.lib;pugixml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>copy /Y "$(SolutionDir)Bob'n'Eve\lib\SFML\bin\$(Configuration)" "$(SolutionDir)$(Configuration)"</Command>
@@ -97,6 +97,7 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponent.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponentBase.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JoystickInputComponent.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MapLoader.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.cpp" />
@@ -120,6 +121,7 @@
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponent.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponentBase.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JoystickInputComponent.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MapLoader.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.h" />
