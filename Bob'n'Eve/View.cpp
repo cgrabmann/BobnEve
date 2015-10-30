@@ -3,11 +3,11 @@
 #include "JoystickInputComponent.h"
 #include <SFML/include/SFML/Graphics/Color.hpp>
 #include "PhysicsComponent.h"
-#include "GraphicsComponent.h"
+#include "GraphicsComponentStatic.h"
 #include "Player.h"
 
 View::View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies):
-bob_(bob), eve_(eve), platforms_(platforms), enemys_(enemies)
+bob_(bob), eve_(eve), platforms_(platforms), enemys_(enemies), assets_()
 {
 }
 

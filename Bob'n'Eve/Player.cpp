@@ -5,10 +5,10 @@
 #include "Renderer.h"
 #include "InputComponent.h"
 #include "PhysicsComponent.h"
-#include "GraphicsComponent.h"
+#include "GraphicsComponentBase.h"
 
 
-Player::Player(InputComponentBase* input, PhysicsComponent* physics, GraphicsComponent* graphics)
+Player::Player(InputComponentBase* input, PhysicsComponent* physics, GraphicsComponentBase* graphics)
 	: GameObject(), input_(input), physics_(physics), graphics_(graphics)
 {
 

@@ -75,9 +75,6 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsComponent.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponent.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
@@ -89,6 +86,15 @@
     </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MapLoader.cpp">
       <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsComponentBase.cpp">
+      <Filter>Quelldateien\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentAnimated.cpp">
+      <Filter>Quelldateien\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentStatic.cpp">
+      <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,9 +137,6 @@
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.h">
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsComponent.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponent.h">
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
@@ -141,6 +144,18 @@
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponentBase.h">
+      <Filter>Headerdateien\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Global.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsComponentBase.h">
+      <Filter>Headerdateien\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentAnimated.h">
+      <Filter>Headerdateien\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentStatic.h">
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MapLoader.h">
