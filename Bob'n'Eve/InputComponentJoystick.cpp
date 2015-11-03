@@ -1,8 +1,8 @@
-#include "JoystickInputComponent.h"
+#include "InputComponentJoystick.h"
 #include <SFML/include/SFML/System/Vector2.hpp>
 
 
-JoystickInputComponent::JoystickInputComponent(unsigned player, unsigned joystickId) : InputComponent(player), joystickId_(joystickId)
+InputComponentJoystick::InputComponentJoystick(unsigned player, unsigned joystickId) : InputComponent(player), joystickId_(joystickId)
 {
 	if ((player == 1 && joystickId == 0) || (player == 2 && joystickId == 1))
 	{//Linker Stick
@@ -17,11 +17,11 @@ JoystickInputComponent::JoystickInputComponent(unsigned player, unsigned joystic
 }
 
 
-JoystickInputComponent::~JoystickInputComponent()
+InputComponentJoystick::~InputComponentJoystick()
 {
 }
 
-void JoystickInputComponent::Update(Player& player, int16_t ms)
+void InputComponentJoystick::Update(Player& player, int16_t ms)
 {
 	InputComponent::Update(player, ms);
 

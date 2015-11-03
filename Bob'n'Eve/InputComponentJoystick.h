@@ -2,11 +2,11 @@
 #include <SFML/include/SFML/Window/Joystick.hpp>
 #include "InputComponent.h"
 
-class JoystickInputComponent : public InputComponent
+class InputComponentJoystick : public InputComponent
 {
 public:
-	JoystickInputComponent(unsigned player, unsigned joystickId);
-	virtual ~JoystickInputComponent();
+	InputComponentJoystick(unsigned player, unsigned joystickId);
+	virtual ~InputComponentJoystick();
 
 	virtual void Update(Player& player, int16_t ms) override;
 

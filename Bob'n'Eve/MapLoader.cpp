@@ -1,7 +1,7 @@
 #include "MapLoader.h"
 #include "Player.h"
 #include "InputComponentBase.h"
-#include "PhysicsComponent.h"
+#include "PhysicsComponentBase.h"
 #include <vector>
 #include "Platform.h"
 #include "Enemy.h"

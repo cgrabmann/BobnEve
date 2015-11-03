@@ -1,5 +1,5 @@
-#include "PhysicsComponent.h"
 #include <stddef.h>
+#include "PhysicsComponentBase.h"
 
 
 PhysicsComponentBase::PhysicsComponentBase() : body_(NULL)
