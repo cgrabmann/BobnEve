@@ -1,3 +1,4 @@
+#pragma once
 #include "GraphicsComponentStatic.h"
 #include "Renderer.h"
 #include "GameObject.h"
@@ -20,7 +21,7 @@ void GraphicsComponentStatic::Draw(const GameObject& object, Renderer& renderer)
 	//Global scale
 	sprite_->setScale(renderer.GetScale());
 	//Mirror with scale of -1
-	sprite_->scale(object.GetOrientation().x, object.GetOrientation().y);
+	sprite_->scale(object.GetOrientation().ToSFML());
 	//set position in view
 	sprite_->setPosition(object.GetPosition().ToSFML());
 	//draw

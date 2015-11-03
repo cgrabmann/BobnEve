@@ -25,7 +25,7 @@ public:
 	Vector2f GetOrientation() const;
 
 protected:
-	//top-left corner
+	//center of object
 	sf::Vector2f position_;
 
 	b2Body* physicsBody_;

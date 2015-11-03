@@ -24,6 +24,16 @@ Player::~Player()
 
 void Player::Update(int16_t ms)
 {
+	if (position_.y > 540)
+	{
+		orientation_.y = 1.f;
+	}
+	else
+	{
+		orientation_.y = -1.f;
+	}
+
+
 	input_->Update(*this, ms);
 	physics_->Update(*this, ms);
 	graphics_->Update(*this, ms);

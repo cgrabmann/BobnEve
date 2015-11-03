@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
 
-GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : position_(100, 100), physicsBody_(nullptr), orientation_(1.f,1.f), layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : position_(100, 750), physicsBody_(nullptr), orientation_(1.f,1.f), layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }

@@ -31,4 +31,35 @@ b2Vec2 Vector2f::ToB2Vec() const
 	return b2Vec2(x, y);
 }
 
+Vector2f Vector2f::operator+(Vector2f vec)
+{
+	return Vector2f(x + vec.x, y + vec.y);
+}
+
+sf::Vector2f Vector2f::operator+(sf::Vector2f vec)
+{
+	return sf::Vector2f(x + vec.x, y + vec.y);
+}
+
+b2Vec2 Vector2f::operator+(b2Vec2 vec)
+{
+	return b2Vec2(x + vec.x, y + vec.y);
+}
+
+Vector2f Vector2f::operator-(Vector2f vec)
+{
+	return Vector2f(x - vec.x, y - vec.y);
+}
+
+sf::Vector2f Vector2f::operator-(sf::Vector2f vec)
+{
+	return sf::Vector2f(x - vec.x, y - vec.y);
+}
+
+b2Vec2 Vector2f::operator-(b2Vec2 vec)
+{
+	return b2Vec2(x - vec.x, y - vec.y);
+}
+
+
 

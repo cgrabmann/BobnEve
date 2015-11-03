@@ -1,3 +1,4 @@
+#pragma once
 #include "AssetManager.h"
 #include "Global.h"
 #include <assert.h>
@@ -126,6 +127,7 @@ sf::Sprite* AssetManager::GetSpriteByName(const std::string& name)
 		LoadTextureByName(name);
 	}
 	sprite->setTexture(*textures_[name]);
+	sprite->setOrigin(Global::TileWidth / 2.f, Global::TileHeight / 2.f);
 
 	return sprite;
 }
@@ -139,6 +141,7 @@ sf::Sprite* AssetManager::GetSpriteByName(const std::string& name, const uint8_t
 	
 	uint8_t tilePosX = gid % maxTilesX;
 	uint8_t tilePosY = gid / maxTilesX;
+
 
 	sprite->setTextureRect(sf::IntRect(Global::TileWidth * tilePosX, Global::TileHeight * tilePosY, Global::TileWidth, Global::TileHeight));
 
