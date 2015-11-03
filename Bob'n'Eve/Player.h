@@ -13,7 +13,7 @@ class Player : public GameObject
 	friend class PhysicManager;
 public:
 	Player(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
-	Player(b2Body* physicsBody, b2Vec2* orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
+	Player(b2Body* physicsBody, b2Vec2 orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
 	~Player();
 
 	virtual void Draw(Renderer& renderer) const override;

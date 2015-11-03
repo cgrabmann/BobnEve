@@ -1,12 +1,12 @@
 #include "GameObject.h"
 
 
-GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : position_(100, 100), physicsBody_(nullptr), velocity_(new b2Velocity()), orientation_(new b2Vec2(1.f,1.f)), layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : position_(100, 100), physicsBody_(nullptr), orientation_(1.f,1.f), layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }
 
-GameObject::GameObject(b2Body* physicsBody, b2Vec2* orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : position_(100, 100), physicsBody_(physicsBody), velocity_(new b2Velocity()), orientation_(orientation), layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(b2Body* physicsBody, b2Vec2 orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : position_(100, 100), physicsBody_(physicsBody), orientation_(orientation), layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }
@@ -27,9 +27,12 @@ float GameObject::GetLayer() const
 	return layer_;
 }
 
-sf::Vector2f GameObject::GetPosition() const
+Vector2f GameObject::GetPosition() const
 {
 	return position_;
+
+	//TODO: use box2d
+	return physicsBody_->GetPosition();
 }
 
 b2Body* GameObject::GetPhysicsBody() const
@@ -37,12 +40,7 @@ b2Body* GameObject::GetPhysicsBody() const
 	return physicsBody_;
 }
 
-b2Velocity* GameObject::GetVelocity() const
-{
-	return velocity_;
-}
-
-b2Vec2* GameObject::GetOrientation() const
+Vector2f GameObject::GetOrientation() const
 {
 	return orientation_;
 }

@@ -20,9 +20,9 @@ void GraphicsComponentStatic::Draw(const GameObject& object, Renderer& renderer)
 	//Global scale
 	sprite_->setScale(renderer.GetScale());
 	//Mirror with scale of -1
-	sprite_->scale(object.GetOrientation()->x, object.GetOrientation()->y);
+	sprite_->scale(object.GetOrientation().x, object.GetOrientation().y);
 	//set position in view
-	sprite_->setPosition(object.GetPosition());
+	sprite_->setPosition(object.GetPosition().ToSFML());
 	//draw
 	renderer.GetTarget().draw(*sprite_);
 }

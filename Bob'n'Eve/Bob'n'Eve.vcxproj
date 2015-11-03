@@ -90,6 +90,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -117,7 +118,7 @@
     <None Include="lib\box2d.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vector2Base.h" />
+    <ClInclude Include="Vector2f.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameObject.h" />

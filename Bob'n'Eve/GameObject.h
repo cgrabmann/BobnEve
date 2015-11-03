@@ -5,6 +5,7 @@
 #include "InputComponentBase.h"
 #include "PhysicsComponentBase.h"
 #include "GraphicsComponentBase.h"
+#include "Vector2f.h"
 
 class Renderer;
 
@@ -12,17 +13,16 @@ class GameObject
 {
 public:
 	GameObject(InputComponentBase* input,	PhysicsComponentBase* physics,	GraphicsComponentBase* graphics);
-	GameObject(b2Body* physicsBody, b2Vec2* orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
+	GameObject(b2Body* physicsBody, b2Vec2 orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
 	virtual ~GameObject();
 
 	virtual void Update(int16_t ms);
 	virtual void Draw(Renderer& renderer) const;
 
 	float GetLayer() const;
-	sf::Vector2f GetPosition() const;		
+	Vector2f GetPosition() const;		
 	b2Body* GetPhysicsBody() const;
-	b2Velocity* GetVelocity() const;
-	b2Vec2* GetOrientation() const;
+	Vector2f GetOrientation() const;
 
 protected:
 	//top-left corner
@@ -30,9 +30,7 @@ protected:
 
 	b2Body* physicsBody_;
 
-	b2Velocity* velocity_;
-
-	b2Vec2* orientation_;
+	b2Vec2 orientation_;
 
 	//z-buffer
 	float layer_;

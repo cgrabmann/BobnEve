@@ -5,7 +5,7 @@
 #include "Renderer.h"
 
 
-Enemy::Enemy(b2Body* physicsBody, b2Vec2* orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics)
+Enemy::Enemy(b2Body* physicsBody, b2Vec2 orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics)
 	: GameObject(physicsBody, orientation, input, physics, graphics)
 {
 
