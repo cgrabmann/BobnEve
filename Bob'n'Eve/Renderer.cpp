@@ -3,6 +3,7 @@
 
 #include <SFML\Graphics.hpp>
 #define DEBUG
+#include "Global.h"
 
 
 Renderer::Renderer() : window_(
@@ -13,13 +14,16 @@ Renderer::Renderer() : window_(
 #endif
 ), scale_(1.f, 1.f)
 {
+	sf::Vector2u size = window_.getSize();
+
+	Global::ScreenWidth = size.x;
+	Global::ScreenHeight = size.y;
+
 	window_.setKeyRepeatEnabled(true);
 	window_.setJoystickThreshold(0.15f);
 	window_.setFramerateLimit(60);
 	window_.setMouseCursorVisible(false);
 	window_.setVerticalSyncEnabled(true);
-
-	sf::Vector2u size = window_.getSize();
 
 	sf::View view(sf::FloatRect(0, 0, size.x, size.y));
 	window_.setView(view);

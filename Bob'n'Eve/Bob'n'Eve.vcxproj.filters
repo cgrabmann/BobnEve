@@ -120,7 +120,10 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Vector2f.cpp">
+    <ClCompile Include="Vector2f.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

@@ -90,6 +90,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Global.cpp" />
     <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="Enemy.cpp" />

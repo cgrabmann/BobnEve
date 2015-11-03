@@ -15,7 +15,7 @@ public:
 	float y;
 
 	sf::Vector2f ToSFML() const;
-	b2Vec2 ToB2Vec() const;
+	b2Vec2 ToBox2D() const;
 
 	Vector2f operator+ (Vector2f vec);
 	sf::Vector2f operator+ (sf::Vector2f vec);

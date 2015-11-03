@@ -1,7 +1,7 @@
 #include "GameObject.h"
 
 
-GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : position_(100, 750), physicsBody_(nullptr), orientation_(1.f,1.f), layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : position_(100, 750), physicsBody_(nullptr), orientation_(1.f, 1.f), layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }
@@ -43,4 +43,22 @@ b2Body* GameObject::GetPhysicsBody() const
 Vector2f GameObject::GetOrientation() const
 {
 	return orientation_;
+}
+
+void GameObject::SetOrientation(Vector2f const vec)
+{
+	orientation_ = vec.ToBox2D();
+}
+
+void GameObject::SetOrientation(float x, float y)
+{
+	if (x != 0)
+	{
+		orientation_.x = x;
+	}
+
+	if (y != 0)
+	{
+		orientation_.y = y;
+	}
 }
