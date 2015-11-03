@@ -12,7 +12,7 @@ PhysicManager::~PhysicManager()
 {
 }
 
-void PhysicManager::createBody(PhysicsComponent& physicsComponent, b2BodyDef* bodyDef)
+void PhysicManager::createBody(PhysicsComponentBase& physicsComponent, b2BodyDef* bodyDef)
 {
 	physicsComponent.setPhysicBody(world_.CreateBody(bodyDef));
 }

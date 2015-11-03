@@ -38,8 +38,8 @@ View* MapLoader::LoadMap(const char* path)
 
 	AssetManager* asset = AssetManager::Instance();
 
-	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponent(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
-	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponent(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 3)));
+	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
+	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 3)));
 	std::vector<Platform*>* platforms = new std::vector<Platform*>;
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 

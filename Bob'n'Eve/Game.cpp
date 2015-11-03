@@ -55,13 +55,6 @@ void Game::GetInput()
 
 void Game::Start()
 {
-	sf::RenderWindow& window = renderer_.GetWindow();
-	window.setKeyRepeatEnabled(true);
-	window.setJoystickThreshold(0.15f);
-	window.setFramerateLimit(60);
-	window.setMouseCursorVisible(false);
-	window.setVerticalSyncEnabled(true);
-
 	Loop();
 }
 

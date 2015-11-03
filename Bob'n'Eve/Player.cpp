@@ -3,13 +3,16 @@
 #include <SFML/Graphics.hpp>
 
 #include "Renderer.h"
-#include "InputComponent.h"
-#include "PhysicsComponent.h"
-#include "GraphicsComponentBase.h"
 
 
-Player::Player(InputComponentBase* input, PhysicsComponent* physics, GraphicsComponentBase* graphics)
-	: GameObject(), input_(input), physics_(physics), graphics_(graphics)
+Player::Player(b2Body* physicsBody, b2Vec2* orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics)
+	: GameObject(physicsBody, orientation, input, physics, graphics)
+{
+
+}
+
+Player::Player(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics)
+	: GameObject(input, physics, graphics)
 {
 
 }

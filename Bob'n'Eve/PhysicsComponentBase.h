@@ -4,12 +4,12 @@
 class b2Body;
 class GameObject;
 
-class PhysicsComponent
+class PhysicsComponentBase
 {
 	friend class PhysicManager;
 public:
-	PhysicsComponent();
-	~PhysicsComponent();
+	PhysicsComponentBase();
+	~PhysicsComponentBase();
 
 	void Update(GameObject& object, int16_t ms);
 

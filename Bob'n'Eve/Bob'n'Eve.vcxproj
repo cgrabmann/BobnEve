@@ -101,7 +101,7 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JoystickInputComponent.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MapLoader.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.cpp" />
+    <ClCompile Include="PhysicsComponentBase.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.cpp" />
     <ClCompile Include="GraphicsComponentBase.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.cpp" />
@@ -128,7 +128,7 @@
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JoystickInputComponent.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MapLoader.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentBase.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.h" />
     <ClInclude Include="GraphicsComponentBase.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.h" />
