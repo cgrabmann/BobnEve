@@ -61,6 +61,12 @@
     <Filter Include="Headerdateien\GameObject\Components\PhysicsComponents">
       <UniqueIdentifier>{855bf11d-e9d2-4565-9882-e0bd0cc33093}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\Vector2">
+      <UniqueIdentifier>{47001650-316b-4b6b-9289-22580913d98d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\Vector2">
+      <UniqueIdentifier>{abb1d836-554a-4d7b-a55b-3221ecc217c2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BobNEve.cpp">
@@ -90,9 +96,6 @@
     <ClCompile Include="PhysicManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Platform.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="View.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -114,11 +117,14 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Quelldateien\GameObject\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Quelldateien\GameObject\Platform</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Quelldateien\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Quelldateien\GameObject\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Headerdateien\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Vector2Base.h">
+      <Filter>Headerdateien\Vector2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

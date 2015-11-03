@@ -8,6 +8,7 @@
 #include "View.h"
 #include <pugixml/src/pugixml.hpp>
 #include "GraphicsComponentStatic.h"
+#include "GraphicsComponentAnimated.h"
 
 //MapLoader* MapLoader::instance_ = NULL;
 
@@ -38,7 +39,11 @@ View* MapLoader::LoadMap(const char* path)
 
 	AssetManager* asset = AssetManager::Instance();
 
-	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
+	//Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
+	std::vector<sf::Sprite*> textures;
+	textures.push_back(asset->GetSpriteByName("Test.png", 0));
+	textures.push_back(asset->GetSpriteByName("Test.png", 1));
+	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(), new GraphicsComponentAnimated(textures, 1000));
 	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 3)));
 	std::vector<Platform*>* platforms = new std::vector<Platform*>;
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;

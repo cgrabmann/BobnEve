@@ -117,6 +117,7 @@
     <None Include="lib\box2d.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Vector2Base.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameObject.h" />

@@ -2,9 +2,16 @@
 #include "View.h"
 
 #include <SFML\Graphics.hpp>
+#define DEBUG
 
 
-Renderer::Renderer() : window_(sf::VideoMode::getFullscreenModes()[0], "SFML works!", sf::Style::Fullscreen)
+Renderer::Renderer() : window_(
+#ifdef DEBUG
+	sf::VideoMode::getDesktopMode(), "SFML works!"
+#else
+	sf::VideoMode::getFullscreenModes()[0], "SFML works!", sf::Style::Fullscreen
+#endif
+), scale_(1.f, 1.f)
 {
 	window_.setKeyRepeatEnabled(true);
 	window_.setJoystickThreshold(0.15f);
@@ -49,3 +56,9 @@ void Renderer::Draw(sf::Shape& shape)
 {
 	window_.draw(shape);
 }
+
+sf::Vector2f Renderer::GetScale()
+{
+	return scale_;
+}
+

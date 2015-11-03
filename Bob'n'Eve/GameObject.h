@@ -19,7 +19,10 @@ public:
 	virtual void Draw(Renderer& renderer) const;
 
 	float GetLayer() const;
-	sf::Vector2f GetPosition() const;
+	sf::Vector2f GetPosition() const;		
+	b2Body* GetPhysicsBody() const;
+	b2Velocity* GetVelocity() const;
+	b2Vec2* GetOrientation() const;
 
 protected:
 	//top-left corner
