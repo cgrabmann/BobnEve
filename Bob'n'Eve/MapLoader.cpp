@@ -8,6 +8,9 @@
 #include "View.h"
 #include <pugixml/src/pugixml.hpp>
 #include "GraphicsComponentStatic.h"
+#include "Global.h"
+#include <assert.h>
+#include "AssetManager.h"
 
 //MapLoader* MapLoader::instance_ = NULL;
 
@@ -32,9 +35,21 @@ View* MapLoader::LoadMap(const char* path)
 	assert(path != NULL);
 
 	pugi::xml_document doc;
-	pugi::xml_parse_result result = doc.load_file(path);
+	pugi::xml_parse_result result = doc.load_file((Global::AssetDir + "maps/" + path).c_str());
 
 	assert(!result);
+
+	pugi::xml_node map = doc.child("map");
+
+	Global::TileWidth = map.attribute("tilewidth").as_int();
+	Global::TileHeight = map.attribute("tileheight").as_int();
+	Global::MapWidth = map.attribute("width").as_int();
+	Global::MapHeight = map.attribute("height").as_int();
+
+	for (pugi::xml_node tileset = map.child("tileset"); tileset; tileset = tileset.next_sibling("tileset"))
+	{
+		
+	}
 
 	AssetManager* asset = AssetManager::Instance();
 

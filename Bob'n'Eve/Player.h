@@ -1,6 +1,5 @@
 #pragma once
 #include <stdint.h>
-#include <Box2D/Dynamics/b2Body.h>
 #include "GameObject.h"
 
 class GraphicsComponentBase;

@@ -5,8 +5,9 @@
 #include "Renderer.h"
 #include "View.h"
 #include "MapLoader.h"
+#include "Global.h"
 
-Game::Game() : paused_(false), physicManager_(0.f, -10.f), view_(MapLoader::LoadMap(""))
+Game::Game() : paused_(false), physicManager_(0.f, -10.f), view_(MapLoader::LoadMap("01.tmx"))
 {
 }
 
