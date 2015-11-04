@@ -1,5 +1,7 @@
 #include "View.h"
 #include "Player.h"
+#include "Platform.h"
+#include "Enemy.h"
 
 View::View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies):
 bob_(bob), eve_(eve), platforms_(platforms), enemys_(enemies)

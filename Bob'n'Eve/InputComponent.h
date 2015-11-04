@@ -7,7 +7,7 @@ class Player;
 class InputComponent : public  InputComponentBase
 {
 public:
-	InputComponent(unsigned player);
+	InputComponent(unsigned int player);
 	~InputComponent();
 
 	virtual void Update(Player& player, int16_t ms) override;

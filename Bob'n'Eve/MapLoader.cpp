@@ -1,16 +1,17 @@
 #include "MapLoader.h"
 #include "Player.h"
 #include "InputComponentBase.h"
-#include "PhysicsComponent.h"
+#include "PhysicsComponentBase.h"
 #include <vector>
 #include "Platform.h"
 #include "Enemy.h"
 #include "View.h"
 #include <pugixml/src/pugixml.hpp>
 #include "GraphicsComponentStatic.h"
-#include "Global.h"
+#include "GraphicsComponentAnimated.h"
 #include <assert.h>
 #include "AssetManager.h"
+#include "Global.h"
 
 //MapLoader* MapLoader::instance_ = NULL;
 
@@ -22,14 +23,6 @@ MapLoader::~MapLoader()
 {
 }
 
-//MapLoader* MapLoader::Instance()
-//{
-//	static CGuard g;   // Speicherbereinigung
-//	if (!instance_)
-//		instance_ = new MapLoader();
-//	return instance_;
-//}
-
 View* MapLoader::LoadMap(const char* path)
 {
 	assert(path != NULL);
@@ -37,7 +30,7 @@ View* MapLoader::LoadMap(const char* path)
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file((Global::AssetDir + "maps/" + path).c_str());
 
-	assert(!result);
+	assert(result);
 
 	pugi::xml_node map = doc.child("map");
 
@@ -53,8 +46,12 @@ View* MapLoader::LoadMap(const char* path)
 
 	AssetManager* asset = AssetManager::Instance();
 
-	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponent(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
-	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponent(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 3)));
+	//Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
+	std::vector<sf::Sprite*> textures;
+	textures.push_back(asset->GetSpriteByName("Test.png", 0));
+	textures.push_back(asset->GetSpriteByName("Test.png", 1));
+	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(), new GraphicsComponentAnimated(textures, 1000));
+	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 3)));
 	std::vector<Platform*>* platforms = new std::vector<Platform*>;
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 

@@ -1,13 +1,16 @@
 #pragma once
 
 #include <string>
-#include <SFML/Graphics/Texture.hpp>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Audio/Sound.hpp>
-#include <SFML/Audio/SoundBuffer.hpp>
-#include <SFML/Audio/Music.hpp>
 #include <unordered_map>
 #include <cinttypes>
+
+namespace sf{
+	class Sprite;
+	class Sound;
+	class Music;
+	class Texture;
+	class SoundBuffer;
+}
 
 class AssetManager
 {

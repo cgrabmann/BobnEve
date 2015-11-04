@@ -1,13 +1,24 @@
 #pragma once
-#include "GraphicsComponentBase.h"
+#include "GraphicsComponentStatic.h"
+#include <vector>
 
-class GraphicsComponentAnimated : public GraphicsComponentBase
+namespace sf{
+	class Sprite;
+}
+
+class GraphicsComponentAnimated : public GraphicsComponentStatic
 {
 public:
-	GraphicsComponentAnimated();
+	GraphicsComponentAnimated(std::vector<sf::Sprite*> sprites, std::vector<int16_t> msPerFrame);
+	GraphicsComponentAnimated(std::vector<sf::Sprite*> sprites, int16_t msPerFrame);
 	virtual ~GraphicsComponentAnimated();
 
 	virtual void Update(GameObject& object, int16_t ms) override;
-	virtual void Draw(const GameObject& object, Renderer& renderer) const override;
+	
+protected:
+	std::vector<sf::Sprite*> sprites_;
+	int32_t index_;
+	int16_t msCount_; 
+	std::vector<int16_t> msPerFrame_;
 };
 

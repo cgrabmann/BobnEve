@@ -16,10 +16,15 @@ public:
 
 	sf::RenderWindow& GetWindow();
 	sf::RenderTarget& GetTarget();
+
+	sf::Vector2f GetScale();
+
 	void Render(View& drawable);
 
 private:
 	sf::RenderWindow window_;
+
+	sf::Vector2f scale_;
 
 	void Draw(sf::Shape& shape);
 };

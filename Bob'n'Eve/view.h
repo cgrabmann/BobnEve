@@ -1,8 +1,10 @@
 #include <vector>
-#include "Platform.h"
-#include "Enemy.h"
+#include <cinttypes>
 
+class Renderer;
+class Platform;
 class Player;
+class Enemy;
 
 class View
 {

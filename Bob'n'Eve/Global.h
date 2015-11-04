@@ -6,15 +6,20 @@ class Global
 {
 public:
 	//in pixels
-	static uint32_t TileHeight;
+	static uint16_t ScreenHeight;
 	//in pixels
-	static uint32_t TileWidth;
+	static uint16_t ScreenWidth;
+
+	//in pixels
+	static uint8_t TileHeight;
+	//in pixels
+	static uint8_t TileWidth;
 
 	//in tiles
-	static uint32_t MapHeight;
+	static uint8_t MapHeight;
 	//in tiles
-	static uint32_t MapWidth;
+	static uint8_t MapWidth;
 
-	//
+	//Folder Path
 	static std::string AssetDir;
 };

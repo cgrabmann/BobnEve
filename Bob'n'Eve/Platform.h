@@ -2,13 +2,15 @@
 #include <stdint.h>
 #include "GameObject.h"
 
+class GraphicsComponentBase;
+class InputComponentBase;
 class Renderer;
 
 class Platform : public GameObject
 {
-	friend class PhysicManager;
 public:
-	Platform();
+	Platform(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
+	Platform(b2Body* physicsBody, b2Vec2 orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
 	~Platform();
 
 	virtual void Draw(Renderer& renderer) const override;

@@ -1,15 +1,18 @@
 #include "Player.h"
-
-#include <SFML/Graphics.hpp>
-
 #include "Renderer.h"
-#include "InputComponent.h"
-#include "PhysicsComponent.h"
+#include "InputComponentBase.h"
+#include "PhysicsComponentBase.h"
 #include "GraphicsComponentBase.h"
 
 
-Player::Player(InputComponentBase* input, PhysicsComponent* physics, GraphicsComponentBase* graphics)
-	: GameObject(), input_(input), physics_(physics), graphics_(graphics)
+Player::Player(b2Body* physicsBody, b2Vec2 orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics)
+	: GameObject(physicsBody, orientation, input, physics, graphics)
+{
+
+}
+
+Player::Player(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics)
+	: GameObject(input, physics, graphics)
 {
 
 }
@@ -20,7 +23,7 @@ Player::~Player()
 }
 
 void Player::Update(int16_t ms)
-{
+{	
 	input_->Update(*this, ms);
 	physics_->Update(*this, ms);
 	graphics_->Update(*this, ms);

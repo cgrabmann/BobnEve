@@ -3,14 +3,15 @@
 #include "GameObject.h"
 
 class GraphicsComponentBase;
+class PhysicsComponentBase;
 class InputComponentBase;
 class Renderer;
 
 class Player : public GameObject
 {
-	friend class PhysicManager;
 public:
-	Player(InputComponentBase* input, PhysicsComponent* physics, GraphicsComponentBase* graphics);
+	Player(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
+	Player(b2Body* physicsBody, b2Vec2 orientation, InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
 	~Player();
 
 	virtual void Draw(Renderer& renderer) const override;
@@ -21,7 +22,4 @@ public:
 	virtual void Jump();
 
 protected:
-	InputComponentBase* input_;
-	PhysicsComponent* physics_;
-	GraphicsComponentBase* graphics_;
 };

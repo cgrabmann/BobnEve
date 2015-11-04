@@ -2,16 +2,16 @@
 #include <SFML/include/SFML/Window/Joystick.hpp>
 #include "InputComponent.h"
 
-class JoystickInputComponent : public InputComponent
+class InputComponentJoystick : public InputComponent
 {
 public:
-	JoystickInputComponent(unsigned player, unsigned joystickId);
-	virtual ~JoystickInputComponent();
+	InputComponentJoystick(unsigned int player, unsigned int joystickId);
+	virtual ~InputComponentJoystick();
 
 	virtual void Update(Player& player, int16_t ms) override;
 
 protected:
-	const float threshold = 0.15f;
+	const float threshold = 15.f;
 
 	unsigned joystickId_;
 	sf::Joystick::Axis xAxis_;

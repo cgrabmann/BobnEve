@@ -37,131 +37,164 @@
     <Filter Include="Quelldateien\GameObject\Platform">
       <UniqueIdentifier>{65116e14-fe4a-4cc9-b832-9b385a57ec7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quelldateien\GameObject\Components">
+      <UniqueIdentifier>{34cd7a75-bb33-489a-b697-d3bbfe1a5e34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\GameObject\Components">
+      <UniqueIdentifier>{5fa277e7-3402-46f6-8727-40117a209622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\GameObject\Components\GraphicComponents">
+      <UniqueIdentifier>{36adb304-995b-49db-b23d-3eaf79e53141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\GameObject\Components\GraphicsComponents">
+      <UniqueIdentifier>{d71b3ef7-f51e-40f6-968b-c8f4d9885d39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\GameObject\Components\InputComponents">
+      <UniqueIdentifier>{acea5341-ff17-46c7-b935-0351253054e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\GameObject\Components\PhysicsComponents">
+      <UniqueIdentifier>{81799cae-e551-449a-9c93-b1acd79591bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\GameObject\Components\InputComponents">
+      <UniqueIdentifier>{676ef225-da67-489e-97d2-53324d513202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\GameObject\Components\PhysicsComponents">
+      <UniqueIdentifier>{855bf11d-e9d2-4565-9882-e0bd0cc33093}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\main.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\game.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="BobNEve.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Enemy.cpp">
-      <Filter>Quelldateien\GameObject\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.cpp">
-      <Filter>Quelldateien\GameObject\Platform</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\View.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Quelldateien\GameObject\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GameObject.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
+    <ClCompile Include="GraphicsComponentBase.cpp">
+      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
+    <ClCompile Include="PhysicsComponentBase.cpp">
+      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponent.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
+    <ClCompile Include="InputComponentJoystick.cpp">
+      <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JoystickInputComponent.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponentBase.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MapLoader.cpp">
+    <ClCompile Include="AssetManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsComponentBase.cpp">
+    <ClCompile Include="Game.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="MapLoader.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicManager.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="View.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsComponentAnimated.cpp">
+      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsComponentStatic.cpp">
+      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComponent.cpp">
+      <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComponentBase.cpp">
+      <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Quelldateien\GameObject\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentAnimated.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Quelldateien\GameObject\Platform</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentStatic.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2f.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Global.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\Box2D.lib" />
+    <Library Include="lib\Box2D.lib" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\lib\box2d.pdb" />
+    <None Include="lib\box2d.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\game.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Renderer.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\AssetManager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="BobNEve.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicManager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Platform.h">
-      <Filter>Headerdateien\GameObject\Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Enemy.h">
-      <Filter>Headerdateien\GameObject\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\View.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Headerdateien\GameObject\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GameObject.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponent.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponent.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JoystickInputComponent.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\InputComponentBase.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Global.h">
+    <ClInclude Include="AssetManager.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="MapLoader.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicManager.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="View.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsComponentAnimated.h">
+      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsComponentStatic.h">
+      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
+    </ClInclude>
     <ClInclude Include="GraphicsComponentBase.h">
+      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.h">
+      <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponentBase.h">
+      <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponentJoystick.h">
+      <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponentBase.h">
+      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Headerdateien\GameObject\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Headerdateien\GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentAnimated.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentStatic.h">
-      <Filter>Headerdateien\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MapLoader.h">
+    <ClInclude Include="Vector2f.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

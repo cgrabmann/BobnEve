@@ -5,7 +5,6 @@
 #include "Renderer.h"
 #include "View.h"
 #include "MapLoader.h"
-#include "Global.h"
 
 Game::Game() : paused_(false), physicManager_(0.f, -10.f), view_(MapLoader::LoadMap("01.tmx"))
 {
@@ -41,7 +40,9 @@ void Game::Loop()
 		paused_ = !paused_;
 		wasPDown = isPDown;
 
+#ifndef  _DEBUG
 		if (window.hasFocus() && !paused_)
+#endif
 		{
 			view_->Update(16);
 		}
@@ -56,13 +57,6 @@ void Game::GetInput()
 
 void Game::Start()
 {
-	sf::RenderWindow& window = renderer_.GetWindow();
-	window.setKeyRepeatEnabled(true);
-	window.setJoystickThreshold(0.15f);
-	window.setFramerateLimit(60);
-	window.setMouseCursorVisible(false);
-	window.setVerticalSyncEnabled(true);
-
 	Loop();
 }
 
