@@ -45,6 +45,11 @@ Vector2f GameObject::GetOrientation() const
 	return orientation_;
 }
 
+Vector2f GameObject::GetVelocity() const
+{
+	return physicsBody_->GetLinearVelocity();
+}
+
 void GameObject::SetOrientation(Vector2f const vec)
 {
 	orientation_ = vec.ToBox2D();
@@ -61,4 +66,14 @@ void GameObject::SetOrientation(float x, float y)
 	{
 		orientation_.y = y;
 	}
+}
+
+void GameObject::SetVelocity(Vector2f const vec) const
+{
+	physicsBody_->SetLinearVelocity(vec.ToBox2D());
+}
+
+void GameObject::SetVelocity(float x, float y) const
+{
+	physicsBody_->SetLinearVelocity(b2Vec2(x, y));
 }

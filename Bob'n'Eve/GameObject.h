@@ -23,10 +23,13 @@ public:
 	Vector2f GetPosition() const;		
 	b2Body* GetPhysicsBody() const;
 	Vector2f GetOrientation() const;
+	Vector2f GetVelocity() const;
 	
 	void SetOrientation(Vector2f const vec);
 	//parameter = 0 gets ignored
 	void SetOrientation(float x, float y);
+	void SetVelocity(Vector2f const vec) const;
+	void SetVelocity(float x, float y) const;
 
 protected:
 	//center of object
