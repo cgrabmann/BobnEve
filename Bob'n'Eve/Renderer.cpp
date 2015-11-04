@@ -20,7 +20,7 @@ Renderer::Renderer() : window_(
 	Global::ScreenHeight = size.y;
 
 	window_.setKeyRepeatEnabled(true);
-	window_.setJoystickThreshold(0.15f);
+	window_.setJoystickThreshold(15.f);
 	window_.setFramerateLimit(60);
 	window_.setMouseCursorVisible(false);
 	window_.setVerticalSyncEnabled(true);

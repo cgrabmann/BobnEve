@@ -24,5 +24,9 @@ public:
 	Vector2f operator- (Vector2f vec);
 	sf::Vector2f operator- (sf::Vector2f vec);
 	b2Vec2 operator- (b2Vec2 vec);
+
+	Vector2f operator* (float mult);
+
+	Vector2f operator/ (float div);
 };
 

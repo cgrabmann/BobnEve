@@ -15,9 +15,12 @@ public:
 	static InputComponentBase* GetBobInputComponent();
 	static InputComponentBase* GetEveInputComponent();
 protected:
+	static InputComponentBase* GetPlayerInputComponent(uint8_t player);
 
 	void Left(Player& player);
 	void Right(Player& player);
 	void Jump(Player& player);
+
+	static uint8_t JoyStickCount();
 };
 

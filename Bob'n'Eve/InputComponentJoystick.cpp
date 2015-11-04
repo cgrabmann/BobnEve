@@ -1,18 +1,33 @@
 #include "InputComponentJoystick.h"
 #include <SFML/include/SFML/System/Vector2.hpp>
+#include <iostream>
 
 
-InputComponentJoystick::InputComponentJoystick(unsigned player, unsigned joystickId) : InputComponent(player), joystickId_(joystickId)
+InputComponentJoystick::InputComponentJoystick(unsigned player, unsigned joystickCount) : InputComponent(player)
 {
-	if ((player == 1 && joystickId == 0) || (player == 2 && joystickId == 1))
-	{//Linker Stick
+	if (player == 1)
+	{
+		joystickId_ = 0;
+		//Linker Stick
 		xAxis_ = sf::Joystick::X;
 		yAxis_ = sf::Joystick::Y;
 	}
 	else
-	{//Rechter Stick
-		xAxis_ = sf::Joystick::R;
-		yAxis_ = sf::Joystick::U;
+	{
+		if (joystickCount == 1)
+		{
+			joystickId_ = 0;
+			//Rechter Stick
+			xAxis_ = sf::Joystick::Z;
+			yAxis_ = sf::Joystick::R;
+		}
+		else
+		{
+			joystickId_ = 1;
+			//Linker Stick
+			xAxis_ = sf::Joystick::X;
+			yAxis_ = sf::Joystick::Y;
+		}
 	}
 }
 
@@ -33,7 +48,7 @@ void InputComponentJoystick::Update(Player& player, int16_t ms)
 	if (movement.x < -threshold)
 		this->Left(player);
 
-	if (movement.y > threshold)
+	if (movement.y < -threshold)
 		this->Jump(player);
 }
 

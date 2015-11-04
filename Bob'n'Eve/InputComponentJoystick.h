@@ -11,7 +11,7 @@ public:
 	virtual void Update(Player& player, int16_t ms) override;
 
 protected:
-	const float threshold = 0.15f;
+	const float threshold = 15.f;
 
 	unsigned joystickId_;
 	sf::Joystick::Axis xAxis_;

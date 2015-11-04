@@ -61,5 +61,13 @@ b2Vec2 Vector2f::operator-(b2Vec2 vec)
 	return b2Vec2(x - vec.x, y - vec.y);
 }
 
+Vector2f Vector2f::operator*(float mult)
+{
+	return Vector2f(x * mult, y * mult);
+}
 
+Vector2f Vector2f::operator/(float div)
+{
+	return Vector2f(x / div, y / div);
+}
 

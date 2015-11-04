@@ -1,5 +1,7 @@
 #include "Game.h"
 
+#define DEBUG
+
 #include <SFML/Graphics.hpp>
 
 #include "Renderer.h"
@@ -40,7 +42,9 @@ void Game::Loop()
 		paused_ = !paused_;
 		wasPDown = isPDown;
 
+#ifndef  DEBUG
 		if (window.hasFocus() && !paused_)
+#endif
 		{
 			view_->Update(16);
 		}
