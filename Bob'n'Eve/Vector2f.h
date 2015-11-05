@@ -19,4 +19,65 @@ public:
 };
 
 
+Vector2f inline operator+ (const Vector2f& lVec, const Vector2f& rVec)
+{
+	return Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
+}
+sf::Vector2f inline operator+ (const Vector2f& lVec, const sf::Vector2f& rVec)
+{
+	return sf::Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
+}
+sf::Vector2f inline operator+ (const sf::Vector2f& lVec, const Vector2f& rVec)
+{
+	return sf::Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
+}
+b2Vec2 inline operator+ (const Vector2f& lVec, const b2Vec2& rVec)
+{
+	return b2Vec2(lVec.x + rVec.x, lVec.y + rVec.y);
+}
+b2Vec2 inline operator+ (const b2Vec2& lVec, const Vector2f& rVec)
+{
+	return b2Vec2(lVec.x + rVec.x, lVec.y + rVec.y);
+}
+
+Vector2f inline operator- (const Vector2f& lVec, const Vector2f& rVec)
+{
+	return Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
+}
+sf::Vector2f inline operator- (const Vector2f& lVec, const sf::Vector2f& rVec)
+{
+	return sf::Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
+}
+sf::Vector2f inline operator- (const sf::Vector2f& lVec, const Vector2f& rVec)
+{
+	return sf::Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
+}
+b2Vec2 inline operator- (const Vector2f& lVec, const b2Vec2& rVec)
+{
+	return b2Vec2(lVec.x - rVec.x, lVec.y - rVec.y);
+}
+b2Vec2 inline operator- (const b2Vec2& lVec, const Vector2f& rVec)
+{
+	return b2Vec2(lVec.x - rVec.x, lVec.y - rVec.y);
+}
+
+Vector2f inline operator* (const Vector2f& vec, const float& mult)
+{
+	return Vector2f(vec.x * mult, vec.y * mult);
+}
+Vector2f inline operator* (const float& mult, const Vector2f& vec)
+{
+	return Vector2f(vec.x * mult, vec.y * mult);
+}
+
+Vector2f inline operator/ (const Vector2f& vec, const float& mult)
+{
+	return Vector2f(vec.x / mult, vec.y / mult);
+}
+Vector2f inline operator/ (const float& mult, const Vector2f& vec)
+{
+	return Vector2f(vec.x / mult, vec.y / mult);
+}
+
+
 
