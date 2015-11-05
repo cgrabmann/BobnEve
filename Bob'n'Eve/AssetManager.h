@@ -3,6 +3,8 @@
 #include <string>
 #include <unordered_map>
 #include <cinttypes>
+#include <SFML/include/SFML/Graphics/Rect.hpp>
+#include <SFML/include/SFML/Graphics/Texture.hpp>
 
 namespace sf{
 	class Sprite;
@@ -12,15 +14,23 @@ namespace sf{
 	class SoundBuffer;
 }
 
+
 class AssetManager
 {
+	class TileSet;
+
 public:
 	static AssetManager* Instance();
 
 	sf::Sprite* GetSpriteByName(const std::string& name);
-	sf::Sprite* GetSpriteByName(const std::string& name, const uint8_t gid);
+	sf::Sprite* GetTileByName(const std::string& name, const uint8_t gid);
 	sf::Sound* GetSoundByName(const std::string& name);
 	sf::Music* GetMusicByName(const std::string& name);
+
+	void RegisterTextureByName(const std::string& name);
+	void RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight);
+	void RegisterSoundByName(const std::string& name);
+	void RegisterMusicByName(const std::string& name);
 
 protected:
 	void LoadAll();
@@ -34,14 +44,9 @@ private:
 	AssetManager();
 	~AssetManager();
 
-
-	void LoadTextureByName(const std::string& name);
-	void LoadSoundByName(const std::string& name);
-	void LoadMusicByName(const std::string& name);
-
 	std::vector<std::string>* GetFilesInDir(const std::string& dir);
 
-	std::unordered_map<std::string, sf::Texture*> textures_;
+	std::unordered_map<std::string, TileSet*> textures_;
 	std::unordered_map<std::string, sf::SoundBuffer*> sounds_;
 	std::unordered_map<std::string, sf::Music*> music_;
 
@@ -62,5 +67,30 @@ private:
 				AssetManager::instance_ = NULL;
 			}
 		}
+	};
+
+	class TileSet
+	{
+		friend class AssetManager;
+	public:
+		//set tileWidth or tileWidth to 0 for full size asset
+		TileSet(const sf::Texture* texture, const  uint32_t tileWidth, const  uint32_t tileHeight) :
+			size(texture->getSize()),
+			tileSize(tileWidth != 0 ? tileWidth : size.x, tileHeight != 0 ? tileHeight : size.y),
+			tileCount(size.x / tileSize.x, size.y / tileSize.y),
+			tileCenter(size.x / 2, size.y / 2),
+			texture(texture)
+		{}
+
+		sf::IntRect GetTileRect(const uint8_t gid) const
+		{
+			return sf::IntRect(tileSize.x * (gid % tileCount.x), tileSize.y * (gid / tileCount.x), tileSize.x, tileSize.y);
+		}
+
+		const sf::Vector2u size, tileSize, tileCount;
+		const sf::Vector2f tileCenter;
+
+	private:
+		const sf::Texture* texture;
 	};
 };

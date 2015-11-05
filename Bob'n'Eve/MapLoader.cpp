@@ -33,9 +33,11 @@ View* MapLoader::LoadMap(const char* path)
 	pugi::xml_node map = doc.child("map");
 
 	Global::TileWidth = map.attribute("tilewidth").as_int();
-	Global::TileHeight = map.attribute("tileheight").as_int();
+	Global::TileWidth = map.attribute("tileheight").as_int();
 	Global::MapWidth = map.attribute("width").as_int();
 	Global::MapHeight = map.attribute("height").as_int();
+	
+	AssetManager* asset = AssetManager::Instance();
 
 	std::vector<TileSet*> tilesets;
 	for (pugi::xml_node xmlTileset = map.child("tileset"); xmlTileset; xmlTileset = xmlTileset.next_sibling("tileset"))
@@ -53,9 +55,10 @@ View* MapLoader::LoadMap(const char* path)
 		memcpy(tileset->imgPath, imagePath, pathLength);
 		tileset->tiles = new Tile[tileset->tilecount];
 		tilesets.push_back(tileset);
-	}
 
-	AssetManager* asset = AssetManager::Instance();
+		//AssetManager::LoadTileSetByName(tileset->imgPath, tileset->tilewidth, tileset->tileheight);
+		asset->RegisterTileSetByName(tileset->imgPath, Global::TileWidth, Global::TileWidth);
+	}
 
 	std::vector<Platform*>* platforms = new std::vector<Platform*>;
 	pugi::xml_node tilemap = map.child("layer").child("data");
@@ -76,7 +79,7 @@ View* MapLoader::LoadMap(const char* path)
 		if (currentTileSet != nullptr)
 			platforms->push_back(new Platform(new InputComponentBase(),
 				new PhysicsComponentBase(xPos * Global::TileWidth + (Global::TileWidth / 2), yPos * Global::TileHeight + (Global::TileHeight / 2)),
-				new GraphicsComponentStatic(asset->GetSpriteByName(currentTileSet->imgPath, tileID - currentTileSet->firstgid))));
+				new GraphicsComponentStatic(asset->GetTileByName(currentTileSet->imgPath, tileID - currentTileSet->firstgid))));
 
 		if (xPos == Global::MapWidth - 1)
 		{
@@ -89,12 +92,15 @@ View* MapLoader::LoadMap(const char* path)
 		}
 	}
 
+	asset->RegisterTileSetByName("Bob.png", Global::TileWidth, Global::TileWidth);
+	asset->RegisterTileSetByName("Eve.png", Global::TileWidth, Global::TileWidth);
+
 	//Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
 	std::vector<sf::Sprite*> textures;
-	textures.push_back(asset->GetSpriteByName("Bob.png", 1));
-	textures.push_back(asset->GetSpriteByName("Bob.png", 2));
+	textures.push_back(asset->GetTileByName("Bob.png", 1));
+	textures.push_back(asset->GetTileByName("Bob.png", 2));
 	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentAnimated(textures, 1000));
-	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentStatic(asset->GetSpriteByName("Eve.png", 1)));
+	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentStatic(asset->GetTileByName("Eve.png", 1)));
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 
 

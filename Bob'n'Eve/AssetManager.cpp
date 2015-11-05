@@ -2,7 +2,6 @@
 #include "AssetManager.h"
 #include "Global.h"
 #include <assert.h>
-#include <SFML/include/SFML/Graphics/Texture.hpp>
 #include <SFML/include/SFML/Graphics/Sprite.hpp>
 #include <SFML/include/SFML/Audio/Music.hpp>
 #include <SFML/include/SFML/Audio/SoundBuffer.hpp>
@@ -41,7 +40,7 @@ void AssetManager::LoadTextures()
 
 	for (size_t i = 0; i < files->size(); i++)
 	{
-		LoadTextureByName(files->at(i));
+		RegisterTextureByName(files->at(i));
 	}
 
 	delete files;
@@ -53,7 +52,7 @@ void AssetManager::LoadSounds()
 
 	for (size_t i = 0; i < files->size(); i++)
 	{
-		LoadSoundByName(files->at(i));
+		RegisterSoundByName(files->at(i));
 	}
 
 	delete files;
@@ -65,51 +64,59 @@ void AssetManager::LoadMusic()
 
 	for (size_t i = 0; i < files->size(); i++)
 	{
-		LoadMusicByName(files->at(i));
+		RegisterMusicByName(files->at(i));
 	}
 
 	delete files;
 }
 
-void AssetManager::LoadTextureByName(const std::string& name)
+void AssetManager::RegisterTextureByName(const std::string& name)
+{
+	RegisterTileSetByName(name, 0, 0);
+}
+
+void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight)
 {
 	sf::Texture* texture = new sf::Texture();
 	if (!texture->loadFromFile(textureDir_ + name))
 	{
 		if (!texture->loadFromFile(textureDir_ + errorTex))
 		{
-			assert(false);
+			std::string CouldNotLoadTexture = name;
+			assert(CouldNotLoadTexture == "");
 			exit(-1);
 		}
 		texture->setRepeated(true);
 	}
 
 	texture->setSmooth(true);
-	textures_[name] = texture;
+	textures_[name] = new TileSet(texture, tileWidth, tileHeight);;
 }
 
-void AssetManager::LoadSoundByName(const std::string& name)
+void AssetManager::RegisterSoundByName(const std::string& name)
 {
 	std::string path = soundDir_ + name;
 
 	sf::SoundBuffer* sound = new sf::SoundBuffer();
 	if (!sound->loadFromFile(path))
 	{
-		assert(false);
+		std::string CouldNotLoadSound = name;
+		assert(CouldNotLoadSound == "");
 		//TODO: Errorhandling
 	}
 
 	sounds_[name] = sound;
 }
 
-void AssetManager::LoadMusicByName(const std::string& name)
+void AssetManager::RegisterMusicByName(const std::string& name)
 {
 	std::string path = musicDir_ + name;
 
 	sf::Music* music = new sf::Music();
 	if (!music->openFromFile(path))
 	{
-		assert(false);
+		std::string CouldNotLoadMusic = name;
+		assert(CouldNotLoadMusic == "");
 		//TODO: Errorhandling
 	}
 
@@ -123,32 +130,23 @@ std::vector<std::string>* AssetManager::GetFilesInDir(const std::string& dir)
 	return files;
 }
 
+
 sf::Sprite* AssetManager::GetSpriteByName(const std::string& name)
 {
-	sf::Sprite* sprite = new sf::Sprite();
-
-	if (textures_.count(name) == 0)
-	{
-		LoadTextureByName(name);
-	}
-	sprite->setTexture(*textures_[name]);
-	sprite->setOrigin(Global::TileWidth / 2.f, Global::TileHeight / 2.f);
-
-	return sprite;
+	return GetTileByName(name, 0);
 }
 
-sf::Sprite* AssetManager::GetSpriteByName(const std::string& name, const uint8_t gid)
+sf::Sprite* AssetManager::GetTileByName(const std::string& name, const uint8_t gid)
 {
-	sf::Sprite* sprite = GetSpriteByName(name);
+	if (textures_.count(name) == 0)
+	{
+		RegisterTextureByName(name);
+	}
+	TileSet* tileSet = textures_[name];
 
-	sf::Vector2u size = sprite->getTexture()->getSize();
-	uint8_t maxTilesX = size.x / Global::TileWidth;
-	
-	uint8_t tilePosX = gid % maxTilesX;
-	uint8_t tilePosY = gid / maxTilesX;
-
-
-	sprite->setTextureRect(sf::IntRect(Global::TileWidth * tilePosX, Global::TileHeight * tilePosY, Global::TileWidth, Global::TileHeight));
+	sf::Sprite* sprite = new sf::Sprite(*(tileSet->texture));
+	sprite->setTextureRect(tileSet->GetTileRect(gid));
+	sprite->setOrigin(tileSet->tileCenter);
 
 	return sprite;
 }
@@ -159,7 +157,7 @@ sf::Sound* AssetManager::GetSoundByName(const std::string& name)
 
 	if (sounds_.count(name) != 0)
 	{
-		LoadSoundByName(name);
+		RegisterSoundByName(name);
 	}
 	sound->setBuffer(*sounds_[name]);
 
@@ -172,14 +170,11 @@ sf::Music* AssetManager::GetMusicByName(const std::string& name)
 
 	if (music_.count(name) != 0)
 	{
-		LoadMusicByName(name);
+		RegisterMusicByName(name);
 	}
 	music = music_[name];
 
 	return music;
 }
-
-
-
 
 
