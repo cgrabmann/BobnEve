@@ -102,7 +102,7 @@
     <ClCompile Include="GraphicsComponentStatic.cpp">
       <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="InputComponent.cpp">
+    <ClCompile Include="InputComponentKeyboard.cpp">
       <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
     </ClCompile>
     <ClCompile Include="InputComponentBase.cpp">
@@ -173,7 +173,7 @@
     <ClInclude Include="GraphicsComponentBase.h">
       <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
     </ClInclude>
-    <ClInclude Include="InputComponent.h">
+    <ClInclude Include="InputComponentKeyboard.h">
       <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
     </ClInclude>
     <ClInclude Include="InputComponentBase.h">

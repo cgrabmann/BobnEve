@@ -1,6 +1,6 @@
-#include "InputComponent.h"
+#include "InputComponentKeyboard.h"
 
-InputComponent::InputComponent(unsigned player)
+InputComponentKeyboard::InputComponentKeyboard(unsigned player)
 {
 	if (player == 1)
 	{
@@ -16,12 +16,12 @@ InputComponent::InputComponent(unsigned player)
 	}
 }
 
-InputComponent::~InputComponent()
+InputComponentKeyboard::~InputComponentKeyboard()
 {
 
 }
 
-void InputComponent::Update(Player& player, int16_t ms)
+void InputComponentKeyboard::Update(Player& player, int16_t ms)
 {
 	if (sf::Keyboard::isKeyPressed(keyLeft_))
 		this->Left(player);

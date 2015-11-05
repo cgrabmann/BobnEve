@@ -100,7 +100,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GraphicsComponentAnimated.cpp" />
     <ClCompile Include="GraphicsComponentStatic.cpp" />
-    <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="InputComponentKeyboard.cpp" />
     <ClCompile Include="InputComponentBase.cpp" />
     <ClCompile Include="InputComponentJoystick.cpp" />
     <ClCompile Include="MapLoader.cpp" />
@@ -128,7 +128,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClInclude Include="Global.h" />
     <ClInclude Include="GraphicsComponentAnimated.h" />
     <ClInclude Include="GraphicsComponentStatic.h" />
-    <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="InputComponentKeyboard.h" />
     <ClInclude Include="InputComponentBase.h" />
     <ClInclude Include="InputComponentJoystick.h" />
     <ClInclude Include="MapLoader.h" />

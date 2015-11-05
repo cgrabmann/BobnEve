@@ -1,7 +1,7 @@
 #pragma once
 #include <cinttypes>
 
-class InputComponent;
+class InputComponentKeyboard;
 class Player;
 
 class InputComponentBase

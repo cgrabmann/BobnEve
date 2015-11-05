@@ -2,7 +2,7 @@
 #include <SFML/include/SFML/System/Vector2.hpp>
 
 
-InputComponentJoystick::InputComponentJoystick(unsigned player, unsigned joystickCount) : InputComponent(player)
+InputComponentJoystick::InputComponentJoystick(unsigned player, unsigned joystickCount) : InputComponentKeyboard(player)
 {
 	if (player == 1)
 	{
@@ -37,7 +37,7 @@ InputComponentJoystick::~InputComponentJoystick()
 
 void InputComponentJoystick::Update(Player& player, int16_t ms)
 {
-	InputComponent::Update(player, ms);
+	InputComponentKeyboard::Update(player, ms);
 
 	sf::Vector2f movement = sf::Vector2f(sf::Joystick::getAxisPosition(joystickId_, xAxis_), sf::Joystick::getAxisPosition(joystickId_, yAxis_));
 
