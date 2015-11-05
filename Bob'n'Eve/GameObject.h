@@ -22,8 +22,10 @@ public:
 
 	Vector2f GetOrientation() const;
 
-	void SetVelocity(Vector2f const & vec);
-	void SetVelocity(float x, float y);
+	virtual void Left();
+	virtual void Right();
+	virtual void Up();
+	virtual void Down();
 
 protected:
 	//z-buffer

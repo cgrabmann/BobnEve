@@ -46,12 +46,26 @@ const Vector2f& GameObject::GetVelocity() const
 	return physics_->GetVelocity();
 }
 
-void GameObject::SetVelocity(Vector2f const & vec)
+void GameObject::Left()
 {
-	physics_->SetVelocity(vec);
+	const Vector2f& velocity = physics_->GetVelocity();
+	physics_->SetVelocity(-5, velocity.y);
 }
 
-void GameObject::SetVelocity(float x, float y)
+void GameObject::Right()
 {
-	physics_->SetVelocity(x, y);
+	const Vector2f& velocity = physics_->GetVelocity();
+	physics_->SetVelocity(5, velocity.y);
+}
+
+void GameObject::Up()
+{
+	const Vector2f& velocity = physics_->GetVelocity();
+	physics_->SetVelocity(velocity.x, -7);
+}
+
+void GameObject::Down()
+{
+	const Vector2f& velocity = physics_->GetVelocity();
+	physics_->SetVelocity(velocity.x, 7);
 }

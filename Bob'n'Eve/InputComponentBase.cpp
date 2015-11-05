@@ -39,20 +39,17 @@ InputComponentBase* InputComponentBase::GetPlayerInputComponent(uint8_t player)
 
 void InputComponentBase::Jump(GameObject& object)
 {
-	const Vector2f& velocity = object.GetVelocity();
-	object.SetVelocity(velocity.x, -5);
+	object.Up();
 }
 
 void InputComponentBase::Left(GameObject& object)
 {
-	const Vector2f& velocity = object.GetVelocity();
-	object.SetVelocity(-5, velocity.y);
+	object.Left();
 }
 
 void InputComponentBase::Right(GameObject& object)
 {
-	const Vector2f& velocity = object.GetVelocity();
-	object.SetVelocity(5, velocity.y);
+	object.Right();
 }
 
 uint8_t InputComponentBase::JoyStickCount()
