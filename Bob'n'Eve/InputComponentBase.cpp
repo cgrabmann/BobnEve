@@ -34,7 +34,7 @@ InputComponentBase* InputComponentBase::GetPlayerInputComponent(uint8_t player)
 	{
 		return new InputComponentJoystick(player, count);
 	}
-	return new InputComponent(player);
+	return new InputComponentKeyboard(player);
 }
 
 void InputComponentBase::Jump(GameObject& object)

@@ -2,7 +2,6 @@
 #include <cinttypes>
 
 class GameObject;
-class InputComponent;
 
 class InputComponentBase
 {

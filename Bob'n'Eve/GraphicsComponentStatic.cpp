@@ -16,9 +16,10 @@ GraphicsComponentStatic::~GraphicsComponentStatic()
 
 void GraphicsComponentStatic::Update(GameObject& object, int16_t ms)
 {
+
 }
 
-void GraphicsComponentStatic::Draw(const GameObject& object, Renderer& renderer) const
+void GraphicsComponentStatic::Draw(const GameObject& object, Renderer& renderer)
 {
 	//Global scale
 	sprite_->setScale(renderer.GetScale());

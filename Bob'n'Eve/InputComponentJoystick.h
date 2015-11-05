@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/include/SFML/Window/Joystick.hpp>
-#include "InputComponent.h"
+#include "InputComponentKeyboard.h"
 
-class InputComponentJoystick : public InputComponent
+class InputComponentJoystick : public InputComponentKeyboard
 {
 public:
 	InputComponentJoystick(unsigned int player, unsigned int joystickId);

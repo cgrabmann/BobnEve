@@ -4,11 +4,11 @@
 #include "InputComponentBase.h"
 class Player;
 
-class InputComponent : public  InputComponentBase
+class InputComponentKeyboard : public InputComponentBase
 {
 public:
-	InputComponent(unsigned int player);
-	~InputComponent();
+	InputComponentKeyboard(unsigned int player);
+	~InputComponentKeyboard();
 
 	virtual void Update(GameObject& player, int16_t ms) override;
 
