@@ -16,17 +16,7 @@ public:
 
 	sf::Vector2f ToSFML() const;
 	b2Vec2 ToBox2D() const;
-
-	Vector2f operator+ (const Vector2f& vec) const;
-	sf::Vector2f operator+ (const sf::Vector2f& vec) const;
-	b2Vec2 operator+ (const b2Vec2& vec) const;
-
-	Vector2f operator- (const Vector2f& vec) const;
-	sf::Vector2f operator- (const sf::Vector2f& vec) const;
-	b2Vec2 operator- (const b2Vec2& vec) const;
-
-	Vector2f operator* (const float& mult) const;
-
-	Vector2f operator/ (const float& div) const;
 };
+
+
 

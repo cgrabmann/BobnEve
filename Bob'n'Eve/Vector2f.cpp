@@ -31,43 +31,62 @@ b2Vec2 Vector2f::ToBox2D() const
 	return b2Vec2(x, y);
 }
 
-Vector2f Vector2f::operator+(const Vector2f& vec) const
+Vector2f operator+ (const Vector2f& lVec, const Vector2f& rVec)
 {
-	return Vector2f(x + vec.x, y + vec.y);
+	return Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
+}
+sf::Vector2f operator+ (const Vector2f& lVec, const sf::Vector2f& rVec)
+{
+	return sf::Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
+}
+sf::Vector2f operator+ (const sf::Vector2f& lVec, const Vector2f& rVec)
+{
+	return rVec + lVec;
+}
+b2Vec2 operator+ (const Vector2f& lVec, const b2Vec2& rVec)
+{
+	return b2Vec2(lVec.x + rVec.x, lVec.y + rVec.y);
+}
+b2Vec2 operator+ (const b2Vec2& lVec, const Vector2f& rVec)
+{
+	return rVec + lVec;
 }
 
-sf::Vector2f Vector2f::operator+(const sf::Vector2f& vec) const
+Vector2f operator- (const Vector2f& lVec, const Vector2f& rVec)
 {
-	return sf::Vector2f(x + vec.x, y + vec.y);
+	return Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
+}
+sf::Vector2f operator- (const Vector2f& lVec, const sf::Vector2f& rVec)
+{
+	return sf::Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
+}
+sf::Vector2f operator- (const sf::Vector2f& lVec, const Vector2f& rVec)
+{
+	return rVec - lVec;
+}
+b2Vec2 operator- (const Vector2f& lVec, const b2Vec2& rVec)
+{
+	return b2Vec2(lVec.x - rVec.x, lVec.y - rVec.y);
+}
+b2Vec2 operator- (const b2Vec2& lVec, const Vector2f& rVec)
+{
+	return rVec - lVec;
 }
 
-b2Vec2 Vector2f::operator+(const b2Vec2& vec) const
+Vector2f operator* (const Vector2f& vec, const float& mult)
 {
-	return b2Vec2(x + vec.x, y + vec.y);
+	return Vector2f(vec.x * mult, vec.y * mult);
+}
+Vector2f operator* (const float& mult, const Vector2f& vec)
+{
+	return vec * mult;
 }
 
-Vector2f Vector2f::operator-(const Vector2f& vec) const
+Vector2f operator/ (const Vector2f& vec, const float& mult)
 {
-	return Vector2f(x - vec.x, y - vec.y);
+	return Vector2f(vec.x / mult, vec.y / mult);
 }
-
-sf::Vector2f Vector2f::operator-(const sf::Vector2f& vec) const
+Vector2f operator/ (const float& mult, const Vector2f& vec)
 {
-	return sf::Vector2f(x - vec.x, y - vec.y);
+	return vec / mult;
 }
-
-b2Vec2 Vector2f::operator-(const b2Vec2& vec) const
-{
-	return b2Vec2(x - vec.x, y - vec.y);
-}
-
-Vector2f Vector2f::operator*(const float& mult) const
-{
-	return Vector2f(x * mult, y * mult);
-}
-
-Vector2f Vector2f::operator/(const float& div) const
-{
-	return Vector2f(x / div, y / div);
-}
-
