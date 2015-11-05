@@ -13,7 +13,7 @@ public:
 	explicit PhysicsComponentBase(float x, float y);
 	~PhysicsComponentBase();
 
-	void Update(GameObject& object, int16_t ms);
+	virtual void Update(GameObject& object, int16_t ms);
 
 	const Vector2f& GetPosition() const;
 	const Vector2f& GetVelocity() const;

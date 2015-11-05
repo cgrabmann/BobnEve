@@ -19,23 +19,7 @@ PhysicsComponentBase::~PhysicsComponentBase()
 
 void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
 {
-	//TODO: remove velocity calculation
-	if (velocity_->x < 0)
-		velocity_->x += 0.1f;
-	if (velocity_->x > 0)
-		velocity_->x -= 0.1f;
-	if (velocity_->x >= -0.05f && velocity_->x <= 0.05f)
-		velocity_->x = 0.f;
-
-	if (velocity_->y < 0)
-		velocity_->y += 0.1f;
-	if (velocity_->y > 0)
-		velocity_->y -= 0.1f; 
-	if (velocity_->y >= -0.05f && velocity_->y <= 0.05f)
-		velocity_->y = 0.f;
-
-	position_->x += velocity_->x;
-	position_->y += velocity_->y;
+	
 }
 
 const Vector2f& PhysicsComponentBase::GetPosition() const

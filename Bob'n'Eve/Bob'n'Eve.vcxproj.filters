@@ -126,6 +126,9 @@
     <ClCompile Include="Global.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsComponentGravity.cpp">
+      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -193,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="Vector2f.h">
       <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponentGravity.h">
+      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
