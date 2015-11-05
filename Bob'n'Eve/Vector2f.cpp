@@ -41,7 +41,7 @@ sf::Vector2f operator+ (const Vector2f& lVec, const sf::Vector2f& rVec)
 }
 sf::Vector2f operator+ (const sf::Vector2f& lVec, const Vector2f& rVec)
 {
-	return rVec + lVec;
+	return sf::Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
 }
 b2Vec2 operator+ (const Vector2f& lVec, const b2Vec2& rVec)
 {
@@ -49,7 +49,7 @@ b2Vec2 operator+ (const Vector2f& lVec, const b2Vec2& rVec)
 }
 b2Vec2 operator+ (const b2Vec2& lVec, const Vector2f& rVec)
 {
-	return rVec + lVec;
+	return b2Vec2(lVec.x + rVec.x, lVec.y + rVec.y);
 }
 
 Vector2f operator- (const Vector2f& lVec, const Vector2f& rVec)
@@ -62,7 +62,7 @@ sf::Vector2f operator- (const Vector2f& lVec, const sf::Vector2f& rVec)
 }
 sf::Vector2f operator- (const sf::Vector2f& lVec, const Vector2f& rVec)
 {
-	return rVec - lVec;
+	return sf::Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
 }
 b2Vec2 operator- (const Vector2f& lVec, const b2Vec2& rVec)
 {
@@ -70,7 +70,7 @@ b2Vec2 operator- (const Vector2f& lVec, const b2Vec2& rVec)
 }
 b2Vec2 operator- (const b2Vec2& lVec, const Vector2f& rVec)
 {
-	return rVec - lVec;
+	return b2Vec2(lVec.x - rVec.x, lVec.y - rVec.y);
 }
 
 Vector2f operator* (const Vector2f& vec, const float& mult)
@@ -79,7 +79,7 @@ Vector2f operator* (const Vector2f& vec, const float& mult)
 }
 Vector2f operator* (const float& mult, const Vector2f& vec)
 {
-	return vec * mult;
+	return Vector2f(vec.x * mult, vec.y * mult);
 }
 
 Vector2f operator/ (const Vector2f& vec, const float& mult)
@@ -88,5 +88,5 @@ Vector2f operator/ (const Vector2f& vec, const float& mult)
 }
 Vector2f operator/ (const float& mult, const Vector2f& vec)
 {
-	return vec / mult;
+	return Vector2f(vec.x / mult, vec.y / mult);
 }
