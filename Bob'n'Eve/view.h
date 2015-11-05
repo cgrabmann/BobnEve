@@ -1,6 +1,7 @@
 #include <vector>
 #include <cinttypes>
 
+class Vector2f;
 class Renderer;
 class Platform;
 class Player;
@@ -13,8 +14,9 @@ public:
 	~View();
 
 	void Update(int16_t ms);
-
 	void Draw(Renderer& renderer) const;
+
+	const Vector2f& GetCenterPoint();
 
 private:
 	Player* bob_;

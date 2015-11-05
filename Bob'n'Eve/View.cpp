@@ -1,7 +1,9 @@
+#pragma once
 #include "View.h"
 #include "Player.h"
 #include "Platform.h"
 #include "Enemy.h"
+#include "Vector2f.h"
 
 View::View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies):
 bob_(bob), eve_(eve), platforms_(platforms), enemys_(enemies)
@@ -57,3 +59,7 @@ void View::Draw(Renderer& renderer) const
 	eve_->Draw(renderer);
 }
 
+const Vector2f& View::GetCenterPoint()
+{
+	return (bob_->GetPosition() + eve_->GetPosition()) / 2;
+}

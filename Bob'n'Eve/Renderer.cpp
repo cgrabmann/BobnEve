@@ -3,6 +3,7 @@
 
 #include <SFML\Graphics.hpp>
 #include "Global.h"
+#include "Vector2f.h"
 
 
 Renderer::Renderer() : window_(
@@ -45,10 +46,9 @@ sf::RenderTarget& Renderer::GetTarget()
 
 void Renderer::Render(View& view)
 {
-	sf::View view_ = window_.getView();
-	//TODO: Center on players
-	view_.setCenter(960.0f, 540.0f);
-	window_.setView(view_);
+	sf::View sfView = window_.getView();
+	sfView.setCenter(view.GetCenterPoint().ToSFML());
+	window_.setView(sfView);
 
 	window_.clear();
 	view.Draw(*this);
