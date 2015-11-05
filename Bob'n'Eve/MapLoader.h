@@ -1,29 +1,46 @@
 #pragma once
+#include <cinttypes>
+#include <stddef.h>
 
 class View;
 
 class MapLoader
 {
 public:
-	//static MapLoader* Instance();
 
 	static View* LoadMap(const char* path);
 
 private:
-	//static MapLoader* instance_;
 	MapLoader();
 	MapLoader(const MapLoader&);
 	~MapLoader();
-	/*class CGuard
+
+	struct Tile
 	{
-	public:
-		~CGuard()
+		bool bobPass = false;
+		bool evePass = false;
+		union {
+			uint8_t standFrameId = 0;
+			uint8_t runFrameId;
+			uint8_t jumpFrameId;
+			uint8_t animationFrameId;
+		};
+		uint8_t displayTime;
+	};
+
+	struct TileSet
+	{
+		~TileSet()
 		{
-			if (NULL != MapLoader::instance_)
-			{
-				delete MapLoader::instance_;
-				MapLoader::instance_ = NULL;
-			}
+			delete[] name;
+			delete[] imgPath;
 		}
-	};*/
+
+		uint8_t firstgid = 1;
+		char* name = NULL;
+		char* imgPath = NULL;
+		uint8_t tilecount = 0;
+
+		Tile* tiles = NULL;
+	};
 };

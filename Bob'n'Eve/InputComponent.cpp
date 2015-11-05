@@ -21,16 +21,16 @@ InputComponent::~InputComponent()
 
 }
 
-void InputComponent::Update(Player& player, int16_t ms)
+void InputComponent::Update(GameObject& object, int16_t ms)
 {
 	if (sf::Keyboard::isKeyPressed(keyLeft_))
-		this->Left(player);
+		this->Left(object);
 
 	if (sf::Keyboard::isKeyPressed(keyRight_))
-		this->Right(player);
+		this->Right(object);
 
 	if (sf::Keyboard::isKeyPressed(keyJump_))
-		this->Jump(player);
+		this->Jump(object);
 
 }
 

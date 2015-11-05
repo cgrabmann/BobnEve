@@ -35,19 +35,19 @@ InputComponentJoystick::~InputComponentJoystick()
 {
 }
 
-void InputComponentJoystick::Update(Player& player, int16_t ms)
+void InputComponentJoystick::Update(GameObject& object, int16_t ms)
 {
-	InputComponent::Update(player, ms);
+	InputComponent::Update(object, ms);
 
 	sf::Vector2f movement = sf::Vector2f(sf::Joystick::getAxisPosition(joystickId_, xAxis_), sf::Joystick::getAxisPosition(joystickId_, yAxis_));
 
 	if (movement.x > threshold)
-		this->Right(player);
+		this->Right(object);
 
 	if (movement.x < -threshold)
-		this->Left(player);
+		this->Left(object);
 
 	if (movement.y < -threshold)
-		this->Jump(player);
+		this->Jump(object);
 }
 

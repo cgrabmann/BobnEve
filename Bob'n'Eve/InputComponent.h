@@ -10,7 +10,7 @@ public:
 	InputComponent(unsigned int player);
 	~InputComponent();
 
-	virtual void Update(Player& player, int16_t ms) override;
+	virtual void Update(GameObject& player, int16_t ms) override;
 
 protected:
 	sf::Keyboard::Key keyLeft_;

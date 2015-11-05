@@ -2,6 +2,7 @@
 #include "GraphicsComponentStatic.h"
 #include "Renderer.h"
 #include "GameObject.h"
+#include "Vector2f.h"
 #include <SFML/include/SFML/Graphics/Sprite.hpp>
 
 

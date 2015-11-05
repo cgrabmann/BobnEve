@@ -8,7 +8,7 @@ public:
 	InputComponentJoystick(unsigned int player, unsigned int joystickId);
 	virtual ~InputComponentJoystick();
 
-	virtual void Update(Player& player, int16_t ms) override;
+	virtual void Update(GameObject& player, int16_t ms) override;
 
 protected:
 	const float threshold = 15.f;

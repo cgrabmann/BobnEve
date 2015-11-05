@@ -12,6 +12,10 @@ InputComponentBase::~InputComponentBase()
 {
 }
 
+void InputComponentBase::Update(GameObject& object, int16_t ms)
+{
+}
+
 InputComponentBase* InputComponentBase::GetBobInputComponent()
 {
 	return GetPlayerInputComponent(1);
@@ -33,19 +37,22 @@ InputComponentBase* InputComponentBase::GetPlayerInputComponent(uint8_t player)
 	return new InputComponent(player);
 }
 
-void InputComponentBase::Jump(Player& player)
+void InputComponentBase::Jump(GameObject& object)
 {
-	player.Jump();
+	const Vector2f& velocity = object.GetVelocity();
+	object.SetVelocity(velocity.x, -5);
 }
 
-void InputComponentBase::Left(Player& player)
+void InputComponentBase::Left(GameObject& object)
 {
-	player.MoveLeft();
+	const Vector2f& velocity = object.GetVelocity();
+	object.SetVelocity(-5, velocity.y);
 }
 
-void InputComponentBase::Right(Player& player)
+void InputComponentBase::Right(GameObject& object)
 {
-	player.MoveRight();
+	const Vector2f& velocity = object.GetVelocity();
+	object.SetVelocity(5, velocity.y);
 }
 
 uint8_t InputComponentBase::JoyStickCount()
