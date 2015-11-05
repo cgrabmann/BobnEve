@@ -45,8 +45,8 @@ private:
 	~AssetManager();
 
 	std::vector<std::string>* GetFilesInDir(const std::string& dir);
-
-	std::unordered_map<std::string, TileSet*> textures_;
+	
+	std::unordered_map<std::string, TileSet*> tileSets_;
 	std::unordered_map<std::string, sf::SoundBuffer*> sounds_;
 	std::unordered_map<std::string, sf::Music*> music_;
 
@@ -54,7 +54,8 @@ private:
 	std::string soundDir_;
 	std::string musicDir_;
 
-	const std::string errorTex = "Error.png";
+	sf::Texture* errorTex_;
+	sf::Texture* GetErrorTex();
 
 	class CGuard
 	{
@@ -73,10 +74,12 @@ private:
 	{
 		friend class AssetManager;
 	public:
-		//set tileWidth or tileWidth to 0 for full size asset
+		TileSet(const sf::Texture* texture) : TileSet(texture, texture->getSize().x, texture->getSize().y)
+		{}
+
 		TileSet(const sf::Texture* texture, const  uint32_t tileWidth, const  uint32_t tileHeight) :
 			size(texture->getSize()),
-			tileSize(tileWidth != 0 ? tileWidth : size.x, tileHeight != 0 ? tileHeight : size.y),
+			tileSize(tileWidth, tileHeight),
 			tileCount(size.x / tileSize.x, size.y / tileSize.y),
 			tileCenter(size.x / 2, size.y / 2),
 			texture(texture)
