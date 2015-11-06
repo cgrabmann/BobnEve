@@ -104,6 +104,14 @@ View* MapLoader::LoadMap(const char* path)
 	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentStatic(asset->GetTileByName("Eve.png", 1)));
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 
+	std::vector<sf::Sprite*> enemyTextures;
+	asset->RegisterTileSetByName("Enemy.png", 64, 64);
+	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 1));
+	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 2));
+	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 3));
+	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 4));
+	enemies->push_back(new Enemy(new InputComponentBase(), new PhysicsComponentBase(300.f, 750.f), new GraphicsComponentFade(enemyTextures, 250)));
+	enemies->push_back(new Enemy(new InputComponentBase(), new PhysicsComponentBase(400.f, 750.f), new GraphicsComponentAnimated(enemyTextures, 250)));
 
 	//cleanup
 	for (unsigned int i = 0; i < tilesets.size(); i++)

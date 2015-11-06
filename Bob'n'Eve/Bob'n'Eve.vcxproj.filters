@@ -127,7 +127,7 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="GraphicsComponentFade.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -198,7 +198,7 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsComponentFade.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
