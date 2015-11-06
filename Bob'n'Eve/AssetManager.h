@@ -77,7 +77,7 @@ private:
 		TileSet(const sf::Texture* texture) : TileSet(texture, texture->getSize().x, texture->getSize().y)
 		{}
 
-		TileSet(const sf::Texture* texture, const  uint32_t tileWidth, const  uint32_t tileHeight) :
+		TileSet(const sf::Texture* texture, uint32_t tileWidth, uint32_t tileHeight) :
 			size(texture->getSize()),
 			tileSize(tileWidth, tileHeight),
 			tileCount(size.x / tileSize.x, size.y / tileSize.y),
@@ -85,7 +85,7 @@ private:
 			texture(texture)
 		{}
 
-		sf::IntRect GetTileRect(const uint8_t gid) const
+		sf::IntRect GetTileRect(uint8_t gid) const
 		{
 			return sf::IntRect(tileSize.x * (gid % tileCount.x), tileSize.y * (gid / tileCount.x), tileSize.x, tileSize.y);
 		}

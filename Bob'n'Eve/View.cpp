@@ -59,7 +59,7 @@ void View::Draw(Renderer& renderer) const
 	eve_->Draw(renderer);
 }
 
-const Vector2f& View::GetCenterPoint()
+const Vector2f View::GetCenterPoint()
 {
 	return (bob_->GetPosition() + eve_->GetPosition()) / 2;
 }

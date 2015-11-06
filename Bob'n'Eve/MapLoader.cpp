@@ -11,8 +11,9 @@
 #include "AssetManager.h"
 #include "Global.h"
 #include <pugixml/src/pugixml.hpp>
-#include "GraphicsComponentAnimated.h"
 #include "GraphicsComponentFade.h"
+#include "Tile.h"
+#include "TileSet.h"
 
 MapLoader::MapLoader()
 {
@@ -40,25 +41,33 @@ View* MapLoader::LoadMap(const char* path)
 	
 	AssetManager* asset = AssetManager::Instance();
 
+	TileSet* tileSetBob = nullptr;
+	TileSet* tileSetEve = nullptr;
+
 	std::vector<TileSet*> tilesets;
 	for (pugi::xml_node xmlTileset = map.child("tileset"); xmlTileset; xmlTileset = xmlTileset.next_sibling("tileset"))
 	{
 		TileSet* tileset = new TileSet();
 		tileset->firstgid = xmlTileset.attribute("firstgid").as_int();
-		const pugi::char_t* name = xmlTileset.attribute("name").as_string();
-		size_t nameLength = strlen(name) + 1;
-		tileset->name = new char[nameLength];
-		memcpy(tileset->name, name, nameLength);
+		tileset->name = xmlTileset.attribute("name").as_string();
 		tileset->tilecount = xmlTileset.attribute("tilecount").as_int();
 		const pugi::char_t* imagePath = xmlTileset.child("image").attribute("source").as_string();
-		size_t pathLength = strlen(imagePath) + 1;
-		tileset->imgPath = new char[pathLength];
-		memcpy(tileset->imgPath, imagePath, pathLength);
+		tileset->imgPath = strrchr(imagePath, '/') + 1;
 		tileset->tiles = new Tile[tileset->tilecount];
+		tileset->tilewidth = xmlTileset.attribute("tilewidth").as_int();
+		tileset->tileheight = xmlTileset.attribute("tileheight").as_int();
+		if (strcmp(tileset->name, "Bob") == 0)
+		{
+			tileSetBob = tileset;
+		}
+		else if (strcmp(tileset->name, "Eve") == 0)
+		{
+			tileSetEve = tileset;
+		}
 		tilesets.push_back(tileset);
 
 		//AssetManager::LoadTileSetByName(tileset->imgPath, tileset->tilewidth, tileset->tileheight);
-		asset->RegisterTileSetByName(tileset->imgPath, Global::TileWidth, Global::TileWidth);
+		asset->RegisterTileSetByName(tileset->imgPath, tileset->tilewidth, tileset->tileheight);
 	}
 
 	std::vector<Platform*>* platforms = new std::vector<Platform*>;
@@ -93,15 +102,11 @@ View* MapLoader::LoadMap(const char* path)
 		}
 	}
 
-	asset->RegisterTileSetByName("Bob.png", Global::TileWidth, Global::TileWidth);
-	asset->RegisterTileSetByName("Eve.png", Global::TileWidth, Global::TileWidth);
-
-	//Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(), new GraphicsComponentStatic(asset->GetSpriteByName("Test.png", 0)));
 	std::vector<sf::Sprite*> textures;
-	textures.push_back(asset->GetTileByName("Bob.png", 1));
-	textures.push_back(asset->GetTileByName("Bob.png", 2));
+	textures.push_back(asset->GetTileByName(tileSetBob->imgPath, 1));
+	textures.push_back(asset->GetTileByName(tileSetBob->imgPath, 2));
 	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentFade(textures, 1000));
-	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentStatic(asset->GetTileByName("Eve.png", 1)));
+	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentStatic(asset->GetTileByName(tileSetEve->imgPath, 1)));
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 
 

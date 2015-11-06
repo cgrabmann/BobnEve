@@ -16,7 +16,7 @@ public:
 	void Update(int16_t ms);
 	void Draw(Renderer& renderer) const;
 
-	const Vector2f& GetCenterPoint();
+	const Vector2f GetCenterPoint();
 
 private:
 	Player* bob_;

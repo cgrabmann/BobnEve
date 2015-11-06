@@ -61,6 +61,12 @@
     <Filter Include="Headerdateien\GameObject\Components\PhysicsComponents">
       <UniqueIdentifier>{855bf11d-e9d2-4565-9882-e0bd0cc33093}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\MapLoader">
+      <UniqueIdentifier>{911356cc-f268-4986-8bd1-75577b602efa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\MapLoader">
+      <UniqueIdentifier>{13cd3416-f41c-43d7-bf56-31c3bf3d56bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BobNEve.cpp">
@@ -82,9 +88,6 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
-    <ClCompile Include="MapLoader.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="PhysicManager.cpp">
@@ -126,8 +129,17 @@
     <ClCompile Include="Global.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="MapLoader.cpp">
+      <Filter>Quelldateien\MapLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TileSet.cpp">
+      <Filter>Quelldateien\MapLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Tile.cpp">
+      <Filter>Quelldateien\MapLoader</Filter>
+    </ClCompile>
     <ClCompile Include="GraphicsComponentFade.cpp">
-      <Filter>Quelldateien</Filter>
+      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,9 +159,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Global.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="MapLoader.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="PhysicManager.h">
@@ -197,8 +206,17 @@
     <ClInclude Include="Vector2f.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="MapLoader.h">
+      <Filter>Headerdateien\MapLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TileSet.h">
+      <Filter>Headerdateien\MapLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Tile.h">
+      <Filter>Headerdateien\MapLoader</Filter>
+    </ClInclude>
     <ClInclude Include="GraphicsComponentFade.h">
-      <Filter>Headerdateien</Filter>
+      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
