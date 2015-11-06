@@ -19,13 +19,8 @@ private:
 	{
 		bool bobPass = false;
 		bool evePass = false;
-		union {
-			uint8_t standFrameId = 0;
-			uint8_t runFrameId;
-			uint8_t jumpFrameId;
-			uint8_t animationFrameId;
-		};
-		uint8_t displayTime;
+		uint8_t animationFrameId = 0;
+		uint8_t displayTime = 0;
 	};
 
 	struct TileSet
