@@ -126,6 +126,9 @@
     <ClCompile Include="Global.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="GraphicsComponentFade.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -192,6 +195,9 @@
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Vector2f.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicsComponentFade.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,7 +22,6 @@ void GraphicsComponentAnimated::Update(GameObject& object, int16_t ms)
 		msCount_ -= msPerFrame_.at(index_);
 		index_++;
 		index_ %= sprites_.size();
-	}
-
 	sprite_ = sprites_.at(index_);
+	}
 }
