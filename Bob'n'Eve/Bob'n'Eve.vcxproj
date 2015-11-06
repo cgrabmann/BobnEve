@@ -92,6 +92,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GraphicsComponentFade.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Vector2f.cpp" />
     <ClCompile Include="AssetManager.cpp" />
@@ -121,6 +122,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <None Include="lib\box2d.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GraphicsComponentFade.h" />
     <ClInclude Include="Vector2f.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="Enemy.h" />

@@ -7,11 +7,12 @@
 #include "Enemy.h"
 #include "View.h"
 #include "GraphicsComponentStatic.h"
-#include "GraphicsComponentAnimated.h"
 #include <assert.h>
 #include "AssetManager.h"
 #include "Global.h"
 #include <pugixml/src/pugixml.hpp>
+#include "GraphicsComponentAnimated.h"
+#include "GraphicsComponentFade.h"
 
 MapLoader::MapLoader()
 {
@@ -99,7 +100,7 @@ View* MapLoader::LoadMap(const char* path)
 	std::vector<sf::Sprite*> textures;
 	textures.push_back(asset->GetTileByName("Bob.png", 1));
 	textures.push_back(asset->GetTileByName("Bob.png", 2));
-	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentAnimated(textures, 1000));
+	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentFade(textures, 1000));
 	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentStatic(asset->GetTileByName("Eve.png", 1)));
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 

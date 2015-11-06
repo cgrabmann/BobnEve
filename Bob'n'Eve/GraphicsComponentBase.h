@@ -19,6 +19,8 @@ public:
 	virtual void Draw(const GameObject& object, Renderer& renderer) = 0;
 	
 protected:
+	void UpdateSprite(const GameObject& object, Renderer& renderer, sf::Sprite& sprite);
+
 	sf::Sprite* sprite_;
 };
 

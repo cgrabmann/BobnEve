@@ -17,7 +17,7 @@ AssetManager* AssetManager::Instance()
 	return instance_;
 }
 
-AssetManager::AssetManager() : textures_(), sounds_(), music_(),
+AssetManager::AssetManager() : tileSets_(), sounds_(), music_(),
 textureDir_(Global::AssetDir + "textures/"), soundDir_(Global::AssetDir + "sounds/"), musicDir_(Global::AssetDir + "music/")
 {
 }
@@ -77,24 +77,26 @@ void AssetManager::RegisterTextureByName(const std::string& name)
 
 void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight)
 {
+	if (tileSets_.count(name) != 0)
+		return;
+
 	sf::Texture* texture = new sf::Texture();
 	if (!texture->loadFromFile(textureDir_ + name))
 	{
-		if (!texture->loadFromFile(textureDir_ + errorTex))
-		{
-			std::string CouldNotLoadTexture = name;
-			assert(CouldNotLoadTexture == "");
-			exit(-1);
-		}
-		texture->setRepeated(true);
+		std::string CouldNotLoadTexture = name;
+		assert(CouldNotLoadTexture == "");
+		texture = GetErrorTex();
 	}
 
 	texture->setSmooth(true);
-	textures_[name] = new TileSet(texture, tileWidth, tileHeight);;
+	tileSets_[name] = new TileSet(texture, tileWidth, tileHeight);;
 }
 
 void AssetManager::RegisterSoundByName(const std::string& name)
 {
+	if (sounds_.count(name) != 0)
+		return;
+
 	std::string path = soundDir_ + name;
 
 	sf::SoundBuffer* sound = new sf::SoundBuffer();
@@ -110,6 +112,9 @@ void AssetManager::RegisterSoundByName(const std::string& name)
 
 void AssetManager::RegisterMusicByName(const std::string& name)
 {
+	if (music_.count(name) != 0)
+		return;
+
 	std::string path = musicDir_ + name;
 
 	sf::Music* music = new sf::Music();
@@ -130,6 +135,23 @@ std::vector<std::string>* AssetManager::GetFilesInDir(const std::string& dir)
 	return files;
 }
 
+sf::Texture* AssetManager::GetErrorTex()
+{
+	if (!errorTex_)
+	{
+		const std::string errorTex = "Error.png";
+
+		errorTex_ = new sf::Texture();
+		if (!errorTex_->loadFromFile(textureDir_ + errorTex))
+		{
+			std::string CouldNotLoadTexture = errorTex;
+			assert(CouldNotLoadTexture == "");
+			exit(-1);
+		}
+		errorTex_->setRepeated(true);
+	}
+	return errorTex_;
+}
 
 sf::Sprite* AssetManager::GetSpriteByName(const std::string& name)
 {
@@ -138,11 +160,13 @@ sf::Sprite* AssetManager::GetSpriteByName(const std::string& name)
 
 sf::Sprite* AssetManager::GetTileByName(const std::string& name, const uint8_t gid)
 {
-	if (textures_.count(name) == 0)
+	if (tileSets_.count(name) == 0)
 	{
-		RegisterTextureByName(name);
+		std::string CouldNotLoadTexture = name;
+		assert(CouldNotLoadTexture == "");
+		tileSets_[name] = new TileSet(GetErrorTex(), 0, 0);
 	}
-	TileSet* tileSet = textures_[name];
+	TileSet* tileSet = tileSets_[name];
 
 	sf::Sprite* sprite = new sf::Sprite(*(tileSet->texture));
 	sprite->setTextureRect(tileSet->GetTileRect(gid));
