@@ -141,6 +141,12 @@
     <ClCompile Include="GraphicsComponentFade.cpp">
       <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.cpp">
+      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.cpp">
+      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -217,6 +223,12 @@
     </ClInclude>
     <ClInclude Include="GraphicsComponentFade.h">
       <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.h">
+      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.h">
+      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

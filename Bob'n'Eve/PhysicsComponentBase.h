@@ -9,7 +9,6 @@ class PhysicsComponentBase
 {
 	friend class PhysicManager;
 public:
-	explicit PhysicsComponentBase(const Vector2f& position, bool dynamic);
 	~PhysicsComponentBase();
 
 	void Update(GameObject& object, int16_t ms);
@@ -22,6 +21,7 @@ public:
 	void SetVelocity(float velX, float velY);
 
 protected:
+	explicit PhysicsComponentBase(const Vector2f& position, bool dynamic);
 
 	b2Body* body_;
 };
