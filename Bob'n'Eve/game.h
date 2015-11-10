@@ -25,7 +25,6 @@ private:
 
 	bool paused_;
 	Renderer renderer_;
-	PhysicManager physicManager_;
 	View* view_;
 
 };

@@ -17,9 +17,9 @@ public:
 	void Draw(Renderer& renderer) const;
 
 	float GetLayer() const;
-	const Vector2f& GetPosition() const;
-	const Vector2f& GetVelocity() const;
-
+	Vector2f GetPosition() const;
+	Vector2f GetRenderPosition() const;
+	Vector2f GetVelocity() const;
 	Vector2f GetOrientation() const;
 
 	void SetVelocity(Vector2f const & vec);

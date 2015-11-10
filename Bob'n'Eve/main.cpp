@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 	bobNEve.Init();
 	bobNEve.Start();
 
-#if 1
+#if 0
 	B2_NOT_USED(argc);
 	B2_NOT_USED(argv);
 

@@ -9,14 +9,16 @@ class PhysicManager
 {
 public:
 	static PhysicManager* Instance();
-	static void SetGravity(Vector2f& grafity);
+	static void CreateInstance(const Vector2f& grafity);
 
-	void createBody(PhysicsComponentBase& gameObject, b2BodyDef* bodyDef);
+	b2Body* CreateBody(b2BodyDef* bodyDef);
+	void DestroyBody(b2Body* body);
+
+	void Update(float32 seconds);
 private:
 	static PhysicManager* instance_;
-	static b2Vec2 gravity_;
 
-	PhysicManager();
+	PhysicManager(const b2Vec2& gravity);
 	~PhysicManager();
 
 	b2World world_;

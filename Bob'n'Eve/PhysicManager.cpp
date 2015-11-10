@@ -5,9 +5,8 @@
 #include "PhysicsComponentBase.h"
 
 PhysicManager* PhysicManager::instance_ = NULL;
-b2Vec2 PhysicManager::gravity_(0.f, 0.f);
 
-PhysicManager::PhysicManager() : world_(gravity_)
+PhysicManager::PhysicManager(const b2Vec2& gravity) : world_(gravity)
 {
 }
 
@@ -17,18 +16,27 @@ PhysicManager::~PhysicManager()
 
 PhysicManager* PhysicManager::Instance()
 {
-	static CGuard g;   // Speicherbereinigung
-	if (!instance_)
-		instance_ = new PhysicManager();
 	return instance_;
 }
 
-void PhysicManager::SetGravity(Vector2f& gravity)
+void PhysicManager::CreateInstance(const Vector2f& gravity)
 {
-	gravity_ = gravity.ToBox2D();
+	static CGuard g;   // Speicherbereinigung
+	if (!instance_)
+		instance_ = new PhysicManager(gravity.ToBox2D());
 }
 
-void PhysicManager::createBody(PhysicsComponentBase& physicsComponent, b2BodyDef* bodyDef)
+b2Body* PhysicManager::CreateBody(b2BodyDef* bodyDef)
 {
-	physicsComponent.setPhysicBody(world_.CreateBody(bodyDef));
+	return world_.CreateBody(bodyDef);
+}
+
+void PhysicManager::DestroyBody(b2Body* body)
+{
+	world_.DestroyBody(body);
+}
+
+void PhysicManager::Update(float32 seconds)
+{
+	world_.Step(seconds, 6, 2);
 }

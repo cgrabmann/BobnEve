@@ -88,7 +88,7 @@ View* MapLoader::LoadMap(const char* path)
 		}
 		if (currentTileSet != nullptr)
 			platforms->push_back(new Platform(new InputComponentBase(),
-				new PhysicsComponentBase(xPos * Global::TileWidth + (Global::TileWidth / 2), yPos * Global::TileHeight + (Global::TileHeight / 2)),
+				new PhysicsComponentBase(Vector2f(xPos, yPos), false),
 				new GraphicsComponentStatic(asset->GetTileByName(currentTileSet->imgPath, tileID - currentTileSet->firstgid))));
 
 		if (xPos == Global::MapWidth - 1)
@@ -105,8 +105,8 @@ View* MapLoader::LoadMap(const char* path)
 	std::vector<sf::Sprite*> textures;
 	textures.push_back(asset->GetTileByName(tileSetBob->imgPath, 1));
 	textures.push_back(asset->GetTileByName(tileSetBob->imgPath, 2));
-	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentFade(textures, 1000));
-	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(100.f, 750.f), new GraphicsComponentStatic(asset->GetTileByName(tileSetEve->imgPath, 1)));
+	Player* bob = new Player(InputComponentBase::GetBobInputComponent(), new PhysicsComponentBase(Vector2f(1.f, 10.f), true), new GraphicsComponentFade(textures, 1000));
+	Player* eve = new Player(InputComponentBase::GetEveInputComponent(), new PhysicsComponentBase(Vector2f(5.f, 10.f), true), new GraphicsComponentStatic(asset->GetTileByName(tileSetEve->imgPath, 1)));
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 
 

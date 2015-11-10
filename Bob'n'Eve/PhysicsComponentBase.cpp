@@ -1,26 +1,51 @@
 #include "PhysicsComponentBase.h"
 #include "GameObject.h"
 #include "Global.h"
+#include "PhysicManager.h"
 
 
-PhysicsComponentBase::PhysicsComponentBase(Vector2f* position) : body_(nullptr), position_(position), velocity_(new Vector2f(0.f, 0.f))
+PhysicsComponentBase::PhysicsComponentBase(const Vector2f& position, bool dynamic)
 {
-}
+	b2BodyDef bodyDef;
+	if (dynamic)
+	{
+		bodyDef.type = b2_dynamicBody;
+	}
+	else
+	{
+		bodyDef.type = b2_staticBody;
+	}
+	bodyDef.position.Set(position.x, position.y);
+	body_ = PhysicManager::Instance()->CreateBody(&bodyDef);
 
-PhysicsComponentBase::PhysicsComponentBase(float x, float y) : body_(nullptr), position_(new Vector2f(x, y)), velocity_(new Vector2f(0.f, 0.f))
-{
+	b2PolygonShape shape;
+	shape.SetAsBox(0.5f, 0.5f);
+
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = &shape;
+	if (dynamic)
+	{
+		fixtureDef.density = 1.f;
+		fixtureDef.friction = 0.3f;
+	}
+	else
+	{
+		fixtureDef.density = 0.f;
+		fixtureDef.friction = 0.f;
+	}
+	
+	body_->CreateFixture(&fixtureDef);
 }
 
 PhysicsComponentBase::~PhysicsComponentBase()
 {
-	delete position_;
-	delete velocity_;
+	PhysicManager::Instance()->DestroyBody(body_);
 }
 
 void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
 {
 	//TODO: remove velocity calculation
-	if (velocity_->x < 0)
+	/*if (velocity_->x < 0)
 		velocity_->x += 0.1f;
 	if (velocity_->x > 0)
 		velocity_->x -= 0.1f;
@@ -35,22 +60,22 @@ void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
 		velocity_->y = 0.f;
 
 	position_->x += velocity_->x;
-	position_->y += velocity_->y;
+	position_->y += velocity_->y;*/
 }
 
-const Vector2f& PhysicsComponentBase::GetPosition() const
+Vector2f PhysicsComponentBase::GetPosition() const
 {
-	return *position_;
+	return Vector2f(body_->GetPosition());
 }
 
-const Vector2f& PhysicsComponentBase::GetVelocity() const
+Vector2f PhysicsComponentBase::GetVelocity() const
 {
-	return *velocity_;
+	return Vector2f(body_->GetLinearVelocity());
 }
 
 Vector2f PhysicsComponentBase::GetOrientation() const
 {
-	if (position_->y > Global::ScreenHeight / 2)
+	if (GetPosition().y > Global::ScreenHeight / 2)
 	{
 		return Vector2f(1.f, -1.f);
 	}
@@ -59,17 +84,10 @@ Vector2f PhysicsComponentBase::GetOrientation() const
 
 void PhysicsComponentBase::SetVelocity(const Vector2f& velocity)
 {
-	velocity_->x = velocity.x;
-	velocity_->y = velocity.y;
+	body_->SetLinearVelocity(velocity.ToBox2D());
 }
 
 void PhysicsComponentBase::SetVelocity(float velX, float velY)
 {
-	velocity_->x = velX;
-	velocity_->y = velY;
-}
-
-void PhysicsComponentBase::setPhysicBody(b2Body* body)
-{
-	body_ = body;
+	body_->SetLinearVelocity(b2Vec2(velX, velY));
 }

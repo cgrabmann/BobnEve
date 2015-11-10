@@ -19,12 +19,7 @@ GraphicsComponentBase::~GraphicsComponentBase()
 
 void GraphicsComponentBase::Draw(const GameObject& object, Renderer& renderer)
 {
-	//Global scale
-	sprite_->setScale(renderer.GetScale());
-	//Mirror with scale of -1
-	sprite_->scale(object.GetOrientation().ToSFML());
-	//set position in view
-	sprite_->setPosition(object.GetPosition().ToSFML());
+	UpdateSprite(object, renderer, *sprite_);
 }
 
 void GraphicsComponentBase::UpdateSprite(const GameObject& object, Renderer& renderer, sf::Sprite& sprite)
@@ -34,5 +29,5 @@ void GraphicsComponentBase::UpdateSprite(const GameObject& object, Renderer& ren
 	//Mirror with scale of -1
 	sprite.scale(object.GetOrientation().ToSFML());
 	//set position in view
-	sprite.setPosition(object.GetPosition().ToSFML());
+	sprite.setPosition(object.GetRenderPosition().ToSFML());
 }

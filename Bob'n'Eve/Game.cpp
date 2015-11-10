@@ -5,9 +5,12 @@
 #include "Renderer.h"
 #include "View.h"
 #include "MapLoader.h"
+#include "Vector2f.h"
 
-Game::Game() : paused_(false), physicManager_(0.f, -10.f), view_(MapLoader::LoadMap("01.tmx"))
+Game::Game() : paused_(false)
 {
+	PhysicManager::CreateInstance(Vector2f(0.f, 10.f));
+	view_ = MapLoader::LoadMap("01.tmx");
 }
 
 Game::~Game()
@@ -18,6 +21,8 @@ void Game::Loop()
 {
 	bool wasPDown = false, wasEscDown = false;
 	bool isPDown = false, isEscDown = false;
+
+	PhysicManager* physicManager = PhysicManager::Instance();
 
 	sf::RenderWindow& window = renderer_.GetWindow();
 
@@ -37,7 +42,7 @@ void Game::Loop()
 
 		isPDown = sf::Keyboard::isKeyPressed(sf::Keyboard::P);
 		if (!wasPDown && isPDown)
-		paused_ = !paused_;
+			paused_ = !paused_;
 		wasPDown = isPDown;
 
 #ifndef  _DEBUG
@@ -45,6 +50,11 @@ void Game::Loop()
 #endif
 		{
 			view_->Update(16);
+		}
+
+		if (!paused_)
+		{
+			physicManager->Update(1.f / 60.f);
 		}
 
 		renderer_.Render(*view_);

@@ -2,6 +2,7 @@
 #include "PhysicsComponentBase.h"
 #include "GraphicsComponentBase.h"
 #include "InputComponentBase.h"
+#include "Global.h"
 
 
 GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
@@ -31,9 +32,14 @@ float GameObject::GetLayer() const
 	return layer_;
 }
 
-const Vector2f& GameObject::GetPosition() const
+Vector2f GameObject::GetPosition() const
 {
 	return physics_->GetPosition();
+}
+
+Vector2f GameObject::GetRenderPosition() const
+{
+	return (physics_->GetPosition() * Vector2f(Global::TileWidth, Global::TileHeight));
 }
 
 Vector2f GameObject::GetOrientation() const
@@ -41,7 +47,7 @@ Vector2f GameObject::GetOrientation() const
 	return physics_->GetOrientation();
 }
 
-const Vector2f& GameObject::GetVelocity() const
+Vector2f GameObject::GetVelocity() const
 {
 	return physics_->GetVelocity();
 }
