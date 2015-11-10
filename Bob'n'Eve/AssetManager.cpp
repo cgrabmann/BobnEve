@@ -18,7 +18,8 @@ AssetManager* AssetManager::Instance()
 }
 
 AssetManager::AssetManager() : tileSets_(), sounds_(), music_(),
-textureDir_(Global::AssetDir + "textures/"), soundDir_(Global::AssetDir + "sounds/"), musicDir_(Global::AssetDir + "music/")
+textureDir_(Global::AssetDir + "textures/"), soundDir_(Global::AssetDir + "sounds/"),
+musicDir_(Global::AssetDir + "music/"), errorTex_(nullptr)
 {
 }
 
