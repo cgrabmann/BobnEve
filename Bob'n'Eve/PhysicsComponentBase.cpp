@@ -35,6 +35,7 @@ PhysicsComponentBase::PhysicsComponentBase(const Vector2f& position, bool dynami
 	}
 	
 	body_->CreateFixture(&fixtureDef);
+	body_->SetFixedRotation(true);
 }
 
 PhysicsComponentBase::~PhysicsComponentBase()
@@ -45,13 +46,18 @@ PhysicsComponentBase::~PhysicsComponentBase()
 void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
 {
 	//TODO: remove velocity calculation
-	/*if (velocity_->x < 0)
-		velocity_->x += 0.1f;
-	if (velocity_->x > 0)
-		velocity_->x -= 0.1f;
-	if (velocity_->x >= -0.05f && velocity_->x <= 0.05f)
-		velocity_->x = 0.f;
+	b2Vec2 velocity = body_->GetLinearVelocity();
 
+	if (velocity.x < 0)
+		velocity.x += 0.2f;
+	if (velocity.x > 0)
+		velocity.x -= 0.2f;
+	if (velocity.x >= -0.05f && velocity.x <= 0.05f)
+		velocity.x = 0.f;
+
+	body_->SetLinearVelocity(velocity);
+
+	/*	position_->x += velocity_->x;
 	if (velocity_->y < 0)
 		velocity_->y += 0.1f;
 	if (velocity_->y > 0)
@@ -59,7 +65,6 @@ void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
 	if (velocity_->y >= -0.05f && velocity_->y <= 0.05f)
 		velocity_->y = 0.f;
 
-	position_->x += velocity_->x;
 	position_->y += velocity_->y;*/
 }
 
