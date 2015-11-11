@@ -22,22 +22,23 @@ void GraphicsComponentAnimated::Update(GameObject& object, int16_t ms)
 	if (msCount_ >= msPerFrame)
 	{
 		msCount_ -= msPerFrame;
+		index_ += mirroring_ ? -1 : +1;
 		if (mirror_)
 		{
-			index_++;
-			index_ %= sprites_.size();
-		}
-		else
-		{
-			index_ += mirroring_ ? -1 : +1;
 			if (index_ == 0)
 			{
 				mirroring_ = false;
 			}
-			if (index_ == sprites_.size()-1)
+			if (index_ == sprites_.size() - 1)
 			{
 				mirroring_ = true;
+
 			}
 		}
+		else
+		{
+			index_ %= sprites_.size();
+		}
+		sprite_ = sprites_.at(index_);
 	}
 }

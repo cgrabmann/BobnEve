@@ -6,26 +6,22 @@
 #include <SFML/include/SFML/Graphics/Sprite.hpp>
 
 
-GraphicsComponentFade::GraphicsComponentFade(std::vector<sf::Sprite*> sprites, int16_t msPerFrame) : GraphicsComponentAnimated(sprites, msPerFrame), lastIndex_(sprites.size() - 1), lastSprite_(sprites.at(lastIndex_)), alpha(255)
+GraphicsComponentFade::GraphicsComponentFade(std::vector<sf::Sprite*> sprites, int16_t msPerFrame, bool mirror) : GraphicsComponentAnimated(sprites, msPerFrame, mirror), lastIndex_(sprites.size() - 1), lastSprite_(sprites.at(lastIndex_)), alpha(255)
 {
 }
 
 void GraphicsComponentFade::Update(GameObject& object, int16_t ms)
 {
-	msCount_ += ms;
-	uint16_t msPerFrame = msPerFrame_.at(index_);
+	int32_t tempIndex = index_;
+	GraphicsComponentAnimated::Update(object, ms);
 
-	if (msCount_ >= msPerFrame)
+	if (tempIndex != index_)
 	{
-		msCount_ -= msPerFrame;
-		lastIndex_ = index_;
-		index_++;
-		index_ %= sprites_.size();
-
-		lastSprite_ = sprite_;
-		sprite_ = sprites_.at(index_);
+		lastIndex_ = tempIndex;
 	}
-	alpha = 255 * msCount_ / msPerFrame;
+
+	lastSprite_ = sprites_[lastIndex_];
+	alpha = 255 * msCount_ / msPerFrame_.at(index_);
 }
 
 void GraphicsComponentFade::Draw(const GameObject& object, Renderer& renderer)

@@ -103,11 +103,17 @@ View* MapLoader::LoadMap(const char* path)
 		}
 	}
 
-	std::vector<sf::Sprite*> textures;
-	textures.push_back(asset->GetTileByName(tileSetBob->imgPath, 1));
-	textures.push_back(asset->GetTileByName(tileSetBob->imgPath, 2));
-	Player* bob = new Player(InputComponent::GetBobInputComponent(), new PhysicsComponent(Vector2f(1.f, 10.f), true), new GraphicsComponentFade(textures, 1000));
-	Player* eve = new Player(InputComponent::GetEveInputComponent(), new PhysicsComponent(Vector2f(5.f, 10.f), true), new GraphicsComponent(asset->GetTileByName(tileSetEve->imgPath, 1)));
+	std::vector<sf::Sprite*> texturesBob;
+	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 1));
+	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 2));
+	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 3));
+	Player* bob = new Player(InputComponent::GetBobInputComponent(), new PhysicsComponent(Vector2f(1.f, 10.f), true), new GraphicsComponentAnimated(texturesBob, 1000));
+
+	std::vector<sf::Sprite*> texturesEve;
+	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 1));
+	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 2));
+	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 3));
+	Player* eve = new Player(InputComponent::GetEveInputComponent(), new PhysicsComponent(Vector2f(5.f, 10.f), true), new GraphicsComponentFade(texturesEve, 1000));
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
 
 
