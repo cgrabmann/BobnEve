@@ -2,14 +2,14 @@
 #include <stdint.h>
 #include "GameObject.h"
 
-class GraphicsComponentBase;
-class InputComponentBase;
+class GraphicsComponent;
+class InputComponent;
 class Renderer;
 
 class Platform : public GameObject
 {
 public:
-	Platform(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
+	Platform(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics);
 	~Platform();
 
 protected:

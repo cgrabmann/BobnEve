@@ -2,15 +2,15 @@
 #include <cinttypes>
 #include "Vector2f.h"
 
-class GraphicsComponentBase;
-class PhysicsComponentBase;
-class InputComponentBase;
+class GraphicsComponent;
+class PhysicsComponent;
+class InputComponent;
 class Renderer;
 
 class GameObject
 {
 public:
-	GameObject(InputComponentBase* input,	PhysicsComponentBase* physics,	GraphicsComponentBase* graphics);
+	GameObject(InputComponent* input,	PhysicsComponent* physics,	GraphicsComponent* graphics);
 	virtual ~GameObject();
 
 	void Update(int16_t ms);
@@ -29,8 +29,8 @@ protected:
 	//z-buffer
 	float layer_;
 
-	InputComponentBase* input_;
-	PhysicsComponentBase* physics_;
-	GraphicsComponentBase* graphics_;
+	InputComponent* input_;
+	PhysicsComponent* physics_;
+	GraphicsComponent* graphics_;
 };
 

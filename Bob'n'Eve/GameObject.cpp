@@ -1,11 +1,11 @@
 #include "GameObject.h"
-#include "PhysicsComponentBase.h"
-#include "GraphicsComponentBase.h"
-#include "InputComponentBase.h"
+#include "PhysicsComponent.h"
+#include "GraphicsComponent.h"
+#include "InputComponent.h"
 #include "Global.h"
 
 
-GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }

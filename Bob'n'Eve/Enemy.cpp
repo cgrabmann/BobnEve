@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics)
+Enemy::Enemy(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics)
 	: GameObject(input, physics, graphics)
 {
 

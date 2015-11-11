@@ -5,12 +5,12 @@
 class b2Body;
 class GameObject;
 
-class PhysicsComponentBase
+class PhysicsComponent
 {
 	friend class PhysicManager;
 public:
-	explicit PhysicsComponentBase(const Vector2f& position, bool dynamic);
-	~PhysicsComponentBase();
+	explicit PhysicsComponent(const Vector2f& position, bool dynamic);
+	~PhysicsComponent();
 
 	void Update(GameObject& object, int16_t ms);
 

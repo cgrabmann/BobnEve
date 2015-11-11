@@ -2,11 +2,11 @@
 #include "GameObject.h"
 
 
-GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<sf::Sprite*> sprites, std::vector<int16_t> msPerFrame) : GraphicsComponentStatic(sprites.at(0)), sprites_(sprites), index_(0), msCount_(0), msPerFrame_(msPerFrame)
+GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<sf::Sprite*> sprites, std::vector<int16_t> msPerFrame, bool mirror) : GraphicsComponent(sprites.at(0)), sprites_(sprites), index_(0), msCount_(0), msPerFrame_(msPerFrame), mirror_(mirror), mirroring_(false)
 {
 }
 
-GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<sf::Sprite*> sprites, int16_t msPerFrame) : GraphicsComponentStatic(sprites.at(0)), sprites_(sprites), index_(0), msCount_(0), msPerFrame_(std::vector<int16_t>(sprites.size(), msPerFrame))
+GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<sf::Sprite*> sprites, int16_t msPerFrame, bool mirror) : GraphicsComponentAnimated(sprites, std::vector<int16_t>(sprites.size(), msPerFrame), mirror)
 {
 }
 
@@ -17,11 +17,27 @@ GraphicsComponentAnimated::~GraphicsComponentAnimated()
 void GraphicsComponentAnimated::Update(GameObject& object, int16_t ms)
 {
 	msCount_ += ms;
-	if (msCount_ >= msPerFrame_.at(index_))
+	uint16_t msPerFrame = msPerFrame_.at(index_);
+
+	if (msCount_ >= msPerFrame)
 	{
-		msCount_ -= msPerFrame_.at(index_);
-		index_++;
-		index_ %= sprites_.size();
-	sprite_ = sprites_.at(index_);
+		msCount_ -= msPerFrame;
+		if (mirror_)
+		{
+			index_++;
+			index_ %= sprites_.size();
+		}
+		else
+		{
+			index_ += mirroring_ ? -1 : +1;
+			if (index_ == 0)
+			{
+				mirroring_ = false;
+			}
+			if (index_ == sprites_.size()-1)
+			{
+				mirroring_ = true;
+			}
+		}
 	}
 }

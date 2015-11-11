@@ -1,10 +1,10 @@
-#include "PhysicsComponentBase.h"
+#include "PhysicsComponent.h"
 #include "GameObject.h"
 #include "Global.h"
 #include "PhysicManager.h"
 
 
-PhysicsComponentBase::PhysicsComponentBase(const Vector2f& position, bool dynamic)
+PhysicsComponent::PhysicsComponent(const Vector2f& position, bool dynamic)
 {
 	b2BodyDef bodyDef;
 	if (dynamic)
@@ -26,54 +26,59 @@ PhysicsComponentBase::PhysicsComponentBase(const Vector2f& position, bool dynami
 	if (dynamic)
 	{
 		fixtureDef.density = 1.f;
-		fixtureDef.friction = 0.3f;
+		fixtureDef.friction = 0;
 	}
 	else
 	{
 		fixtureDef.density = 0.f;
-		fixtureDef.friction = 0.f;
+		fixtureDef.friction = 0;
 	}
-	
+
 	body_->CreateFixture(&fixtureDef);
+	body_->SetFixedRotation(true);
 }
 
-PhysicsComponentBase::~PhysicsComponentBase()
+PhysicsComponent::~PhysicsComponent()
 {
 	PhysicManager::Instance()->DestroyBody(body_);
 }
 
-void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
+void PhysicsComponent::Update(GameObject& object, int16_t ms)
 {
-	//TODO: remove velocity calculation
-	/*if (velocity_->x < 0)
-		velocity_->x += 0.1f;
-	if (velocity_->x > 0)
-		velocity_->x -= 0.1f;
-	if (velocity_->x >= -0.05f && velocity_->x <= 0.05f)
-		velocity_->x = 0.f;
+	b2Vec2 velocity = body_->GetLinearVelocity();
 
-	if (velocity_->y < 0)
+	//friction
+	if (velocity.x < 0)
+		velocity.x += 0.2f;
+	if (velocity.x > 0)
+		velocity.x -= 0.2f;
+	if (velocity.x >= -0.05f && velocity.x <= 0.05f)
+		velocity.x = 0.f;
+
+	body_->SetLinearVelocity(velocity);
+
+	//TODO: remove velocity calculation
+	/*if (velocity_->y < 0)
 		velocity_->y += 0.1f;
-	if (velocity_->y > 0)
-		velocity_->y -= 0.1f; 
-	if (velocity_->y >= -0.05f && velocity_->y <= 0.05f)
+		if (velocity_->y > 0)
+		velocity_->y -= 0.1f;
+		if (velocity_->y >= -0.05f && velocity_->y <= 0.05f)
 		velocity_->y = 0.f;
 
-	position_->x += velocity_->x;
-	position_->y += velocity_->y;*/
+		position_->y += velocity_->y;*/
 }
 
-Vector2f PhysicsComponentBase::GetPosition() const
+Vector2f PhysicsComponent::GetPosition() const
 {
 	return Vector2f(body_->GetPosition());
 }
 
-Vector2f PhysicsComponentBase::GetVelocity() const
+Vector2f PhysicsComponent::GetVelocity() const
 {
 	return Vector2f(body_->GetLinearVelocity());
 }
 
-Vector2f PhysicsComponentBase::GetOrientation() const
+Vector2f PhysicsComponent::GetOrientation() const
 {
 	if (GetPosition().y > Global::ScreenHeight / 2)
 	{
@@ -82,12 +87,12 @@ Vector2f PhysicsComponentBase::GetOrientation() const
 	return Vector2f(1.f, 1.f);
 }
 
-void PhysicsComponentBase::SetVelocity(const Vector2f& velocity)
+void PhysicsComponent::SetVelocity(const Vector2f& velocity)
 {
 	body_->SetLinearVelocity(velocity.ToBox2D());
 }
 
-void PhysicsComponentBase::SetVelocity(float velX, float velY)
+void PhysicsComponent::SetVelocity(float velX, float velY)
 {
 	body_->SetLinearVelocity(b2Vec2(velX, velY));
 }

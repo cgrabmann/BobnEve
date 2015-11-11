@@ -2,7 +2,7 @@
 
 #include <Box2D/Common/b2Math.h>
 #include "GameObject.h"
-#include "PhysicsComponentBase.h"
+#include "PhysicsComponent.h"
 
 PhysicManager* PhysicManager::instance_ = NULL;
 

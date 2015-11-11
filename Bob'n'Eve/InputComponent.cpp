@@ -1,32 +1,32 @@
-#include "InputComponentBase.h"
+#include "InputComponent.h"
 #include "Player.h"
 #include <SFML/include/SFML/Window/Joystick.hpp>
 #include "InputComponentJoystick.h"
 
-InputComponentBase::InputComponentBase()
+InputComponent::InputComponent()
 {
 }
 
 
-InputComponentBase::~InputComponentBase()
+InputComponent::~InputComponent()
 {
 }
 
-void InputComponentBase::Update(GameObject& object, int16_t ms)
+void InputComponent::Update(GameObject& object, int16_t ms)
 {
 }
 
-InputComponentBase* InputComponentBase::GetBobInputComponent()
+InputComponent* InputComponent::GetBobInputComponent()
 {
 	return GetPlayerInputComponent(1);
 }
 
-InputComponentBase* InputComponentBase::GetEveInputComponent()
+InputComponent* InputComponent::GetEveInputComponent()
 {
 	return GetPlayerInputComponent(2);
 }
 
-InputComponentBase* InputComponentBase::GetPlayerInputComponent(uint8_t player)
+InputComponent* InputComponent::GetPlayerInputComponent(uint8_t player)
 {
 	uint8_t count = JoyStickCount();
 
@@ -37,25 +37,25 @@ InputComponentBase* InputComponentBase::GetPlayerInputComponent(uint8_t player)
 	return new InputComponentKeyboard(player);
 }
 
-void InputComponentBase::Jump(GameObject& object)
+void InputComponent::Jump(GameObject& object)
 {
 	const Vector2f& velocity = object.GetVelocity();
 	object.SetVelocity(velocity.x, -5);
 }
 
-void InputComponentBase::Left(GameObject& object)
+void InputComponent::Left(GameObject& object)
 {
 	const Vector2f& velocity = object.GetVelocity();
 	object.SetVelocity(-5, velocity.y);
 }
 
-void InputComponentBase::Right(GameObject& object)
+void InputComponent::Right(GameObject& object)
 {
 	const Vector2f& velocity = object.GetVelocity();
 	object.SetVelocity(5, velocity.y);
 }
 
-uint8_t InputComponentBase::JoyStickCount()
+uint8_t InputComponent::JoyStickCount()
 {
 	if (sf::Joystick::isConnected(0) && sf::Joystick::isConnected(1))
 		return 2;
