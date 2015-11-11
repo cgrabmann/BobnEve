@@ -28,7 +28,7 @@ public:
 	sf::Music* GetMusicByName(const std::string& name);
 
 	void RegisterTextureByName(const std::string& name);
-	void RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight);
+	void RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, int8_t spacing = 0);
 	void RegisterSoundByName(const std::string& name);
 	void RegisterMusicByName(const std::string& name);
 
@@ -74,24 +74,26 @@ private:
 	{
 		friend class AssetManager;
 	public:
-		TileSet(const sf::Texture* texture) : TileSet(texture, texture->getSize().x, texture->getSize().y)
+		TileSet(const sf::Texture* texture) : TileSet(texture, texture->getSize().x, texture->getSize().y, 0)
 		{}
 
-		TileSet(const sf::Texture* texture, uint32_t tileWidth, uint32_t tileHeight) :
+		TileSet(const sf::Texture* texture, uint32_t tileWidth, uint32_t tileHeight, uint8_t spacing) :
 			size(texture->getSize()),
 			tileSize(tileWidth, tileHeight),
 			tileCount(size.x / tileSize.x, size.y / tileSize.y),
 			tileCenter(size.x / 2, size.y / 2),
+			spacing_(spacing),
 			texture(texture)
 		{}
 
 		sf::IntRect GetTileRect(uint8_t gid) const
 		{
-			return sf::IntRect(tileSize.x * (gid % tileCount.x), tileSize.y * (gid / tileCount.x), tileSize.x, tileSize.y);
+			return sf::IntRect(tileSize.x * (spacing_ + (gid % tileCount.x)), tileSize.y * (spacing_ + (gid / tileCount.x)), tileSize.x, tileSize.y);
 		}
 
 		const sf::Vector2u size, tileSize, tileCount;
 		const sf::Vector2f tileCenter;
+		const uint8_t spacing_;
 
 	private:
 		const sf::Texture* texture;

@@ -76,7 +76,7 @@ void AssetManager::RegisterTextureByName(const std::string& name)
 	RegisterTileSetByName(name, 0, 0);
 }
 
-void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight)
+void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, int8_t spacing)
 {
 	if (tileSets_.count(name) != 0)
 		return;
@@ -90,7 +90,7 @@ void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t
 	}
 
 	texture->setSmooth(true);
-	tileSets_[name] = new TileSet(texture, tileWidth, tileHeight);;
+	tileSets_[name] = new TileSet(texture, tileWidth, tileHeight, spacing);;
 }
 
 void AssetManager::RegisterSoundByName(const std::string& name)
@@ -165,7 +165,7 @@ sf::Sprite* AssetManager::GetTileByName(const std::string& name, const uint8_t g
 	{
 		std::string CouldNotLoadTexture = name;
 		assert(CouldNotLoadTexture == "");
-		tileSets_[name] = new TileSet(GetErrorTex(), 0, 0);
+		tileSets_[name] = new TileSet(GetErrorTex(), 0, 0, 0);
 	}
 	TileSet* tileSet = tileSets_[name];
 
