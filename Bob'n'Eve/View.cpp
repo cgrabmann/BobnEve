@@ -4,6 +4,7 @@
 #include "Platform.h"
 #include "Enemy.h"
 #include "Vector2f.h"
+#include "PhysicManager.h"
 
 View::View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies):
 bob_(bob), eve_(eve), platforms_(platforms), enemys_(enemies)
@@ -41,6 +42,8 @@ void View::Update(int16_t ms)
 
 	bob_->Update(ms);
 	eve_->Update(ms);
+
+	PhysicManager::Instance()->Update(ms / 1000.f);
 }
 
 void View::Draw(Renderer& renderer) const
