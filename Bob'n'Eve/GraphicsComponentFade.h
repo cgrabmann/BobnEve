@@ -12,6 +12,6 @@ public:
 private:
 	uint32_t lastIndex_;
 	sf::Sprite* lastSprite_;
-	uint8_t alpha;
+	uint8_t alpha_, lastAlpha_;
 };
 

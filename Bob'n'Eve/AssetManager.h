@@ -81,7 +81,7 @@ private:
 			size(texture->getSize()),
 			tileSize(tileWidth, tileHeight),
 			tileCount(size.x / tileSize.x, size.y / tileSize.y),
-			tileCenter(size.x / 2, size.y / 2),
+			tileCenter(tileWidth / 2, tileHeight / 2),
 			spacing_(spacing),
 			texture(texture)
 		{}
