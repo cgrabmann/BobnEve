@@ -88,7 +88,7 @@ private:
 
 		sf::IntRect GetTileRect(uint8_t gid) const
 		{
-			return sf::IntRect(tileSize.x * (spacing_ + (gid % tileCount.x)), tileSize.y * (spacing_ + (gid / tileCount.x)), tileSize.x, tileSize.y);
+			return sf::IntRect((spacing_ + tileSize.x) * (gid % tileCount.x), (spacing_ + tileSize.y) * (gid / tileCount.x), tileSize.x, tileSize.y);
 		}
 
 		const sf::Vector2u size, tileSize, tileCount;
