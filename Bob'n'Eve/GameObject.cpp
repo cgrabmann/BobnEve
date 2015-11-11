@@ -61,3 +61,21 @@ void GameObject::SetVelocity(float x, float y)
 {
 	physics_->SetVelocity(x, y);
 }
+
+void GameObject::Left()
+{
+	const Vector2f& velocity = GetVelocity();
+	SetVelocity(-5, velocity.y);
+}
+
+void GameObject::Right()
+{
+	const Vector2f& velocity = GetVelocity();
+	SetVelocity(5, velocity.y);
+}
+
+void GameObject::Up()
+{
+	const Vector2f& velocity = GetVelocity();
+	SetVelocity(velocity.x, -5);
+}

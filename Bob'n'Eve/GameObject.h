@@ -25,6 +25,10 @@ public:
 	void SetVelocity(Vector2f const & vec);
 	void SetVelocity(float x, float y);
 
+	void Left();
+	void Right();
+	void Up();
+
 protected:
 	//z-buffer
 	float layer_;
