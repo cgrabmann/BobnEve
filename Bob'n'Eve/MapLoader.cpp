@@ -128,8 +128,8 @@ View* MapLoader::LoadMap(const char* path)
 	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 4)); 
 
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
-	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponentDynamic(Vector2f(10.f, 22.f)), new GraphicsComponentFade(enemyTextures, 250)));
-	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponentDynamic(Vector2f(10.f, 26.f)), new GraphicsComponent(asset->GetTileByName("Enemy.png", 0))));
+	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponentStatic(Vector2f(10.f, 6.f)), new GraphicsComponentFade(enemyTextures, 250)));
+	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponentStatic(Vector2f(10.f, 10.f)), new GraphicsComponent(asset->GetTileByName("Enemy.png", 0))));
 
 
 

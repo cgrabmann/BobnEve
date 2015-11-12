@@ -8,6 +8,7 @@ PhysicsComponentBase::PhysicsComponentBase(b2BodyDef& bodyDef, const b2FixtureDe
 {
 	body_ = PhysicManager::Instance()->CreateBody(&bodyDef);
 	body_->CreateFixture(&fixtureDef);
+	body_->SetFixedRotation(true);
 }
 
 PhysicsComponentBase::~PhysicsComponentBase()
@@ -17,15 +18,19 @@ PhysicsComponentBase::~PhysicsComponentBase()
 
 void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
 {
-	//TODO: remove velocity calculation
-	/*if (velocity_->x < 0)
-		velocity_->x += 0.1f;
-	if (velocity_->x > 0)
-		velocity_->x -= 0.1f;
-	if (velocity_->x >= -0.05f && velocity_->x <= 0.05f)
-		velocity_->x = 0.f;
+	b2Vec2 velocity = body_->GetLinearVelocity();
 
-	if (velocity_->y < 0)
+	if (velocity.x < 0)
+		velocity.x += 0.01f * ms;
+	if (velocity.x > 0)
+		velocity.x -= 0.01f * ms;
+	if (velocity.x >= -0.1f && velocity.x <= 0.1f)
+		velocity.x = 0.f;
+
+	body_->SetLinearVelocity(velocity);
+
+		//TODO: remove velocity calculation
+	/*if (velocity_->y < 0)
 		velocity_->y += 0.1f;
 	if (velocity_->y > 0)
 		velocity_->y -= 0.1f; 

@@ -37,7 +37,7 @@ void Game::Loop()
 		// Measure time since last frame    
 		sf::Time elapsedTime = clock.restart();
 
-#ifdef _DEBUG && false
+#ifdef false
 		if (elapsedTime.asMilliseconds() > 250 && elapsedTime.asMilliseconds() < 1000)
 		{
 			//Lag spike
