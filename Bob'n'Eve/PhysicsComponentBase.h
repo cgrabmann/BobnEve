@@ -21,7 +21,7 @@ public:
 	void SetVelocity(float velX, float velY);
 
 protected:
-	explicit PhysicsComponentBase(const Vector2f& position, bool dynamic);
+	PhysicsComponentBase(b2BodyDef& bodyDef, const b2FixtureDef& fixtureDef);
 
 	b2Body* body_;
 };

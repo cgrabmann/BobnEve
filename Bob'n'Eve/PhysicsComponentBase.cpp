@@ -4,36 +4,9 @@
 #include "PhysicManager.h"
 
 
-PhysicsComponentBase::PhysicsComponentBase(const Vector2f& position, bool dynamic)
+PhysicsComponentBase::PhysicsComponentBase(b2BodyDef& bodyDef, const b2FixtureDef& fixtureDef)
 {
-	b2BodyDef bodyDef;
-	if (dynamic)
-	{
-		bodyDef.type = b2_dynamicBody;
-	}
-	else
-	{
-		bodyDef.type = b2_staticBody;
-	}
-	bodyDef.position.Set(position.x, position.y);
 	body_ = PhysicManager::Instance()->CreateBody(&bodyDef);
-
-	b2PolygonShape shape;
-	shape.SetAsBox(0.5f, 0.5f);
-
-	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &shape;
-	if (dynamic)
-	{
-		fixtureDef.density = 1.f;
-		fixtureDef.friction = 0.3f;
-	}
-	else
-	{
-		fixtureDef.density = 0.f;
-		fixtureDef.friction = 0.f;
-	}
-	
 	body_->CreateFixture(&fixtureDef);
 }
 
