@@ -76,7 +76,7 @@ void AssetManager::RegisterTextureByName(const std::string& name)
 	RegisterTileSetByName(name, 0, 0);
 }
 
-void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight)
+void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, const uint8_t spacing, const uint8_t margin)
 {
 	if (tileSets_.count(name) != 0)
 		return;
@@ -84,13 +84,12 @@ void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t
 	sf::Texture* texture = new sf::Texture();
 	if (!texture->loadFromFile(textureDir_ + name))
 	{
-		std::string CouldNotLoadTexture = name;
-		assert(CouldNotLoadTexture == "");
+		std::string CouldNotLoadTexture = "";
+		assert(CouldNotLoadTexture == name);
 		texture = GetErrorTex();
 	}
 
-	texture->setSmooth(true);
-	tileSets_[name] = new TileSet(texture, tileWidth, tileHeight);;
+	tileSets_[name] = new TileSet(texture, tileWidth, tileHeight, spacing, margin);;
 }
 
 void AssetManager::RegisterSoundByName(const std::string& name)
@@ -103,8 +102,8 @@ void AssetManager::RegisterSoundByName(const std::string& name)
 	sf::SoundBuffer* sound = new sf::SoundBuffer();
 	if (!sound->loadFromFile(path))
 	{
-		std::string CouldNotLoadSound = name;
-		assert(CouldNotLoadSound == "");
+		std::string CouldNotLoadSound = "";
+		assert(CouldNotLoadSound == name);
 		//TODO: Errorhandling
 	}
 
@@ -121,8 +120,8 @@ void AssetManager::RegisterMusicByName(const std::string& name)
 	sf::Music* music = new sf::Music();
 	if (!music->openFromFile(path))
 	{
-		std::string CouldNotLoadMusic = name;
-		assert(CouldNotLoadMusic == "");
+		std::string CouldNotLoadMusic = "";
+		assert(CouldNotLoadMusic == name);
 		//TODO: Errorhandling
 	}
 
@@ -165,7 +164,7 @@ sf::Sprite* AssetManager::GetTileByName(const std::string& name, const uint8_t g
 	{
 		std::string CouldNotLoadTexture = name;
 		assert(CouldNotLoadTexture == "");
-		tileSets_[name] = new TileSet(GetErrorTex(), 0, 0);
+		tileSets_[name] = new TileSet(GetErrorTex(), 0, 0, 0, 0);
 	}
 	TileSet* tileSet = tileSets_[name];
 

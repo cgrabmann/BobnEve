@@ -8,9 +8,9 @@
 
 Renderer::Renderer() : window_(
 #ifdef _DEBUG
-	sf::VideoMode::getDesktopMode(), "SFML works!"
+	sf::VideoMode::getDesktopMode(), "Bob'n'Eve"
 #else
-	sf::VideoMode::getFullscreenModes()[0], "SFML works!", sf::Style::Fullscreen
+	sf::VideoMode::getFullscreenModes()[0], "Bob'n'Eve", sf::Style::Fullscreen
 #endif
 ), scale_(1.f, 1.f)
 {

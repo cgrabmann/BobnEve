@@ -75,12 +75,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Quelldateien\GameObject\Player</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsComponentBase.cpp">
-      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="PhysicsComponentBase.cpp">
-      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
-    </ClCompile>
     <ClCompile Include="InputComponentJoystick.cpp">
       <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
     </ClCompile>
@@ -99,16 +93,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="GraphicsComponentAnimated.cpp">
-      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicsComponentStatic.cpp">
-      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
-    </ClCompile>
     <ClCompile Include="InputComponentKeyboard.cpp">
-      <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="InputComponentBase.cpp">
       <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
@@ -140,6 +125,18 @@
     </ClCompile>
     <ClCompile Include="GraphicsComponentFade.cpp">
       <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentAnimated.cpp">
+      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicsComponent.cpp">
+      <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComponent.cpp">
+      <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsComponentBase.cpp">
+      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.cpp">
       <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
@@ -182,23 +179,11 @@
     <ClInclude Include="GraphicsComponentAnimated.h">
       <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsComponentStatic.h">
-      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphicsComponentBase.h">
-      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
-    </ClInclude>
     <ClInclude Include="InputComponentKeyboard.h">
-      <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="InputComponentBase.h">
       <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
     </ClInclude>
     <ClInclude Include="InputComponentJoystick.h">
       <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="PhysicsComponentBase.h">
-      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
     <ClInclude Include="Platform.h">
       <Filter>Headerdateien\GameObject\Platform</Filter>
@@ -224,10 +209,19 @@
     <ClInclude Include="GraphicsComponentFade.h">
       <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.h">
+    <ClInclude Include="GraphicsComponent.h">
+      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.h">
+      <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponentBase.h">
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.h">
+      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.h">
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>

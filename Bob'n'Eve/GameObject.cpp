@@ -1,11 +1,11 @@
 #include "GameObject.h"
 #include "PhysicsComponentBase.h"
-#include "GraphicsComponentBase.h"
-#include "InputComponentBase.h"
+#include "GraphicsComponent.h"
+#include "InputComponent.h"
 #include "Global.h"
 
 
-GameObject::GameObject(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }
@@ -60,4 +60,22 @@ void GameObject::SetVelocity(Vector2f const & vec)
 void GameObject::SetVelocity(float x, float y)
 {
 	physics_->SetVelocity(x, y);
+}
+
+void GameObject::Left()
+{
+	const Vector2f& velocity = GetVelocity();
+	SetVelocity(-5, velocity.y);
+}
+
+void GameObject::Right()
+{
+	const Vector2f& velocity = GetVelocity();
+	SetVelocity(5, velocity.y);
+}
+
+void GameObject::Up()
+{
+	const Vector2f& velocity = GetVelocity();
+	SetVelocity(velocity.x, -5);
 }

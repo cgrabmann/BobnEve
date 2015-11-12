@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics)
+Player::Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics)
 	: GameObject(input, physics, graphics)
 {
 

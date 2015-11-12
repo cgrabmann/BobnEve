@@ -2,15 +2,15 @@
 #include <stdint.h>
 #include "GameObject.h"
 
-class GraphicsComponentBase;
+class GraphicsComponent;
 class PhysicsComponentBase;
-class InputComponentBase;
+class InputComponent;
 class Renderer;
 
 class Player : public GameObject
 {
 public:
-	Player(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
+	Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics);
 	~Player();
 protected:
 };

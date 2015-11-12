@@ -92,6 +92,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentAnimated.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Tile.cpp" />
@@ -103,16 +104,14 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="GraphicsComponentAnimated.cpp" />
-    <ClCompile Include="GraphicsComponentStatic.cpp" />
     <ClCompile Include="InputComponentKeyboard.cpp" />
-    <ClCompile Include="InputComponentBase.cpp" />
+    <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="InputComponentJoystick.cpp" />
     <ClCompile Include="MapLoader.cpp" />
     <ClCompile Include="PhysicManager.cpp" />
     <ClCompile Include="PhysicsComponentBase.cpp" />
     <ClCompile Include="Platform.cpp" />
-    <ClCompile Include="GraphicsComponentBase.cpp" />
+    <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="View.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -137,15 +136,14 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="GraphicsComponentAnimated.h" />
-    <ClInclude Include="GraphicsComponentStatic.h" />
     <ClInclude Include="InputComponentKeyboard.h" />
-    <ClInclude Include="InputComponentBase.h" />
+    <ClInclude Include="InputComponent.h" />
     <ClInclude Include="InputComponentJoystick.h" />
     <ClInclude Include="MapLoader.h" />
     <ClInclude Include="PhysicManager.h" />
     <ClInclude Include="PhysicsComponentBase.h" />
     <ClInclude Include="Platform.h" />
-    <ClInclude Include="GraphicsComponentBase.h" />
+    <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="View.h" />
     <ClInclude Include="BobNEve.h" />

@@ -2,14 +2,14 @@
 #include <stdint.h>
 #include "GameObject.h"
 
-class GraphicsComponentBase;
-class InputComponentBase;
+class GraphicsComponent;
+class InputComponent;
 class Renderer;
 
 class Enemy : public GameObject
 {
 public:
-	Enemy(InputComponentBase* input, PhysicsComponentBase* physics, GraphicsComponentBase* graphics);
+	Enemy(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics);
 	~Enemy();
 
 protected:

@@ -10,7 +10,7 @@
 Game::Game() : paused_(false)
 {
 	PhysicManager::CreateInstance(Vector2f(0.f, 10.f));
-	view_ = MapLoader::LoadMap("01.tmx");
+	view_ = MapLoader::LoadMap("Map1.tmx");
 }
 
 Game::~Game()
@@ -22,9 +22,8 @@ void Game::Loop()
 	bool wasPDown = false, wasEscDown = false;
 	bool isPDown = false, isEscDown = false;
 
-	PhysicManager* physicManager = PhysicManager::Instance();
-
 	sf::RenderWindow& window = renderer_.GetWindow();
+	sf::Clock clock;
 
 	while (window.isOpen())
 	{
@@ -35,11 +34,24 @@ void Game::Loop()
 				window.close();
 		}
 
+		// Measure time since last frame    
+		sf::Time elapsedTime = clock.restart();
+
+#ifdef _DEBUG && false
+		if (elapsedTime.asMilliseconds() > 250 && elapsedTime.asMilliseconds() < 1000)
+		{
+			//Lag spike
+			__debugbreak();
+		}
+#endif
+
+		//Esc closes the game
 		isEscDown = sf::Keyboard::isKeyPressed(sf::Keyboard::Escape);
 		if (!wasEscDown && isEscDown)
 			window.close();
 		wasEscDown = isEscDown;
 
+		//P pauses the game
 		isPDown = sf::Keyboard::isKeyPressed(sf::Keyboard::P);
 		if (!wasPDown && isPDown)
 			paused_ = !paused_;
@@ -49,12 +61,7 @@ void Game::Loop()
 		if (window.hasFocus() && !paused_)
 #endif
 		{
-			view_->Update(16);
-		}
-
-		if (!paused_)
-		{
-			physicManager->Update(1.f / 60.f);
+			view_->Update(elapsedTime.asMilliseconds());
 		}
 
 		renderer_.Render(*view_);

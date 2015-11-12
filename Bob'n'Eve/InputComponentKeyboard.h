@@ -1,10 +1,10 @@
 #pragma once
 #include <cinttypes>
 #include <SFML/include/SFML/Window/Keyboard.hpp>
-#include "InputComponentBase.h"
+#include "InputComponent.h"
 class Player;
 
-class InputComponentKeyboard : public InputComponentBase
+class InputComponentKeyboard : public InputComponent
 {
 public:
 	InputComponentKeyboard(unsigned int player);
