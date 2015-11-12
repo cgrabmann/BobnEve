@@ -2,7 +2,7 @@
 
 #include <Box2D/Dynamics/b2World.h>
 
-class PhysicsComponent;
+class PhysicsComponentBase;
 class Vector2f;
 
 class PhysicManager

@@ -1,6 +1,6 @@
 #include "Platform.h"
 
-Platform::Platform(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics)
+Platform::Platform(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics)
 	: GameObject(input, physics, graphics)
 {
 

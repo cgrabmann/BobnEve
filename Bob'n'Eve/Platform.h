@@ -9,7 +9,7 @@ class Renderer;
 class Platform : public GameObject
 {
 public:
-	Platform(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics);
+	Platform(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics);
 	~Platform();
 
 protected:

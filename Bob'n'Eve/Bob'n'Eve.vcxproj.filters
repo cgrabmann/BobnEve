@@ -135,7 +135,7 @@
     <ClCompile Include="InputComponent.cpp">
       <Filter>Quelldateien\GameObject\Components\InputComponents</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsComponent.cpp">
+    <ClCompile Include="PhysicsComponentBase.cpp">
       <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
     </ClCompile>
   </ItemGroup>
@@ -209,7 +209,7 @@
     <ClInclude Include="InputComponent.h">
       <Filter>Headerdateien\GameObject\Components\InputComponents</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicsComponent.h">
+    <ClInclude Include="PhysicsComponentBase.h">
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>

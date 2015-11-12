@@ -107,7 +107,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClCompile Include="InputComponentJoystick.cpp" />
     <ClCompile Include="MapLoader.cpp" />
     <ClCompile Include="PhysicManager.cpp" />
-    <ClCompile Include="PhysicsComponent.cpp" />
+    <ClCompile Include="PhysicsComponentBase.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
@@ -137,7 +137,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClInclude Include="InputComponentJoystick.h" />
     <ClInclude Include="MapLoader.h" />
     <ClInclude Include="PhysicManager.h" />
-    <ClInclude Include="PhysicsComponent.h" />
+    <ClInclude Include="PhysicsComponentBase.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="Renderer.h" />

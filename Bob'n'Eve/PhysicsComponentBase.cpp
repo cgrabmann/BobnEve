@@ -1,10 +1,10 @@
-#include "PhysicsComponent.h"
+#include "PhysicsComponentBase.h"
 #include "GameObject.h"
 #include "Global.h"
 #include "PhysicManager.h"
 
 
-PhysicsComponent::PhysicsComponent(const Vector2f& position, bool dynamic)
+PhysicsComponentBase::PhysicsComponentBase(const Vector2f& position, bool dynamic)
 {
 	b2BodyDef bodyDef;
 	if (dynamic)
@@ -38,12 +38,12 @@ PhysicsComponent::PhysicsComponent(const Vector2f& position, bool dynamic)
 	body_->SetFixedRotation(true);
 }
 
-PhysicsComponent::~PhysicsComponent()
+PhysicsComponentBase::~PhysicsComponentBase()
 {
 	PhysicManager::Instance()->DestroyBody(body_);
 }
 
-void PhysicsComponent::Update(GameObject& object, int16_t ms)
+void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
 {
 	b2Vec2 velocity = body_->GetLinearVelocity();
 
@@ -68,17 +68,17 @@ void PhysicsComponent::Update(GameObject& object, int16_t ms)
 		position_->y += velocity_->y;*/
 }
 
-Vector2f PhysicsComponent::GetPosition() const
+Vector2f PhysicsComponentBase::GetPosition() const
 {
 	return Vector2f(body_->GetPosition());
 }
 
-Vector2f PhysicsComponent::GetVelocity() const
+Vector2f PhysicsComponentBase::GetVelocity() const
 {
 	return Vector2f(body_->GetLinearVelocity());
 }
 
-Vector2f PhysicsComponent::GetOrientation() const
+Vector2f PhysicsComponentBase::GetOrientation() const
 {
 	if (GetPosition().y > Global::ScreenHeight / 2)
 	{
@@ -87,12 +87,12 @@ Vector2f PhysicsComponent::GetOrientation() const
 	return Vector2f(1.f, 1.f);
 }
 
-void PhysicsComponent::SetVelocity(const Vector2f& velocity)
+void PhysicsComponentBase::SetVelocity(const Vector2f& velocity)
 {
 	body_->SetLinearVelocity(velocity.ToBox2D());
 }
 
-void PhysicsComponent::SetVelocity(float velX, float velY)
+void PhysicsComponentBase::SetVelocity(float velX, float velY)
 {
 	body_->SetLinearVelocity(b2Vec2(velX, velY));
 }

@@ -1,7 +1,7 @@
 #include "MapLoader.h"
 #include "Player.h"
 #include "InputComponent.h"
-#include "PhysicsComponent.h"
+#include "PhysicsComponentBase.h"
 #include <vector>
 #include "Platform.h"
 #include "Enemy.h"
@@ -91,7 +91,7 @@ View* MapLoader::LoadMap(const char* path)
 		}
 		if (currentTileSet != nullptr)
 			platforms->push_back(new Platform(new InputComponent(),
-				new PhysicsComponent(Vector2f(xPos, yPos), false),
+				new PhysicsComponentBase(Vector2f(xPos, yPos), false),
 				new GraphicsComponent(asset->GetTileByName(currentTileSet->imgPath, tileID - currentTileSet->firstgid))));
 
 		if (xPos == Global::MapWidth - 1)
@@ -110,14 +110,14 @@ View* MapLoader::LoadMap(const char* path)
 	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 2));
 	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 3));
 
-	Player* bob = new Player(InputComponent::GetBobInputComponent(), new PhysicsComponent(Vector2f(1.f, 5.f), true), new GraphicsComponentAnimated(texturesBob, 1000));
+	Player* bob = new Player(InputComponent::GetBobInputComponent(), new PhysicsComponentBase(Vector2f(1.f, 5.f), true), new GraphicsComponentAnimated(texturesBob, 1000));
 
 	std::vector<sf::Sprite*> texturesEve;
 	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 1));
 	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 2));
 	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 3));
 
-	Player* eve = new Player(InputComponent::GetEveInputComponent(), new PhysicsComponent(Vector2f(2.f, 6.f), true), new GraphicsComponentFade(texturesEve, 1000));
+	Player* eve = new Player(InputComponent::GetEveInputComponent(), new PhysicsComponentBase(Vector2f(2.f, 6.f), true), new GraphicsComponentFade(texturesEve, 1000));
 	
 	std::vector<sf::Sprite*> enemyTextures;
 	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 1));
@@ -126,8 +126,8 @@ View* MapLoader::LoadMap(const char* path)
 	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 4)); 
 
 	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
-	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponent(Vector2f(10.f, 22.f), false), new GraphicsComponentFade(enemyTextures, 250)));
-	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponent(Vector2f(10.f, 26.f), false), new GraphicsComponent(asset->GetTileByName("Enemy.png", 0))));
+	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponentBase(Vector2f(10.f, 22.f), false), new GraphicsComponentFade(enemyTextures, 250)));
+	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponentBase(Vector2f(10.f, 26.f), false), new GraphicsComponent(asset->GetTileByName("Enemy.png", 0))));
 
 
 

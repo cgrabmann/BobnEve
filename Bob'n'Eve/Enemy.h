@@ -9,7 +9,7 @@ class Renderer;
 class Enemy : public GameObject
 {
 public:
-	Enemy(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics);
+	Enemy(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics);
 	~Enemy();
 
 protected:

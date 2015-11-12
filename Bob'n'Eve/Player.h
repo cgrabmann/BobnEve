@@ -3,14 +3,14 @@
 #include "GameObject.h"
 
 class GraphicsComponent;
-class PhysicsComponent;
+class PhysicsComponentBase;
 class InputComponent;
 class Renderer;
 
 class Player : public GameObject
 {
 public:
-	Player(InputComponent* input, PhysicsComponent* physics, GraphicsComponent* graphics);
+	Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics);
 	~Player();
 protected:
 };

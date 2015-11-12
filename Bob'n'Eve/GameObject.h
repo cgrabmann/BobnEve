@@ -3,14 +3,14 @@
 #include "Vector2f.h"
 
 class GraphicsComponent;
-class PhysicsComponent;
+class PhysicsComponentBase;
 class InputComponent;
 class Renderer;
 
 class GameObject
 {
 public:
-	GameObject(InputComponent* input,	PhysicsComponent* physics,	GraphicsComponent* graphics);
+	GameObject(InputComponent* input,	PhysicsComponentBase* physics,	GraphicsComponent* graphics);
 	virtual ~GameObject();
 
 	void Update(int16_t ms);
@@ -34,7 +34,7 @@ protected:
 	float layer_;
 
 	InputComponent* input_;
-	PhysicsComponent* physics_;
+	PhysicsComponentBase* physics_;
 	GraphicsComponent* graphics_;
 };
 
