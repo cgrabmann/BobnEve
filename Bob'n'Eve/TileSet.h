@@ -1,5 +1,6 @@
 #pragma once
 #include <cinttypes>
+#include <pugixml.hpp>
 
 class Tile;
 
@@ -16,6 +17,8 @@ private:
 	uint8_t tilecount = 0;
 	uint8_t tilewidth = 0;
 	uint8_t tileheight = 0;
+	uint8_t spacing = 0;
+	uint8_t margin = 0;
 
 	Tile* tiles = nullptr;
 };

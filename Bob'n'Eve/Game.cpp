@@ -10,7 +10,7 @@
 Game::Game() : paused_(false)
 {
 	PhysicManager::CreateInstance(Vector2f(0.f, 10.f));
-	view_ = MapLoader::LoadMap("01.tmx");
+	view_ = MapLoader::LoadMap("Map1.tmx");
 }
 
 Game::~Game()
@@ -35,7 +35,15 @@ void Game::Loop()
 		}
 
 		// Measure time since last frame    
-		sf::Time elapsedTime = clock.restart();
+		sf::Time elapsedTime = clock.restart();
+
+#ifdef _DEBUG && false
+		if (elapsedTime.asMilliseconds() > 250 && elapsedTime.asMilliseconds() < 1000)
+		{
+			//Lag spike
+			__debugbreak();
+		}
+#endif
 
 		//Esc closes the game
 		isEscDown = sf::Keyboard::isKeyPressed(sf::Keyboard::Escape);

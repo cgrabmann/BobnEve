@@ -52,6 +52,8 @@ View* MapLoader::LoadMap(const char* path)
 		tileset->firstgid = xmlTileset.attribute("firstgid").as_int();
 		tileset->name = xmlTileset.attribute("name").as_string();
 		tileset->tilecount = xmlTileset.attribute("tilecount").as_int();
+		tileset->spacing = xmlTileset.attribute("spacing").as_int();
+		tileset->margin = xmlTileset.attribute("margin").as_int();
 		const pugi::char_t* imagePath = xmlTileset.child("image").attribute("source").as_string();
 		tileset->imgPath = strrchr(imagePath, '/') + 1;
 		tileset->tiles = new Tile[tileset->tilecount];
@@ -68,7 +70,7 @@ View* MapLoader::LoadMap(const char* path)
 		tilesets.push_back(tileset);
 
 		//AssetManager::LoadTileSetByName(tileset->imgPath, tileset->tilewidth, tileset->tileheight);
-		asset->RegisterTileSetByName(tileset->imgPath, tileset->tilewidth, tileset->tileheight);
+		asset->RegisterTileSetByName(tileset->imgPath, tileset->tilewidth, tileset->tileheight, tileset->spacing, tileset->margin);
 	}
 
 	std::vector<Platform*>* platforms = new std::vector<Platform*>;
@@ -108,17 +110,16 @@ View* MapLoader::LoadMap(const char* path)
 	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 2));
 	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 3));
 
-	Player* bob = new Player(InputComponent::GetBobInputComponent(), new PhysicsComponent(Vector2f(1.f, 10.f), true), new GraphicsComponentAnimated(texturesBob, 1000));
+	Player* bob = new Player(InputComponent::GetBobInputComponent(), new PhysicsComponent(Vector2f(1.f, 5.f), true), new GraphicsComponentAnimated(texturesBob, 1000));
 
 	std::vector<sf::Sprite*> texturesEve;
 	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 1));
 	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 2));
 	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 3));
 
-	Player* eve = new Player(InputComponent::GetEveInputComponent(), new PhysicsComponent(Vector2f(5.f, 10.f), true), new GraphicsComponentFade(texturesEve, 1000));
+	Player* eve = new Player(InputComponent::GetEveInputComponent(), new PhysicsComponent(Vector2f(2.f, 6.f), true), new GraphicsComponentFade(texturesEve, 1000));
 	
 	std::vector<sf::Sprite*> enemyTextures;
-	asset->RegisterTileSetByName("Enemy.png", 64, 64, 2);
 	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 1));
 	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 2));
 	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 3));
