@@ -18,9 +18,11 @@ public:
 	//virtual void Draw(const GameObject& object, Renderer& renderer) override;
 	
 protected:
+	std::vector<uint8_t> indizes;
 	std::vector<Frame*> frames_;
 	int32_t index_;
 	int16_t msCount_; 
+	uint16_t displayTime_;
 	bool mirror_, mirroring_;
 };
 

@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "Frame.h"
 
-GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<Frame*> frames, bool mirror) : GraphicsComponent(frames.at(0)->sprite), frames_(frames), index_(0), msCount_(0), mirror_(mirror), mirroring_(false)
+GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<Frame*> frames, bool mirror) : GraphicsComponent(frames.at(0)->sprite), frames_(frames), index_(0), msCount_(0), displayTime_(frames.at(0)->displayTime), mirror_(mirror), mirroring_(false)
 {
 }
 
@@ -13,12 +13,11 @@ GraphicsComponentAnimated::~GraphicsComponentAnimated()
 void GraphicsComponentAnimated::Update(GameObject& object, int16_t ms)
 {
 	msCount_ += ms;
-	uint16_t msPerFrame = frames_.at(index_)->displayTime;
 
-	if (msCount_ >= msPerFrame)
+	if (msCount_ >= displayTime_)
 	{
-		msCount_ -= msPerFrame;
-		index_ += mirroring_ ? -1 : +1;
+		msCount_ -= displayTime_;
+		index_ += mirroring_ ? -1 : 1;
 		if (mirror_)
 		{
 			if (index_ == 0)
@@ -34,6 +33,7 @@ void GraphicsComponentAnimated::Update(GameObject& object, int16_t ms)
 		{
 			index_ %= frames_.size();
 		}
+		displayTime_ = frames_.at(index_)->displayTime;
 		sprite_ = frames_.at(index_)->sprite;
 	}
 }

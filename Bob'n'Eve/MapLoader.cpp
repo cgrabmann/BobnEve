@@ -261,7 +261,6 @@ GraphicsComponent* MapLoader::ParseGraphics(Object* object)
 	{
 		std::vector<Frame*> tempFrames;
 		tempFrames.reserve(6);
-		tempFrames.push_back(new Frame(asset->GetTileByName(object->tileSet->imgPath, object->tile->id), object->tile->displayTime));
 		for (int i = object->tile->id; i < object->tileSet->tilecount; i++)
 		{
 			if (object->tile->animationId == object->tileSet->tiles[i].animationId)
