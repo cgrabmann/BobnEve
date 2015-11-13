@@ -17,6 +17,8 @@
 #include "TileSet.h"
 #include "PhysicsComponentStatic.h"
 #include "PhysicsComponentDynamic.h"
+#include "Frame.h"
+#include "Object.h"
 
 MapLoader::MapLoader()
 {
@@ -30,6 +32,8 @@ View* MapLoader::LoadMap(const char* path)
 {
 	assert(path != NULL);
 
+	AssetManager* asset = AssetManager::Instance();
+
 	pugi::xml_document doc;
 	pugi::xml_parse_result result = doc.load_file((Global::AssetDir + "maps/" + path).c_str());
 
@@ -41,103 +45,267 @@ View* MapLoader::LoadMap(const char* path)
 	Global::TileWidth = map.attribute("tileheight").as_int();
 	Global::MapWidth = map.attribute("width").as_int();
 	Global::MapHeight = map.attribute("height").as_int();
-	
-	AssetManager* asset = AssetManager::Instance();
-
-	TileSet* tileSetBob = nullptr;
-	TileSet* tileSetEve = nullptr;
-
-	std::vector<TileSet*> tilesets;
-	for (pugi::xml_node xmlTileset = map.child("tileset"); xmlTileset; xmlTileset = xmlTileset.next_sibling("tileset"))
-	{
-		TileSet* tileset = new TileSet();
-		tileset->firstgid = xmlTileset.attribute("firstgid").as_int();
-		tileset->name = xmlTileset.attribute("name").as_string();
-		tileset->tilecount = xmlTileset.attribute("tilecount").as_int();
-		tileset->spacing = xmlTileset.attribute("spacing").as_int();
-		tileset->margin = xmlTileset.attribute("margin").as_int();
-		const pugi::char_t* imagePath = xmlTileset.child("image").attribute("source").as_string();
-		tileset->imgPath = strrchr(imagePath, '/') + 1;
-		tileset->tiles = new Tile[tileset->tilecount];
-		tileset->tilewidth = xmlTileset.attribute("tilewidth").as_int();
-		tileset->tileheight = xmlTileset.attribute("tileheight").as_int();
-		if (strcmp(tileset->name, "Bob") == 0)
-		{
-			tileSetBob = tileset;
-		}
-		else if (strcmp(tileset->name, "Eve") == 0)
-		{
-			tileSetEve = tileset;
-		}
-		tilesets.push_back(tileset);
-
-		//AssetManager::LoadTileSetByName(tileset->imgPath, tileset->tilewidth, tileset->tileheight);
-		asset->RegisterTileSetByName(tileset->imgPath, tileset->tilewidth, tileset->tileheight, tileset->spacing, tileset->margin);
-	}
 
 	std::vector<Platform*>* platforms = new std::vector<Platform*>;
-	pugi::xml_node tilemap = map.child("layer").child("data");
+	platforms->reserve(256);
+	Player* bob = nullptr;
+	Player* eve = nullptr;
+	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
+	platforms->reserve(32);
+
+	std::unordered_map<std::string, TileSet*> tileSets;
+	tileSets.reserve(4);
+	std::unordered_map<uint16_t, Tile*> tiles;
+	tiles.reserve(32);
+
+
+	for (pugi::xml_node xmlTileset = map.child("tileset"); xmlTileset; xmlTileset = xmlTileset.next_sibling("tileset"))
+	{
+		TileSet* tileSet = new TileSet();
+
+		tileSet->firstgid = xmlTileset.attribute("firstgid").as_int();
+		tileSet->name = xmlTileset.attribute("name").as_string();
+		tileSet->tilecount = xmlTileset.attribute("tilecount").as_int();
+		tileSet->spacing = xmlTileset.attribute("spacing").as_int();
+		tileSet->margin = xmlTileset.attribute("margin").as_int();
+		const pugi::char_t* imagePath = xmlTileset.child("image").attribute("source").as_string();
+		tileSet->imgPath = strrchr(imagePath, '/') + 1;
+		tileSet->tiles = new Tile[tileSet->tilecount];
+		tileSet->tilewidth = xmlTileset.attribute("tilewidth").as_int();
+		tileSet->tileheight = xmlTileset.attribute("tileheight").as_int();
+
+		tileSets[tileSet->name] = tileSet;
+
+		asset->RegisterTileSetByName(tileSet->imgPath, tileSet->tilewidth, tileSet->tileheight, tileSet->spacing, tileSet->margin);
+
+		for (pugi::xml_node xmlTile = xmlTileset.child("tile"); xmlTile; xmlTile = xmlTile.next_sibling("tile"))
+		{
+			Tile* tile = new Tile();
+			tile->tileSetName = tileSet->name;
+			int id = xmlTile.attribute("id").as_int();
+			tile->id = id;
+			tile->gid = tileSet->firstgid + id;
+
+			for (pugi::xml_node xmlTileProperty = xmlTile.child("properties").child("property"); xmlTileProperty; xmlTileProperty = xmlTileProperty.next_sibling("property"))
+			{
+				const char* propertyName = xmlTileProperty.attribute("name").as_string();
+
+				if (!strcmp(propertyName, "AnimationId"))
+				{
+					tile->animationId = xmlTileProperty.attribute("value").as_int();
+				}
+				else if (!strcmp(propertyName, "AnimationMirror"))
+				{
+					tile->animationMirror = xmlTileProperty.attribute("value").as_bool();
+				}
+				else if (!strcmp(propertyName, "AnimationType"))
+				{
+					tile->animationType = xmlTileProperty.attribute("value").as_string();
+				}
+				else if (!strcmp(propertyName, "BobPass"))
+				{
+					tile->bobPass = xmlTileProperty.attribute("value").as_bool();;
+				}
+				else if (!strcmp(propertyName, "EvePass"))
+				{
+					tile->evePass = xmlTileProperty.attribute("value").as_bool();;
+				}
+				else if (!strcmp(propertyName, "Type"))
+				{
+					tile->type = xmlTileProperty.attribute("value").as_string();;
+				}
+				else if (!strcmp(propertyName, "DisplayTime"))
+				{
+					tile->displayTime = xmlTileProperty.attribute("value").as_int();;
+				}
+			}
+
+			tiles[tile->gid] = tile;
+			tileSet->tiles[id] = *tile;
+		}
+	}
+
 	uint8_t xPos = 0;
 	uint8_t yPos = 0;
-	for (pugi::xml_node tile = tilemap.child("tile"); tile; tile = tile.next_sibling("tile"))
+	uint8_t tileCount = tiles.size();
+	for (pugi::xml_node tile = map.child("layer").child("data").child("tile"); tile; tile = tile.next_sibling("tile"))
 	{
-		uint8_t tileID = tile.attribute("gid").as_int();
-		TileSet* currentTileSet = nullptr;
-		for (int i = tilesets.size() - 1; i > 0; i--)
+		uint8_t gid = tile.attribute("gid").as_int();
+		if (gid != 0 && gid <= tileCount)
 		{
-			if (tilesets.at(i)->firstgid <= tileID)
+			Object* object = new Object();
+
+			object->tile = tiles[gid];
+			object->tileSet = tileSets[object->tile->tileSetName];
+			object->pos = Vector2f(xPos * Global::TileWidth, yPos * Global::TileHeight);
+			object->size = Vector2f(Global::TileWidth, Global::TileHeight);
+			object->gravity = 0;
+			object->enemyId = -1;
+
+			if (!strcmp(object->tile->type, "PassTrough"))
 			{
-				currentTileSet = tilesets.at(i);
-				break;
+				platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+			}
+			else  if (!strcmp(object->tile->type, "Enemy"))
+			{
+				enemies->push_back(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+			}
+			else if (!strcmp(object->tile->type, "Bob"))
+			{
+				bob = new Player(ParseInput(object), ParsePhysics(object), ParseGraphics(object));
+			}
+			else if (!strcmp(object->tile->type, "Eve"))
+			{
+				eve = new Player(ParseInput(object), ParsePhysics(object), ParseGraphics(object));
+			}
+			else // if (!strcmp(object->tile->type, "Platform"))
+			{
+				platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
 			}
 		}
-		if (currentTileSet != nullptr)
-			platforms->push_back(new Platform(new InputComponent(),
-				new PhysicsComponentStatic(Vector2f(xPos, yPos)),
-				new GraphicsComponent(asset->GetTileByName(currentTileSet->imgPath, tileID - currentTileSet->firstgid))));
 
-		if (xPos == Global::MapWidth - 1)
+		xPos++;
+		if (xPos >= Global::MapWidth)
 		{
 			xPos = 0;
 			yPos++;
 		}
-		else
+	}
+
+	for (pugi::xml_node xmlObject = map.child("objectgroup").child("object"); xmlObject; xmlObject = xmlObject.next_sibling("object"))
+	{
+		uint8_t gid = xmlObject.attribute("gid").as_int();
+		if (gid == 0 || gid > tileCount)
+			continue;
+
+		Object* object = new Object();
+
+		object->tile = tiles[gid];
+		object->tileSet = tileSets[object->tile->tileSetName];
+		object->pos = Vector2f(xmlObject.attribute("x").as_float(), xmlObject.attribute("y").as_float());
+		object->size = Vector2f(xmlObject.attribute("width").as_int(), xmlObject.attribute("height").as_int());
+
+		for (pugi::xml_node xmlObjectProperty = xmlObject.child("properties").child("property"); xmlObjectProperty; xmlObjectProperty = xmlObjectProperty.next_sibling("property"))
 		{
-			xPos++;
+			const char* propertyName = xmlObjectProperty.attribute("name").as_string();
+
+			if (!strcmp(propertyName, "Gravity"))
+			{
+				object->gravity = xmlObjectProperty.attribute("value").as_int();
+			}
+			else if (!strcmp(propertyName, "EnemyId"))
+			{
+				object->enemyId = xmlObjectProperty.attribute("value").as_int();
+			}
+		}
+
+		if (!strcmp(object->tile->type, "PassTrough"))
+		{
+			platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+		}
+		else  if (!strcmp(object->tile->type, "Enemy"))
+		{
+			enemies->push_back(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+		}
+		else if (!strcmp(object->tile->type, "Bob"))
+		{
+			bob = new Player(ParseInput(object), ParsePhysics(object), ParseGraphics(object));
+		}
+		else if (!strcmp(object->tile->type, "Eve"))
+		{
+			eve = new Player(ParseInput(object), ParsePhysics(object), ParseGraphics(object));
+		}
+		else // if (!strcmp(object->tile->type, "Platform"))
+		{
+			platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
 		}
 	}
 
-	std::vector<sf::Sprite*> texturesBob;
-	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 1));
-	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 2));
-	texturesBob.push_back(asset->GetTileByName(tileSetBob->imgPath, 3));
-
-	Player* bob = new Player(InputComponent::GetBobInputComponent(), new PhysicsComponentDynamic(Vector2f(1.f, 5.f)), new GraphicsComponentAnimated(texturesBob, 1000));
-
-	std::vector<sf::Sprite*> texturesEve;
-	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 1));
-	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 2));
-	texturesEve.push_back(asset->GetTileByName(tileSetEve->imgPath, 3));
-
-	Player* eve = new Player(InputComponent::GetEveInputComponent(), new PhysicsComponentDynamic(Vector2f(2.f, 6.f)), new GraphicsComponentFade(texturesEve, 1000));
-	
-	std::vector<sf::Sprite*> enemyTextures;
-	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 1));
-	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 2));
-	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 3));
-	enemyTextures.push_back(asset->GetTileByName("Enemy.png", 4)); 
-
-	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
-	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponentStatic(Vector2f(10.f, 6.f)), new GraphicsComponentFade(enemyTextures, 250)));
-	enemies->push_back(new Enemy(new InputComponent(), new PhysicsComponentStatic(Vector2f(10.f, 10.f)), new GraphicsComponent(asset->GetTileByName("Enemy.png", 0))));
-
-
-
-	//cleanup
-	for (unsigned int i = 0; i < tilesets.size(); i++)
-	{
-		delete tilesets.at(i);
-	}
+	//clean up
+	tileSets.clear();
+	tiles.clear();
 
 	return new View(bob, eve, platforms, enemies);
+}
+
+InputComponent* MapLoader::ParseInput(Object* object)
+{
+	if (!strcmp(object->tile->type, "PassTrough"))
+	{
+		return new InputComponent();
+	}
+	if (!strcmp(object->tile->type, "Enemy"))
+	{
+		return new InputComponent();
+	}
+	if (!strcmp(object->tile->type, "Bob"))
+	{
+		return InputComponent::GetBobInputComponent();
+	}
+	if (!strcmp(object->tile->type, "Eve"))
+	{
+		return InputComponent::GetEveInputComponent();
+	}
+	// if (!strcmp(object->tile->type, "Platform"))
+	{
+		return new InputComponent();
+	}
+}
+
+GraphicsComponent* MapLoader::ParseGraphics(Object* object)
+{
+	AssetManager* asset = AssetManager::Instance();
+	GraphicsComponent* tempGraphics = nullptr;
+
+	if (strcmp(object->tile->animationType, "Static"))
+	{
+		std::vector<Frame*> tempFrames;
+		tempFrames.reserve(6);
+		tempFrames.push_back(new Frame(asset->GetTileByName(object->tileSet->imgPath, object->tile->id), object->tile->displayTime));
+		for (int i = object->tile->id; i < object->tileSet->tilecount; i++)
+		{
+			if (object->tile->animationId == object->tileSet->tiles[i].animationId)
+			{
+				tempFrames.push_back(new Frame(asset->GetTileByName(object->tileSet->imgPath, object->tileSet->tiles[i].id), object->tile->displayTime));
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		if (!strcmp(object->tile->animationType, "Fade"))
+		{
+			return new GraphicsComponentFade(tempFrames, object->tile->animationMirror);
+		}
+		return new GraphicsComponentAnimated(tempFrames, object->tile->animationMirror);
+	}
+
+	return new GraphicsComponent(asset->GetTileByName(object->tileSet->imgPath, object->tile->id));
+}
+
+PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
+{
+	//TODO remove / 64 when PhysicsEngine is ready
+
+	if (!strcmp(object->tile->type, "PassTrough"))
+	{
+		return new PhysicsComponentStatic(object->pos / 64);
+	}
+	if (!strcmp(object->tile->type, "Enemy"))
+	{
+		return new PhysicsComponentStatic(object->pos / 64);
+	}
+	if (!strcmp(object->tile->type, "Bob"))
+	{
+		return new PhysicsComponentDynamic(object->pos / 64);
+	}
+	if (!strcmp(object->tile->type, "Eve"))
+	{
+		return new PhysicsComponentDynamic(object->pos / 64);
+	}
+	//if (!strcmp(object->tile->type, "Platform"))
+	{
+		return new PhysicsComponentStatic(object->pos / 64);
+	}
 }

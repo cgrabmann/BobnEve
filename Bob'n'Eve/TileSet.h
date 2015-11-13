@@ -3,17 +3,24 @@
 #include <pugixml.hpp>
 
 class Tile;
+class Object;
 
 class TileSet
 {
 	friend class MapLoader;
+	friend class Object;
+	friend class Tile;
 private:
-	TileSet();
-	~TileSet();
+	inline TileSet()
+	{}
+	inline ~TileSet()
+	{
+		delete[] tiles;
+	}
 
 	uint8_t firstgid = 1;
-	const char* name = nullptr;
-	const char* imgPath = nullptr;
+	const char* name;
+	const char* imgPath;
 	uint8_t tilecount = 0;
 	uint8_t tilewidth = 0;
 	uint8_t tileheight = 0;

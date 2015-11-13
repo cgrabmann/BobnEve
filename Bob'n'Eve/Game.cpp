@@ -24,6 +24,7 @@ void Game::Loop()
 
 	sf::RenderWindow& window = renderer_.GetWindow();
 	sf::Clock clock;
+	clock.restart();
 
 	while (window.isOpen())
 	{
