@@ -67,6 +67,12 @@
     <Filter Include="Quelldateien\MapLoader">
       <UniqueIdentifier>{13cd3416-f41c-43d7-bf56-31c3bf3d56bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Headerdateien\PhysicEngine">
+      <UniqueIdentifier>{93fda79c-b343-460f-82a6-99cf4a4f53f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\PhysicEngine">
+      <UniqueIdentifier>{b9015802-ecae-44e6-b776-0bb4cd7d73ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BobNEve.cpp">
@@ -143,6 +149,24 @@
     </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.cpp">
       <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicWorld.cpp">
+      <Filter>Quelldateien\PhysicEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionResolver.cpp">
+      <Filter>Quelldateien\PhysicEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionResolverSimple.cpp">
+      <Filter>Quelldateien\PhysicEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicBodyBase.cpp">
+      <Filter>Quelldateien\PhysicEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyStatic.cpp">
+      <Filter>Quelldateien\PhysicEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDynamic.cpp">
+      <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +247,27 @@
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.h">
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicWorld.h">
+      <Filter>Headerdateien\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDef.h">
+      <Filter>Headerdateien\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionResolver.h">
+      <Filter>Headerdateien\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionResolverSimple.h">
+      <Filter>Headerdateien\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicBodyBase.h">
+      <Filter>Headerdateien\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyStatic.h">
+      <Filter>Headerdateien\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDynamic.h">
+      <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
