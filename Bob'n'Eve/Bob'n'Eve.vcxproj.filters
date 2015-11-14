@@ -123,16 +123,10 @@
     <ClCompile Include="MapLoader.cpp">
       <Filter>Quelldateien\MapLoader</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TileSet.cpp">
-      <Filter>Quelldateien\MapLoader</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Tile.cpp">
-      <Filter>Quelldateien\MapLoader</Filter>
-    </ClCompile>
     <ClCompile Include="GraphicsComponentFade.cpp">
       <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentAnimated.cpp">
+    <ClCompile Include="GraphicsComponentAnimated.cpp">
       <Filter>Quelldateien\GameObject\Components\GraphicsComponents</Filter>
     </ClCompile>
     <ClCompile Include="GraphicsComponent.cpp">
@@ -144,28 +138,28 @@
     <ClCompile Include="PhysicsComponentBase.cpp">
       <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.cpp">
+    <ClCompile Include="PhysicsComponentStatic.cpp">
       <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.cpp">
+    <ClCompile Include="PhysicsComponentDynamic.cpp">
       <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicWorld.cpp">
+    <ClCompile Include="PhysicWorld.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
     <ClCompile Include="CollisionResolver.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionResolverSimple.cpp">
+    <ClCompile Include="CollisionResolverSimple.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
     <ClCompile Include="PhysicBodyBase.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyStatic.cpp">
+    <ClCompile Include="PhysicBodyStatic.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDynamic.cpp">
+    <ClCompile Include="PhysicBodyDynamic.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -224,10 +218,10 @@
     <ClInclude Include="MapLoader.h">
       <Filter>Headerdateien\MapLoader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TileSet.h">
+    <ClInclude Include="TileSet.h">
       <Filter>Headerdateien\MapLoader</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Tile.h">
+    <ClInclude Include="Tile.h">
       <Filter>Headerdateien\MapLoader</Filter>
     </ClInclude>
     <ClInclude Include="GraphicsComponentFade.h">
@@ -242,31 +236,37 @@
     <ClInclude Include="PhysicsComponentBase.h">
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.h">
+    <ClInclude Include="PhysicsComponentDynamic.h">
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.h">
+    <ClInclude Include="PhysicsComponentStatic.h">
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicWorld.h">
+    <ClInclude Include="Frame.h">
+      <Filter>Headerdateien\GameObject\Components\GraphicComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicWorld.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDef.h">
+    <ClInclude Include="Object.h">
+      <Filter>Headerdateien\MapLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicBodyDef.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
     <ClInclude Include="CollisionResolver.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionResolverSimple.h">
+    <ClInclude Include="CollisionResolverSimple.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
     <ClInclude Include="PhysicBodyBase.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyStatic.h">
+    <ClInclude Include="PhysicBodyStatic.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDynamic.h">
+    <ClInclude Include="PhysicBodyDynamic.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
   </ItemGroup>

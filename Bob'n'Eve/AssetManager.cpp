@@ -85,7 +85,8 @@ void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t
 	if (!texture->loadFromFile(textureDir_ + name))
 	{
 		std::string CouldNotLoadTexture = "";
-		assert(CouldNotLoadTexture == name);
+		__debugbreak();
+		//assert(CouldNotLoadTexture == name);
 		texture = GetErrorTex();
 	}
 
@@ -103,7 +104,8 @@ void AssetManager::RegisterSoundByName(const std::string& name)
 	if (!sound->loadFromFile(path))
 	{
 		std::string CouldNotLoadSound = "";
-		assert(CouldNotLoadSound == name);
+		__debugbreak();
+		//assert(CouldNotLoadSound == name);
 		//TODO: Errorhandling
 	}
 
@@ -121,7 +123,8 @@ void AssetManager::RegisterMusicByName(const std::string& name)
 	if (!music->openFromFile(path))
 	{
 		std::string CouldNotLoadMusic = "";
-		assert(CouldNotLoadMusic == name);
+		__debugbreak();
+		//assert(CouldNotLoadMusic == name);
 		//TODO: Errorhandling
 	}
 
@@ -145,7 +148,8 @@ sf::Texture* AssetManager::GetErrorTex()
 		if (!errorTex_->loadFromFile(textureDir_ + errorTex))
 		{
 			std::string CouldNotLoadTexture = errorTex;
-			assert(CouldNotLoadTexture == "");
+			__debugbreak();
+			//assert(CouldNotLoadTexture == "");
 			exit(-1);
 		}
 		errorTex_->setRepeated(true);
@@ -163,7 +167,8 @@ sf::Sprite* AssetManager::GetTileByName(const std::string& name, const uint8_t g
 	if (tileSets_.count(name) == 0)
 	{
 		std::string CouldNotLoadTexture = name;
-		assert(CouldNotLoadTexture == "");
+		__debugbreak();
+		//assert(CouldNotLoadTexture == "");
 		tileSets_[name] = new TileSet(GetErrorTex(), 0, 0, 0, 0);
 	}
 	TileSet* tileSet = tileSets_[name];

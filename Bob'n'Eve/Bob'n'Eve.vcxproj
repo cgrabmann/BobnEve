@@ -92,17 +92,15 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionResolverSimple.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDynamic.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyStatic.cpp" />
+    <ClCompile Include="CollisionResolverSimple.cpp" />
+    <ClCompile Include="PhysicBodyDynamic.cpp" />
+    <ClCompile Include="PhysicBodyStatic.cpp" />
     <ClCompile Include="CollisionResolver.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\GraphicsComponentAnimated.cpp" />
+    <ClCompile Include="GraphicsComponentAnimated.cpp" />
     <ClCompile Include="PhysicBodyBase.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicWorld.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Tile.cpp" />
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TileSet.cpp" />
+    <ClCompile Include="PhysicsComponentDynamic.cpp" />
+    <ClCompile Include="PhysicsComponentStatic.cpp" />
+    <ClCompile Include="PhysicWorld.cpp" />
     <ClCompile Include="GraphicsComponentFade.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Vector2f.cpp" />
@@ -131,17 +129,19 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <None Include="lib\box2d.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionResolverSimple.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDynamic.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyStatic.h" />
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="CollisionResolverSimple.h" />
+    <ClInclude Include="PhysicBodyDynamic.h" />
+    <ClInclude Include="PhysicBodyStatic.h" />
     <ClInclude Include="CollisionResolver.h" />
     <ClInclude Include="PhysicBodyBase.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicBodyDef.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentDynamic.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentStatic.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicWorld.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Tile.h" />
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TileSet.h" />
+    <ClInclude Include="PhysicBodyDef.h" />
+    <ClInclude Include="PhysicsComponentDynamic.h" />
+    <ClInclude Include="PhysicsComponentStatic.h" />
+    <ClInclude Include="PhysicWorld.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="TileSet.h" />
     <ClInclude Include="GraphicsComponentFade.h" />
     <ClInclude Include="Vector2f.h" />
     <ClInclude Include="AssetManager.h" />
