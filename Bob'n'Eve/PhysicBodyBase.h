@@ -20,7 +20,7 @@ protected:
 	virtual ~PhysicBodyBase();
 
 	virtual void Move(const Vector2f& gravity, int32_t ms) = 0;
-	void ResolveCollision(PhysicBodyBase& otherBody);
+	const CollisionResolver& GetResolver() const;
 
 	Vector2f velocity_;
 	Vector2f position_;

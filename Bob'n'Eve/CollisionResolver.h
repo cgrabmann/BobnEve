@@ -7,6 +7,7 @@ public:
 	CollisionResolver();
 	virtual ~CollisionResolver();
 
-	virtual void Resolve(PhysicBodyBase& body1, PhysicBodyBase& body2) = 0;
+	virtual float SolveValue(PhysicBodyBase& body1, PhysicBodyBase& body2) const = 0;
+	virtual void Resolve(PhysicBodyBase& body1, PhysicBodyBase& body2) const = 0;
 };
 

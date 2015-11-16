@@ -43,7 +43,7 @@ PhysicBodyBase::~PhysicBodyBase()
 {
 }
 
-void PhysicBodyBase::ResolveCollision(PhysicBodyBase& otherBody)
+const CollisionResolver& PhysicBodyBase::GetResolver() const
 {
-	resolver_->Resolve(*this, otherBody);
+	return *resolver_;
 }

@@ -7,6 +7,7 @@ public:
 	CollisionResolverSimple();
 	~CollisionResolverSimple();
 
-	void Resolve(PhysicBodyBase& body1, PhysicBodyBase& body2) override;
+	float SolveValue(PhysicBodyBase& body1, PhysicBodyBase& body2) const override;
+	void Resolve(PhysicBodyBase& body1, PhysicBodyBase& body2) const override;
 };
 
