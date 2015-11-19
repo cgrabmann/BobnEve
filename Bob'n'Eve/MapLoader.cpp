@@ -20,14 +20,6 @@
 #include "Frame.h"
 #include "Object.h"
 
-MapLoader::MapLoader()
-{
-}
-
-MapLoader::~MapLoader()
-{
-}
-
 View* MapLoader::LoadMap(const char* path)
 {
 	assert(path != NULL);
@@ -162,6 +154,8 @@ View* MapLoader::LoadMap(const char* path)
 			{
 				platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
 			}
+
+			delete object;
 		}
 
 		xPos++;
@@ -219,6 +213,8 @@ View* MapLoader::LoadMap(const char* path)
 		{
 			platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
 		}
+
+		delete object;
 	}
 
 	//clean up
@@ -254,33 +250,18 @@ InputComponent* MapLoader::ParseInput(Object* object)
 
 GraphicsComponent* MapLoader::ParseGraphics(Object* object)
 {
-	AssetManager* asset = AssetManager::Instance();
 	GraphicsComponent* tempGraphics = nullptr;
 
 	if (strcmp(object->tile->animationType, "Static"))
 	{
-		std::vector<Frame*> tempFrames;
-		tempFrames.reserve(6);
-		for (int i = object->tile->id; i < object->tileSet->tilecount; i++)
-		{
-			if (object->tile->animationId == object->tileSet->tiles[i].animationId)
-			{
-				tempFrames.push_back(new Frame(asset->GetTileByName(object->tileSet->imgPath, object->tileSet->tiles[i].id), object->tile->displayTime));
-			}
-			else
-			{
-				break;
-			}
-		}
-
 		if (!strcmp(object->tile->animationType, "Fade"))
 		{
-			return new GraphicsComponentFade(tempFrames, object->tile->animationMirror);
+			return new GraphicsComponentFade(GetAnimationById(object, object->tile->animationId), object->tile->animationMirror);
 		}
-		return new GraphicsComponentAnimated(tempFrames, object->tile->animationMirror);
+		return new GraphicsComponentAnimated(GetAnimationById(object, object->tile->animationId), object->tile->animationMirror);
 	}
 
-	return new GraphicsComponent(asset->GetTileByName(object->tileSet->imgPath, object->tile->id));
+	return new GraphicsComponent(AssetManager::Instance()->GetTileByName(object->tileSet->imgPath, object->tile->id));
 }
 
 PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
@@ -307,4 +288,19 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	{
 		return new PhysicsComponentStatic(object->pos / 64);
 	}
+}
+
+std::vector<Frame*> MapLoader::GetAnimationById(Object* object, uint8_t id)
+{
+	std::vector<Frame*> tempFrames;
+	tempFrames.reserve(4);
+	for (int i = 0; i < object->tileSet->tilecount; i++)
+	{
+		if (object->tileSet->tiles[i].animationId == id)
+		{
+			tempFrames.push_back(new Frame(AssetManager::Instance()->GetTileByName(object->tileSet->imgPath, object->tileSet->tiles[i].id), object->tile->displayTime));
+		}
+	}
+
+	return tempFrames;
 }
