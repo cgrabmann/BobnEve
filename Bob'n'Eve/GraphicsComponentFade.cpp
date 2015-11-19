@@ -7,7 +7,7 @@
 #include "Frame.h"
 
 
-GraphicsComponentFade::GraphicsComponentFade(std::vector<Frame*> frames, bool mirror) : GraphicsComponentAnimated(frames, mirror), lastIndex_(frames.size() - 1), lastSprite_(frames.at(lastIndex_)->sprite), alpha_(255), lastAlpha_(0)
+GraphicsComponentFade::GraphicsComponentFade(std::vector<Frame*> frames, bool mirror, bool running) : GraphicsComponentAnimated(frames, mirror, running), lastIndex_(frames.size() - 1), lastSprite_(frames.at(lastIndex_)->sprite), alpha_(255), lastAlpha_(0)
 {
 }
 

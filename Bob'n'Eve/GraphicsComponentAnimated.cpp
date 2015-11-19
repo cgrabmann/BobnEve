@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "Frame.h"
 
-GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<Frame*> frames, bool mirror) : GraphicsComponent(frames.at(0)->sprite), frames_(frames), index_(0), msCount_(0), displayTime_(frames.at(0)->displayTime), mirror_(mirror), mirroring_(false)
+GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<Frame*> frames, bool mirror, bool running) : GraphicsComponent(frames.at(0)->sprite, running), frames_(frames), index_(0), msCount_(0), displayTime_(frames.at(0)->displayTime), mirror_(mirror), mirroring_(false)
 {
 }
 
@@ -12,28 +12,31 @@ GraphicsComponentAnimated::~GraphicsComponentAnimated()
 
 void GraphicsComponentAnimated::Update(GameObject& object, int16_t ms)
 {
-	msCount_ += ms;
-
-	if (msCount_ >= displayTime_)
+	if (isRunning_)
 	{
-		msCount_ -= displayTime_;
-		index_ += mirroring_ ? -1 : 1;
-		if (mirror_)
+		msCount_ += ms;
+
+		if (msCount_ >= displayTime_)
 		{
-			if (index_ == 0)
+			msCount_ -= displayTime_;
+			index_ += mirroring_ ? -1 : 1;
+			if (mirror_)
 			{
-				mirroring_ = false;
+				if (index_ == 0)
+				{
+					mirroring_ = false;
+				}
+				if (index_ == frames_.size() - 1)
+				{
+					mirroring_ = true;
+				}
 			}
-			if (index_ == frames_.size() - 1)
+			else
 			{
-				mirroring_ = true;
+				index_ %= frames_.size();
 			}
+			displayTime_ = frames_.at(index_)->displayTime;
+			sprite_ = frames_.at(index_)->sprite;
 		}
-		else
-		{
-			index_ %= frames_.size();
-		}
-		displayTime_ = frames_.at(index_)->displayTime;
-		sprite_ = frames_.at(index_)->sprite;
 	}
 }
