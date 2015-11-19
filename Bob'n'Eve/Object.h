@@ -4,19 +4,17 @@
 #include "Tile.h"
 
 class Object
-	{
-		friend class MapLoader;
+{
+	friend class MapLoader;
 
-	private:
-		inline Object()
-		{}
-		inline ~Object()
-		{}
+private:
+	inline Object() {}
+	inline ~Object() {}
 
-		const Tile* tile;
-		const TileSet* tileSet;
+	const Tile* tile;
+	const TileSet* tileSet;
 
-		int8_t gravity = 0;
-		uint8_t enemyId = -1; 
-		Vector2f pos, size;
-	};
+	int8_t gravity = 0;
+	uint8_t enemyId = -1;
+	Vector2f pos, size;
+};

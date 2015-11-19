@@ -8,10 +8,8 @@
 		friend class TileSet;
 
 	private:
-		inline Tile()
-		{}
-		inline ~Tile()
-		{}
+		inline Tile() {}
+		inline ~Tile() {}
 
 		bool bobPass = false;
 		bool evePass = false;

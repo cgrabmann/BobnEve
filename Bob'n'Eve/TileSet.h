@@ -10,9 +10,9 @@ class TileSet
 	friend class MapLoader;
 	friend class Object;
 	friend class Tile;
+
 private:
-	inline TileSet()
-	{}
+	inline TileSet(){}
 	inline ~TileSet()
 	{
 		delete[] tiles;
