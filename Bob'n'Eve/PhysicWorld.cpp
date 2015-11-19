@@ -36,10 +36,12 @@ PhysicBodyBase* PhysicWorld::CreateBody(const PhysicBodyDef& def)
 
 	switch (def.type_)
 	{
-	case (PhysicBody::Type::STATIC):
+	case (PhysicBody::Type::STATIC) :
 		body = new PhysicBodyStatic(def);
+		break;
 	case (PhysicBody::Type::DYNAMIC) :
 		body = new PhysicBodyDynamic(def);
+		break;
 	}
 
 	bodies_.push_back(body);
