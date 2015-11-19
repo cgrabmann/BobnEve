@@ -22,8 +22,8 @@ private:
 		inline ~MapLoader() {}
 
 	static InputComponent* ParseInput(Object* object);
-	static GraphicsComponent* ParseGraphics(Object* object);
+	static GraphicsComponent* ParseGraphics(Object* object, const Tile* tile = nullptr);
 	static PhysicsComponentBase* ParsePhysics(Object* object);
-
-	static std::vector<Frame*> GetAnimationById(Object* object, uint8_t id);
+	static GraphicsComponent* ParseAnimation(Object* object, uint8_t animationId);
+	static std::vector<Frame*> GetFramesByAnimationId(Object* object, uint8_t animationId);
 };

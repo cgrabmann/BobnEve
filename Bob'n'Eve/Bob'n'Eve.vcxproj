@@ -54,6 +54,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>.\lib\pugixml\src;.\lib;.\lib\Box2D;.\lib\SFML\include</AdditionalIncludeDirectories>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -92,6 +93,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\DoubleEnemy.cpp" />
     <ClCompile Include="CollisionResolverSimple.cpp" />
     <ClCompile Include="PhysicBodyDynamic.cpp" />
     <ClCompile Include="PhysicBodyStatic.cpp" />
@@ -129,6 +131,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <None Include="lib\box2d.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\DoubleEnemy.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="CollisionResolverSimple.h" />

@@ -11,7 +11,7 @@ class GameObject;
 class GraphicsComponent
 {
 public:
-	GraphicsComponent(bool running = true);
+	GraphicsComponent();
 	GraphicsComponent(sf::Sprite* sprite, bool running = true);
 	virtual ~GraphicsComponent();
 

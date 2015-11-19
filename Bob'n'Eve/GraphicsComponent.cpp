@@ -5,7 +5,7 @@
 #include <SFML/include/SFML/Graphics/Sprite.hpp>
 
 
-GraphicsComponent::GraphicsComponent(bool running) : sprite_(), isRunning_(running)
+GraphicsComponent::GraphicsComponent() : sprite_(), isRunning_(true)
 {
 }
 

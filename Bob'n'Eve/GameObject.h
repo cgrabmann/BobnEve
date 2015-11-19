@@ -13,8 +13,8 @@ public:
 	GameObject(InputComponent* input,	PhysicsComponentBase* physics,	GraphicsComponent* graphics);
 	virtual ~GameObject();
 
-	void Update(int16_t ms);
-	void Draw(Renderer& renderer) const;
+	virtual void Update(int16_t ms);
+	virtual void Draw(Renderer& renderer) const;
 
 	float GetLayer() const;
 	Vector2f GetPosition() const;
