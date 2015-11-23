@@ -8,35 +8,36 @@ GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<Frame*> frames,
 
 GraphicsComponentAnimated::~GraphicsComponentAnimated()
 {
+	frames_.clear();
 }
 
 void GraphicsComponentAnimated::Update(GameObject& object, int16_t ms)
 {
-	if (isRunning_)
-	{
-		msCount_ += ms;
+	if (!isRunning_)
+		return;
 
-		if (msCount_ >= displayTime_)
+	msCount_ += ms;
+
+	if (msCount_ >= displayTime_)
+	{
+		msCount_ -= displayTime_;
+		index_ += mirroring_ ? -1 : 1;
+		if (mirror_)
 		{
-			msCount_ -= displayTime_;
-			index_ += mirroring_ ? -1 : 1;
-			if (mirror_)
+			if (index_ == 0)
 			{
-				if (index_ == 0)
-				{
-					mirroring_ = false;
-				}
-				if (index_ == frames_.size() - 1)
-				{
-					mirroring_ = true;
-				}
+				mirroring_ = false;
 			}
-			else
+			if (index_ == frames_.size() - 1)
 			{
-				index_ %= frames_.size();
+				mirroring_ = true;
 			}
-			displayTime_ = frames_.at(index_)->displayTime;
-			sprite_ = frames_.at(index_)->sprite;
 		}
+		else
+		{
+			index_ %= frames_.size();
+		}
+		displayTime_ = frames_.at(index_)->displayTime;
+		sprite_ = frames_.at(index_)->sprite;
 	}
 }

@@ -12,7 +12,7 @@ Renderer::Renderer() : window_(
 #else
 	sf::VideoMode::getFullscreenModes()[0], "Bob'n'Eve", sf::Style::Fullscreen
 #endif
-), scale_(1.f, 1.f)
+), scale_(2.f, 2.f)
 {
 	sf::Vector2u size = window_.getSize();
 
@@ -47,7 +47,7 @@ sf::RenderTarget& Renderer::GetTarget()
 void Renderer::Render(View& view)
 {
 	sf::View sfView = window_.getView();
-	sfView.setCenter(view.GetCenterPoint().ToSFML());
+	sfView.setCenter((view.GetCenterPoint() * scale_).ToSFML());
 	window_.setView(sfView);
 
 	window_.clear();
@@ -60,7 +60,7 @@ void Renderer::Draw(sf::Shape& shape)
 	window_.draw(shape);
 }
 
-sf::Vector2f Renderer::GetScale()
+Vector2f Renderer::GetScale() const
 {
 	return scale_;
 }

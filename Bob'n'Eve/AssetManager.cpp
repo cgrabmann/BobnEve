@@ -25,7 +25,9 @@ musicDir_(Global::AssetDir + "music/"), errorTex_(nullptr)
 
 AssetManager::~AssetManager()
 {
-
+	tileSets_.clear();
+	sounds_.clear();
+	music_.clear();
 }
 
 void AssetManager::LoadAll()

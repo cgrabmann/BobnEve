@@ -69,7 +69,6 @@ Vector2f inline operator* (const float& mult, const Vector2f& vec)
 {
 	return Vector2f(vec.x * mult, vec.y * mult);
 }
-
 Vector2f inline operator* (const Vector2f& vec1, const Vector2f& vec2){
 	return Vector2f(vec1.x * vec2.x, vec1.y * vec2.y);
 }
@@ -81,6 +80,9 @@ Vector2f inline operator/ (const Vector2f& vec, const float& dif)
 Vector2f inline operator/ (const float& dif, const Vector2f& vec)
 {
 	return Vector2f(vec.x / dif, vec.y / dif);
+}
+Vector2f inline operator/ (const Vector2f& vec1, const Vector2f& vec2){
+	return Vector2f(vec1.x / vec2.x, vec1.y / vec2.y);
 }
 
 

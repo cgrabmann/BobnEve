@@ -5,26 +5,38 @@
 #include "Global.h"
 
 
-GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics) : layer_(1.f), isActive_(true), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }
 
 GameObject::~GameObject()
 {
-
+	delete input_;
+	delete physics_;
+	delete graphics_;
 }
 
 void GameObject::Update(int16_t ms)
 {
-	input_->Update(*this, ms);
-	physics_->Update(*this, ms);
-	graphics_->Update(*this, ms);
+	if (!isActive_)
+		return;
+
+	if (input_)
+		input_->Update(*this, ms);
+	if (physics_)
+		physics_->Update(*this, ms);
+	if (graphics_)
+		graphics_->Update(*this, ms);
 }
 
 void GameObject::Draw(Renderer& renderer) const
 {
-	graphics_->Draw(*this, renderer);
+	if (!isActive_)
+		return;
+
+	if (graphics_)
+		graphics_->Draw(*this, renderer);
 }
 
 float GameObject::GetLayer() const
@@ -78,4 +90,9 @@ void GameObject::Up()
 {
 	const Vector2f& velocity = GetVelocity();
 	SetVelocity(velocity.x, -5);
+}
+
+void GameObject::Kill()
+{
+	isActive_ = false;
 }

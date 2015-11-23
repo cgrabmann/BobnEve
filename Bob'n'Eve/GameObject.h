@@ -28,10 +28,16 @@ public:
 	void Left();
 	void Right();
 	void Up();
+	void Kill();
+
+	bool isActive() const { return isActive_; }
+	void isActive(const bool isActive) { isActive_ = isActive; }
 
 protected:
 	//z-buffer
 	float layer_;
+
+	bool isActive_;
 
 	InputComponent* input_;
 	PhysicsComponentBase* physics_;
