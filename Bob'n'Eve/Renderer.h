@@ -20,7 +20,7 @@ public:
 
 	Vector2f GetScale() const;
 
-	void Render(View& drawable);
+	void Render();
 
 private:
 	sf::RenderWindow window_;

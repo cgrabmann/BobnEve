@@ -14,12 +14,12 @@ class MapLoader
 {
 public:
 
-	static View* LoadMap(const char* path);
+	static void LoadMap(const char* path);
 
 private:
 	inline MapLoader() {}
 	inline MapLoader(const MapLoader&) {}
-		inline ~MapLoader() {}
+	inline ~MapLoader() {}
 
 	static InputComponent* ParseInput(Object* object);
 	static GraphicsComponent* ParseGraphics(Object* object, const Tile* tile = nullptr);

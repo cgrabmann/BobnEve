@@ -10,15 +10,23 @@ class Enemy;
 class View
 {
 public:
-	View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies);
-	~View();
+	static View* Instance();
+
+	void Register(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies);
+	void CleanUp();
 
 	void Update(int16_t ms);
 	void Draw(Renderer& renderer) const;
 
-	const Vector2f GetCenterPoint();
+	const Vector2f GetCenterPoint() const;
+
+protected:
+	View();
+	~View();
 
 private:
+	static View* instance_;
+
 	Player* bob_;
 	Player* eve_;
 
@@ -27,4 +35,17 @@ private:
 	std::vector<Enemy*>* enemys_;
 
 	//std::vector<Background*> backgrounds;
+
+	class CGuard
+	{
+	public:
+		~CGuard()
+		{
+			if (NULL != View::instance_)
+			{
+				delete View::instance_;
+				View::instance_ = NULL;
+			}
+		}
+	};
 };

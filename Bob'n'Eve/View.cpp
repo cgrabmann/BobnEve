@@ -6,27 +6,41 @@
 #include "Vector2f.h"
 #include "PhysicManager.h"
 
-View::View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies):
-bob_(bob), eve_(eve), platforms_(platforms), enemys_(enemies)
+View::View() : bob_(nullptr), eve_(nullptr), platforms_(new std::vector<Platform*>), enemys_(new std::vector<Enemy*>)
 {
 }
 
 View::~View()
-{
-	delete bob_;
-	delete eve_;
-	for (size_t i = 0; i < platforms_->size(); i++)
-	{
-		delete platforms_->at(i);
-	}
-	delete platforms_;
-	for (size_t i = 0; i < enemys_->size(); i++)
-	{
-		delete enemys_->at(i);
-	}
-	delete enemys_;
+{	
 }
 
+View* View::instance_ = NULL;
+
+View* View::Instance()
+{
+	static CGuard g;   // Speicherbereinigung
+	if (!instance_)
+		instance_ = new View();
+	return instance_;
+}
+
+void View::Register(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies)
+{
+	bob_ = bob;
+	eve_ = eve;
+	platforms_ = platforms;
+	enemys_ = enemies;
+}
+
+void View::CleanUp()
+{
+	delete bob_;
+	bob_ = nullptr;
+	delete eve_;
+	eve_ = nullptr;
+	platforms_->clear();
+	enemys_->clear();
+}
 
 void View::Update(int16_t ms)
 {
@@ -62,7 +76,7 @@ void View::Draw(Renderer& renderer) const
 	eve_->Draw(renderer);
 }
 
-const Vector2f View::GetCenterPoint()
+const Vector2f View::GetCenterPoint() const
 {
 	return (bob_->GetRenderPosition() + eve_->GetRenderPosition()) / 2;
 }

@@ -10,7 +10,7 @@
 Game::Game() : paused_(false)
 {
 	PhysicManager::CreateInstance(Vector2f(0.f, 10.f));
-	view_ = MapLoader::LoadMap("Map1.tmx");
+	MapLoader::LoadMap("Map1.tmx");
 }
 
 Game::~Game()
@@ -62,10 +62,10 @@ void Game::Loop()
 		if (window.hasFocus() && !paused_)
 #endif
 		{
-			view_->Update(elapsedTime.asMilliseconds());
+			View::Instance()->Update(elapsedTime.asMilliseconds());
 		}
 
-		renderer_.Render(*view_);
+		renderer_.Render();
 	}
 }
 

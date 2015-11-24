@@ -44,14 +44,15 @@ sf::RenderTarget& Renderer::GetTarget()
 	return window_;
 }
 
-void Renderer::Render(View& view)
+void Renderer::Render()
 {
+	View* view = View::Instance();
 	sf::View sfView = window_.getView();
-	sfView.setCenter((view.GetCenterPoint() * scale_).ToSFML());
+	sfView.setCenter((view->GetCenterPoint() * scale_).ToSFML());
 	window_.setView(sfView);
 
 	window_.clear();
-	view.Draw(*this);
+	view->Draw(*this);
 	window_.display();
 }
 

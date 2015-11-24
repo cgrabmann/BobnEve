@@ -5,11 +5,11 @@
 #include <SFML/include/SFML/Graphics/Sprite.hpp>
 
 
-GraphicsComponent::GraphicsComponent() : sprite_(), isRunning_(true)
+GraphicsComponent::GraphicsComponent() : GraphicsComponent(nullptr, true)
 {
 }
 
-GraphicsComponent::GraphicsComponent(sf::Sprite* sprite, bool running) : sprite_(sprite), isRunning_(running)
+GraphicsComponent::GraphicsComponent(sf::Sprite* sprite, bool running) : sprite_(sprite), isRunning_(running), isVisible_(true)
 {
 }
 

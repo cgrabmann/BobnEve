@@ -21,7 +21,7 @@
 #include "Object.h"
 #include <windows.h>
 
-View* MapLoader::LoadMap(const char* path)
+void MapLoader::LoadMap(const char* path)
 {
 	assert(path != NULL);
 
@@ -214,7 +214,8 @@ View* MapLoader::LoadMap(const char* path)
 	tileSets.clear();
 	tiles.clear();
 
-	return new View(bob, eve, platforms, enemies);
+	View::Instance()->CleanUp();
+	View::Instance()->Register(bob, eve, platforms, enemies);
 }
 
 InputComponent* MapLoader::ParseInput(Object* object)
