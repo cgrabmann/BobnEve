@@ -128,7 +128,7 @@ void MapLoader::LoadMap(const char* path)
 			object->id = -1;
 			object->tile = tiles[gid];
 			object->tileSet = tileSets[object->tile->tileSetName];
-			object->pos = Vector2f(xPos * Global::TileWidth, yPos * Global::TileHeight);
+			object->pos = Vector2f(xPos * Global::TileWidth + Global::TileWidth / 2, yPos * Global::TileHeight + Global::TileHeight / 2);
 			object->size = Vector2f(Global::TileWidth, Global::TileHeight);
 			object->type = object->tile->type;
 			object->gravity = 0;
@@ -158,8 +158,8 @@ void MapLoader::LoadMap(const char* path)
 		object->id = xmlObject.attribute("id").as_int();
 		object->tile = tiles[gid];
 		object->tileSet = tileSets[object->tile->tileSetName];
-		object->pos = Vector2f(xmlObject.attribute("x").as_float(), xmlObject.attribute("y").as_float());
 		object->size = Vector2f(xmlObject.attribute("width").as_int(), xmlObject.attribute("height").as_int());
+		object->pos = Vector2f(xmlObject.attribute("x").as_float() + object->size.x / 2, xmlObject.attribute("y").as_float() - object->size.y / 2);
 		object->type = xmlObject.attribute("tpye").empty() ? object->tile->type : xmlObject.attribute("tpye").as_string();
 
 		for (pugi::xml_node xmlObjectProperty = xmlObject.child("properties").child("property"); xmlObjectProperty; xmlObjectProperty = xmlObjectProperty.next_sibling("property"))
@@ -265,7 +265,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 {
 	//TODO remove / 64 when PhysicsEngine is ready
 	PhysicBodyDef bodyDef;
-	bodyDef.position_ = object->pos / 64;
+	bodyDef.bounds = FloatRect(object->pos, Vector2f(32, 32));
 
 	if (!strcmp(object->type, "Enemy"))
 	{
@@ -273,10 +273,18 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 		bodyDef.collisionIgnorGroup_ = 1;
 		return new PhysicsComponentStatic(bodyDef);
 	}
-	if (!strcmp(object->type, "Bob") || !strcmp(object->type, "Eve"))
+	if (!strcmp(object->type, "Bob"))
 	{
+		bodyDef.bounds.halfSize.y = 48;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnorGroup_ = 2;
+		return new PhysicsComponentDynamic(bodyDef);
+	}
+	if (!strcmp(object->type, "Eve"))
+	{
+		bodyDef.bounds.halfSize.y = 48;
+		bodyDef.type_ = PhysicBody::DYNAMIC;
+		bodyDef.collisionIgnorGroup_ = 3;
 		return new PhysicsComponentDynamic(bodyDef);
 	}
 	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))

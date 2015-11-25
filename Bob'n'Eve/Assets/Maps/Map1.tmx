@@ -591,7 +591,7 @@
    </properties>
   </tile>
  </tileset>
- <layer name="Platforms" width="100" height="100" opacity="0.94">
+ <layer name="Static" width="100" height="100" opacity="0.94">
   <data>
    <tile gid="40"/>
    <tile gid="33"/>
@@ -10595,36 +10595,36 @@
    <tile gid="0"/>
   </data>
  </layer>
- <objectgroup name="Spawns">
-  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="101.333" y="425.333" width="64" height="96">
+ <objectgroup name="Dynamic">
+  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="67" y="268.333" width="64" height="96">
    <properties>
     <property name="Gravity" value="1"/>
    </properties>
   </object>
-  <object id="2" name="Eve Spawn" type="Eve" gid="9" x="235.333" y="426.667" width="64" height="96">
+  <object id="2" name="Eve Spawn" type="Eve" gid="9" x="236.333" y="463.667" width="64" height="96">
    <properties>
     <property name="Gravity" value="-1"/>
    </properties>
   </object>
-  <object id="3" name="Enemy0" type="Enemy" gid="17" x="382.667" y="392.667" width="64" height="64">
+  <object id="3" name="Enemy0" type="Enemy" gid="17" x="358.667" y="462.667" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
     <property name="Gravity" value="1"/>
    </properties>
   </object>
-  <object id="4" name="Enemy0" type="Enemy" gid="18" x="374.667" y="632" width="64" height="64">
+  <object id="4" name="Enemy0" type="Enemy" gid="18" x="350.667" y="702" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
     <property name="Gravity" value="-1"/>
    </properties>
   </object>
-  <object id="8" name="Enemy1" type="Enemy" gid="17" x="1210.67" y="519.333" width="64" height="64">
+  <object id="8" name="Enemy1" type="Enemy" gid="17" x="1175.67" y="589.333" width="64" height="64">
    <properties>
     <property name="EnemyId" value="1"/>
     <property name="Gravity" value="-1"/>
    </properties>
   </object>
-  <object id="9" name="Enemy1" type="Enemy" gid="18" x="1210.67" y="284" width="64" height="64">
+  <object id="9" name="Enemy1" type="Enemy" gid="18" x="1175.67" y="354" width="64" height="64">
    <properties>
     <property name="EnemyId" value="1"/>
     <property name="Gravity" value="1"/>

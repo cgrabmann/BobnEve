@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "Vector2f.h"
 #include "PhysicManager.h"
+#include <algorithm>
 
 View::View() : objects_(std::vector<GameObject*>()), players_(std::vector<Player*>())
 {

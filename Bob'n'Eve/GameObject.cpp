@@ -45,7 +45,7 @@ Vector2f GameObject::GetPosition() const
 
 Vector2f GameObject::GetRenderPosition() const
 {
-	return (physics_->GetPosition() * Vector2f(Global::TileWidth, Global::TileHeight));
+	return (physics_->GetPosition());// *Vector2f(Global::TileWidth, Global::TileHeight));
 }
 
 Vector2f GameObject::GetOrientation() const

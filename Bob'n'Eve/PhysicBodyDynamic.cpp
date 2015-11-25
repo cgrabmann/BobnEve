@@ -1,5 +1,7 @@
 #include "PhysicBodyDynamic.h"
 #include "PhysicBodyStatic.h"
+#include <SFML/include/SFML/Window/Keyboard.hpp>
+#include "Global.h"
 
 void PhysicBodyDynamic::SetVelocity(const Vector2f& velocity)
 {
@@ -21,11 +23,21 @@ PhysicBodyDynamic::~PhysicBodyDynamic()
 
 void PhysicBodyDynamic::Move(const Vector2f& gravity, float seconds)
 {
-	position_.x += velocity_.x * seconds;
-	position_.y += velocity_.y * seconds;
+	//Gravity
+	velocity_.x += gravity.x * seconds;
+	velocity_.y += gravity.y * seconds * physicScale_;
 
-	position_.x += gravity.x * seconds;
-	position_.y += gravity.y * seconds * physicScale_;
+	//Friction
+	if (velocity_.x < 0)
+		velocity_.x += 10.f * seconds;
+	if (velocity_.x > 0)
+		velocity_.x -= 20.f * seconds;
+	if (velocity_.x >= -1.f && velocity_.x <= 1.f)
+		velocity_.x = 0.f;
+
+	//Move
+	bounds_.center.x += Global::TileWidth * velocity_.x * seconds;
+	bounds_.center.y += Global::TileHeight * velocity_.y * seconds;
 }
 
 void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
@@ -33,31 +45,40 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 	if (InSameIgnoreGroup(otherBody))
 		return;
 
-	const Vector2f& otherPos = otherBody.GetPosition();
-	const Vector2f& otherHalfSize = otherBody.GetHalfSize();
+	FloatRect otherBounds = otherBody.GetBounds();
+	Vector2f overlap = bounds_.GetOverlap(otherBounds);
 
-	if (IsCollidingY(otherBody)){
-		//y
-		if (velocity_.y * physicScale_ > 0)
-			position_.y = otherPos.y - otherHalfSize.y - halfSize_.y;
-		else if (velocity_.y * physicScale_ < 0)
-			position_.y = otherPos.y + otherHalfSize.y + halfSize_.y;
-		//gravity
-		else if (physicScale_ > 0)
-			position_.y = otherPos.y - otherHalfSize.y - halfSize_.y;
+	float wy = ((bounds_.halfSize.x + otherBounds.halfSize.x) * 2) * (bounds_.center.y - otherBounds.center.y);
+	float hx = ((bounds_.halfSize.y + otherBounds.halfSize.y) * 2) * (bounds_.center.x - otherBounds.center.x);
+
+	if (wy > hx)
+		if (wy > -hx)
+			/* top */
+		{
+			overlap.x = 0;
+			velocity_.y = 0;
+		}
 		else
-			position_.y = otherPos.y + otherHalfSize.y + halfSize_.y;
-		velocity_.y = 0;
-	}
+			/* left */
+		{
+			overlap.y = 0;
+			velocity_.x = 0;
+		}
 	else
-	{
-		//x
-		if (velocity_.x > 0)
-			position_.x = otherPos.x - otherHalfSize.x - halfSize_.x;
-		else if (velocity_.x < 0)
-			position_.x = otherPos.x + otherHalfSize.x + halfSize_.x;
-		velocity_.x = 0;
-	}
+		if (wy < -hx)
+			/* bottom */
+		{
+			overlap.x = 0;
+			velocity_.y = 0;
+		}
+		else
+			/* right */
+		{
+			overlap.y = 0;
+			velocity_.x = 0;
+		}
+
+	bounds_.center -= overlap;
 }
 
 void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
@@ -65,27 +86,49 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 	if (InSameIgnoreGroup(otherBody))
 		return;
 
-	Vector2f& otherPos = otherBody.position_;
-	Vector2f& otherVel = otherBody.velocity_;
-	const Vector2f& otherHalfSize = otherBody.GetHalfSize();
+	FloatRect otherBounds = otherBody.bounds_;
+	Vector2f otherVelocity = otherBody.velocity_;
 
-	//x
-	if (velocity_.x > 0)
-		position_.x = otherPos.x - otherHalfSize.x - halfSize_.x;
-	else if (velocity_.x < 0)
-		position_.x = otherPos.x + otherHalfSize.x + halfSize_.x;
-	velocity_.x = 0;
+	Vector2f averageVelocity = velocity_ + otherVelocity;
+	averageVelocity /= 2;
 
-	//y
-	if (velocity_.y * physicScale_ > 0)
-		position_.y = otherPos.y - otherHalfSize.y - halfSize_.y;
-	else if(velocity_.y * physicScale_ < 0)
-		position_.y = otherPos.y + otherHalfSize.y + halfSize_.y;
-	velocity_.y = 0;
+	Vector2f overlap = bounds_.GetOverlap(otherBounds);
+	overlap /= 2;
 
+	float wy = ((bounds_.halfSize.x + otherBounds.halfSize.x) * 2) * (bounds_.center.y - otherBounds.center.y);
+	float hx = ((bounds_.halfSize.y + otherBounds.halfSize.y) * 2) * (bounds_.center.x - otherBounds.center.x);
 
-	Vector2f velAvg = velocity_ + otherVel;
-	velAvg /= 2;
-	velocity_ = velAvg;
-	otherVel = velAvg;
+	if (wy > hx)
+		if (wy > -hx)
+			/* top */
+		{
+			overlap.x = 0;
+			velocity_.y = averageVelocity.y; 
+			otherBody.velocity_.y = averageVelocity.y;
+		}
+		else
+			/* left */
+		{
+			overlap.y = 0;
+			velocity_.x = averageVelocity.x;
+			otherBody.velocity_.x = averageVelocity.x;
+		}
+	else
+		if (wy < -hx)
+			/* bottom */
+		{
+			overlap.x = 0;
+			velocity_.y = averageVelocity.y;
+			otherBody.velocity_.y = averageVelocity.y;
+		}
+		else
+			/* right */
+		{
+			overlap.y = 0;
+			velocity_.x = averageVelocity.x;
+			otherBody.velocity_.x = averageVelocity.x;
+		}
+
+	bounds_.center -= overlap;
+	otherBody.bounds_.center += overlap;
 }

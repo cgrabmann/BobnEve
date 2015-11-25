@@ -1,21 +1,20 @@
 #pragma once
 #include <SFML/include/SFML/System/Vector2.hpp>
-#include <Box2D/Box2D.h>
 
 class Vector2f
 {
 public:
-	Vector2f();
-	explicit Vector2f(const float& x, const float& y);
-	explicit Vector2f(const sf::Vector2f& vec);
-	explicit Vector2f(const b2Vec2& vec);
-	~Vector2f();
+	Vector2f() : x(0), y(0) {}
+	explicit Vector2f(const float& x, const float& y) : x(x), y(y) {}
+	explicit Vector2f(const sf::Vector2f& vec) : x(vec.x), y(vec.y) {}
 
 	float x;
 	float y;
 
-	b2Vec2 ToBox2D() const;
-	sf::Vector2f ToSFML() const;
+	sf::Vector2f ToSFML() const
+	{
+		return sf::Vector2f(x, y);
+	}
 };
 
 // += Operators

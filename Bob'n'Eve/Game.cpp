@@ -9,7 +9,7 @@
 
 Game::Game() : paused_(false)
 {
-	PhysicManager::CreateInstance(Vector2f(0.f, 1.f));
+	PhysicManager::CreateInstance(Vector2f(0.f, 9.81f));
 	MapLoader::LoadMap("Map1.tmx");
 }
 
@@ -58,9 +58,11 @@ void Game::Loop()
 			paused_ = !paused_;
 		wasPDown = isPDown;
 
+		if (
 #ifndef  _DEBUG
-		if (window.hasFocus() && !paused_)
+		window.hasFocus() && 
 #endif
+		!paused_)
 		{
 			View::Instance()->Update(elapsedTime.asMilliseconds());
 		}

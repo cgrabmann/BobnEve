@@ -1,6 +1,9 @@
 #pragma once
 #include "Vector2f.h"
+#include "FloatRect.h"
 #include <vector>
+#include <cinttypes>
+#include <assert.h>
 
 class PhysicBodyDynamic;
 class PhysicBodyStatic;
@@ -11,17 +14,21 @@ class PhysicBodyBase
 {
 	friend class PhysicWorld;
 public:
-	inline const Vector2f& GetPosition() const
+	inline Vector2f GetPosition() const
 	{
-		return position_;
+		return bounds_.center;
+	};
+	inline Vector2f GetSize() const
+	{
+		return bounds_.halfSize;
+	};
+	inline const FloatRect& GetBounds() const
+	{
+		return bounds_;
 	};
 	inline const Vector2f& GetVelocity() const
 	{
 		return velocity_;
-	};
-	inline const Vector2f& GetHalfSize() const
-	{
-		return halfSize_;
 	};
 	bool IsColliding(const PhysicBodyBase& otherBody) const;
 	void AddCollisionIgnoreGroup(int8_t group);
@@ -41,13 +48,10 @@ protected:
 
 	virtual void Move(const Vector2f& gravity, float seconds) = 0;
 
-	bool IsCollidingX(const PhysicBodyBase& otherBody) const;
-	bool IsCollidingY(const PhysicBodyBase& otherBody) const;
 	bool InSameIgnoreGroup(const PhysicBodyBase& otherBody) const;
 	Vector2f velocity_;
 	Vector2f realVelocity_;
-	Vector2f position_;
-	Vector2f halfSize_;
+	FloatRect bounds_;
 	float physicScale_;
 	std::vector<int8_t> collisionIgnorGroups_;
 };

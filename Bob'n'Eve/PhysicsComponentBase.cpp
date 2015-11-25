@@ -15,17 +15,6 @@ PhysicsComponentBase::~PhysicsComponentBase()
 
 void PhysicsComponentBase::Update(GameObject& object, int16_t ms)
 {
-	//TODO: Remove this
-	Vector2f velocity = body_->GetVelocity();
-
-	if (velocity.x < 0)
-		velocity.x += 0.01f * ms;
-	if (velocity.x > 0)
-		velocity.x -= 0.01f * ms;
-	if (velocity.x >= -0.1f && velocity.x <= 0.1f)
-		velocity.x = 0.f;
-
-	body_->SetVelocity(velocity);
 }
 
 Vector2f PhysicsComponentBase::GetOrientation() const
