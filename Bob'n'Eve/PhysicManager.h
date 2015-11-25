@@ -1,7 +1,9 @@
 #pragma once
+#include <stddef.h>
+#include "PhysicWorld.h"
 
-#include <Box2D/Dynamics/b2World.h>
-
+struct PhysicBodyDef;
+class PhysicBodyBase;
 class PhysicsComponentBase;
 class Vector2f;
 
@@ -11,17 +13,17 @@ public:
 	static PhysicManager* Instance();
 	static void CreateInstance(const Vector2f& grafity);
 
-	b2Body* CreateBody(b2BodyDef* bodyDef);
-	void DestroyBody(b2Body* body);
+	PhysicBodyBase* CreateBody(const PhysicBodyDef& bodyDef);
+	void DestroyBody(PhysicBodyBase& body);
 
-	void Update(float32 seconds);
+	void Update(float ms);
 private:
 	static PhysicManager* instance_;
 
-	PhysicManager(const b2Vec2& gravity);
+	PhysicManager(const Vector2f& gravity);
 	~PhysicManager();
 
-	b2World world_;
+	PhysicWorld world_;
 
 	class CGuard
 	{

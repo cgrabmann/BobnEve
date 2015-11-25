@@ -1,7 +1,9 @@
 #pragma once
 #include <cinttypes>
 #include "Vector2f.h"
+#include "PhysicBodyBase.h"
 
+struct PhysicBodyDef;
 class b2Body;
 class GameObject;
 
@@ -13,16 +15,23 @@ public:
 
 	void Update(GameObject& object, int16_t ms);
 
-	Vector2f GetPosition() const;
-	Vector2f GetVelocity() const;
+	inline Vector2f PhysicsComponentBase::GetPosition() const
+	{
+		return body_->GetPosition();
+	}
+
+	inline Vector2f PhysicsComponentBase::GetVelocity() const
+	{
+		return body_->GetVelocity();
+	}
 	Vector2f GetOrientation() const;
 
 	void SetVelocity(const Vector2f& velocity);
 	void SetVelocity(float velX, float velY);
 
 protected:
-	PhysicsComponentBase(b2BodyDef& bodyDef, const b2FixtureDef& fixtureDef);
+	PhysicsComponentBase(const PhysicBodyDef& bodyDef);
 
-	b2Body* body_;
+	PhysicBodyBase* body_;
 };
 

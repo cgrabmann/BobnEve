@@ -1,29 +1,32 @@
 #include "PhysicBodyBase.h"
 #include "PhysicBodyDef.h"
-#include "CollisionResolver.h"
-#include "CollisionResolverSimple.h"
-
-
-const Vector2f& PhysicBodyBase::GetPosition() const
-{
-	return position_;
-}
-
-const Vector2f& PhysicBodyBase::GetVelocity() const
-{
-	return velocity_;
-}
+#include <cstdint>
 
 bool PhysicBodyBase::IsColliding(const PhysicBodyBase& otherBody) const
 {
-	Vector2f distance = position_ - otherBody.position_;
-	if (distance.x < 0)
-		distance.x *= -1;
-	if (distance.y < 0)
-		distance.y *= -1;
+	if (InSameIgnoreGroup(otherBody))
+		return false;
+	if (bounds_.IsInsersecting(otherBody.bounds_))
+		return true;
+	return false;
+}
 
-	if (distance.x <= (halfSize_.x + otherBody.halfSize_.x)
-		&& distance.y <= (halfSize_.y + otherBody.halfSize_.y))
+void PhysicBodyBase::AddCollisionIgnoreGroup(int8_t group)
+{
+	collisionIgnorGroups_.push_back(group);
+}
+
+void PhysicBodyBase::RemoveCollisionIgnoreGroup(int8_t group)
+{
+	std::vector<int8_t>::iterator it = std::find(collisionIgnorGroups_.begin(), collisionIgnorGroups_.end(), group);
+	if (it != collisionIgnorGroups_.end())
+		collisionIgnorGroups_.erase(it);
+}
+
+bool PhysicBodyBase::IsInGroup(int8_t group) const
+{
+	std::vector<int8_t>::const_iterator it = std::find(collisionIgnorGroups_.begin(), collisionIgnorGroups_.end(), group);
+	if (it != collisionIgnorGroups_.end())
 		return true;
 	return false;
 }
@@ -33,9 +36,10 @@ void PhysicBodyBase::SetPhysicScale(float scale)
 	physicScale_ = scale;
 }
 
-PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : position_(def.position_),
-velocity_(0.f, 0.f), halfSize_(def.halfSize_), mass_(def.mass_), physicScale_(1.f), resolver_((def.resolver_ == nullptr) ? new CollisionResolverSimple() : def.resolver_)
+PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : velocity_(0.f, 0.f), realVelocity_(0.f, 0.f),
+	bounds_(def.bounds), physicScale_(1.f)
 {
+	collisionIgnorGroups_.push_back(def.collisionIgnorGroup_);
 }
 
 
@@ -43,7 +47,12 @@ PhysicBodyBase::~PhysicBodyBase()
 {
 }
 
-const CollisionResolver& PhysicBodyBase::GetResolver() const
+bool PhysicBodyBase::InSameIgnoreGroup(const PhysicBodyBase& otherBody) const
 {
-	return *resolver_;
+	for (int i = 0; i < collisionIgnorGroups_.size(); i++)
+	{
+		if (otherBody.IsInGroup(collisionIgnorGroups_[i]))
+			return true;
+	}
+	return false;
 }

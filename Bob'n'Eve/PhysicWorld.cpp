@@ -3,7 +3,6 @@
 #include "PhysicBodyDef.h"
 #include "PhysicBodyStatic.h"
 #include "PhysicBodyDynamic.h"
-#include "CollisionResolver.h"
 
 
 PhysicWorld::PhysicWorld(const Vector2f& gravity) : gravity_(gravity)
@@ -19,10 +18,10 @@ PhysicWorld::~PhysicWorld()
 	}
 }
 
-void PhysicWorld::Step(int32_t ms)
+void PhysicWorld::Step(float seconds)
 {
-	MoveBodies(ms);
-	for (uint32_t i = 0; i < 3; ++i)
+	MoveBodies(seconds);
+	for (size_t i = 0; i < 3; ++i)
 	{
 		if (!CheckCollisions())
 			break;
@@ -66,11 +65,11 @@ void PhysicWorld::Reserve(size_t count)
 	collisions_.reserve(count / 2);
 }
 
-void PhysicWorld::MoveBodies(int32_t ms)
+void PhysicWorld::MoveBodies(float seconds)
 {
 	for (std::vector<PhysicBodyBase*>::iterator it = bodies_.begin(); it != bodies_.end(); ++it)
 	{
-		(*it)->Move(gravity_, ms);
+		(*it)->Move(gravity_, seconds);
 	}
 }
 
@@ -80,9 +79,9 @@ bool PhysicWorld::CheckCollisions()
 
 	for (std::vector<PhysicBodyBase*>::iterator it = bodies_.begin(); it != bodies_.end(); ++it)
 	{
-		for (std::vector<PhysicBodyBase*>::iterator otherIt = ++it; otherIt != bodies_.end(); ++it)
+		for (std::vector<PhysicBodyBase*>::iterator otherIt = it + 1; otherIt != bodies_.end(); ++otherIt)
 		{
-			if ((*it)->IsColliding(*(*it)))
+			if ((*it)->IsColliding(*(*otherIt)))
 			{
 				collision = true;
 				collisions_.push_back(new CollidingGroup((*it), (*otherIt)));
@@ -99,17 +98,7 @@ void PhysicWorld::ResolveCollisions()
 	for (size_t i = 0; i < count; ++i)
 	{
 		CollidingGroup* group = collisions_.at(i);
-		float resolveValue1 = group->body1_->GetResolver().SolveValue(*(group->body1_), *(group->body2_));
-		float resolveValue2 = group->body2_->GetResolver().SolveValue(*(group->body1_), *(group->body2_));
-
-		if (resolveValue1 >= resolveValue2)
-		{
-			group->body1_->GetResolver().Resolve(*(group->body1_), *(group->body2_));
-		}
-		else
-		{
-			group->body2_->GetResolver().Resolve(*(group->body1_), *(group->body2_));
-		}
+		group->body1_->CollideWith(*group->body2_);
 		delete group;
 	}
 	collisions_.clear();

@@ -114,9 +114,6 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2f.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="Global.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -147,12 +144,6 @@
     <ClCompile Include="PhysicWorld.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionResolver.cpp">
-      <Filter>Quelldateien\PhysicEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionResolverSimple.cpp">
-      <Filter>Quelldateien\PhysicEngine</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicBodyBase.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
@@ -167,6 +158,8 @@
     </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.cpp">
       <Filter>Quelldateien\GameObject\Platform</Filter>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -218,9 +211,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>Headerdateien\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2f.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="MapLoader.h">
       <Filter>Headerdateien\MapLoader</Filter>
     </ClInclude>
@@ -260,12 +250,6 @@
     <ClInclude Include="PhysicBodyDef.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionResolver.h">
-      <Filter>Headerdateien\PhysicEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionResolverSimple.h">
-      <Filter>Headerdateien\PhysicEngine</Filter>
-    </ClInclude>
     <ClInclude Include="PhysicBodyBase.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
@@ -280,6 +264,11 @@
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.h">
       <Filter>Headerdateien\GameObject\Platform</Filter>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2f.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
