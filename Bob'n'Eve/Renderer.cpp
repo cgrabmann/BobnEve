@@ -66,16 +66,20 @@ void Renderer::Render()
 			maxPos.y = (*it).y;
 	}
 
-	//checks if one of the players leave the screen
-	size -= Vector2f(300, 200);
+	//checks if one of the players leave the screen and scales the picture
+
+	// "Frame" for detection
+	size -= (Vector2f(400, 200) * scale_);
 	Vector2f distance(maxPos - minPos);
 	scale_ = (size / distance);
+	//get the bigger zoom-out
 	scale_.x = std::min(scale_.x, scale_.y);
+	//we don't want to zoom-in
 	scale_.x = std::min(1.0f, scale_.x);
+	//we want to uniform-scale
 	scale_.y = scale_.x;
 
 	//sets the focus in the middle of the players
-
 	//FRAGEN:
 	Vector2f centerPos(minPos + maxPos);
 	//ODER
