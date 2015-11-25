@@ -50,12 +50,11 @@ void Renderer::Render()
 
 	sf::View sfView = window_.getView();
 
+	//gets data of all important Objects
 	std::vector<const Vector2f> focusPoints = view->GetFocusPoints();
-	Vector2f centerPoint, size(sfView.getSize()), minPos(focusPoints.at(0)), maxPos(focusPoints.at(0));
+	Vector2f size(sfView.getSize()), minPos(focusPoints.at(0)), maxPos(focusPoints.at(0));
 	for (std::vector<const Vector2f>::const_iterator it = focusPoints.begin(); it != focusPoints.end(); ++it)
 	{
-		centerPoint += (*it);
-
 		if ((*it).x < minPos.x)
 			minPos.x = (*it).x;
 		else if ((*it).x > minPos.x)
@@ -67,6 +66,7 @@ void Renderer::Render()
 			maxPos.y = (*it).y;
 	}
 
+	//checks if one of the players leave the screen
 	size -= Vector2f(300, 200);
 	Vector2f distance(maxPos - minPos);
 	scale_ = (size / distance);
@@ -74,12 +74,19 @@ void Renderer::Render()
 	scale_.x = std::min(1.0f, scale_.x);
 	scale_.y = scale_.x;
 
-	centerPoint /= focusPoints.size();
-	centerPoint *= scale_;
-	sfView.setCenter(centerPoint.ToSFML());
+	//sets the focus in the middle of the players
+
+	//FRAGEN:
+	Vector2f centerPos(minPos + maxPos);
+	//ODER
+	// Vector2f centerPos = minPos + maxPos;
+	centerPos /= 2;
+	centerPos *= scale_;
+	sfView.setCenter(centerPos.ToSFML());
 
 	window_.setView(sfView);
 	
+	//draws all objects
 	window_.clear();
 	view->Draw(*this);
 	window_.display();
