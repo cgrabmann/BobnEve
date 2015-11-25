@@ -18,6 +18,6 @@ protected:
 	explicit PhysicBodyDynamic(const PhysicBodyDef& def);
 	~PhysicBodyDynamic();
 
-	virtual void Move(const Vector2f& gravity, int32_t ms) override;
+	virtual void Move(const Vector2f& gravity, float seconds) override;
 };
 

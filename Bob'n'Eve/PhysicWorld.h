@@ -12,7 +12,7 @@ public:
 	explicit PhysicWorld(const Vector2f& gravity);
 	~PhysicWorld();
 
-	void Step(int32_t ms);
+	void Step(float seconds);
 	PhysicBodyBase* CreateBody(const PhysicBodyDef& def);
 	void DestroyBody(PhysicBodyBase& body);
 
@@ -32,7 +32,7 @@ private:
 	std::vector<CollidingGroup*> collisions_;
 	Vector2f gravity_;
 
-	void MoveBodies(int32_t ms);
+	void MoveBodies(float seconds);
 	bool CheckCollisions();
 	void ResolveCollisions();
 };

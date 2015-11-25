@@ -147,12 +147,6 @@
     <ClCompile Include="PhysicWorld.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionResolver.cpp">
-      <Filter>Quelldateien\PhysicEngine</Filter>
-    </ClCompile>
-    <ClCompile Include="CollisionResolverSimple.cpp">
-      <Filter>Quelldateien\PhysicEngine</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicBodyBase.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
@@ -255,12 +249,6 @@
       <Filter>Headerdateien\MapLoader</Filter>
     </ClInclude>
     <ClInclude Include="PhysicBodyDef.h">
-      <Filter>Headerdateien\PhysicEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionResolver.h">
-      <Filter>Headerdateien\PhysicEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="CollisionResolverSimple.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
     <ClInclude Include="PhysicBodyBase.h">

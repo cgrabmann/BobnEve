@@ -26,7 +26,7 @@ public:
 	bool IsColliding(const PhysicBodyBase& otherBody) const;
 	void AddCollisionIgnoreGroup(int8_t group);
 	void RemoveCollisionIgnoreGroup(int8_t group);
-	bool IsInGroup(int8_t group);
+	bool IsInGroup(int8_t group) const;
 
 	virtual void CollideWith(PhysicBodyBase& otherBody) = 0;
 	virtual void CollideWithStatic(PhysicBodyStatic& otherBody) = 0;
@@ -39,12 +39,13 @@ protected:
 	explicit PhysicBodyBase(const PhysicBodyDef& def);
 	virtual ~PhysicBodyBase();
 
-	virtual void Move(const Vector2f& gravity, int32_t ms) = 0;
+	virtual void Move(const Vector2f& gravity, float seconds) = 0;
 
 	bool IsCollidingX(const PhysicBodyBase& otherBody) const;
 	bool IsCollidingY(const PhysicBodyBase& otherBody) const;
-
+	bool InSameIgnoreGroup(const PhysicBodyBase& otherBody) const;
 	Vector2f velocity_;
+	Vector2f realVelocity_;
 	Vector2f position_;
 	Vector2f halfSize_;
 	float physicScale_;

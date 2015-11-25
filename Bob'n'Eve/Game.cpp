@@ -9,7 +9,7 @@
 
 Game::Game() : paused_(false)
 {
-	PhysicManager::CreateInstance(Vector2f(0.f, 10.f));
+	PhysicManager::CreateInstance(Vector2f(0.f, 1.f));
 	MapLoader::LoadMap("Map1.tmx");
 }
 

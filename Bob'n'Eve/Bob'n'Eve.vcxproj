@@ -94,10 +94,8 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.cpp" />
-    <ClCompile Include="CollisionResolverSimple.cpp" />
     <ClCompile Include="PhysicBodyDynamic.cpp" />
     <ClCompile Include="PhysicBodyStatic.cpp" />
-    <ClCompile Include="CollisionResolver.cpp" />
     <ClCompile Include="GraphicsComponentAnimated.cpp" />
     <ClCompile Include="PhysicBodyBase.cpp" />
     <ClCompile Include="PhysicsComponentDynamic.cpp" />
@@ -134,10 +132,8 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="CollisionResolverSimple.h" />
     <ClInclude Include="PhysicBodyDynamic.h" />
     <ClInclude Include="PhysicBodyStatic.h" />
-    <ClInclude Include="CollisionResolver.h" />
     <ClInclude Include="PhysicBodyBase.h" />
     <ClInclude Include="PhysicBodyDef.h" />
     <ClInclude Include="PhysicsComponentDynamic.h" />

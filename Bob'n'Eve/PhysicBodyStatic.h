@@ -23,6 +23,6 @@ protected:
 	explicit PhysicBodyStatic(const PhysicBodyDef& def);
 	~PhysicBodyStatic();
 
-	inline void Move(const Vector2f& gravity, int32_t ms) override {};
+	inline void Move(const Vector2f& gravity, float seconds) override {};
 };
 

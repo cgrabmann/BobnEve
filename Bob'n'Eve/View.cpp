@@ -59,7 +59,7 @@ void View::Update(int16_t ms)
 		(*it)->Update(ms);
 	}
 
-	PhysicManager::Instance()->Update(ms / 1000.f);
+	PhysicManager::Instance()->Update(ms);
 }
 
 void View::Draw(Renderer& renderer) const

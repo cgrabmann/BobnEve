@@ -1,12 +1,8 @@
 #include "PhysicManager.h"
 
-#include <Box2D/Common/b2Math.h>
-#include "GameObject.h"
-#include "PhysicsComponentBase.h"
-
 PhysicManager* PhysicManager::instance_ = NULL;
 
-PhysicManager::PhysicManager(const b2Vec2& gravity) : world_(gravity)
+PhysicManager::PhysicManager(const Vector2f& gravity) : world_(gravity)
 {
 }
 
@@ -23,20 +19,20 @@ void PhysicManager::CreateInstance(const Vector2f& gravity)
 {
 	static CGuard g;   // Speicherbereinigung
 	if (!instance_)
-		instance_ = new PhysicManager(gravity.ToBox2D());
+		instance_ = new PhysicManager(gravity);
 }
 
-b2Body* PhysicManager::CreateBody(b2BodyDef* bodyDef)
+PhysicBodyBase* PhysicManager::CreateBody(const PhysicBodyDef& bodyDef)
 {
 	return world_.CreateBody(bodyDef);
 }
 
-void PhysicManager::DestroyBody(b2Body* body)
+void PhysicManager::DestroyBody(PhysicBodyBase& body)
 {
 	world_.DestroyBody(body);
 }
 
-void PhysicManager::Update(float32 seconds)
+void PhysicManager::Update(float ms)
 {
-	world_.Step(seconds, 6, 2);
+	world_.Step(ms / 1000.f);
 }

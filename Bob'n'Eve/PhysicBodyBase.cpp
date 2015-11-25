@@ -3,6 +3,8 @@
 
 bool PhysicBodyBase::IsColliding(const PhysicBodyBase& otherBody) const
 {
+	if (InSameIgnoreGroup(otherBody))
+		return false;
 	if (IsCollidingX(otherBody) && IsCollidingY(otherBody))
 		return true;
 	return false;
@@ -20,9 +22,9 @@ void PhysicBodyBase::RemoveCollisionIgnoreGroup(int8_t group)
 		collisionIgnorGroups_.erase(it);
 }
 
-bool PhysicBodyBase::IsInGroup(int8_t group)
+bool PhysicBodyBase::IsInGroup(int8_t group) const
 {
-	std::vector<int8_t>::iterator it = std::find(collisionIgnorGroups_.begin(), collisionIgnorGroups_.end(), group);
+	std::vector<int8_t>::const_iterator it = std::find(collisionIgnorGroups_.begin(), collisionIgnorGroups_.end(), group);
 	if (it != collisionIgnorGroups_.end())
 		return true;
 	return false;
@@ -33,7 +35,7 @@ void PhysicBodyBase::SetPhysicScale(float scale)
 	physicScale_ = scale;
 }
 
-PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : velocity_(0.f, 0.f),
+PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : velocity_(0.f, 0.f), realVelocity_(0.f, 0.f),
 	position_(def.position_), halfSize_(def.halfSize_), physicScale_(1.f)
 {
 	collisionIgnorGroups_.push_back(def.collisionIgnorGroup_);
@@ -63,5 +65,15 @@ bool PhysicBodyBase::IsCollidingY(const PhysicBodyBase& otherBody) const
 
 	if (distance <= (halfSize_.y + otherBody.halfSize_.y))
 		return true;
+	return false;
+}
+
+bool PhysicBodyBase::InSameIgnoreGroup(const PhysicBodyBase& otherBody) const
+{
+	for (int i = 0; i < collisionIgnorGroups_.size(); i++)
+	{
+		if (otherBody.IsInGroup(collisionIgnorGroups_[i]))
+			return true;
+	}
 	return false;
 }

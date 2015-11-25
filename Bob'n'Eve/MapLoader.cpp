@@ -21,6 +21,7 @@
 #include "Object.h"
 #include <windows.h>
 #include "Coin.h"
+#include "PhysicBodyDef.h"
 
 void MapLoader::LoadMap(const char* path)
 {
@@ -263,18 +264,25 @@ GraphicsComponent* MapLoader::ParseAnimation(Object* object, uint8_t animationId
 PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 {
 	//TODO remove / 64 when PhysicsEngine is ready
+	PhysicBodyDef bodyDef;
+	bodyDef.position_ = object->pos / 64;
 
 	if (!strcmp(object->type, "Enemy"))
 	{
-		return new PhysicsComponentStatic(object->pos / 64);
+		bodyDef.type_ = PhysicBody::STATIC;
+		bodyDef.collisionIgnorGroup_ = 1;
+		return new PhysicsComponentStatic(bodyDef);
 	}
 	if (!strcmp(object->type, "Bob") || !strcmp(object->type, "Eve"))
 	{
-		return new PhysicsComponentDynamic(object->pos / 64);
+		bodyDef.type_ = PhysicBody::DYNAMIC;
+		bodyDef.collisionIgnorGroup_ = 2;
+		return new PhysicsComponentDynamic(bodyDef);
 	}
 	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
-		return new PhysicsComponentStatic(object->pos / 64);
+		bodyDef.type_ = PhysicBody::STATIC;
+		return new PhysicsComponentStatic(bodyDef);
 	}
 }
 
