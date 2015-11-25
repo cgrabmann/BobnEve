@@ -52,7 +52,7 @@ bool PhysicBodyBase::IsCollidingX(const PhysicBodyBase& otherBody) const
 	if (distance < 0)
 		distance *= -1;
 
-	if (distance <= (halfSize_.x + otherBody.halfSize_.x))
+	if (distance < (halfSize_.x + otherBody.halfSize_.x))
 		return true;
 	return false;
 }
@@ -63,7 +63,7 @@ bool PhysicBodyBase::IsCollidingY(const PhysicBodyBase& otherBody) const
 	if (distance < 0)
 		distance *= -1;
 
-	if (distance <= (halfSize_.y + otherBody.halfSize_.y))
+	if (distance < (halfSize_.y + otherBody.halfSize_.y))
 		return true;
 	return false;
 }
