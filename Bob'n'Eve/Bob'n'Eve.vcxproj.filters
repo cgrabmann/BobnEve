@@ -162,7 +162,7 @@
     <ClCompile Include="PhysicBodyDynamic.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\DoubleEnemy.cpp">
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.cpp">
       <Filter>Quelldateien\GameObject\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
@@ -272,7 +272,7 @@
     <ClInclude Include="PhysicBodyDynamic.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\DoubleEnemy.h">
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.h">
       <Filter>Headerdateien\GameObject\Enemy</Filter>
     </ClInclude>
   </ItemGroup>

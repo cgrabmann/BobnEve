@@ -1,5 +1,7 @@
 #include <vector>
 #include <cinttypes>
+#include "GameObject.h"
+#include "Player.h"
 
 class Vector2f;
 class Renderer;
@@ -12,13 +14,18 @@ class View
 public:
 	static View* Instance();
 
-	void Register(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies);
+	void Register(Platform* platform);
+	void Register(Enemy* enemy);
+	void Register(Player* player);
+	void Register(GameObject* object);
 	void CleanUp();
 
 	void Update(int16_t ms);
 	void Draw(Renderer& renderer) const;
 
-	const Vector2f GetCenterPoint() const;
+	void DeleteEnemy(Enemy* enemy);
+	void DeleteEnemyById(size_t id); 
+	std::vector<const Vector2f> GetFocusPoints() const;
 
 protected:
 	View();
@@ -27,12 +34,10 @@ protected:
 private:
 	static View* instance_;
 
-	Player* bob_;
-	Player* eve_;
-
-	std::vector<Platform*>* platforms_;
-
-	std::vector<Enemy*>* enemys_;
+	std::vector<Platform*> platforms_;
+	std::vector<Enemy*> enemies_;
+	std::vector<Player*> players_;
+	std::vector<GameObject*> objects_;
 
 	//std::vector<Background*> backgrounds;
 

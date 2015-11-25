@@ -14,7 +14,8 @@ private:
 	const Tile* tile;
 	const TileSet* tileSet;
 
+	size_t id = -1;
 	int8_t gravity = 0;
-	uint8_t enemyId = -1;
 	Vector2f pos, size;
+	size_t enemyId = -1;
 };

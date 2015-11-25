@@ -21,12 +21,12 @@ Vector2f::~Vector2f()
 {	
 }
 
-sf::Vector2f Vector2f::ToSFML() const
-{
-	return sf::Vector2f(x, y);
-}
-
 b2Vec2 Vector2f::ToBox2D() const
 {
 	return b2Vec2(x, y);
+}
+
+sf::Vector2f Vector2f::ToSFML() const
+{
+	return sf::Vector2f(x, y);
 }

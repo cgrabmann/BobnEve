@@ -25,19 +25,13 @@ public:
 	void SetVelocity(Vector2f const & vec);
 	void SetVelocity(float x, float y);
 
-	void Left();
-	void Right();
-	void Up();
-	void Kill();
-
-	bool isActive() const { return isActive_; }
-	void isActive(const bool isActive) { isActive_ = isActive; }
-
+	virtual void Left();
+	virtual void Right();
+	virtual void Up();
+	virtual void Kill();
 protected:
 	//z-buffer
 	float layer_;
-
-	bool isActive_;
 
 	InputComponent* input_;
 	PhysicsComponentBase* physics_;

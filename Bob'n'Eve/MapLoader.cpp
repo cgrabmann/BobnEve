@@ -39,13 +39,6 @@ void MapLoader::LoadMap(const char* path)
 	Global::MapWidth = map.attribute("width").as_int();
 	Global::MapHeight = map.attribute("height").as_int();
 
-	std::vector<Platform*>* platforms = new std::vector<Platform*>;
-	platforms->reserve(256);
-	Player* bob = nullptr;
-	Player* eve = nullptr;
-	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
-	platforms->reserve(32);
-
 	std::unordered_map<std::string, TileSet*> tileSets;
 	tileSets.reserve(4);
 	std::unordered_map<uint16_t, Tile*> tiles;
@@ -118,16 +111,19 @@ void MapLoader::LoadMap(const char* path)
 		}
 	}
 
+	View::Instance()->CleanUp();
 	uint8_t xPos = 0;
 	uint8_t yPos = 0;
 	uint8_t tileCount = tiles.size();
-	for (pugi::xml_node tile = map.child("layer").child("data").child("tile"); tile; tile = tile.next_sibling("tile"))
+	//Platform Layer
+	for (pugi::xml_node xmlTile = map.child("layer").child("data").child("tile"); xmlTile; xmlTile = xmlTile.next_sibling("tile"))
 	{
-		uint8_t gid = tile.attribute("gid").as_int();
+		uint8_t gid = xmlTile.attribute("gid").as_int();
 		if (gid != 0 && gid <= tileCount)
 		{
 			Object* object = new Object();
 
+			object->id = -1;
 			object->tile = tiles[gid];
 			object->tileSet = tileSets[object->tile->tileSetName];
 			object->pos = Vector2f(xPos * Global::TileWidth, yPos * Global::TileHeight);
@@ -135,22 +131,7 @@ void MapLoader::LoadMap(const char* path)
 			object->gravity = 0;
 			object->enemyId = -1;
 
-			if (!strcmp(object->tile->type, "Enemy"))
-			{
-				enemies->push_back(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-			}
-			else if (!strcmp(object->tile->type, "Bob"))
-			{
-				bob = new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2));
-			}
-			else if (!strcmp(object->tile->type, "Eve"))
-			{
-				eve = new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2));
-			}
-			else // if (!strcmp(object->tile->type, "Platform") || !strcmp(object->tile->type, "PassTrough"))
-			{
-				platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-			}
+			ParseObject(object);
 
 			delete object;
 		}
@@ -171,6 +152,7 @@ void MapLoader::LoadMap(const char* path)
 
 		Object* object = new Object();
 
+		object->id = xmlObject.attribute("id").as_int();
 		object->tile = tiles[gid];
 		object->tileSet = tileSets[object->tile->tileSetName];
 		object->pos = Vector2f(xmlObject.attribute("x").as_float(), xmlObject.attribute("y").as_float());
@@ -186,26 +168,11 @@ void MapLoader::LoadMap(const char* path)
 			}
 			else if (!strcmp(propertyName, "EnemyId"))
 			{
-				object->enemyId = xmlObjectProperty.attribute("value").as_int();
+				object->id = xmlObjectProperty.attribute("value").as_int();
 			}
 		}
 
-		if (!strcmp(object->tile->type, "Enemy"))
-		{
-			enemies->push_back(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-		}
-		else if (!strcmp(object->tile->type, "Bob"))
-		{
-			bob = new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2));
-		}
-		else if (!strcmp(object->tile->type, "Eve"))
-		{
-			eve = new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2));
-		}
-		else // if (!strcmp(object->tile->type, "Platform") || !strcmp(object->tile->type, "PassTrough"))
-		{
-			platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-		}
+		ParseObject(object);
 
 		delete object;
 	}
@@ -213,9 +180,22 @@ void MapLoader::LoadMap(const char* path)
 	//clean up
 	tileSets.clear();
 	tiles.clear();
+}
 
-	View::Instance()->CleanUp();
-	View::Instance()->Register(bob, eve, platforms, enemies);
+void MapLoader::ParseObject(Object* object)
+{
+	if (!strcmp(object->tile->type, "Enemy"))
+	{
+		View::Instance()->Register(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object), object->enemyId));
+	}
+	else if (!strcmp(object->tile->type, "Bob") || !strcmp(object->tile->type, "Eve"))
+	{
+		View::Instance()->Register(new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2)));
+	}
+	else // if (!strcmp(object->tile->type, "Platform") || !strcmp(object->tile->type, "PassTrough"))
+	{
+		View::Instance()->Register(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+	}
 }
 
 InputComponent* MapLoader::ParseInput(Object* object)

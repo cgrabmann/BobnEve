@@ -13,7 +13,6 @@ class Frame;
 class MapLoader
 {
 public:
-
 	static void LoadMap(const char* path);
 
 private:
@@ -21,6 +20,7 @@ private:
 	inline MapLoader(const MapLoader&) {}
 	inline ~MapLoader() {}
 
+	static void ParseObject(Object* object);
 	static InputComponent* ParseInput(Object* object);
 	static GraphicsComponent* ParseGraphics(Object* object, const Tile* tile = nullptr);
 	static PhysicsComponentBase* ParsePhysics(Object* object);

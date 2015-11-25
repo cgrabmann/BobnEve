@@ -5,7 +5,7 @@
 #include "Global.h"
 
 
-GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics) : layer_(1.f), isActive_(true), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }
@@ -19,9 +19,6 @@ GameObject::~GameObject()
 
 void GameObject::Update(int16_t ms)
 {
-	if (!isActive_)
-		return;
-
 	if (input_)
 		input_->Update(*this, ms);
 	if (physics_)
@@ -32,9 +29,6 @@ void GameObject::Update(int16_t ms)
 
 void GameObject::Draw(Renderer& renderer) const
 {
-	if (!isActive_)
-		return;
-
 	if (graphics_)
 		graphics_->Draw(*this, renderer);
 }
@@ -94,5 +88,4 @@ void GameObject::Up()
 
 void GameObject::Kill()
 {
-	isActive_ = false;
 }
