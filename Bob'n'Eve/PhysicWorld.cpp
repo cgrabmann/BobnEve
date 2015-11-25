@@ -99,17 +99,7 @@ void PhysicWorld::ResolveCollisions()
 	for (size_t i = 0; i < count; ++i)
 	{
 		CollidingGroup* group = collisions_.at(i);
-		float resolveValue1 = group->body1_->GetResolver().SolveValue(*(group->body1_), *(group->body2_));
-		float resolveValue2 = group->body2_->GetResolver().SolveValue(*(group->body1_), *(group->body2_));
-
-		if (resolveValue1 >= resolveValue2)
-		{
-			group->body1_->GetResolver().Resolve(*(group->body1_), *(group->body2_));
-		}
-		else
-		{
-			group->body2_->GetResolver().Resolve(*(group->body1_), *(group->body2_));
-		}
+		group->body1_->CollideWith(*group->body2_);
 		delete group;
 	}
 	collisions_.clear();

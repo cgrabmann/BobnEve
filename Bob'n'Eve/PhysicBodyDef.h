@@ -12,4 +12,5 @@ struct PhysicBodyDef
 	int8_t gravityScale_ = 1;
 	int8_t mass_ = 0;
 	CollisionResolver* resolver_ = nullptr;
+	int8_t collisionIgnorGroup_ = 0;
 };

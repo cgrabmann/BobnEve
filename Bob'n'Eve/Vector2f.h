@@ -83,5 +83,11 @@ Vector2f inline operator/ (const float& dif, const Vector2f& vec)
 	return Vector2f(vec.x / dif, vec.y / dif);
 }
 
+inline Vector2f& operator/= (Vector2f& vec, float dif){
+	vec.x /= dif;
+	vec.y /= dif;
+	return vec;
+}
+
 
 
