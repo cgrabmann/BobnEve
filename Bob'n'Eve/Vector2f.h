@@ -149,12 +149,3 @@ inline Vector2f operator/ (const Vector2f& lVec, const Vector2f& rVec)
 {
 	return Vector2f(lVec.x / rVec.x, lVec.y / rVec.y);
 }
-
-inline Vector2f& operator/= (Vector2f& vec, float dif){
-	vec.x /= dif;
-	vec.y /= dif;
-	return vec;
-}
-
-
-
