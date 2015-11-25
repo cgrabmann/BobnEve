@@ -11,8 +11,6 @@ namespace sf{
 class GraphicsComponentAnimated : public GraphicsComponent
 {
 public:
-
-
 	GraphicsComponentAnimated(std::vector<Frame*> frames, bool mirror = true, bool running = true);
 	virtual ~GraphicsComponentAnimated();
 

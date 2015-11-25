@@ -12,7 +12,7 @@ class TileSet
 	friend class Tile;
 
 private:
-	inline TileSet(){}
+	inline TileSet() {}
 	inline ~TileSet()
 	{
 		delete[] tiles;

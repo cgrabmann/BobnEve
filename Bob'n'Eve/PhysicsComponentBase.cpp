@@ -53,16 +53,23 @@ Vector2f PhysicsComponentBase::GetVelocity() const
 
 Vector2f PhysicsComponentBase::GetOrientation() const
 {
-	if (GetPosition().y > Global::ScreenHeight / 2)
+	Vector2f velocity = GetVelocity();
+	Vector2f orientation(1,1);
+
+	if (velocity.x > 0)
 	{
-		return Vector2f(1.f, -1.f);
+		orientation.x = 1.0f;
 	}
-	return Vector2f(1.f, 1.f);
+	if (velocity.x < 0)
+	{
+		orientation.x = -1.0f;
+	}
+	return orientation;
 }
 
 void PhysicsComponentBase::SetVelocity(const Vector2f& velocity)
 {
-	body_->SetLinearVelocity(velocity.ToBox2D());
+	SetVelocity(velocity.x, velocity.y);
 }
 
 void PhysicsComponentBase::SetVelocity(float velX, float velY)

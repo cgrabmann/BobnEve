@@ -12,19 +12,25 @@ GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, Gra
 
 GameObject::~GameObject()
 {
-
+	delete input_;
+	delete physics_;
+	delete graphics_;
 }
 
 void GameObject::Update(int16_t ms)
 {
-	input_->Update(*this, ms);
-	physics_->Update(*this, ms);
-	graphics_->Update(*this, ms);
+	if (input_)
+		input_->Update(*this, ms);
+	if (physics_)
+		physics_->Update(*this, ms);
+	if (graphics_)
+		graphics_->Update(*this, ms);
 }
 
 void GameObject::Draw(Renderer& renderer) const
 {
-	graphics_->Draw(*this, renderer);
+	if (graphics_)
+		graphics_->Draw(*this, renderer);
 }
 
 float GameObject::GetLayer() const
@@ -78,4 +84,8 @@ void GameObject::Up()
 {
 	const Vector2f& velocity = GetVelocity();
 	SetVelocity(velocity.x, -5);
+}
+
+void GameObject::Kill()
+{
 }

@@ -19,8 +19,10 @@
 #include "PhysicsComponentDynamic.h"
 #include "Frame.h"
 #include "Object.h"
+#include <windows.h>
+#include "Coin.h"
 
-View* MapLoader::LoadMap(const char* path)
+void MapLoader::LoadMap(const char* path)
 {
 	assert(path != NULL);
 
@@ -37,13 +39,6 @@ View* MapLoader::LoadMap(const char* path)
 	Global::TileWidth = map.attribute("tileheight").as_int();
 	Global::MapWidth = map.attribute("width").as_int();
 	Global::MapHeight = map.attribute("height").as_int();
-
-	std::vector<Platform*>* platforms = new std::vector<Platform*>;
-	platforms->reserve(256);
-	Player* bob = nullptr;
-	Player* eve = nullptr;
-	std::vector<Enemy*>* enemies = new std::vector<Enemy*>;
-	platforms->reserve(32);
 
 	std::unordered_map<std::string, TileSet*> tileSets;
 	tileSets.reserve(4);
@@ -117,43 +112,28 @@ View* MapLoader::LoadMap(const char* path)
 		}
 	}
 
+	View::Instance()->CleanUp();
 	uint8_t xPos = 0;
 	uint8_t yPos = 0;
 	uint8_t tileCount = tiles.size();
-	for (pugi::xml_node tile = map.child("layer").child("data").child("tile"); tile; tile = tile.next_sibling("tile"))
+	//Platform Layer
+	for (pugi::xml_node xmlTile = map.child("layer").child("data").child("tile"); xmlTile; xmlTile = xmlTile.next_sibling("tile"))
 	{
-		uint8_t gid = tile.attribute("gid").as_int();
+		uint8_t gid = xmlTile.attribute("gid").as_int();
 		if (gid != 0 && gid <= tileCount)
 		{
 			Object* object = new Object();
 
+			object->id = -1;
 			object->tile = tiles[gid];
 			object->tileSet = tileSets[object->tile->tileSetName];
 			object->pos = Vector2f(xPos * Global::TileWidth, yPos * Global::TileHeight);
 			object->size = Vector2f(Global::TileWidth, Global::TileHeight);
+			object->type = object->tile->type;
 			object->gravity = 0;
 			object->enemyId = -1;
 
-			if (!strcmp(object->tile->type, "PassTrough"))
-			{
-				platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-			}
-			else  if (!strcmp(object->tile->type, "Enemy"))
-			{
-				enemies->push_back(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-			}
-			else if (!strcmp(object->tile->type, "Bob"))
-			{
-				bob = new Player(ParseInput(object), ParsePhysics(object), ParseGraphics(object));
-			}
-			else if (!strcmp(object->tile->type, "Eve"))
-			{
-				eve = new Player(ParseInput(object), ParsePhysics(object), ParseGraphics(object));
-			}
-			else // if (!strcmp(object->tile->type, "Platform"))
-			{
-				platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-			}
+			ParseObject(object);
 
 			delete object;
 		}
@@ -174,10 +154,12 @@ View* MapLoader::LoadMap(const char* path)
 
 		Object* object = new Object();
 
+		object->id = xmlObject.attribute("id").as_int();
 		object->tile = tiles[gid];
 		object->tileSet = tileSets[object->tile->tileSetName];
 		object->pos = Vector2f(xmlObject.attribute("x").as_float(), xmlObject.attribute("y").as_float());
 		object->size = Vector2f(xmlObject.attribute("width").as_int(), xmlObject.attribute("height").as_int());
+		object->type = xmlObject.attribute("tpye").empty() ? object->tile->type : xmlObject.attribute("tpye").as_string();
 
 		for (pugi::xml_node xmlObjectProperty = xmlObject.child("properties").child("property"); xmlObjectProperty; xmlObjectProperty = xmlObjectProperty.next_sibling("property"))
 		{
@@ -189,30 +171,11 @@ View* MapLoader::LoadMap(const char* path)
 			}
 			else if (!strcmp(propertyName, "EnemyId"))
 			{
-				object->enemyId = xmlObjectProperty.attribute("value").as_int();
+				object->id = xmlObjectProperty.attribute("value").as_int();
 			}
 		}
 
-		if (!strcmp(object->tile->type, "PassTrough"))
-		{
-			platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-		}
-		else  if (!strcmp(object->tile->type, "Enemy"))
-		{
-			enemies->push_back(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-		}
-		else if (!strcmp(object->tile->type, "Bob"))
-		{
-			bob = new Player(ParseInput(object), ParsePhysics(object), ParseGraphics(object));
-		}
-		else if (!strcmp(object->tile->type, "Eve"))
-		{
-			eve = new Player(ParseInput(object), ParsePhysics(object), ParseGraphics(object));
-		}
-		else // if (!strcmp(object->tile->type, "Platform"))
-		{
-			platforms->push_back(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
-		}
+		ParseObject(object);
 
 		delete object;
 	}
@@ -220,83 +183,108 @@ View* MapLoader::LoadMap(const char* path)
 	//clean up
 	tileSets.clear();
 	tiles.clear();
+}
 
-	return new View(bob, eve, platforms, enemies);
+void MapLoader::ParseObject(Object* object)
+{
+	if (!strcmp(object->type, "Enemy"))
+	{
+		View::Instance()->Register(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object), object->enemyId));
+	}
+	else if (!strcmp(object->type, "Coin"))
+	{
+		View::Instance()->Register(new Coin(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+	}
+	else if (!strcmp(object->type, "Bob") || !strcmp(object->type, "Eve"))
+	{
+		View::Instance()->Register(new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2)));
+	}
+	else // if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
+	{
+		View::Instance()->Register(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+	}
 }
 
 InputComponent* MapLoader::ParseInput(Object* object)
 {
-	if (!strcmp(object->tile->type, "PassTrough"))
+	if (!strcmp(object->type, "Enemy"))
 	{
 		return new InputComponent();
 	}
-	if (!strcmp(object->tile->type, "Enemy"))
+	if (!strcmp(object->type, "Coin"))
 	{
 		return new InputComponent();
 	}
-	if (!strcmp(object->tile->type, "Bob"))
+	if (!strcmp(object->type, "Bob"))
 	{
 		return InputComponent::GetBobInputComponent();
 	}
-	if (!strcmp(object->tile->type, "Eve"))
+	if (!strcmp(object->type, "Eve"))
 	{
 		return InputComponent::GetEveInputComponent();
 	}
-	// if (!strcmp(object->tile->type, "Platform"))
+	// if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
 		return new InputComponent();
 	}
 }
 
-GraphicsComponent* MapLoader::ParseGraphics(Object* object)
+GraphicsComponent* MapLoader::ParseGraphics(Object* object, const Tile* tile)
 {
-	GraphicsComponent* tempGraphics = nullptr;
-
-	if (strcmp(object->tile->animationType, "Static"))
+	if (tile == nullptr)
 	{
-		if (!strcmp(object->tile->animationType, "Fade"))
-		{
-			return new GraphicsComponentFade(GetAnimationById(object, object->tile->animationId), object->tile->animationMirror);
-		}
-		return new GraphicsComponentAnimated(GetAnimationById(object, object->tile->animationId), object->tile->animationMirror);
+		tile = object->tile;
 	}
 
-	return new GraphicsComponent(AssetManager::Instance()->GetTileByName(object->tileSet->imgPath, object->tile->id));
+	if (strcmp(tile->animationType, "Static"))
+	{
+		if (!strcmp(tile->animationType, "Fade"))
+		{
+			return new GraphicsComponentFade(GetFramesByAnimationId(object, tile->animationId), tile->animationMirror);
+		}
+		return new GraphicsComponentAnimated(GetFramesByAnimationId(object, tile->animationId), tile->animationMirror);
+	}
+
+	return new GraphicsComponent(AssetManager::Instance()->GetTileByName(object->tileSet->imgPath, tile->id));
+}
+
+GraphicsComponent* MapLoader::ParseAnimation(Object* object, uint8_t animationId)
+{
+	for (int i = 0; i < object->tileSet->tilecount; i++)
+	{
+		if (object->tileSet->tiles[i].animationId == animationId)
+		{
+			return ParseGraphics(object, &object->tileSet->tiles[i]);
+		}
+	}
+	return new GraphicsComponent();
 }
 
 PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 {
 	//TODO remove / 64 when PhysicsEngine is ready
 
-	if (!strcmp(object->tile->type, "PassTrough"))
+	if (!strcmp(object->type, "Enemy"))
 	{
 		return new PhysicsComponentStatic(object->pos / 64);
 	}
-	if (!strcmp(object->tile->type, "Enemy"))
-	{
-		return new PhysicsComponentStatic(object->pos / 64);
-	}
-	if (!strcmp(object->tile->type, "Bob"))
+	if (!strcmp(object->type, "Bob") || !strcmp(object->type, "Eve"))
 	{
 		return new PhysicsComponentDynamic(object->pos / 64);
 	}
-	if (!strcmp(object->tile->type, "Eve"))
-	{
-		return new PhysicsComponentDynamic(object->pos / 64);
-	}
-	//if (!strcmp(object->tile->type, "Platform"))
+	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
 		return new PhysicsComponentStatic(object->pos / 64);
 	}
 }
 
-std::vector<Frame*> MapLoader::GetAnimationById(Object* object, uint8_t id)
+std::vector<Frame*> MapLoader::GetFramesByAnimationId(Object* object, uint8_t animationId)
 {
 	std::vector<Frame*> tempFrames;
 	tempFrames.reserve(4);
 	for (int i = 0; i < object->tileSet->tilecount; i++)
 	{
-		if (object->tileSet->tiles[i].animationId == id)
+		if (object->tileSet->tiles[i].animationId == animationId)
 		{
 			tempFrames.push_back(new Frame(AssetManager::Instance()->GetTileByName(object->tileSet->imgPath, object->tileSet->tiles[i].id), object->tile->displayTime));
 		}

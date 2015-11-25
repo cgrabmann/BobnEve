@@ -6,63 +6,92 @@
 #include "Vector2f.h"
 #include "PhysicManager.h"
 
-View::View(Player* bob, Player* eve, std::vector<Platform*>* platforms, std::vector<Enemy*>* enemies):
-bob_(bob), eve_(eve), platforms_(platforms), enemys_(enemies)
+View::View() : objects_(std::vector<GameObject*>()), players_(std::vector<Player*>())
 {
 }
 
 View::~View()
-{
-	delete bob_;
-	delete eve_;
-	for (size_t i = 0; i < platforms_->size(); i++)
-	{
-		delete platforms_->at(i);
-	}
-	delete platforms_;
-	for (size_t i = 0; i < enemys_->size(); i++)
-	{
-		delete enemys_->at(i);
-	}
-	delete enemys_;
+{	
 }
 
+View* View::instance_ = NULL;
+
+View* View::Instance()
+{
+	static CGuard g;   // Speicherbereinigung
+	if (!instance_)
+		instance_ = new View();
+	return instance_;
+}
+
+void View::Register(Platform* platform)
+{
+	platforms_.push_back(platform);
+	objects_.push_back(platform);
+}
+
+void View::Register(Enemy* enemy)
+{
+	enemies_.push_back(enemy);
+	objects_.push_back(enemy);
+}
+
+void View::Register(Player* player)
+{
+	players_.push_back(player);
+	objects_.push_back(player);
+}
+
+void View::Register(GameObject* object)
+{
+	objects_.push_back(object);
+}
+
+void View::CleanUp()
+{
+	objects_.clear();
+}
 
 void View::Update(int16_t ms)
 {
-	for (size_t i = 0; i < platforms_->size(); i++)
+	for (std::vector<GameObject*>::iterator it = objects_.begin(); it != objects_.end(); ++it)
 	{
-		platforms_->at(i)->Update(ms);
+		(*it)->Update(ms);
 	}
-
-	for (size_t i = 0; i < enemys_->size(); i++)
-	{
-		enemys_->at(i)->Update(ms);
-	}
-
-	bob_->Update(ms);
-	eve_->Update(ms);
 
 	PhysicManager::Instance()->Update(ms / 1000.f);
 }
 
 void View::Draw(Renderer& renderer) const
 {
-	for (size_t i = 0; i < platforms_->size(); i++)
+	for (std::vector<GameObject*>::const_iterator it = objects_.begin(); it != objects_.end(); ++it)
 	{
-		platforms_->at(i)->Draw(renderer);
+		(*it)->Draw(renderer);
 	}
-
-	for (size_t i = 0; i < enemys_->size(); i++)
-	{
-		enemys_->at(i)->Draw(renderer);
-	}
-
-	bob_->Draw(renderer);
-	eve_->Draw(renderer);
 }
 
-const Vector2f View::GetCenterPoint()
+void View::DeleteEnemy(Enemy* enemy)
 {
-	return (bob_->GetRenderPosition() + eve_->GetRenderPosition()) / 2;
+	enemies_.erase(std::remove(enemies_.begin(), enemies_.end(), enemy), enemies_.end());
+}
+
+void View::DeleteEnemyById(size_t id)
+{
+	for (std::vector<Enemy*>::iterator it = enemies_.begin(); it != enemies_.end(); ++it)
+	{
+		if ((*it)->GetId() == id)
+		{
+			enemies_.erase(it);
+		}
+	}
+}
+
+std::vector<const Vector2f> View::GetFocusPoints() const
+{
+	std::vector<const Vector2f> focusPoints;
+	for (std::vector<Player*>::const_iterator it = players_.begin(); it != players_.end(); ++it)
+	{
+		focusPoints.push_back((*it)->GetRenderPosition());
+	}
+	return focusPoints;
 }

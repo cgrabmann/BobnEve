@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/include/SFML/Graphics/RenderWindow.hpp>
+#include "Vector2f.h"
 
 namespace sf{
 	class RenderTarget;
@@ -17,14 +18,14 @@ public:
 	sf::RenderWindow& GetWindow();
 	sf::RenderTarget& GetTarget();
 
-	sf::Vector2f GetScale();
+	Vector2f GetScale() const;
 
-	void Render(View& drawable);
+	void Render();
 
 private:
 	sf::RenderWindow window_;
 
-	sf::Vector2f scale_;
+	Vector2f scale_;
 
 	void Draw(sf::Shape& shape);
 };

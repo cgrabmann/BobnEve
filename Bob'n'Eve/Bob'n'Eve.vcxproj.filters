@@ -162,6 +162,9 @@
     <ClCompile Include="PhysicBodyDynamic.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.cpp">
+      <Filter>Quelldateien\GameObject\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -268,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="PhysicBodyDynamic.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.h">
+      <Filter>Headerdateien\GameObject\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -11,7 +11,7 @@ class GameObject;
 class GraphicsComponent
 {
 public:
-	GraphicsComponent(bool running = true);
+	GraphicsComponent();
 	GraphicsComponent(sf::Sprite* sprite, bool running = true);
 	virtual ~GraphicsComponent();
 
@@ -24,13 +24,16 @@ public:
 	virtual void ReStart() { isRunning_ = true; }
 	virtual void Reset() {}
 
-	virtual bool IsRunning() const { return isRunning_; }
-	virtual void SetRun(const bool isRunning) { isRunning_ = isRunning; }
+	bool IsRunning() const { return isRunning_; }
+	void IsRunning(const bool isRunning) { isRunning_ = isRunning; }
+
+	bool IsVisible() const { return isVisible_; }
+	void IsVisible(const bool isVisible) { isVisible_ = isVisible; }
 	
 protected:
-	void UpdateSprite(const GameObject& object, Renderer& renderer, sf::Sprite& sprite);
+	void UpdateSprite(const GameObject& object, const Renderer& renderer, sf::Sprite& sprite);
 
 	sf::Sprite* sprite_;
-	bool isRunning_;
+	bool isRunning_, isVisible_;
 };
 

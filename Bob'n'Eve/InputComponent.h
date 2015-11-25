@@ -9,7 +9,7 @@ public:
 	InputComponent();
 	~InputComponent();
 
-	virtual void Update(GameObject& player, int16_t ms);
+	virtual void Update(GameObject& object, int16_t ms);
 
 	static InputComponent* GetBobInputComponent();
 	static InputComponent* GetEveInputComponent();

@@ -12,7 +12,7 @@ Renderer::Renderer() : window_(
 #else
 	sf::VideoMode::getFullscreenModes()[0], "Bob'n'Eve", sf::Style::Fullscreen
 #endif
-), scale_(1.f, 1.f)
+	), scale_(2.f, 2.f)
 {
 	sf::Vector2u size = window_.getSize();
 
@@ -44,14 +44,55 @@ sf::RenderTarget& Renderer::GetTarget()
 	return window_;
 }
 
-void Renderer::Render(View& view)
+void Renderer::Render()
 {
-	sf::View sfView = window_.getView();
-	sfView.setCenter(view.GetCenterPoint().ToSFML());
-	window_.setView(sfView);
+	View* view = View::Instance();
 
+	sf::View sfView = window_.getView();
+
+	//gets data of all important Objects
+	std::vector<const Vector2f> focusPoints = view->GetFocusPoints();
+	Vector2f size(sfView.getSize()), minPos(focusPoints.at(0)), maxPos(focusPoints.at(0));
+	for (std::vector<const Vector2f>::const_iterator it = focusPoints.begin(); it != focusPoints.end(); ++it)
+	{
+		if ((*it).x < minPos.x)
+			minPos.x = (*it).x;
+		else if ((*it).x > minPos.x)
+			maxPos.x = (*it).x;
+
+		if ((*it).y < minPos.y)
+			minPos.y = (*it).y;
+		else if ((*it).y > minPos.y)
+			maxPos.y = (*it).y;
+	}
+
+	//checks if one of the players leave the screen and scales the picture
+
+	// "Frame" for detection
+	size -= (Vector2f(400, 200) * scale_);
+	Vector2f distance(maxPos - minPos);
+	scale_ = (size / distance);
+	//get the bigger zoom-out
+	scale_.x = std::min(scale_.x, scale_.y);
+	//we don't want to zoom-in
+	scale_.x = std::min(1.0f, scale_.x);
+	//we want to uniform-scale
+	scale_.y = scale_.x;
+
+	//sets the focus in the middle of the players
+	//FRAGEN:
+	Vector2f centerPos(minPos + maxPos);
+	//ODER
+	// Vector2f centerPos = minPos + maxPos;
+	centerPos /= 2;
+	centerPos *= scale_;
+	sfView.setCenter(centerPos.ToSFML());
+
+	window_.setView(sfView);
+	
+	//draws all objects
 	window_.clear();
-	view.Draw(*this);
+	view->Draw(*this);
 	window_.display();
 }
 
@@ -60,7 +101,7 @@ void Renderer::Draw(sf::Shape& shape)
 	window_.draw(shape);
 }
 
-sf::Vector2f Renderer::GetScale()
+Vector2f Renderer::GetScale() const
 {
 	return scale_;
 }

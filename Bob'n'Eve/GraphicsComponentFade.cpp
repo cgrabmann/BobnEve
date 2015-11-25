@@ -13,6 +13,9 @@ GraphicsComponentFade::GraphicsComponentFade(std::vector<Frame*> frames, bool mi
 
 void GraphicsComponentFade::Update(GameObject& object, int16_t ms)
 {
+	if (!isRunning_)
+		return;
+
 	int32_t tempIndex = index_;
 	GraphicsComponentAnimated::Update(object, ms);
 
@@ -31,6 +34,9 @@ void GraphicsComponentFade::Update(GameObject& object, int16_t ms)
 
 void GraphicsComponentFade::Draw(const GameObject& object, Renderer& renderer)
 {
+	if (!sprite_ || !isVisible_)
+		return;
+
 	UpdateSprite(object, renderer, *sprite_);
 	UpdateSprite(object, renderer, *lastSprite_);
 

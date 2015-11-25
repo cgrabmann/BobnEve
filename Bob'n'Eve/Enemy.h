@@ -1,16 +1,15 @@
 #pragma once
-#include <stdint.h>
 #include "GameObject.h"
-
-class GraphicsComponent;
-class InputComponent;
-class Renderer;
 
 class Enemy : public GameObject
 {
 public:
-	Enemy(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics);
+	Enemy(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, size_t enemyId);
 	~Enemy();
 
+	size_t GetId() const { return enemyId_; }
+
+	virtual void Kill() override;
 protected:
+	size_t enemyId_;
 };
