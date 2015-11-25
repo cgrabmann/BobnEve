@@ -165,6 +165,9 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.cpp">
       <Filter>Quelldateien\GameObject\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.cpp">
+      <Filter>Quelldateien\GameObject\Platform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -274,6 +277,9 @@
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.h">
       <Filter>Headerdateien\GameObject\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.h">
+      <Filter>Headerdateien\GameObject\Platform</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -328,8 +328,8 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="31" name="Platforms" tilewidth="64" tileheight="64" spacing="2" margin="1" tilecount="28">
-  <image source="../Textures/Platforms.png" width="264" height="462"/>
+ <tileset firstgid="31" name="Platforms" tilewidth="64" tileheight="64" spacing="2" margin="1" tilecount="36">
+  <image source="../Textures/Platforms.png" width="264" height="594"/>
   <tile id="0">
    <properties>
     <property name="AnimationType" value="Static"/>
@@ -553,7 +553,7 @@
     <property name="AnimationType" value="Fade"/>
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="EvePass" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
@@ -564,7 +564,7 @@
     <property name="AnimationType" value="Fade"/>
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="EvePass" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
@@ -575,7 +575,7 @@
     <property name="AnimationType" value="Fade"/>
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="EvePass" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
@@ -586,8 +586,96 @@
     <property name="AnimationType" value="Fade"/>
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="EvePass" value="false"/>
     <property name="Type" value="PassThrough"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="AnimationId" value="4"/>
+    <property name="AnimationMirror" value="false"/>
+    <property name="AnimationType" value="Fade"/>
+    <property name="BobPass" value="false"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="EvePass" value="false"/>
+    <property name="Type" value="JumpPad"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="AnimationId" value="4"/>
+    <property name="AnimationMirror" value="false"/>
+    <property name="AnimationType" value="Fade"/>
+    <property name="BobPass" value="false"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="EvePass" value="false"/>
+    <property name="Type" value="JumpPad"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="AnimationId" value="4"/>
+    <property name="AnimationMirror" value="false"/>
+    <property name="AnimationType" value="Fade"/>
+    <property name="BobPass" value="false"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="EvePass" value="false"/>
+    <property name="Type" value="JumpPad"/>
+   </properties>
+  </tile>
+  <tile id="31">
+   <properties>
+    <property name="AnimationId" value="4"/>
+    <property name="AnimationMirror" value="false"/>
+    <property name="AnimationType" value="Fade"/>
+    <property name="BobPass" value="false"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="EvePass" value="false"/>
+    <property name="Type" value="JumpPad"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="AnimationId" value="4"/>
+    <property name="AnimationMirror" value="false"/>
+    <property name="AnimationType" value="Fade"/>
+    <property name="BobPass" value="false"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="EvePass" value="false"/>
+    <property name="Type" value="JumpPad"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="AnimationId" value="4"/>
+    <property name="AnimationMirror" value="false"/>
+    <property name="AnimationType" value="Fade"/>
+    <property name="BobPass" value="false"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="EvePass" value="false"/>
+    <property name="Type" value="JumpPad"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="AnimationId" value="4"/>
+    <property name="AnimationMirror" value="false"/>
+    <property name="AnimationType" value="Fade"/>
+    <property name="BobPass" value="false"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="EvePass" value="false"/>
+    <property name="Type" value="JumpPad"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="AnimationId" value="4"/>
+    <property name="AnimationMirror" value="false"/>
+    <property name="AnimationType" value="Fade"/>
+    <property name="BobPass" value="false"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="EvePass" value="false"/>
+    <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
  </tileset>
@@ -1022,7 +1110,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="24"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -1223,16 +1311,16 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
+   <tile gid="59"/>
+   <tile gid="59"/>
+   <tile gid="59"/>
+   <tile gid="59"/>
+   <tile gid="59"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="34"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>

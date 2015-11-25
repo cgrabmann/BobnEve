@@ -14,6 +14,9 @@ public:
 	~Player();
 	
 	virtual void Update(int16_t ms) override;
+
+	virtual void Kill() override;
+
 protected:
 	GraphicsComponent* idleGraphics_;
 	GraphicsComponent* jumpGraphics_;

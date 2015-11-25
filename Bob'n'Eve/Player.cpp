@@ -19,9 +19,10 @@ Player::~Player()
 
 void Player::Update(int16_t ms)
 {
-	if (GetVelocity().x != 0)
+	Vector2f vel = GetVelocity();
+	if (vel.x != 0)
 	{
-		if (GetVelocity().y != 0)
+		if (vel.y != 0)
 		{
 			GameObject::graphics_ = jumpGraphics_;
 		}
@@ -36,4 +37,9 @@ void Player::Update(int16_t ms)
 	}
 
 	GameObject::Update(ms);
+}
+
+void Player::Kill()
+{
+	//TODO: You Lose!
 }
