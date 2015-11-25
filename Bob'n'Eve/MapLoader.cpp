@@ -20,6 +20,7 @@
 #include "Frame.h"
 #include "Object.h"
 #include <windows.h>
+#include "Coin.h"
 
 void MapLoader::LoadMap(const char* path)
 {
@@ -128,6 +129,7 @@ void MapLoader::LoadMap(const char* path)
 			object->tileSet = tileSets[object->tile->tileSetName];
 			object->pos = Vector2f(xPos * Global::TileWidth, yPos * Global::TileHeight);
 			object->size = Vector2f(Global::TileWidth, Global::TileHeight);
+			object->type = object->tile->type;
 			object->gravity = 0;
 			object->enemyId = -1;
 
@@ -157,6 +159,7 @@ void MapLoader::LoadMap(const char* path)
 		object->tileSet = tileSets[object->tile->tileSetName];
 		object->pos = Vector2f(xmlObject.attribute("x").as_float(), xmlObject.attribute("y").as_float());
 		object->size = Vector2f(xmlObject.attribute("width").as_int(), xmlObject.attribute("height").as_int());
+		object->type = xmlObject.attribute("tpye").empty() ? object->tile->type : xmlObject.attribute("tpye").as_string();
 
 		for (pugi::xml_node xmlObjectProperty = xmlObject.child("properties").child("property"); xmlObjectProperty; xmlObjectProperty = xmlObjectProperty.next_sibling("property"))
 		{
@@ -184,15 +187,19 @@ void MapLoader::LoadMap(const char* path)
 
 void MapLoader::ParseObject(Object* object)
 {
-	if (!strcmp(object->tile->type, "Enemy"))
+	if (!strcmp(object->type, "Enemy"))
 	{
 		View::Instance()->Register(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object), object->enemyId));
 	}
-	else if (!strcmp(object->tile->type, "Bob") || !strcmp(object->tile->type, "Eve"))
+	else if (!strcmp(object->type, "Coin"))
+	{
+		View::Instance()->Register(new Coin(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+	}
+	else if (!strcmp(object->type, "Bob") || !strcmp(object->type, "Eve"))
 	{
 		View::Instance()->Register(new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2)));
 	}
-	else // if (!strcmp(object->tile->type, "Platform") || !strcmp(object->tile->type, "PassTrough"))
+	else // if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
 		View::Instance()->Register(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
 	}
@@ -200,19 +207,23 @@ void MapLoader::ParseObject(Object* object)
 
 InputComponent* MapLoader::ParseInput(Object* object)
 {
-	if (!strcmp(object->tile->type, "Enemy"))
+	if (!strcmp(object->type, "Enemy"))
 	{
 		return new InputComponent();
 	}
-	if (!strcmp(object->tile->type, "Bob"))
+	if (!strcmp(object->type, "Coin"))
+	{
+		return new InputComponent();
+	}
+	if (!strcmp(object->type, "Bob"))
 	{
 		return InputComponent::GetBobInputComponent();
 	}
-	if (!strcmp(object->tile->type, "Eve"))
+	if (!strcmp(object->type, "Eve"))
 	{
 		return InputComponent::GetEveInputComponent();
 	}
-	// if (!strcmp(object->tile->type, "Platform") || !strcmp(object->tile->type, "PassTrough"))
+	// if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
 		return new InputComponent();
 	}
@@ -253,15 +264,15 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 {
 	//TODO remove / 64 when PhysicsEngine is ready
 
-	if (!strcmp(object->tile->type, "Enemy"))
+	if (!strcmp(object->type, "Enemy"))
 	{
 		return new PhysicsComponentStatic(object->pos / 64);
 	}
-	if (!strcmp(object->tile->type, "Bob") || !strcmp(object->tile->type, "Eve"))
+	if (!strcmp(object->type, "Bob") || !strcmp(object->type, "Eve"))
 	{
 		return new PhysicsComponentDynamic(object->pos / 64);
 	}
-	//if (!strcmp(object->tile->type, "Platform") || !strcmp(object->tile->type, "PassTrough"))
+	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
 		return new PhysicsComponentStatic(object->pos / 64);
 	}

@@ -5,7 +5,7 @@ class Coin :
 	public Enemy
 {
 public:
-	Coin(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, size_t enemyId);
+	Coin(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, size_t enemyId = -1);
 	~Coin();
 
 	virtual void Kill() override;

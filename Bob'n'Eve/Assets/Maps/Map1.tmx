@@ -258,7 +258,7 @@
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="125"/>
     <property name="EvePass" value="true"/>
-    <property name="Type" value="Enemy"/>
+    <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="8">
@@ -269,7 +269,7 @@
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="125"/>
     <property name="EvePass" value="true"/>
-    <property name="Type" value="Enemy"/>
+    <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="9">
@@ -280,7 +280,7 @@
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="125"/>
     <property name="EvePass" value="true"/>
-    <property name="Type" value="Enemy"/>
+    <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="10">
@@ -291,7 +291,7 @@
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="125"/>
     <property name="EvePass" value="true"/>
-    <property name="Type" value="Enemy"/>
+    <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="11">
@@ -302,7 +302,7 @@
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="125"/>
     <property name="EvePass" value="true"/>
-    <property name="Type" value="Enemy"/>
+    <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="12">
@@ -313,7 +313,7 @@
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="125"/>
     <property name="EvePass" value="true"/>
-    <property name="Type" value="Enemy"/>
+    <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="13">
@@ -324,7 +324,7 @@
     <property name="BobPass" value="true"/>
     <property name="DisplayTime" value="125"/>
     <property name="EvePass" value="true"/>
-    <property name="Type" value="Enemy"/>
+    <property name="Type" value="Coin"/>
    </properties>
   </tile>
  </tileset>
