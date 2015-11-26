@@ -10689,9 +10689,9 @@
     <property name="Gravity" value="1"/>
    </properties>
   </object>
-  <object id="2" name="Eve Spawn" type="Eve" gid="9" x="236.333" y="463.667" width="64" height="96">
+  <object id="2" name="Eve Spawn" type="Eve" gid="9" x="205.333" y="453.667" width="64" height="96">
    <properties>
-    <property name="Gravity" value="-1"/>
+    <property name="Gravity" value="1"/>
    </properties>
   </object>
   <object id="3" name="Enemy0" type="Enemy" gid="17" x="358.667" y="462.667" width="64" height="64">

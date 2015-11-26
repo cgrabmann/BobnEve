@@ -25,7 +25,7 @@ void PhysicBodyDynamic::Move(const Vector2f& gravity, float seconds)
 {
 	//Gravity
 	velocity_.x += gravity.x * seconds;
-	velocity_.y += gravity.y * seconds * physicScale_;
+	velocity_.y += gravity.y * seconds;
 
 	//Friction
 	if (velocity_.x < 0)
@@ -37,7 +37,7 @@ void PhysicBodyDynamic::Move(const Vector2f& gravity, float seconds)
 
 	//Move
 	bounds_.center.x += Global::TileWidth * velocity_.x * seconds;
-	bounds_.center.y += Global::TileHeight * velocity_.y * seconds;
+	bounds_.center.y += Global::TileHeight * velocity_.y * seconds * physicScale_;
 }
 
 void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
@@ -89,7 +89,7 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 	FloatRect otherBounds = otherBody.bounds_;
 	Vector2f otherVelocity = otherBody.velocity_;
 
-	Vector2f averageVelocity = velocity_ + otherVelocity;
+	Vector2f averageVelocity = velocity_ * physicScale_ + otherVelocity * otherBody.physicScale_;
 	averageVelocity /= 2;
 
 	Vector2f overlap = bounds_.GetOverlap(otherBounds);

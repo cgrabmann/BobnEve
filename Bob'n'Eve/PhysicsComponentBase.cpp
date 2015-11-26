@@ -30,6 +30,14 @@ Vector2f PhysicsComponentBase::GetOrientation() const
 	{
 		orientation.x = -1.0f;
 	}
+	if (body_->GetPhysicScale() > 0)
+	{
+		orientation.y = 1.f;
+	}
+	if (body_->GetPhysicScale() < 0)
+	{
+		orientation.y = -1.f;
+	}
 	return orientation;
 }
 

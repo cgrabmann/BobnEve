@@ -266,30 +266,39 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	//TODO remove / 64 when PhysicsEngine is ready
 	PhysicBodyDef bodyDef;
 	bodyDef.bounds = FloatRect(object->pos, Vector2f(32, 32));
+	bodyDef.gravityScale_ = object->gravity;
 
 	if (!strcmp(object->type, "Enemy"))
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		bodyDef.collisionIgnorGroup_ = 1;
+		bodyDef.collisionIgnorGroups_.push_back(1);
 		return new PhysicsComponentStatic(bodyDef);
 	}
 	if (!strcmp(object->type, "Bob"))
 	{
 		bodyDef.bounds.halfSize.y = 48;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
-		bodyDef.collisionIgnorGroup_ = 2;
+		bodyDef.collisionIgnorGroups_.push_back(2);
 		return new PhysicsComponentDynamic(bodyDef);
 	}
 	if (!strcmp(object->type, "Eve"))
 	{
 		bodyDef.bounds.halfSize.y = 48;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
-		bodyDef.collisionIgnorGroup_ = 3;
+		bodyDef.collisionIgnorGroups_.push_back(3);
 		return new PhysicsComponentDynamic(bodyDef);
 	}
 	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
+		if (object->tile->bobPass)
+		{
+			bodyDef.collisionIgnorGroups_.push_back(2);
+		}
+		if (object->tile->evePass)
+		{
+			bodyDef.collisionIgnorGroups_.push_back(3);
+		}
 		return new PhysicsComponentStatic(bodyDef);
 	}
 }

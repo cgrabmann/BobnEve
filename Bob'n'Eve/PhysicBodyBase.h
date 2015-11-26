@@ -17,7 +17,12 @@ public:
 	inline Vector2f GetPosition() const
 	{
 		return bounds_.center;
-	};
+	}
+
+	inline float GetPhysicScale() const
+	{
+		return	physicScale_;
+	}
 	inline Vector2f GetSize() const
 	{
 		return bounds_.halfSize;
