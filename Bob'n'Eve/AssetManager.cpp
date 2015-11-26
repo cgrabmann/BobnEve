@@ -6,6 +6,7 @@
 #include <SFML/include/SFML/Audio/Music.hpp>
 #include <SFML/include/SFML/Audio/SoundBuffer.hpp>
 #include <SFML/include/SFML/Audio/Sound.hpp>
+#include <SFML/include/SFML/Graphics/Font.hpp>
 
 AssetManager* AssetManager::instance_ = NULL;
 
@@ -19,7 +20,7 @@ AssetManager* AssetManager::Instance()
 
 AssetManager::AssetManager() : tileSets_(), sounds_(), music_(),
 textureDir_(Global::AssetDir + "textures/"), soundDir_(Global::AssetDir + "sounds/"),
-musicDir_(Global::AssetDir + "music/"), errorTex_(nullptr)
+musicDir_(Global::AssetDir + "music/"), fontDir_(Global::AssetDir + "fonts/"), errorTex_(nullptr)
 {
 }
 
@@ -43,7 +44,7 @@ void AssetManager::LoadTextures()
 
 	for (size_t i = 0; i < files->size(); i++)
 	{
-		RegisterTextureByName(files->at(i));
+		RegisterTexture(files->at(i));
 	}
 
 	delete files;
@@ -55,7 +56,7 @@ void AssetManager::LoadSounds()
 
 	for (size_t i = 0; i < files->size(); i++)
 	{
-		RegisterSoundByName(files->at(i));
+		RegisterSound(files->at(i));
 	}
 
 	delete files;
@@ -67,18 +68,18 @@ void AssetManager::LoadMusic()
 
 	for (size_t i = 0; i < files->size(); i++)
 	{
-		RegisterMusicByName(files->at(i));
+		RegisterMusic(files->at(i));
 	}
 
 	delete files;
 }
 
-void AssetManager::RegisterTextureByName(const std::string& name)
+void AssetManager::RegisterTexture(const std::string& name)
 {
-	RegisterTileSetByName(name, 0, 0);
+	RegisterTileSet(name, 0, 0);
 }
 
-void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, const uint8_t spacing, const uint8_t margin)
+void AssetManager::RegisterTileSet(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, const uint8_t spacing, const uint8_t margin)
 {
 	if (tileSets_.count(name) != 0)
 		return;
@@ -95,7 +96,7 @@ void AssetManager::RegisterTileSetByName(const std::string& name, const uint32_t
 	tileSets_[name] = new TileSet(texture, tileWidth, tileHeight, spacing, margin);;
 }
 
-void AssetManager::RegisterSoundByName(const std::string& name)
+void AssetManager::RegisterSound(const std::string& name)
 {
 	if (sounds_.count(name) != 0)
 		return;
@@ -114,7 +115,7 @@ void AssetManager::RegisterSoundByName(const std::string& name)
 	sounds_[name] = sound;
 }
 
-void AssetManager::RegisterMusicByName(const std::string& name)
+void AssetManager::RegisterMusic(const std::string& name)
 {
 	if (music_.count(name) != 0)
 		return;
@@ -131,6 +132,25 @@ void AssetManager::RegisterMusicByName(const std::string& name)
 	}
 
 	music_[name] = music;
+}
+
+void AssetManager::RegisterFont(const std::string& name)
+{
+	if (fonts_.count(name) != 0)
+		return;
+
+	std::string path = fontDir_ + name;
+
+	sf::Font* font = new sf::Font();
+	if (!font->loadFromFile(path))
+	{
+		std::string CouldNotLoadFont = "";
+		__debugbreak();
+		//assert(CouldNotLoadFont == name);
+		//TODO: Errorhandling
+	}
+
+	fonts_[name] = font;
 }
 
 std::vector<std::string>* AssetManager::GetFilesInDir(const std::string& dir)
@@ -159,12 +179,12 @@ sf::Texture* AssetManager::GetErrorTex()
 	return errorTex_;
 }
 
-sf::Sprite* AssetManager::GetSpriteByName(const std::string& name)
+sf::Sprite* AssetManager::GetSprite(const std::string& name)
 {
-	return GetTileByName(name, 0);
+	return GetTile(name, 0);
 }
 
-sf::Sprite* AssetManager::GetTileByName(const std::string& name, const uint8_t gid)
+sf::Sprite* AssetManager::GetTile(const std::string& name, const uint8_t gid)
 {
 	if (tileSets_.count(name) == 0)
 	{
@@ -182,30 +202,42 @@ sf::Sprite* AssetManager::GetTileByName(const std::string& name, const uint8_t g
 	return sprite;
 }
 
-sf::Sound* AssetManager::GetSoundByName(const std::string& name)
+sf::Sound* AssetManager::GetSound(const std::string& name)
 {
 	sf::Sound* sound = new sf::Sound();
 
 	if (sounds_.count(name) != 0)
 	{
-		RegisterSoundByName(name);
+		RegisterSound(name);
 	}
 	sound->setBuffer(*sounds_[name]);
 
 	return sound;
 }
 
-sf::Music* AssetManager::GetMusicByName(const std::string& name)
+sf::Music* AssetManager::GetMusic(const std::string& name)
 {
 	sf::Music* music = new sf::Music();
 
 	if (music_.count(name) != 0)
 	{
-		RegisterMusicByName(name);
+		RegisterMusic(name);
 	}
 	music = music_[name];
 
 	return music;
 }
 
+sf::Font* AssetManager::GetFont(const std::string& name)
+{
+	sf::Font* font = new sf::Font();
+
+	if (fonts_.count(name) != 0)
+	{
+		RegisterFont(name);
+	}
+	font = fonts_[name];
+
+	return font;
+}
 

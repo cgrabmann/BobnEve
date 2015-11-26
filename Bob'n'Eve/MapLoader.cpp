@@ -64,7 +64,7 @@ void MapLoader::LoadMap(const char* path)
 
 		tileSets[tileSet->name] = tileSet;
 
-		asset->RegisterTileSetByName(tileSet->imgPath, tileSet->tilewidth, tileSet->tileheight, tileSet->spacing, tileSet->margin);
+		asset->RegisterTileSet(tileSet->imgPath, tileSet->tilewidth, tileSet->tileheight, tileSet->spacing, tileSet->margin);
 
 		for (pugi::xml_node xmlTile = xmlTileset.child("tile"); xmlTile; xmlTile = xmlTile.next_sibling("tile"))
 		{
@@ -246,7 +246,7 @@ GraphicsComponent* MapLoader::ParseGraphics(Object* object, const Tile* tile)
 		return new GraphicsComponentAnimated(GetFramesByAnimationId(object, tile->animationId), tile->animationMirror);
 	}
 
-	return new GraphicsComponent(AssetManager::Instance()->GetTileByName(object->tileSet->imgPath, tile->id));
+	return new GraphicsComponent(AssetManager::Instance()->GetTile(object->tileSet->imgPath, tile->id));
 }
 
 GraphicsComponent* MapLoader::ParseAnimation(Object* object, uint8_t animationId)
@@ -302,7 +302,7 @@ std::vector<Frame*> MapLoader::GetFramesByAnimationId(Object* object, uint8_t an
 	{
 		if (object->tileSet->tiles[i].animationId == animationId)
 		{
-			tempFrames.push_back(new Frame(AssetManager::Instance()->GetTileByName(object->tileSet->imgPath, object->tileSet->tiles[i].id), object->tile->displayTime));
+			tempFrames.push_back(new Frame(AssetManager::Instance()->GetTile(object->tileSet->imgPath, object->tileSet->tiles[i].id), object->tile->displayTime));
 		}
 	}
 

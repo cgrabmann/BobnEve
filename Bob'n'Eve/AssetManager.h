@@ -7,6 +7,7 @@
 #include <SFML/include/SFML/Graphics/Texture.hpp>
 
 namespace sf{
+	class Font;
 	class Sprite;
 	class Sound;
 	class Music;
@@ -22,15 +23,17 @@ class AssetManager
 public:
 	static AssetManager* Instance();
 
-	sf::Sprite* GetSpriteByName(const std::string& name);
-	sf::Sprite* GetTileByName(const std::string& name, const uint8_t gid);
-	sf::Sound* GetSoundByName(const std::string& name);
-	sf::Music* GetMusicByName(const std::string& name);
+	sf::Sprite* GetSprite(const std::string& name);
+	sf::Sprite* GetTile(const std::string& name, const uint8_t gid);
+	sf::Sound* GetSound(const std::string& name);
+	sf::Music* GetMusic(const std::string& name);
+	sf::Font* GetFont(const std::string& name);
 
-	void RegisterTextureByName(const std::string& name);
-	void RegisterTileSetByName(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, const uint8_t spacing = 0, const uint8_t margin = 0);
-	void RegisterSoundByName(const std::string& name);
-	void RegisterMusicByName(const std::string& name);
+	void RegisterTexture(const std::string& name);
+	void RegisterTileSet(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, const uint8_t spacing = 0, const uint8_t margin = 0);
+	void RegisterSound(const std::string& name);
+	void RegisterMusic(const std::string& name);
+	void RegisterFont(const std::string& name);
 
 protected:
 	void LoadAll();
@@ -49,10 +52,12 @@ private:
 	std::unordered_map<std::string, TileSet*> tileSets_;
 	std::unordered_map<std::string, sf::SoundBuffer*> sounds_;
 	std::unordered_map<std::string, sf::Music*> music_;
+	std::unordered_map<std::string, sf::Font*> fonts_;
 
 	std::string textureDir_;
 	std::string soundDir_;
 	std::string musicDir_;
+	std::string fontDir_;
 
 	sf::Texture* errorTex_;
 	sf::Texture* GetErrorTex();
