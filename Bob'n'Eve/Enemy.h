@@ -4,7 +4,7 @@
 class Enemy : public GameObject
 {
 public:
-	Enemy(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, size_t enemyId);
+	Enemy(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, size_t enemyId, Vector2f speed);
 	~Enemy();
 
 	size_t GetId() const { return enemyId_; }

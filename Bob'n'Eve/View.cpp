@@ -5,7 +5,6 @@
 #include "Enemy.h"
 #include "Vector2f.h"
 #include "PhysicManager.h"
-#include <algorithm>
 
 View::View() : objects_(std::vector<GameObject*>()), players_(std::vector<Player*>())
 {
@@ -25,27 +24,19 @@ View* View::Instance()
 	return instance_;
 }
 
-void View::Register(Platform* platform)
+void View::Register(GameObject* platform)
 {
-	platforms_.push_back(platform);
 	objects_.push_back(platform);
 }
 
 void View::Register(Enemy* enemy)
 {
 	enemies_.push_back(enemy);
-	objects_.push_back(enemy);
 }
 
 void View::Register(Player* player)
 {
 	players_.push_back(player);
-	objects_.push_back(player);
-}
-
-void View::Register(GameObject* object)
-{
-	objects_.push_back(object);
 }
 
 void View::CleanUp()
@@ -60,6 +51,16 @@ void View::Update(int16_t ms)
 		(*it)->Update(ms);
 	}
 
+	for (std::vector<Enemy*>::iterator it = enemies_.begin(); it != enemies_.end(); ++it)
+	{
+		(*it)->Update(ms);
+	}
+
+	for (std::vector<Player*>::iterator it = players_.begin(); it != players_.end(); ++it)
+	{
+		(*it)->Update(ms);
+	}
+
 	PhysicManager::Instance()->Update(ms);
 }
 
@@ -69,11 +70,21 @@ void View::Draw(Renderer& renderer) const
 	{
 		(*it)->Draw(renderer);
 	}
+
+	for (std::vector<Enemy*>::const_iterator it = enemies_.begin(); it != enemies_.end(); ++it)
+	{
+		(*it)->Draw(renderer);
+	}
+
+	for (std::vector<Player*>::const_iterator it = players_.begin(); it != players_.end(); ++it)
+	{
+		(*it)->Draw(renderer);
+	}
 }
 
 void View::DeleteEnemy(Enemy* enemy)
 {
-	enemies_.erase(std::remove(enemies_.begin(), enemies_.end(), enemy), enemies_.end());
+	enemies_.erase(std::find(enemies_.begin(), enemies_.end(), enemy));
 }
 
 void View::DeleteEnemyById(size_t id)

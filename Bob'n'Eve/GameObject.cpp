@@ -5,7 +5,7 @@
 #include "Global.h"
 
 
-GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics)
+GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, Vector2f speed) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics), speed_(speed)
 {
 
 }
@@ -71,19 +71,19 @@ void GameObject::SetVelocity(float x, float y)
 void GameObject::Left()
 {
 	const Vector2f& velocity = GetVelocity();
-	SetVelocity(-5, velocity.y);
+	SetVelocity(-speed_.x, velocity.y);
 }
 
 void GameObject::Right()
 {
 	const Vector2f& velocity = GetVelocity();
-	SetVelocity(5, velocity.y);
+	SetVelocity(speed_.x, velocity.y);
 }
 
 void GameObject::Up()
 {
 	const Vector2f& velocity = GetVelocity();
-	SetVelocity(velocity.x, -10);
+	SetVelocity(velocity.x, -speed_.y);
 }
 
 void GameObject::Kill()

@@ -10,7 +10,7 @@ class Renderer;
 class Player : public GameObject
 {
 public:
-	Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* idleGraphics, GraphicsComponent* jumpGraphics, GraphicsComponent* runGraphics);
+	Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* idleGraphics, GraphicsComponent* jumpGraphics, GraphicsComponent* runGraphics, Vector2f speed);
 	~Player();
 	
 	virtual void Update(int16_t ms) override;

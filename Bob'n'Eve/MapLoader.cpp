@@ -22,6 +22,7 @@
 #include <windows.h>
 #include "Coin.h"
 #include "PhysicBodyDef.h"
+#include "PhysicManager.h"
 
 void MapLoader::LoadMap(const char* path)
 {
@@ -74,37 +75,37 @@ void MapLoader::LoadMap(const char* path)
 			tile->id = id;
 			tile->gid = tileSet->firstgid + id;
 
-			for (pugi::xml_node xmlTileProperty = xmlTile.child("properties").child("property"); xmlTileProperty; xmlTileProperty = xmlTileProperty.next_sibling("property"))
+			for (pugi::xml_node xmlProperty = xmlTile.child("properties").child("property"); xmlProperty; xmlProperty = xmlProperty.next_sibling("property"))
 			{
-				const char* propertyName = xmlTileProperty.attribute("name").as_string();
+				const char* propertyName = xmlProperty.attribute("name").as_string();
 
 				if (!strcmp(propertyName, "AnimationId"))
 				{
-					tile->animationId = xmlTileProperty.attribute("value").as_int();
+					tile->animationId = xmlProperty.attribute("value").as_int();
 				}
 				else if (!strcmp(propertyName, "AnimationMirror"))
 				{
-					tile->animationMirror = xmlTileProperty.attribute("value").as_bool();
+					tile->animationMirror = xmlProperty.attribute("value").as_bool();
 				}
 				else if (!strcmp(propertyName, "AnimationType"))
 				{
-					tile->animationType = xmlTileProperty.attribute("value").as_string();
+					tile->animationType = xmlProperty.attribute("value").as_string();
 				}
 				else if (!strcmp(propertyName, "BobPass"))
 				{
-					tile->bobPass = xmlTileProperty.attribute("value").as_bool();;
+					tile->bobPass = xmlProperty.attribute("value").as_bool();;
 				}
 				else if (!strcmp(propertyName, "EvePass"))
 				{
-					tile->evePass = xmlTileProperty.attribute("value").as_bool();;
+					tile->evePass = xmlProperty.attribute("value").as_bool();;
 				}
 				else if (!strcmp(propertyName, "Type"))
 				{
-					tile->type = xmlTileProperty.attribute("value").as_string();;
+					tile->type = xmlProperty.attribute("value").as_string();;
 				}
 				else if (!strcmp(propertyName, "DisplayTime"))
 				{
-					tile->displayTime = xmlTileProperty.attribute("value").as_int();;
+					tile->displayTime = xmlProperty.attribute("value").as_int();;
 				}
 			}
 
@@ -117,10 +118,10 @@ void MapLoader::LoadMap(const char* path)
 	uint8_t xPos = 0;
 	uint8_t yPos = 0;
 	uint8_t tileCount = tiles.size();
-	//Platform Layer
-	for (pugi::xml_node xmlTile = map.child("layer").child("data").child("tile"); xmlTile; xmlTile = xmlTile.next_sibling("tile"))
+
+	for (pugi::xml_node xmlStaticObject = map.child("layer").child("data").child("tile"); xmlStaticObject; xmlStaticObject = xmlStaticObject.next_sibling("tile"))
 	{
-		uint8_t gid = xmlTile.attribute("gid").as_int();
+		uint8_t gid = xmlStaticObject.attribute("gid").as_int();
 		if (gid != 0 && gid <= tileCount)
 		{
 			Object* object = new Object();
@@ -147,38 +148,59 @@ void MapLoader::LoadMap(const char* path)
 		}
 	}
 
-	for (pugi::xml_node xmlObject = map.child("objectgroup").child("object"); xmlObject; xmlObject = xmlObject.next_sibling("object"))
+	for (pugi::xml_node xmlDynamicLayer = map.child("objectgroup"); xmlDynamicLayer; xmlDynamicLayer = xmlDynamicLayer.next_sibling("objectgroup"))
 	{
-		uint8_t gid = xmlObject.attribute("gid").as_int();
-		if (gid == 0 || gid > tileCount)
-			continue;
-
-		Object* object = new Object();
-
-		object->id = xmlObject.attribute("id").as_int();
-		object->tile = tiles[gid];
-		object->tileSet = tileSets[object->tile->tileSetName];
-		object->size = Vector2f(xmlObject.attribute("width").as_int(), xmlObject.attribute("height").as_int());
-		object->pos = Vector2f(xmlObject.attribute("x").as_float() + object->size.x / 2, xmlObject.attribute("y").as_float() - object->size.y / 2);
-		object->type = xmlObject.attribute("tpye").empty() ? object->tile->type : xmlObject.attribute("tpye").as_string();
-
-		for (pugi::xml_node xmlObjectProperty = xmlObject.child("properties").child("property"); xmlObjectProperty; xmlObjectProperty = xmlObjectProperty.next_sibling("property"))
+		for (pugi::xml_node xmlProperty = xmlDynamicLayer.child("properties").child("property"); xmlProperty; xmlProperty = xmlProperty.next_sibling("property"))
 		{
-			const char* propertyName = xmlObjectProperty.attribute("name").as_string();
+			const char* propertyName = xmlProperty.attribute("name").as_string();
 
 			if (!strcmp(propertyName, "Gravity"))
 			{
-				object->gravity = xmlObjectProperty.attribute("value").as_int();
-			}
-			else if (!strcmp(propertyName, "EnemyId"))
-			{
-				object->id = xmlObjectProperty.attribute("value").as_int();
+				PhysicManager::Instance()->SetGravity(Vector2f(0, xmlProperty.attribute("value").as_float()));
 			}
 		}
 
-		ParseObject(object);
+		for (pugi::xml_node xmlDynamicObject = xmlDynamicLayer.child("object"); xmlDynamicObject; xmlDynamicObject = xmlDynamicObject.next_sibling("object"))
+		{
+			uint8_t gid = xmlDynamicObject.attribute("gid").as_int();
+			if (gid == 0 || gid > tileCount)
+				continue;
 
-		delete object;
+			Object* object = new Object();
+
+			object->id = xmlDynamicObject.attribute("id").as_int();
+			object->tile = tiles[gid];
+			object->tileSet = tileSets[object->tile->tileSetName];
+			object->size = Vector2f(xmlDynamicObject.attribute("width").as_int(), xmlDynamicObject.attribute("height").as_int());
+			object->pos = Vector2f(xmlDynamicObject.attribute("x").as_float() + object->size.x / 2, xmlDynamicObject.attribute("y").as_float() - object->size.y / 2);
+			object->type = xmlDynamicObject.attribute("tpye").empty() ? object->tile->type : xmlDynamicObject.attribute("tpye").as_string();
+
+			for (pugi::xml_node xmlObjectProperty = xmlDynamicObject.child("properties").child("property"); xmlObjectProperty; xmlObjectProperty = xmlObjectProperty.next_sibling("property"))
+			{
+				const char* propertyName = xmlObjectProperty.attribute("name").as_string();
+
+				if (!strcmp(propertyName, "Gravity"))
+				{
+					object->gravity = xmlObjectProperty.attribute("value").as_int();
+				}
+				else if (!strcmp(propertyName, "EnemyId"))
+				{
+					object->id = xmlObjectProperty.attribute("value").as_int();
+				}
+				else if (!strcmp(propertyName, "SpeedX"))
+				{
+					object->speed.x = xmlObjectProperty.attribute("value").as_float();
+				}
+				else if (!strcmp(propertyName, "SpeedY"))
+				{
+					object->speed.y = xmlObjectProperty.attribute("value").as_float();
+				}
+			}
+
+			ParseObject(object);
+
+			delete object;
+		}
 	}
 
 	//clean up
@@ -190,7 +212,7 @@ void MapLoader::ParseObject(Object* object)
 {
 	if (!strcmp(object->type, "Enemy"))
 	{
-		View::Instance()->Register(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object), object->enemyId));
+		View::Instance()->Register(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object), object->enemyId, object->speed));
 	}
 	else if (!strcmp(object->type, "Coin"))
 	{
@@ -198,7 +220,7 @@ void MapLoader::ParseObject(Object* object)
 	}
 	else if (!strcmp(object->type, "Bob") || !strcmp(object->type, "Eve"))
 	{
-		View::Instance()->Register(new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2)));
+		View::Instance()->Register(new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2), object->speed));
 	}
 	else // if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{

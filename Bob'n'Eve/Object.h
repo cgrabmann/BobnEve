@@ -19,4 +19,5 @@ private:
 	Vector2f pos, size;
 	size_t enemyId = -1;
 	const char* type;
+	Vector2f speed = Vector2f(0, 0);
 };

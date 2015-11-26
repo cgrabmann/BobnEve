@@ -2,8 +2,8 @@
 #include "Player.h"
 #include "GraphicsComponent.h"
 
-Player::Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* idleGraphics, GraphicsComponent* jumpGraphics, GraphicsComponent* runGraphics)
-	: GameObject(input, physics, idleGraphics)
+Player::Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* idleGraphics, GraphicsComponent* jumpGraphics, GraphicsComponent* runGraphics, Vector2f speed)
+	: GameObject(input, physics, idleGraphics, speed)
 {
 	idleGraphics_ = idleGraphics;
 	jumpGraphics_ = jumpGraphics;
