@@ -265,7 +265,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 {
 	//TODO remove / 64 when PhysicsEngine is ready
 	PhysicBodyDef bodyDef;
-	bodyDef.bounds = FloatRect(object->pos, Vector2f(32, 32));
+	bodyDef.bounds = FloatRect(object->pos, object->size / 2);
 	bodyDef.gravityScale_ = object->gravity;
 
 	if (!strcmp(object->type, "Enemy"))

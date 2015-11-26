@@ -58,13 +58,19 @@ void Game::Loop()
 			paused_ = !paused_;
 		wasPDown = isPDown;
 
-		if (
+		if (!paused_
 #ifndef  _DEBUG
-		window.hasFocus() && 
+			&& window.hasFocus() 
 #endif
-		!paused_)
+			)
 		{
-			View::Instance()->Update(elapsedTime.asMilliseconds());
+			View::Instance()->Update(
+#ifndef  _DEBUG
+				elapsedTime.asMilliseconds()
+#else
+				16.6f
+#endif
+				);
 		}
 
 		renderer_.Render();
