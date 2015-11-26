@@ -65,6 +65,11 @@ void PhysicWorld::Reserve(size_t count)
 	collisions_.reserve(count / 2);
 }
 
+void PhysicWorld::SetGravity(const Vector2f& gravity)
+{
+	gravity_ = gravity;
+}
+
 void PhysicWorld::MoveBodies(float seconds)
 {
 	for (std::vector<PhysicBodyBase*>::iterator it = bodies_.begin(); it != bodies_.end(); ++it)
@@ -99,6 +104,8 @@ void PhysicWorld::ResolveCollisions()
 	{
 		CollidingGroup* group = collisions_.at(i);
 		group->body1_->CollideWith(*group->body2_);
+		group->body1_->FinishCollision(*group->body2_);
+		group->body2_->FinishCollision(*group->body1_);
 		delete group;
 	}
 	collisions_.clear();

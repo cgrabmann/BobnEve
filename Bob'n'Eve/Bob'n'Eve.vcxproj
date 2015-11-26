@@ -131,6 +131,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionCallback.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.h" />
     <ClInclude Include="Frame.h" />

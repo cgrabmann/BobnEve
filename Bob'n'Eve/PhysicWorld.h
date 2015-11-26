@@ -17,6 +17,7 @@ public:
 	void DestroyBody(PhysicBodyBase& body);
 
 	void Reserve(size_t count);
+	void SetGravity(const Vector2f& gravity);
 
 	class CollidingGroup
 	{

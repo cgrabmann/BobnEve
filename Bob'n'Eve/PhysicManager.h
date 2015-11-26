@@ -17,6 +17,8 @@ public:
 	void DestroyBody(PhysicBodyBase& body);
 
 	void Update(float ms);
+
+	void SetGravity(const Vector2f& gravity);
 private:
 	static PhysicManager* instance_;
 

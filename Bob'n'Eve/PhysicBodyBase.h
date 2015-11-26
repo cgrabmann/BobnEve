@@ -7,8 +7,8 @@
 
 class PhysicBodyDynamic;
 class PhysicBodyStatic;
+class CollisionCallback;
 struct PhysicBodyDef;
-class CollisionResolver;
 
 class PhysicBodyBase
 {
@@ -36,6 +36,7 @@ public:
 		return velocity_;
 	};
 	bool IsColliding(const PhysicBodyBase& otherBody) const;
+	void FinishCollision(PhysicBodyBase& otherBody);
 	void AddCollisionIgnoreGroup(int8_t group);
 	void RemoveCollisionIgnoreGroup(int8_t group);
 	bool IsInGroup(int8_t group) const;
@@ -59,6 +60,7 @@ protected:
 	FloatRect bounds_;
 	float physicScale_;
 	std::vector<int8_t> collisionIgnorGroups_;
+	CollisionCallback* callback_;
 };
 
 class PhysicBody

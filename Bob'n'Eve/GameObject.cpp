@@ -83,7 +83,7 @@ void GameObject::Right()
 void GameObject::Up()
 {
 	const Vector2f& velocity = GetVelocity();
-	SetVelocity(velocity.x, -5);
+	SetVelocity(velocity.x, -10);
 }
 
 void GameObject::Kill()

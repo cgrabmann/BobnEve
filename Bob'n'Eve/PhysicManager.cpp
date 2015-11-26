@@ -36,3 +36,8 @@ void PhysicManager::Update(float ms)
 {
 	world_.Step(ms / 1000.f);
 }
+
+void PhysicManager::SetGravity(const Vector2f& gravity)
+{
+	world_.SetGravity(gravity);
+}

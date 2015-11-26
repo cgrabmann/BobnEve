@@ -1,6 +1,6 @@
 #include "PhysicBodyBase.h"
 #include "PhysicBodyDef.h"
-#include <cstdint>
+#include "CollisionCallback.h"
 
 bool PhysicBodyBase::IsColliding(const PhysicBodyBase& otherBody) const
 {
@@ -9,6 +9,12 @@ bool PhysicBodyBase::IsColliding(const PhysicBodyBase& otherBody) const
 	if (bounds_.IsInsersecting(otherBody.bounds_))
 		return true;
 	return false;
+}
+
+void PhysicBodyBase::FinishCollision(PhysicBodyBase& otherBody)
+{
+	if (callback_ != nullptr)
+		callback_->collidesWith(otherBody);
 }
 
 void PhysicBodyBase::AddCollisionIgnoreGroup(int8_t group)
