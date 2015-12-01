@@ -11,8 +11,8 @@
 		inline Tile() {}
 		inline ~Tile() {}
 
-		bool bobPass = false;
-		bool evePass = false;
+		bool passBob = false;
+		bool passEve = false;
 		uint8_t animationId = -1;
 		bool animationMirror = false;
 		const char* animationType;
@@ -21,4 +21,5 @@
 		const char* tileSetName;
 		uint16_t id = -1;
 		uint16_t gid = -1;
+		bool* collisionSides = new bool[] { true, true, true, true };
 	};

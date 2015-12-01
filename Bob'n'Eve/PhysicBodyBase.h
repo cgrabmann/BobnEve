@@ -13,6 +13,7 @@ struct PhysicBodyDef;
 class PhysicBodyBase
 {
 	friend class PhysicWorld;
+	friend class PhysicBodyDynamic;
 public:
 	inline Vector2f GetPosition() const
 	{
@@ -59,7 +60,8 @@ protected:
 	Vector2f realVelocity_;
 	FloatRect bounds_;
 	float physicScale_;
-	std::vector<int8_t> collisionIgnorGroups_;
+	std::vector<int8_t> collisionIgnoreGroups_;
+	bool* collisionSides;
 	CollisionCallback* callback_;
 };
 

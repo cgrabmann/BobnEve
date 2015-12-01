@@ -4,85 +4,85 @@
   <image source="../Textures/Bob.png" width="528" height="98"/>
   <tile id="0">
    <properties>
-    <property name="AnimationId" value="0"/>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="AnimationId" value="1"/>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Id" value="1"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
    </properties>
   </tile>
   <tile id="7">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
    </properties>
   </tile>
@@ -91,85 +91,85 @@
   <image source="../Textures/Eve.png" width="528" height="98"/>
   <tile id="0">
    <properties>
-    <property name="AnimationId" value="0"/>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Eve"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="AnimationId" value="1"/>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Id" value="1"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Eve"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Eve"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Eve"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Eve"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Eve"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Eve"/>
    </properties>
   </tile>
   <tile id="7">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="150"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Eve"/>
    </properties>
   </tile>
@@ -178,152 +178,152 @@
   <image source="../Textures/Enemy.png" width="462" height="132"/>
   <tile id="0">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="true"/>
-    <property name="EvePass" value="true"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="AnimationId" value="1"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="False"/>
+    <property name="Animation_Id" value="1"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="False"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="False"/>
+    <property name="Pass_Eve" value="False"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="AnimationId" value="1"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="False"/>
+    <property name="Animation_Id" value="1"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="False"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="False"/>
+    <property name="Pass_Eve" value="False"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="AnimationId" value="1"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="False"/>
+    <property name="Animation_Id" value="1"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="False"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="False"/>
+    <property name="Pass_Eve" value="False"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
-    <property name="AnimationId" value="1"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="False"/>
+    <property name="Animation_Id" value="1"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="False"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="False"/>
+    <property name="Pass_Eve" value="False"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
-    <property name="AnimationId" value="1"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="False"/>
+    <property name="Animation_Id" value="1"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="False"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="False"/>
+    <property name="Pass_Eve" value="False"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
-    <property name="AnimationId" value="1"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="False"/>
+    <property name="Animation_Id" value="1"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="False"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="False"/>
+    <property name="Pass_Eve" value="False"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
   <tile id="7">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="8">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="10">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="11">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="12">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Coin"/>
    </properties>
   </tile>
   <tile id="13">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Animated"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Coin"/>
    </properties>
   </tile>
@@ -332,349 +332,413 @@
   <image source="../Textures/Platforms.png" width="264" height="594"/>
   <tile id="0">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="true"/>
+    <property name="Collision_Left" value="true"/>
+    <property name="Collision_Right" value="true"/>
+    <property name="Collision_Top" value="true"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="1">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="true"/>
+    <property name="Collision_Left" value="true"/>
+    <property name="Collision_Right" value="false"/>
+    <property name="Collision_Top" value="true"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="2">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="true"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
+    <property name="Collision_Top" value="true"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="3">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="true"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="true"/>
+    <property name="Collision_Top" value="true"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="4">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="false"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
+    <property name="Collision_Top" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="5">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="false"/>
+    <property name="Collision_Left" value="true"/>
+    <property name="Collision_Right" value="true"/>
+    <property name="Collision_Top" value="true"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="6">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="false"/>
+    <property name="Collision_Left" value="true"/>
+    <property name="Collision_Right" value="true"/>
+    <property name="Collision_Top" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="7">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="true"/>
+    <property name="Collision_Left" value="true"/>
+    <property name="Collision_Right" value="true"/>
+    <property name="Collision_Top" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="8">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="false"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="true"/>
+    <property name="Collision_Top" value="true"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="9">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="false"/>
+    <property name="Collision_Left" value="true"/>
+    <property name="Collision_Right" value="false"/>
+    <property name="Collision_Top" value="true"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="10">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="true"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="true"/>
+    <property name="Collision_Top" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="11">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="true"/>
+    <property name="Collision_Left" value="true"/>
+    <property name="Collision_Right" value="false"/>
+    <property name="Collision_Top" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="12">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="false"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
+    <property name="Collision_Top" value="true"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="13">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="false"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="true"/>
+    <property name="Collision_Top" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="14">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="true"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
+    <property name="Collision_Top" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="15">
    <properties>
-    <property name="AnimationType" value="Static"/>
-    <property name="BobPass" value="false"/>
-    <property name="EvePass" value="false"/>
+    <property name="Animation_Type" value="Static"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Collision_Bottom" value="false"/>
+    <property name="Collision_Left" value="true"/>
+    <property name="Collision_Right" value="false"/>
+    <property name="Collision_Top" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Platform"/>
    </properties>
   </tile>
   <tile id="16">
    <properties>
-    <property name="AnimationId" value="0"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="17">
    <properties>
-    <property name="AnimationId" value="0"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="18">
    <properties>
-    <property name="AnimationId" value="0"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="19">
    <properties>
-    <property name="AnimationId" value="0"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="20">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="21">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="22">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="23">
    <properties>
-    <property name="AnimationId" value="2"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="2"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="24">
    <properties>
-    <property name="AnimationId" value="3"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="3"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="25">
    <properties>
-    <property name="AnimationId" value="3"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="3"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="26">
    <properties>
-    <property name="AnimationId" value="3"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="3"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="27">
    <properties>
-    <property name="AnimationId" value="3"/>
-    <property name="AnimationMirror" value="true"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="true"/>
+    <property name="Animation_Id" value="3"/>
+    <property name="Animation_Mirror" value="true"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="true"/>
     <property name="DisplayTime" value="250"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
   <tile id="28">
    <properties>
-    <property name="AnimationId" value="4"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="4"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
   <tile id="29">
    <properties>
-    <property name="AnimationId" value="4"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="4"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
   <tile id="30">
    <properties>
-    <property name="AnimationId" value="4"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="4"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
   <tile id="31">
    <properties>
-    <property name="AnimationId" value="4"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="4"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
   <tile id="32">
    <properties>
-    <property name="AnimationId" value="4"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="4"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
   <tile id="33">
    <properties>
-    <property name="AnimationId" value="4"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="4"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
   <tile id="34">
    <properties>
-    <property name="AnimationId" value="4"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="4"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
   <tile id="35">
    <properties>
-    <property name="AnimationId" value="4"/>
-    <property name="AnimationMirror" value="false"/>
-    <property name="AnimationType" value="Fade"/>
-    <property name="BobPass" value="false"/>
+    <property name="Animation_Id" value="4"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Fade"/>
+    <property name="Pass_Bob" value="false"/>
     <property name="DisplayTime" value="125"/>
-    <property name="EvePass" value="false"/>
+    <property name="Pass_Eve" value="false"/>
     <property name="Type" value="JumpPad"/>
    </properties>
   </tile>
@@ -10685,52 +10749,52 @@
  </layer>
  <objectgroup name="Dynamic">
   <properties>
-   <property name="Gravity" value="15"/>
+   <property name="Gravity" value="25"/>
   </properties>
-  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="67" y="268.333" width="64" height="96">
+  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="113" y="889.333" width="64" height="96">
    <properties>
-    <property name="Gravity" value="1"/>
-    <property name="SpeedX" value="5"/>
-    <property name="SpeedY" value="10"/>
+    <property name="GravityScale" value="1"/>
+    <property name="SpeedX" value="10"/>
+    <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
   <object id="2" name="Eve Spawn" type="Eve" gid="9" x="236.333" y="463.667" width="64" height="96">
    <properties>
-    <property name="Gravity" value="-1"/>
-    <property name="SpeedX" value="5"/>
-    <property name="SpeedY" value="10"/>
+    <property name="GravityScale" value="-1"/>
+    <property name="SpeedX" value="10"/>
+    <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
   <object id="3" name="Enemy0" type="Enemy" gid="17" x="358.667" y="462.667" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
-    <property name="Gravity" value="1"/>
-    <property name="SpeedX" value="5"/>
-    <property name="SpeedY" value="10"/>
+    <property name="GravityScale" value="1"/>
+    <property name="SpeedX" value="10"/>
+    <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
   <object id="4" name="Enemy0" type="Enemy" gid="18" x="350.667" y="702" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
-    <property name="Gravity" value="-1"/>
-    <property name="SpeedX" value="5"/>
-    <property name="SpeedY" value="10"/>
+    <property name="GravityScale" value="-1"/>
+    <property name="SpeedX" value="10"/>
+    <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
   <object id="8" name="Enemy1" type="Enemy" gid="17" x="1175.67" y="589.333" width="64" height="64">
    <properties>
     <property name="EnemyId" value="1"/>
-    <property name="Gravity" value="-1"/>
-    <property name="SpeedX" value="5"/>
-    <property name="SpeedY" value="10"/>
+    <property name="GravityScale" value="-1"/>
+    <property name="SpeedX" value="10"/>
+    <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
   <object id="9" name="Enemy1" type="Enemy" gid="18" x="1175.67" y="354" width="64" height="64">
    <properties>
     <property name="EnemyId" value="1"/>
-    <property name="Gravity" value="1"/>
-    <property name="SpeedX" value="5"/>
-    <property name="SpeedY" value="10"/>
+    <property name="GravityScale" value="1"/>
+    <property name="SpeedX" value="10"/>
+    <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
  </objectgroup>

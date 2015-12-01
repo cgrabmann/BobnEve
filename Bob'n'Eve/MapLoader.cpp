@@ -79,25 +79,25 @@ void MapLoader::LoadMap(const char* path)
 			{
 				const char* propertyName = xmlProperty.attribute("name").as_string();
 
-				if (!strcmp(propertyName, "AnimationId"))
+				if (!strcmp(propertyName, "Animation_Id"))
 				{
 					tile->animationId = xmlProperty.attribute("value").as_int();
 				}
-				else if (!strcmp(propertyName, "AnimationMirror"))
+				else if (!strcmp(propertyName, "Animation_Mirror"))
 				{
 					tile->animationMirror = xmlProperty.attribute("value").as_bool();
 				}
-				else if (!strcmp(propertyName, "AnimationType"))
+				else if (!strcmp(propertyName, "Animation_Type"))
 				{
 					tile->animationType = xmlProperty.attribute("value").as_string();
 				}
-				else if (!strcmp(propertyName, "BobPass"))
+				else if (!strcmp(propertyName, "Pass_Bob"))
 				{
-					tile->bobPass = xmlProperty.attribute("value").as_bool();;
+					tile->passBob = xmlProperty.attribute("value").as_bool();;
 				}
-				else if (!strcmp(propertyName, "EvePass"))
+				else if (!strcmp(propertyName, "Pass_Eve"))
 				{
-					tile->evePass = xmlProperty.attribute("value").as_bool();;
+					tile->passEve = xmlProperty.attribute("value").as_bool();;
 				}
 				else if (!strcmp(propertyName, "Type"))
 				{
@@ -106,6 +106,22 @@ void MapLoader::LoadMap(const char* path)
 				else if (!strcmp(propertyName, "DisplayTime"))
 				{
 					tile->displayTime = xmlProperty.attribute("value").as_int();;
+				}
+				else if (!strcmp(propertyName, "Collision_Top"))
+				{
+					tile->collisionSides[Sides::Top] = xmlProperty.attribute("value").as_bool();;
+				}
+				else if (!strcmp(propertyName, "Collision_Right"))
+				{
+					tile->collisionSides[Sides::Right] = xmlProperty.attribute("value").as_bool();;
+				}
+				else if (!strcmp(propertyName, "Collision_Bottom"))
+				{
+					tile->collisionSides[Sides::Bottom] = xmlProperty.attribute("value").as_bool();;
+				}
+				else if (!strcmp(propertyName, "Collision_Left"))
+				{
+					tile->collisionSides[Sides::Left] = xmlProperty.attribute("value").as_bool();;
 				}
 			}
 
@@ -179,7 +195,7 @@ void MapLoader::LoadMap(const char* path)
 			{
 				const char* propertyName = xmlObjectProperty.attribute("name").as_string();
 
-				if (!strcmp(propertyName, "Gravity"))
+				if (!strcmp(propertyName, "GravityScale"))
 				{
 					object->gravity = xmlObjectProperty.attribute("value").as_int();
 				}
@@ -285,41 +301,39 @@ GraphicsComponent* MapLoader::ParseAnimation(Object* object, uint8_t animationId
 
 PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 {
-	//TODO remove / 64 when PhysicsEngine is ready
 	PhysicBodyDef bodyDef;
 	bodyDef.bounds = FloatRect(object->pos, object->size / 2);
 	bodyDef.gravityScale_ = object->gravity;
+	bodyDef.collisionSides = object->tile->collisionSides;
 
 	if (!strcmp(object->type, "Enemy"))
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		bodyDef.collisionIgnorGroups_.push_back(1);
+		bodyDef.collisionIgnoreGroups_.push_back(1);
 		return new PhysicsComponentStatic(bodyDef);
 	}
 	if (!strcmp(object->type, "Bob"))
 	{
-		bodyDef.bounds.halfSize.y = 48;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
-		bodyDef.collisionIgnorGroups_.push_back(2);
+		bodyDef.collisionIgnoreGroups_.push_back(2);
 		return new PhysicsComponentDynamic(bodyDef);
 	}
 	if (!strcmp(object->type, "Eve"))
 	{
-		bodyDef.bounds.halfSize.y = 48;
-		bodyDef.type_ = PhysicBody::DYNAMIC;
-		bodyDef.collisionIgnorGroups_.push_back(3);
-		return new PhysicsComponentDynamic(bodyDef);
+		bodyDef.type_ = PhysicBody::STATIC;
+		bodyDef.collisionIgnoreGroups_.push_back(3);
+		return new PhysicsComponentStatic(bodyDef);
 	}
 	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		if (object->tile->bobPass)
+		if (object->tile->passBob)
 		{
-			bodyDef.collisionIgnorGroups_.push_back(2);
+			bodyDef.collisionIgnoreGroups_.push_back(2);
 		}
-		if (object->tile->evePass)
+		if (object->tile->passEve)
 		{
-			bodyDef.collisionIgnorGroups_.push_back(3);
+			bodyDef.collisionIgnoreGroups_.push_back(3);
 		}
 		return new PhysicsComponentStatic(bodyDef);
 	}

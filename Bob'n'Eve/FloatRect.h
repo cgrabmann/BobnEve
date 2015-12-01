@@ -14,4 +14,11 @@ public:
 	bool IsInsersecting(const FloatRect& otherRect) const;
 
 	Vector2f GetOverlap(const FloatRect& otherRect) const;
+
+	enum Direction {
+		UP,
+		RIGHT,
+		DOWN,
+		LEFT
+	};
 };

@@ -14,7 +14,6 @@ class View
 public:
 	static View* Instance();
 
-	void Register(Platform* platform);
 	void Register(Enemy* enemy);
 	void Register(Player* player);
 	void Register(GameObject* object);

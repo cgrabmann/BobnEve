@@ -2,6 +2,7 @@
 #include "PhysicBodyStatic.h"
 #include <SFML/include/SFML/Window/Keyboard.hpp>
 #include "Global.h"
+#include "PhysicBodyDef.h"
 
 void PhysicBodyDynamic::SetVelocity(const Vector2f& velocity)
 {
@@ -48,19 +49,25 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 	FloatRect otherBounds = otherBody.GetBounds();
 	Vector2f overlap = bounds_.GetOverlap(otherBounds);
 
-	float wy = ((bounds_.halfSize.x + otherBounds.halfSize.x) * 2) * (bounds_.center.y - otherBounds.center.y);
-	float hx = ((bounds_.halfSize.y + otherBounds.halfSize.y) * 2) * (bounds_.center.x - otherBounds.center.x);
+	float wy = (bounds_.halfSize.x + otherBounds.halfSize.x) * (bounds_.center.y - otherBounds.center.y);
+	float hx = (bounds_.halfSize.y + otherBounds.halfSize.y) * (bounds_.center.x - otherBounds.center.x);
 
 	if (wy > hx)
 		if (wy > -hx)
 			/* top */
 		{
+			if (!otherBody.collisionSides[Sides::Bottom])
+				return;
+
 			overlap.x = 0;
 			velocity_.y = 0;
 		}
 		else
 			/* left */
 		{
+			if (!otherBody.collisionSides[Sides::Right])
+				return;
+
 			overlap.y = 0;
 			velocity_.x = 0;
 		}
@@ -68,12 +75,18 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 		if (wy < -hx)
 			/* bottom */
 		{
+			if (!otherBody.collisionSides[Sides::Top])
+				return;
+
 			overlap.x = 0;
 			velocity_.y = 0;
 		}
 		else
 			/* right */
 		{
+			if (!otherBody.collisionSides[Sides::Left])
+				return;
+
 			overlap.y = 0;
 			velocity_.x = 0;
 		}
@@ -95,15 +108,15 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 	Vector2f overlap = bounds_.GetOverlap(otherBounds);
 	overlap /= 2;
 
-	float wy = ((bounds_.halfSize.x + otherBounds.halfSize.x) * 2) * (bounds_.center.y - otherBounds.center.y);
-	float hx = ((bounds_.halfSize.y + otherBounds.halfSize.y) * 2) * (bounds_.center.x - otherBounds.center.x);
+	float wy = (bounds_.halfSize.x + otherBounds.halfSize.x) * (bounds_.center.y - otherBounds.center.y);
+	float hx = (bounds_.halfSize.y + otherBounds.halfSize.y) * (bounds_.center.x - otherBounds.center.x);
 
 	if (wy > hx)
 		if (wy > -hx)
 			/* top */
 		{
 			overlap.x = 0;
-			velocity_.y = averageVelocity.y; 
+			velocity_.y = averageVelocity.y;
 			otherBody.velocity_.y = averageVelocity.y;
 		}
 		else
