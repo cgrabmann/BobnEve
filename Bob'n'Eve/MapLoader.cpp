@@ -302,9 +302,9 @@ GraphicsComponent* MapLoader::ParseAnimation(Object* object, uint8_t animationId
 PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 {
 	PhysicBodyDef bodyDef;
-	bodyDef.bounds = FloatRect(object->pos, object->size / 2);
+	bodyDef.bounds_ = FloatRect(object->pos, object->size / 2);
 	bodyDef.gravityScale_ = object->gravity;
-	bodyDef.collisionSides = object->tile->collisionSides;
+	bodyDef.collisionSides_ = object->tile->collisionSides;
 
 	if (!strcmp(object->type, "Enemy"))
 	{

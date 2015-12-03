@@ -28,7 +28,8 @@ public:
 	};
 
 private:
-	std::vector<PhysicBodyBase*> bodies_;
+	std::vector<PhysicBodyBase*> staticBodies_;
+	std::vector<PhysicBodyBase*> dynamicBodies_;
 	std::vector<CollidingGroup*> collisions_;
 	Vector2f gravity_;
 

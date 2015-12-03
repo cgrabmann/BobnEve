@@ -60,7 +60,7 @@ protected:
 	FloatRect bounds_;
 	float physicScale_;
 	std::vector<int8_t> collisionIgnoreGroups_;
-	bool* collisionSides;
+	bool* collisionSides_;
 	CollisionCallback* callback_;
 };
 

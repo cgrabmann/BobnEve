@@ -56,7 +56,7 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 		if (wy > -hx)
 			/* top */
 		{
-			if (!otherBody.collisionSides[Sides::Bottom])
+			if (!otherBody.collisionSides_[Sides::Bottom])
 				return;
 
 			overlap.x = 0;
@@ -65,7 +65,7 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 		else
 			/* right */
 		{
-			if (!otherBody.collisionSides[Sides::Left])
+			if (!otherBody.collisionSides_[Sides::Left])
 				return;
 
 			overlap.y = 0;
@@ -75,7 +75,7 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 		if (wy < -hx)
 			/* bottom */
 		{
-			if (!otherBody.collisionSides[Sides::Top])
+			if (!otherBody.collisionSides_[Sides::Top])
 				return;
 
 			overlap.x = 0;
@@ -84,7 +84,7 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 		else
 			/* left */
 		{
-			if (!otherBody.collisionSides[Sides::Right])
+			if (!otherBody.collisionSides_[Sides::Right])
 				return;
 
 			overlap.y = 0;
@@ -115,7 +115,7 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 		if (wy > -hx)
 			/* top */
 		{
-			if (!otherBody.collisionSides[Sides::Bottom])
+			if (!otherBody.collisionSides_[Sides::Bottom])
 				return;
 
 			overlap.x = 0;
@@ -125,7 +125,7 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 		else
 			/* right */
 		{
-			if (!otherBody.collisionSides[Sides::Left])
+			if (!otherBody.collisionSides_[Sides::Left])
 				return;
 
 			overlap.y = 0;
@@ -136,7 +136,7 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 		if (wy < -hx)
 			/* bottom */
 		{
-			if (!otherBody.collisionSides[Sides::Top])
+			if (!otherBody.collisionSides_[Sides::Top])
 				return;
 
 			overlap.x = 0;
@@ -146,7 +146,7 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 		else
 			/* left */
 		{
-			if (!otherBody.collisionSides[Sides::Right])
+			if (!otherBody.collisionSides_[Sides::Right])
 				return;
 
 			overlap.y = 0;

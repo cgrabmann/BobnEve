@@ -13,8 +13,9 @@ enum Sides
 struct PhysicBodyDef
 {
 	PhysicBody::Type type_ = PhysicBody::Type::STATIC;
-	FloatRect bounds;
+	FloatRect bounds_;
 	int8_t gravityScale_ = 1;
 	std::vector<int8_t> collisionIgnoreGroups_;
-	bool* collisionSides;
+	bool* collisionSides_;
+	CollisionCallback* callback_ = nullptr;
 };
