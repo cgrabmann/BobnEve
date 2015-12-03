@@ -40,15 +40,18 @@ inline sf::Vector2f& operator+= (sf::Vector2f& lVec, const Vector2f& rVec)
 // + Operators
 inline Vector2f operator+ (const Vector2f& lVec, const Vector2f& rVec)
 {
-	return Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
+	Vector2f out(lVec);
+	return out += rVec;
 }
 inline Vector2f operator+ (const Vector2f& lVec, const sf::Vector2f& rVec)
 {
-	return Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
+	Vector2f out(lVec);
+	return out += rVec;
 }
 inline sf::Vector2f operator+ (const sf::Vector2f& lVec, const Vector2f& rVec)
 {
-	return sf::Vector2f(lVec.x + rVec.x, lVec.y + rVec.y);
+	sf::Vector2f out(lVec);
+	return out += rVec;
 }
 
 // -= Operators
@@ -74,15 +77,18 @@ inline sf::Vector2f& operator-= (sf::Vector2f& lVec, const Vector2f& rVec)
 // - Operators
 inline Vector2f operator- (const Vector2f& lVec, const Vector2f& rVec)
 {
-	return Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
+	Vector2f out(lVec);
+	return out += rVec;
 }
 inline Vector2f operator- (const Vector2f& lVec, const sf::Vector2f& rVec)
 {
-	return Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
+	Vector2f out(lVec);
+	return out += rVec;
 }
 inline sf::Vector2f operator- (const sf::Vector2f& lVec, const Vector2f& rVec)
 {
-	return sf::Vector2f(lVec.x - rVec.x, lVec.y - rVec.y);
+	sf::Vector2f out(lVec);
+	return out += rVec;
 }
 
 // *= Operators
@@ -106,15 +112,17 @@ inline Vector2f& operator*= (Vector2f& lVec, const Vector2f& rVec)
 // * Operators
 inline Vector2f operator* (const Vector2f& vec, const float& mult)
 {
-	return Vector2f(vec.x * mult, vec.y * mult);
+	Vector2f out(vec);
+	return out *= mult;
 }
 inline Vector2f operator* (const float& mult, const Vector2f& vec)
 {
-	return vec * mult;
+	return (vec * mult);
 }
 inline Vector2f operator* (const Vector2f& lVec, const Vector2f& rVec)
 {
-	return Vector2f(lVec.x * rVec.x, lVec.y * rVec.y);
+	Vector2f out(lVec);
+	return out *= rVec;
 }
 
 // /= Operators
@@ -138,13 +146,15 @@ inline Vector2f& operator/= (Vector2f& lVec, const Vector2f& rVec)
 // / Operators
 inline Vector2f operator/ (const Vector2f& vec, const float& mult)
 {
-	return Vector2f(vec.x / mult, vec.y / mult);
+	Vector2f out(vec);
+	return out /= mult;
 }
 inline Vector2f operator/ (const float& mult, const Vector2f& vec)
 {
-	return vec / mult;
+	return (vec / mult);
 }
 inline Vector2f operator/ (const Vector2f& lVec, const Vector2f& rVec)
 {
-	return Vector2f(lVec.x / rVec.x, lVec.y / rVec.y);
+	Vector2f out(lVec);
+	return out /= rVec;
 }

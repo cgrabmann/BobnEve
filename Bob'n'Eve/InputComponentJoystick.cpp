@@ -4,6 +4,7 @@
 
 InputComponentJoystick::InputComponentJoystick(unsigned player, unsigned joystickCount) : InputComponentKeyboard(player)
 {
+	//BOB
 	if (player == 1)
 	{
 		joystickId_ = 0;
@@ -11,6 +12,7 @@ InputComponentJoystick::InputComponentJoystick(unsigned player, unsigned joystic
 		xAxis_ = sf::Joystick::X;
 		yAxis_ = sf::Joystick::Y;
 	}
+	//EVE
 	else
 	{
 		if (joystickCount == 1)
