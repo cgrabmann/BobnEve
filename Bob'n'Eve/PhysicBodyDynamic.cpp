@@ -63,9 +63,9 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 			velocity_.y = 0;
 		}
 		else
-			/* left */
+			/* right */
 		{
-			if (!otherBody.collisionSides[Sides::Right])
+			if (!otherBody.collisionSides[Sides::Left])
 				return;
 
 			overlap.y = 0;
@@ -82,9 +82,9 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 			velocity_.y = 0;
 		}
 		else
-			/* right */
+			/* left */
 		{
-			if (!otherBody.collisionSides[Sides::Left])
+			if (!otherBody.collisionSides[Sides::Right])
 				return;
 
 			overlap.y = 0;
@@ -115,13 +115,19 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 		if (wy > -hx)
 			/* top */
 		{
+			if (!otherBody.collisionSides[Sides::Bottom])
+				return;
+
 			overlap.x = 0;
 			velocity_.y = averageVelocity.y;
 			otherBody.velocity_.y = averageVelocity.y;
 		}
 		else
-			/* left */
+			/* right */
 		{
+			if (!otherBody.collisionSides[Sides::Left])
+				return;
+
 			overlap.y = 0;
 			velocity_.x = averageVelocity.x;
 			otherBody.velocity_.x = averageVelocity.x;
@@ -130,13 +136,19 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 		if (wy < -hx)
 			/* bottom */
 		{
+			if (!otherBody.collisionSides[Sides::Top])
+				return;
+
 			overlap.x = 0;
 			velocity_.y = averageVelocity.y;
 			otherBody.velocity_.y = averageVelocity.y;
 		}
 		else
-			/* right */
+			/* left */
 		{
+			if (!otherBody.collisionSides[Sides::Right])
+				return;
+
 			overlap.y = 0;
 			velocity_.x = averageVelocity.x;
 			otherBody.velocity_.x = averageVelocity.x;

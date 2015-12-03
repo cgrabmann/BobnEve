@@ -156,11 +156,11 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.cpp">
       <Filter>Quelldateien\GameObject\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.cpp">
       <Filter>Quelldateien\GameObject\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.cpp">
+      <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -266,13 +266,13 @@
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.h">
       <Filter>Headerdateien\GameObject\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.h">
       <Filter>Headerdateien\GameObject\Platform</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionCallback.h">
+      <Filter>Headerdateien\PhysicEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
   </ItemGroup>

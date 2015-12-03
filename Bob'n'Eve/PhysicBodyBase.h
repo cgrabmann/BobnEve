@@ -3,7 +3,6 @@
 #include "FloatRect.h"
 #include <vector>
 #include <cinttypes>
-#include <assert.h>
 
 class PhysicBodyDynamic;
 class PhysicBodyStatic;

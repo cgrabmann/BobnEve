@@ -7,6 +7,7 @@
 
 PhysicWorld::PhysicWorld(const Vector2f& gravity) : gravity_(gravity)
 {
+	bodies_.reserve(256);
 }
 
 
@@ -21,7 +22,7 @@ PhysicWorld::~PhysicWorld()
 void PhysicWorld::Step(float seconds)
 {
 	MoveBodies(seconds);
-	for (size_t i = 0; i < 3; ++i)
+	for (size_t j = 0; j < 3; ++j)
 	{
 		if (!CheckCollisions())
 			break;

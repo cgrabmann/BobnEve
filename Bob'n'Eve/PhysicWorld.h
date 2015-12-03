@@ -1,5 +1,4 @@
 #pragma once
-#include <cinttypes>
 #include <vector>
 #include "Vector2f.h"
 

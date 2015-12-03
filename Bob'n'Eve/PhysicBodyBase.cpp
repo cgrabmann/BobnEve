@@ -43,7 +43,7 @@ void PhysicBodyBase::SetPhysicScale(float scale)
 }
 
 PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : velocity_(0.f, 0.f), realVelocity_(0.f, 0.f),
-	bounds_(def.bounds), physicScale_(def.gravityScale_)
+	bounds_(def.bounds), physicScale_(def.gravityScale_), callback_(nullptr)
 {
 	collisionIgnoreGroups_ = def.collisionIgnoreGroups_;
 	collisionSides = def.collisionSides;

@@ -320,9 +320,9 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	}
 	if (!strcmp(object->type, "Eve"))
 	{
-		bodyDef.type_ = PhysicBody::STATIC;
+		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(3);
-		return new PhysicsComponentStatic(bodyDef);
+		return new PhysicsComponentDynamic(bodyDef);
 	}
 	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
