@@ -3,6 +3,7 @@
 #include "GraphicsComponent.h"
 #include "InputComponent.h"
 #include "Global.h"
+#include "View.h"
 
 
 GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, Vector2f speed) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics), speed_(speed)
@@ -88,4 +89,5 @@ void GameObject::Up()
 
 void GameObject::Kill()
 {
+	View::Instance()->Destroy(this);
 }

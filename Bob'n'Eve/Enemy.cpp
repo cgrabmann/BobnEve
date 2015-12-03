@@ -11,8 +11,3 @@ Enemy::~Enemy()
 {
 	
 }
-
-void Enemy::Kill()
-{
-	View::Instance()->DeleteEnemyById(enemyId_);
-}

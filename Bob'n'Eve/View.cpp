@@ -6,7 +6,7 @@
 #include "Vector2f.h"
 #include "PhysicManager.h"
 
-View::View() : objects_(std::vector<GameObject*>()), players_(std::vector<Player*>())
+View::View() : enemies_(std::vector<Enemy*>()), players_(std::vector<Player*>()), coins_(std::vector<Coin*>()), objects_(std::vector<GameObject*>())
 {
 }
 
@@ -24,14 +24,18 @@ View* View::Instance()
 	return instance_;
 }
 
-void View::Register(GameObject* platform)
+void View::Register(GameObject* object)
 {
-	objects_.push_back(platform);
+	objects_.push_back(object);
 }
 
 void View::Register(Enemy* enemy)
 {
 	enemies_.push_back(enemy);
+}
+
+void View::Register(Coin* coin)
+{
 }
 
 void View::Register(Player* player)
@@ -64,6 +68,37 @@ void View::Update(int16_t ms)
 	PhysicManager::Instance()->Update(ms);
 }
 
+void View::Destroy(Enemy* enemy)
+{
+	int id = enemy->GetId();
+	for (std::vector<Enemy*>::iterator it = enemies_.begin(); it != enemies_.end(); ++it)
+	{
+		if ((*it)->GetId() == id)
+		{
+			enemies_.erase(it);
+		}
+	}
+
+	//TODO: Add 10 Points
+}
+
+void View::Destroy(Player* player)
+{
+	//TODO: End game
+}
+
+void View::Destroy(Coin* coin)
+{
+	coins_.erase(std::find(coins_.begin(), coins_.end(), coin));
+
+	//TODO: Add 10 Points
+}
+
+void View::Destroy(GameObject* object)
+{
+	objects_.erase(std::find(objects_.begin(), objects_.end(), object));
+}
+
 void View::Draw(Renderer& renderer) const
 {
 	for (std::vector<GameObject*>::const_iterator it = objects_.begin(); it != objects_.end(); ++it)
@@ -79,22 +114,6 @@ void View::Draw(Renderer& renderer) const
 	for (std::vector<Player*>::const_iterator it = players_.begin(); it != players_.end(); ++it)
 	{
 		(*it)->Draw(renderer);
-	}
-}
-
-void View::DeleteEnemy(Enemy* enemy)
-{
-	enemies_.erase(std::find(enemies_.begin(), enemies_.end(), enemy));
-}
-
-void View::DeleteEnemyById(size_t id)
-{
-	for (std::vector<Enemy*>::iterator it = enemies_.begin(); it != enemies_.end(); ++it)
-	{
-		if ((*it)->GetId() == id)
-		{
-			enemies_.erase(it);
-		}
 	}
 }
 

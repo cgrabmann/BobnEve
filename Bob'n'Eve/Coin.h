@@ -1,14 +1,12 @@
 #pragma once
-#include "Enemy.h"
+#include "GameObject.h"
 
 class Coin :
-	public Enemy
+	public GameObject
 {
 public:
-	Coin(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, size_t enemyId = -1);
+	Coin(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics);
 	~Coin();
-
-	virtual void Kill() override;
 protected:
 };
 

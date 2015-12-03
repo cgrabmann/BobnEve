@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "Player.h"
 
+class Coin;
 class Vector2f;
 class Renderer;
 class Platform;
@@ -16,14 +17,17 @@ public:
 
 	void Register(Enemy* enemy);
 	void Register(Player* player);
+	void Register(Coin* coin);
 	void Register(GameObject* object);
 	void CleanUp();
 
 	void Update(int16_t ms);
 	void Draw(Renderer& renderer) const;
 
-	void DeleteEnemy(Enemy* enemy);
-	void DeleteEnemyById(size_t id); 
+	void Destroy(Enemy* enemy);
+	void Destroy(Player* player);
+	void Destroy(Coin* coin);
+	void Destroy(GameObject* object);
 	std::vector<const Vector2f> GetFocusPoints() const;
 
 protected:
@@ -33,9 +37,9 @@ protected:
 private:
 	static View* instance_;
 
-	std::vector<Platform*> platforms_;
 	std::vector<Enemy*> enemies_;
 	std::vector<Player*> players_;
+	std::vector<Coin*> coins_;
 	std::vector<GameObject*> objects_;
 
 	//std::vector<Background*> backgrounds;
