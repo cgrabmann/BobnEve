@@ -80,10 +80,7 @@ void Renderer::Render()
 	scale_.y = scale_.x;
 
 	//sets the focus in the middle of the players
-	//FRAGEN:
 	Vector2f centerPos(minPos + maxPos);
-	//ODER
-	// Vector2f centerPos = minPos + maxPos;
 	centerPos /= 2;
 	centerPos *= scale_;
 	sfView.setCenter(centerPos.ToSFML());
