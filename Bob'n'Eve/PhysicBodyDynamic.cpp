@@ -63,9 +63,9 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 			velocity_.y = 0;
 		}
 		else
-			/* left */
+			/* right */
 		{
-			if (!otherBody.collisionSides[Sides::Right])
+			if (!otherBody.collisionSides[Sides::Left])
 				return;
 
 			overlap.y = 0;
@@ -82,9 +82,9 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 			velocity_.y = 0;
 		}
 		else
-			/* right */
+			/* left */
 		{
-			if (!otherBody.collisionSides[Sides::Left])
+			if (!otherBody.collisionSides[Sides::Right])
 				return;
 
 			overlap.y = 0;
