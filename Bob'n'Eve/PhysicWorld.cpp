@@ -3,6 +3,7 @@
 #include "PhysicBodyDef.h"
 #include "PhysicBodyStatic.h"
 #include "PhysicBodyDynamic.h"
+#include <iostream>
 
 
 PhysicWorld::PhysicWorld(const Vector2f& gravity) : gravity_(gravity)
@@ -19,6 +20,7 @@ PhysicWorld::~PhysicWorld()
 	}
 	for (std::vector<PhysicBodyBase*>::iterator it = staticBodies_.begin(); it != staticBodies_.end(); ++it)
 	{
+		std::cout << it - staticBodies_.begin();
 		delete *it;
 	}
 }

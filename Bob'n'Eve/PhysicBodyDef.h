@@ -16,6 +16,6 @@ struct PhysicBodyDef
 	FloatRect bounds_;
 	int8_t gravityScale_ = 1;
 	std::vector<int8_t> collisionIgnoreGroups_;
-	bool* collisionSides_;
+	bool* collisionSides_ = new bool[4];
 	CollisionCallback* callback_ = nullptr;
 };

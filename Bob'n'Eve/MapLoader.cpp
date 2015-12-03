@@ -138,7 +138,7 @@ void MapLoader::LoadMap(const char* path)
 	for (pugi::xml_node xmlStaticObject = map.child("layer").child("data").child("tile"); xmlStaticObject; xmlStaticObject = xmlStaticObject.next_sibling("tile"))
 	{
 		uint8_t gid = xmlStaticObject.attribute("gid").as_int();
-		if (gid != 0 && gid <= tileCount)
+		if (gid != 0 && gid < tileCount)
 		{
 			Object* object = new Object();
 
@@ -304,7 +304,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	PhysicBodyDef bodyDef;
 	bodyDef.bounds_ = FloatRect(object->pos, object->size / 2);
 	bodyDef.gravityScale_ = object->gravity;
-	bodyDef.collisionSides_ = object->tile->collisionSides;
+	memcpy(bodyDef.collisionSides_, object->tile->collisionSides, 4);
 
 	if (!strcmp(object->type, "Enemy"))
 	{
