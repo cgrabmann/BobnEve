@@ -226,19 +226,19 @@ void MapLoader::LoadMap(const char* path)
 
 void MapLoader::ParseObject(Object* object)
 {
-	if (!strcmp(object->type, "Enemy"))
+	if (object->type == "Enemy")
 	{
 		View::Instance()->Register(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object), object->enemyId, object->speed));
 	}
-	else if (!strcmp(object->type, "Coin"))
+	else if (object->type == "Coin")
 	{
 		View::Instance()->Register(new Coin(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
 	}
-	else if (!strcmp(object->type, "Bob") || !strcmp(object->type, "Eve"))
+	else if (object->type == "Bob" || object->type == "Eve")
 	{
 		View::Instance()->Register(new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2), object->speed));
 	}
-	else // if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
+	else // if (object->type == "Platform" || object->type == "PassTrough")
 	{
 		View::Instance()->Register(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
 	}
@@ -246,23 +246,23 @@ void MapLoader::ParseObject(Object* object)
 
 InputComponent* MapLoader::ParseInput(Object* object)
 {
-	if (!strcmp(object->type, "Enemy"))
+	if (object->type == "Enemy")
 	{
 		return new InputComponent();
 	}
-	if (!strcmp(object->type, "Coin"))
+	if (object->type == "Coin")
 	{
 		return new InputComponent();
 	}
-	if (!strcmp(object->type, "Bob"))
+	if (object->type == "Bob")
 	{
 		return InputComponent::GetBobInputComponent();
 	}
-	if (!strcmp(object->type, "Eve"))
+	if (object->type == "Eve")
 	{
 		return InputComponent::GetEveInputComponent();
 	}
-	// if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
+	// if (object->type == "Platform" || object->type == "PassTrough")
 	{
 		return new InputComponent();
 	}
@@ -275,9 +275,9 @@ GraphicsComponent* MapLoader::ParseGraphics(Object* object, const Tile* tile)
 		tile = object->tile;
 	}
 
-	if (strcmp(tile->animationType, "Static"))
+	if (tile->animationType != "Static")
 	{
-		if (!strcmp(tile->animationType, "Fade"))
+		if (tile->animationType == "Fade")
 		{
 			return new GraphicsComponentFade(GetFramesByAnimationId(object, tile->animationId), tile->animationMirror);
 		}
@@ -306,25 +306,25 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	bodyDef.gravityScale_ = object->gravity;
 	memcpy(bodyDef.collisionSides_, object->tile->collisionSides, 4);
 
-	if (!strcmp(object->type, "Enemy"))
+	if (object->type == "Enemy")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
 		bodyDef.collisionIgnoreGroups_.push_back(1);
 		return new PhysicsComponentStatic(bodyDef);
 	}
-	if (!strcmp(object->type, "Bob"))
+	if (object->type == "Bob")
 	{
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(2);
 		return new PhysicsComponentDynamic(bodyDef);
 	}
-	if (!strcmp(object->type, "Eve"))
+	if (object->type == "Eve")
 	{
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(3);
 		return new PhysicsComponentDynamic(bodyDef);
 	}
-	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
+	//if (object->type == "Platform" || object->type == "PassTrough")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
 		if (object->tile->passBob)

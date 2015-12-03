@@ -19,8 +19,8 @@ private:
 	}
 
 	uint8_t firstgid = 1;
-	const char* name;
-	const char* imgPath;
+	std::string name;
+	std::string imgPath;
 	uint8_t tilecount = 0;
 	uint8_t tilewidth = 0;
 	uint8_t tileheight = 0;
