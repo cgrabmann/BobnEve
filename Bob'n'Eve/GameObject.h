@@ -21,9 +21,11 @@ public:
 	Vector2f GetRenderPosition() const;
 	Vector2f GetVelocity() const;
 	Vector2f GetOrientation() const;
+	bool isOnGround() const;
 
 	void SetVelocity(Vector2f const & vec);
 	void SetVelocity(float x, float y);
+	void SetOnGround(bool onGround);
 
 	virtual void Left();
 	virtual void Right();
@@ -32,6 +34,7 @@ public:
 protected:
 	//z-buffer
 	float layer_;
+	bool onGround_;
 
 	Vector2f speed_;
 

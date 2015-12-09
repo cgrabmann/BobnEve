@@ -12,6 +12,15 @@ Enemy::~Enemy()
 	
 }
 
+void Enemy::Update(int16_t ms)
+{
+	if (isOnGround())
+	{
+		Up();
+	}
+	GameObject::Update(ms);
+}
+
 void Enemy::Kill()
 {
 	View::Instance()->DeleteEnemyById(enemyId_);

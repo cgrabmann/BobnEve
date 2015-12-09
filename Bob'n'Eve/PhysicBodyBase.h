@@ -40,6 +40,11 @@ public:
 	void AddCollisionIgnoreGroup(int8_t group);
 	void RemoveCollisionIgnoreGroup(int8_t group);
 	bool IsInGroup(int8_t group) const;
+	bool InSameIgnoreGroup(const PhysicBodyBase& otherBody) const;
+	inline const std::string& GetCustomId() const
+	{
+		return customId_;
+	}
 
 	virtual void CollideWith(PhysicBodyBase& otherBody) = 0;
 	virtual void CollideWithStatic(PhysicBodyStatic& otherBody) = 0;
@@ -54,7 +59,8 @@ protected:
 
 	virtual void Move(const Vector2f& gravity, float seconds) = 0;
 
-	bool InSameIgnoreGroup(const PhysicBodyBase& otherBody) const;
+	std::string customId_;
+
 	Vector2f velocity_;
 	Vector2f realVelocity_;
 	FloatRect bounds_;

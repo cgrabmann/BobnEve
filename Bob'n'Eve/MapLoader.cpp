@@ -23,6 +23,8 @@
 #include "Coin.h"
 #include "PhysicBodyDef.h"
 #include "PhysicManager.h"
+#include "PhysicsComponentEnemy.h"
+#include "PhysicsComponentPlayer.h"
 
 void MapLoader::LoadMap(const char* path)
 {
@@ -303,26 +305,29 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 {
 	PhysicBodyDef bodyDef;
 	bodyDef.bounds_ = FloatRect(object->pos, object->size / 2);
-	bodyDef.gravityScale_ = object->gravity;
+	bodyDef.customId_ = object->type;
 	memcpy(bodyDef.collisionSides_, object->tile->collisionSides, 4);
 
 	if (!strcmp(object->type, "Enemy"))
 	{
-		bodyDef.type_ = PhysicBody::STATIC;
+		bodyDef.gravityScale_ = object->gravity;
+		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(1);
-		return new PhysicsComponentStatic(bodyDef);
+		return new PhysicsComponentEnemy(bodyDef);
 	}
 	if (!strcmp(object->type, "Bob"))
 	{
+		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(2);
-		return new PhysicsComponentDynamic(bodyDef);
+		return new PhysicsComponentPlayer(bodyDef);
 	}
 	if (!strcmp(object->type, "Eve"))
 	{
+		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(3);
-		return new PhysicsComponentDynamic(bodyDef);
+		return new PhysicsComponentPlayer(bodyDef);
 	}
 	//if (!strcmp(object->type, "Platform") || !strcmp(object->type, "PassTrough"))
 	{
@@ -335,6 +340,10 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 		{
 			bodyDef.collisionIgnoreGroups_.push_back(3);
 		}
+		/*if (!strcmp(object->type, "PassThrough"))
+		{
+			return new PhysicsComponentStatic(bodyDef);
+		}*/
 		return new PhysicsComponentStatic(bodyDef);
 	}
 }

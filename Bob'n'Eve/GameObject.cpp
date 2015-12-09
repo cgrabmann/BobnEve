@@ -53,6 +53,11 @@ Vector2f GameObject::GetOrientation() const
 	return physics_->GetOrientation();
 }
 
+bool GameObject::isOnGround() const
+{
+	return onGround_;
+}
+
 Vector2f GameObject::GetVelocity() const
 {
 	return physics_->GetVelocity();
@@ -66,6 +71,11 @@ void GameObject::SetVelocity(Vector2f const & vec)
 void GameObject::SetVelocity(float x, float y)
 {
 	physics_->SetVelocity(x, y);
+}
+
+void GameObject::SetOnGround(bool onGround)
+{
+	onGround_ = onGround;
 }
 
 void GameObject::Left()
@@ -82,8 +92,10 @@ void GameObject::Right()
 
 void GameObject::Up()
 {
-	const Vector2f& velocity = GetVelocity();
-	SetVelocity(velocity.x, -speed_.y);
+	if (isOnGround()){
+		const Vector2f& velocity = GetVelocity();
+		SetVelocity(velocity.x, -speed_.y);
+	}
 }
 
 void GameObject::Kill()
