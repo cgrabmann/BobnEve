@@ -527,6 +527,8 @@
     <property name="Animation_Id" value="0"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="true"/>
@@ -538,6 +540,8 @@
     <property name="Animation_Id" value="0"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="true"/>
@@ -549,6 +553,8 @@
     <property name="Animation_Id" value="0"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="true"/>
@@ -560,6 +566,8 @@
     <property name="Animation_Id" value="0"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="true"/>
@@ -571,6 +579,8 @@
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
@@ -582,6 +592,8 @@
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
@@ -593,6 +605,8 @@
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
@@ -604,6 +618,8 @@
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
@@ -615,6 +631,8 @@
     <property name="Animation_Id" value="3"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
@@ -626,6 +644,8 @@
     <property name="Animation_Id" value="3"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
@@ -637,6 +657,8 @@
     <property name="Animation_Id" value="3"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
@@ -648,6 +670,8 @@
     <property name="Animation_Id" value="3"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
@@ -659,6 +683,8 @@
     <property name="Animation_Id" value="4"/>
     <property name="Animation_Mirror" value="false"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="false"/>
@@ -670,6 +696,8 @@
     <property name="Animation_Id" value="4"/>
     <property name="Animation_Mirror" value="false"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="false"/>
@@ -681,6 +709,8 @@
     <property name="Animation_Id" value="4"/>
     <property name="Animation_Mirror" value="false"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="false"/>
@@ -692,6 +722,8 @@
     <property name="Animation_Id" value="4"/>
     <property name="Animation_Mirror" value="false"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="false"/>
@@ -703,6 +735,8 @@
     <property name="Animation_Id" value="4"/>
     <property name="Animation_Mirror" value="false"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="false"/>
@@ -714,6 +748,8 @@
     <property name="Animation_Id" value="4"/>
     <property name="Animation_Mirror" value="false"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="false"/>
@@ -725,6 +761,8 @@
     <property name="Animation_Id" value="4"/>
     <property name="Animation_Mirror" value="false"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="false"/>
@@ -736,6 +774,8 @@
     <property name="Animation_Id" value="4"/>
     <property name="Animation_Mirror" value="false"/>
     <property name="Animation_Type" value="Fade"/>
+    <property name="Collision_Left" value="false"/>
+    <property name="Collision_Right" value="false"/>
     <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="false"/>
