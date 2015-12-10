@@ -144,14 +144,14 @@
     <ClCompile Include="Platform.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsComponentPlayer.cpp">
-      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.cpp">
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.cpp">
-      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.cpp">
-      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    <ClCompile Include="PhysicsComponentPlayer.cpp">
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -267,13 +267,13 @@
       <Filter>Headerdateien\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsComponentPlayer.h">
-      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.h">
-      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.h">
-      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.h">
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
