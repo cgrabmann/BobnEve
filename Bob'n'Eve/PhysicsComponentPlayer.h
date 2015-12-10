@@ -1,6 +1,7 @@
 #pragma once
 #include "PhysicsComponentBase.h"
 #include "CollisionCallback.h"
+#include <unordered_map>
 
 class PhysicsComponentPlayer :
 	public PhysicsComponentBase,
@@ -15,5 +16,6 @@ public:
 
 private:
 	bool groundCollision_;
+	std::unordered_map<PhysicBodyBase*, int16_t> passThroughs_;
 };
 

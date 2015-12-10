@@ -5,7 +5,8 @@
 #include "Global.h"
 
 
-GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, Vector2f speed) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics), speed_(speed)
+GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, Vector2f speed) : layer_(1.f), onGround_(false),
+	speed_(speed), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }
@@ -53,7 +54,7 @@ Vector2f GameObject::GetOrientation() const
 	return physics_->GetOrientation();
 }
 
-bool GameObject::isOnGround() const
+bool GameObject::IsOnGround() const
 {
 	return onGround_;
 }
@@ -92,7 +93,7 @@ void GameObject::Right()
 
 void GameObject::Up()
 {
-	if (isOnGround()){
+	if (IsOnGround()){
 		const Vector2f& velocity = GetVelocity();
 		SetVelocity(velocity.x, -speed_.y);
 	}

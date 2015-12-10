@@ -6,7 +6,7 @@
 
 void PhysicBodyDynamic::SetVelocity(const Vector2f& velocity)
 {
-	velocity_ = velocity;
+	velocity_ = velocity * Vector2f(1, physicScale_);
 }
 
 void PhysicBodyDynamic::SetPhysicScale(float scale)
@@ -26,7 +26,7 @@ void PhysicBodyDynamic::Move(const Vector2f& gravity, float seconds)
 {
 	//Gravity
 	velocity_.x += gravity.x * seconds;
-	velocity_.y += gravity.y * seconds;
+	velocity_.y += gravity.y * seconds * physicScale_;
 
 	//Friction
 	if (velocity_.x < 0)
@@ -38,7 +38,7 @@ void PhysicBodyDynamic::Move(const Vector2f& gravity, float seconds)
 
 	//Move
 	bounds_.center.x += Global::TileWidth * velocity_.x * seconds;
-	bounds_.center.y += Global::TileHeight * velocity_.y * seconds * physicScale_;
+	bounds_.center.y += Global::TileHeight * velocity_.y * seconds;
 }
 
 void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)

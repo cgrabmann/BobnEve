@@ -10,7 +10,7 @@ class Renderer;
 class GameObject
 {
 public:
-	GameObject(InputComponent* input,	PhysicsComponentBase* physics,	GraphicsComponent* graphics, Vector2f speed = Vector2f(0,0));
+	explicit GameObject(InputComponent* input,	PhysicsComponentBase* physics,	GraphicsComponent* graphics, Vector2f speed = Vector2f(0,0));
 	virtual ~GameObject();
 
 	virtual void Update(int16_t ms);
@@ -21,7 +21,7 @@ public:
 	Vector2f GetRenderPosition() const;
 	Vector2f GetVelocity() const;
 	Vector2f GetOrientation() const;
-	bool isOnGround() const;
+	bool IsOnGround() const;
 
 	void SetVelocity(Vector2f const & vec);
 	void SetVelocity(float x, float y);

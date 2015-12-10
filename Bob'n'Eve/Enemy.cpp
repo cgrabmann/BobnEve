@@ -14,7 +14,7 @@ Enemy::~Enemy()
 
 void Enemy::Update(int16_t ms)
 {
-	if (isOnGround())
+	if (IsOnGround())
 	{
 		Up();
 	}

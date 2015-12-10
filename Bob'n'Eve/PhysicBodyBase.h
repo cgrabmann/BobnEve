@@ -33,7 +33,7 @@ public:
 	};
 	inline const Vector2f& GetVelocity() const
 	{
-		return velocity_;
+		return velocity_ * Vector2f(1, physicScale_);
 	};
 	bool IsColliding(const PhysicBodyBase& otherBody) const;
 	void FinishCollision(PhysicBodyBase& otherBody);
