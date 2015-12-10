@@ -45,7 +45,7 @@ void PhysicsComponentPlayer::Update(GameObject& object, int16_t ms)
 		for (auto entry = passThroughs_.begin(); entry != passThroughs_.end(); ++entry)
 		{
 			FloatRect temp = (*entry).first->GetBounds();
-			temp.halfSize.y = temp.halfSize.y / 4 * 3;
+			temp.halfSize.y = temp.halfSize.y / 2;
 			if (!gravitySwitched_ && temp.IsContaining(body_->GetPosition()))
 			{
 				gravitySwitched_ = true;

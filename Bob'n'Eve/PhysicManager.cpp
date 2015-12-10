@@ -1,9 +1,11 @@
 #include "PhysicManager.h"
+#include <algorithm>
 
 PhysicManager* PhysicManager::instance_ = NULL;
 
 PhysicManager::PhysicManager(const Vector2f& gravity) : world_(gravity)
 {
+	timeStep_ = 20;
 }
 
 PhysicManager::~PhysicManager()
@@ -32,9 +34,13 @@ void PhysicManager::DestroyBody(PhysicBodyBase& body)
 	world_.DestroyBody(body);
 }
 
-void PhysicManager::Update(float ms)
+void PhysicManager::Update(int16_t ms)
 {
-	world_.Step(ms / 1000.f);
+	while (ms > 0)
+	{
+		world_.Step(std::min(ms, timeStep_) / 1000.f);
+		ms -= timeStep_;
+	}
 }
 
 void PhysicManager::SetGravity(const Vector2f& gravity)
