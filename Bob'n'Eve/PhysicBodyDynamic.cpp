@@ -102,7 +102,7 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 	FloatRect otherBounds = otherBody.bounds_;
 	Vector2f otherVelocity = otherBody.velocity_;
 
-	Vector2f averageVelocity = velocity_ * physicScale_ + otherVelocity * otherBody.physicScale_;
+	Vector2f averageVelocity = velocity_ + otherVelocity;
 	averageVelocity /= 2;
 
 	Vector2f overlap = bounds_.GetOverlap(otherBounds);
