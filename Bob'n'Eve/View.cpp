@@ -1,7 +1,7 @@
 #pragma once
 #include "View.h"
 #include "Player.h"
-#include "Platform.h"
+#include "Coin.h"
 #include "Enemy.h"
 #include "Vector2f.h"
 #include "PhysicManager.h"
@@ -36,6 +36,7 @@ void View::Register(Enemy* enemy)
 
 void View::Register(Coin* coin)
 {
+	coins_.push_back(coin);
 }
 
 void View::Register(Player* player)
@@ -50,17 +51,22 @@ void View::CleanUp()
 
 void View::Update(int16_t ms)
 {
-	for (std::vector<GameObject*>::iterator it = objects_.begin(); it != objects_.end(); ++it)
-	{
-		(*it)->Update(ms);
-	}
-
 	for (std::vector<Enemy*>::iterator it = enemies_.begin(); it != enemies_.end(); ++it)
 	{
 		(*it)->Update(ms);
 	}
 
 	for (std::vector<Player*>::iterator it = players_.begin(); it != players_.end(); ++it)
+	{
+		(*it)->Update(ms);
+	}
+
+	for (std::vector<Coin*>::iterator it = coins_.begin(); it != coins_.end(); ++it)
+	{
+		(*it)->Update(ms);
+	}
+
+	for (std::vector<GameObject*>::iterator it = objects_.begin(); it != objects_.end(); ++it)
 	{
 		(*it)->Update(ms);
 	}
@@ -101,17 +107,22 @@ void View::Destroy(GameObject* object)
 
 void View::Draw(Renderer& renderer) const
 {
-	for (std::vector<GameObject*>::const_iterator it = objects_.begin(); it != objects_.end(); ++it)
-	{
-		(*it)->Draw(renderer);
-	}
-
 	for (std::vector<Enemy*>::const_iterator it = enemies_.begin(); it != enemies_.end(); ++it)
 	{
 		(*it)->Draw(renderer);
 	}
 
 	for (std::vector<Player*>::const_iterator it = players_.begin(); it != players_.end(); ++it)
+	{
+		(*it)->Draw(renderer);
+	}
+
+	for (std::vector<Coin*>::const_iterator it = coins_.begin(); it != coins_.end(); ++it)
+	{
+		(*it)->Draw(renderer);
+	}
+
+	for (std::vector<GameObject*>::const_iterator it = objects_.begin(); it != objects_.end(); ++it)
 	{
 		(*it)->Draw(renderer);
 	}
