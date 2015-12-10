@@ -78,7 +78,7 @@ void PhysicsComponentPlayer::Update(GameObject& object, int16_t ms)
 
 void PhysicsComponentPlayer::collidesWith(PhysicBodyBase& otherBody)
 {
-	if ((otherBody.GetCustomId() == "Platform" || otherBody.GetCustomId() == "Bob" || otherBody.GetCustomId() == "Eve")
+	if ((otherBody.GetCustomId() == "Platform" || otherBody.GetCustomId() == "Bob" || otherBody.GetCustomId() == "Eve" || otherBody.GetCustomId() == "JumpPad")
 		&& otherBody.GetPosition().y * otherBody.GetPhysicScale() > body_->GetPosition().y * body_->GetPhysicScale())
 	{
 		groundCollision_ = true;
