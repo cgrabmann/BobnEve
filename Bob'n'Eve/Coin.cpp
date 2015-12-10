@@ -10,7 +10,16 @@ Coin::~Coin()
 {
 }
 
+void Coin::Update(int16_t ms)
+{
+	GameObject::Update(ms);
+	if (kill_)
+	{
+		View::Instance()->DeleteEnemy(this);
+	}
+}
+
 void Coin::Kill()
 {
-	View::Instance()->DeleteEnemy(this);
+	kill_ = true;
 }

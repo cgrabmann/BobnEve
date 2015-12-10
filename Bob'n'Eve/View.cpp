@@ -61,6 +61,8 @@ void View::Update(int16_t ms)
 		(*it)->Update(ms);
 	}
 
+	DeleteAllEnemiesToDelete();
+
 	PhysicManager::Instance()->Update(ms);
 }
 
@@ -82,9 +84,19 @@ void View::Draw(Renderer& renderer) const
 	}
 }
 
+void View::DeleteAllEnemiesToDelete()
+{
+	for (Enemy* enemy : enemiesToDelete_)
+	{
+		enemies_.erase(std::find(enemies_.begin(), enemies_.end(), enemy));
+		delete enemy;
+	}
+	enemiesToDelete_.clear();
+}
+
 void View::DeleteEnemy(Enemy* enemy)
 {
-	enemies_.erase(std::find(enemies_.begin(), enemies_.end(), enemy));
+	enemiesToDelete_.push_back(enemy);
 }
 
 void View::DeleteEnemyById(size_t id)
@@ -93,7 +105,7 @@ void View::DeleteEnemyById(size_t id)
 	{
 		if ((*it)->GetId() == id)
 		{
-			enemies_.erase(it);
+			enemiesToDelete_.push_back(*it);
 		}
 	}
 }

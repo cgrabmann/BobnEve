@@ -35,6 +35,7 @@ protected:
 	//z-buffer
 	float layer_;
 	bool onGround_;
+	bool kill_;
 
 	Vector2f speed_;
 

@@ -25,6 +25,7 @@
 #include "PhysicManager.h"
 #include "PhysicsComponentEnemy.h"
 #include "PhysicsComponentPlayer.h"
+#include "PhysicsComponentCoin.h"
 
 void MapLoader::LoadMap(const char* path)
 {
@@ -314,6 +315,14 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(1);
 		return new PhysicsComponentEnemy(bodyDef);
+	}
+	if (!strcmp(object->type, "Coin"))
+	{
+		bodyDef.gravityScale_ = object->gravity;
+		bodyDef.type_ = PhysicBody::STATIC;
+		bodyDef.collisionIgnoreGroups_.push_back(2);
+		bodyDef.collisionIgnoreGroups_.push_back(3);
+		return new PhysicsComponentCoin(bodyDef);
 	}
 	if (!strcmp(object->type, "Bob"))
 	{

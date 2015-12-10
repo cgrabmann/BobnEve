@@ -168,6 +168,9 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.cpp">
       <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.cpp">
+      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -285,6 +288,9 @@
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.h">
+      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.h">
       <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>

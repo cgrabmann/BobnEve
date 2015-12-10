@@ -8,6 +8,8 @@ public:
 	Coin(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, size_t enemyId = -1);
 	~Coin();
 
+
+	virtual void Update(int16_t ms) override;
 	virtual void Kill() override;
 protected:
 };

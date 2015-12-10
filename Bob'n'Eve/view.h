@@ -21,7 +21,7 @@ public:
 
 	void Update(int16_t ms);
 	void Draw(Renderer& renderer) const;
-
+	void DeleteAllEnemiesToDelete();
 	void DeleteEnemy(Enemy* enemy);
 	void DeleteEnemyById(size_t id); 
 	std::vector<const Vector2f> GetFocusPoints() const;
@@ -35,6 +35,7 @@ private:
 
 	std::vector<Platform*> platforms_;
 	std::vector<Enemy*> enemies_;
+	std::vector<Enemy*> enemiesToDelete_;
 	std::vector<Player*> players_;
 	std::vector<GameObject*> objects_;
 
