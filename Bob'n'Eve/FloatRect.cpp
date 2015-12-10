@@ -10,8 +10,8 @@ bool FloatRect::IsInsersecting(const FloatRect& otherRect) const
 
 bool FloatRect::IsContaining(const Vector2f& point) const
 {
-	return (center.x - halfSize.x <= point.x) || (center.x + halfSize.x >= point.x) ||
-		(center.y - halfSize.y <= point.y) || (center.y + halfSize.y >= point.y);
+	return (center.x - halfSize.x <= point.x) && (center.x + halfSize.x >= point.x) &&
+		(center.y - halfSize.y <= point.y) && (center.y + halfSize.y >= point.y);
 }
 
 Vector2f FloatRect::GetOverlap(const FloatRect& otherRect) const
