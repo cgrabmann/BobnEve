@@ -8,6 +8,9 @@ public:
 	~Enemy();
 
 	size_t GetId() const { return enemyId_; }
+
+	virtual void Update(int16_t ms) override;
+	virtual void Kill() override;
 protected:
 	size_t enemyId_;
 };

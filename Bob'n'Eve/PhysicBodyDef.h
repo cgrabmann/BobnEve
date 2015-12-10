@@ -18,4 +18,11 @@ struct PhysicBodyDef
 	std::vector<int8_t> collisionIgnoreGroups_;
 	bool* collisionSides_ = new bool[4];
 	CollisionCallback* callback_ = nullptr;
+	std::string customId_;
+
+	inline PhysicBodyDef& SetCallback(CollisionCallback* callback)
+	{
+		callback_ = callback;
+		return *this;
+	}
 };

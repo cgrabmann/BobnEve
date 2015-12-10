@@ -10755,17 +10755,17 @@
    <properties>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="7,5"/>
+    <property name="SpeedY" value="10"/>
    </properties>
   </object>
   <object id="2" name="Eve Spawn" type="Eve" gid="9" x="236.333" y="463.667" width="64" height="96">
    <properties>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="7,5"/>
+    <property name="SpeedY" value="10"/>
    </properties>
   </object>
-  <object id="3" name="Enemy0" type="Enemy" gid="17" x="358.667" y="462.667" width="64" height="64">
+  <object id="3" name="Enemy0" type="Enemy" gid="17" x="1616.67" y="356.667" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
     <property name="GravityScale" value="1"/>
@@ -10773,7 +10773,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="4" name="Enemy0" type="Enemy" gid="18" x="350.667" y="702" width="64" height="64">
+  <object id="4" name="Enemy0" type="Enemy" gid="18" x="1629.67" y="570" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
     <property name="GravityScale" value="-1"/>

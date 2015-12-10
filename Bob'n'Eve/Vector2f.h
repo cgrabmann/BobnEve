@@ -78,17 +78,17 @@ inline sf::Vector2f& operator-= (sf::Vector2f& lVec, const Vector2f& rVec)
 inline Vector2f operator- (const Vector2f& lVec, const Vector2f& rVec)
 {
 	Vector2f out(lVec);
-	return out += rVec;
+	return out -= rVec;
 }
 inline Vector2f operator- (const Vector2f& lVec, const sf::Vector2f& rVec)
 {
 	Vector2f out(lVec);
-	return out += rVec;
+	return out -= rVec;
 }
 inline sf::Vector2f operator- (const sf::Vector2f& lVec, const Vector2f& rVec)
 {
 	sf::Vector2f out(lVec);
-	return out += rVec;
+	return out -= rVec;
 }
 
 // *= Operators

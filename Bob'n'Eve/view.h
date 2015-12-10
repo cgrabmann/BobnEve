@@ -23,16 +23,17 @@ public:
 
 	void Update(int16_t ms);
 	void Draw(Renderer& renderer) const;
-
 	void Destroy(Enemy* enemy);
 	void Destroy(Player* player);
 	void Destroy(Coin* coin);
-	void Destroy(GameObject* object);
 	std::vector<const Vector2f> GetFocusPoints() const;
 
 protected:
 	View();
 	~View();
+
+	void DestroyAllKilledEnemies();
+	void DestroyAllCollectedCoins();
 
 private:
 	static View* instance_;
@@ -41,6 +42,9 @@ private:
 	std::vector<Player*> players_;
 	std::vector<Coin*> coins_;
 	std::vector<GameObject*> objects_;
+
+	std::vector<Enemy*> enemiesToDelete_;
+	std::vector<Coin*> coinsToDelete_;
 
 	//std::vector<Background*> backgrounds;
 

@@ -96,6 +96,9 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.cpp" />
+    <ClCompile Include="PhysicsComponentPlayer.cpp" />
     <ClCompile Include="PhysicBodyDynamic.cpp" />
     <ClCompile Include="PhysicBodyStatic.cpp" />
     <ClCompile Include="GraphicsComponentAnimated.cpp" />
@@ -134,6 +137,9 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionCallback.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.h" />
+    <ClInclude Include="PhysicsComponentPlayer.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PhysicBodyDynamic.h" />

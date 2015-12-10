@@ -9,11 +9,10 @@ class GameObject;
 
 class PhysicsComponentBase
 {
-	friend class PhysicManager;
 public:
-	~PhysicsComponentBase();
+	virtual ~PhysicsComponentBase();
 
-	void Update(GameObject& object, int16_t ms);
+	virtual void Update(GameObject& object, int16_t ms);
 
 	inline Vector2f PhysicsComponentBase::GetPosition() const
 	{
@@ -30,7 +29,7 @@ public:
 	void SetVelocity(float velX, float velY);
 
 protected:
-	PhysicsComponentBase(const PhysicBodyDef& bodyDef);
+	explicit PhysicsComponentBase(const PhysicBodyDef& bodyDef);
 
 	PhysicBodyBase* body_;
 };

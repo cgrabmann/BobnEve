@@ -9,3 +9,17 @@ Coin::Coin(InputComponent* input, PhysicsComponentBase* physics, GraphicsCompone
 Coin::~Coin()
 {
 }
+
+void Coin::Update(int16_t ms)
+{
+	GameObject::Update(ms);
+	if (kill_)
+	{
+		View::Instance()->Destroy(this);
+	}
+}
+
+void Coin::Kill()
+{
+	kill_ = true;
+}

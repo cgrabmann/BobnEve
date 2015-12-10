@@ -6,7 +6,8 @@
 #include "View.h"
 
 
-GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, Vector2f speed) : layer_(1.f), input_(input), physics_(physics), graphics_(graphics), speed_(speed)
+GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, Vector2f speed) : layer_(1.f), onGround_(false),
+	kill_(false), speed_(speed), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }
@@ -54,6 +55,11 @@ Vector2f GameObject::GetOrientation() const
 	return physics_->GetOrientation();
 }
 
+bool GameObject::IsOnGround() const
+{
+	return onGround_;
+}
+
 Vector2f GameObject::GetVelocity() const
 {
 	return physics_->GetVelocity();
@@ -67,6 +73,11 @@ void GameObject::SetVelocity(Vector2f const & vec)
 void GameObject::SetVelocity(float x, float y)
 {
 	physics_->SetVelocity(x, y);
+}
+
+void GameObject::SetOnGround(bool onGround)
+{
+	onGround_ = onGround;
 }
 
 void GameObject::Left()
@@ -83,11 +94,12 @@ void GameObject::Right()
 
 void GameObject::Up()
 {
-	const Vector2f& velocity = GetVelocity();
-	SetVelocity(velocity.x, -speed_.y);
+	if (IsOnGround()){
+		const Vector2f& velocity = GetVelocity();
+		SetVelocity(velocity.x, -speed_.y);
+	}
 }
 
 void GameObject::Kill()
 {
-	View::Instance()->Destroy(this);
 }
