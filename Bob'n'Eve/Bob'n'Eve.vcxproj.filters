@@ -126,28 +126,28 @@
     <ClCompile Include="PhysicBodyDynamic.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.cpp">
+    <ClCompile Include="FloatRect.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.cpp">
+    <ClCompile Include="Coin.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.cpp">
+    <ClCompile Include="JumpPad.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Platform.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.cpp">
+    <ClCompile Include="PhysicsComponentCoin.cpp">
       <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.cpp">
+    <ClCompile Include="PhysicsComponentEnemy.cpp">
       <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsComponentPlayer.cpp">
@@ -245,13 +245,13 @@
     <ClInclude Include="PhysicBodyDynamic.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.h">
+    <ClInclude Include="FloatRect.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionCallback.h">
+    <ClInclude Include="CollisionCallback.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.h">
+    <ClInclude Include="Coin.h">
       <Filter>Headerdateien\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
@@ -260,7 +260,7 @@
     <ClInclude Include="Player.h">
       <Filter>Headerdateien\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.h">
+    <ClInclude Include="JumpPad.h">
       <Filter>Headerdateien\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Platform.h">
@@ -269,10 +269,10 @@
     <ClInclude Include="PhysicsComponentPlayer.h">
       <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.h">
+    <ClInclude Include="PhysicsComponentCoin.h">
       <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.h">
+    <ClInclude Include="PhysicsComponentEnemy.h">
       <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>
