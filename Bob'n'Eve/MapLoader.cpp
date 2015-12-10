@@ -126,6 +126,10 @@ void MapLoader::LoadMap(const char* path)
 				{
 					tile->collisionSides[Sides::Left] = xmlProperty.attribute("value").as_bool();;
 				}
+				else if (!strcmp(propertyName, "SwitchGravity"))
+				{
+					tile->switchesGravity = xmlProperty.attribute("value").as_bool();;
+				}
 			}
 
 			tiles[tile->gid] = tile;

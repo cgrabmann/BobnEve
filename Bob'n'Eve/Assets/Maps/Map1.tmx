@@ -571,6 +571,7 @@
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="true"/>
+    <property name="SwitchesGravity" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
@@ -623,6 +624,7 @@
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
+    <property name="SwitchesGravity" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
@@ -675,6 +677,7 @@
     <property name="DisplayTime" value="250"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
+    <property name="SwitchesGravity" value="false"/>
     <property name="Type" value="PassThrough"/>
    </properties>
   </tile>
@@ -10805,7 +10808,7 @@
     <property name="SpeedY" value="10"/>
    </properties>
   </object>
-  <object id="3" name="Enemy0" type="Enemy" gid="17" x="1616.67" y="356.667" width="64" height="64">
+  <object id="3" name="Enemy0" type="Enemy" gid="17" x="1731.67" y="317.667" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
     <property name="GravityScale" value="1"/>
@@ -10813,7 +10816,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="4" name="Enemy0" type="Enemy" gid="18" x="1629.67" y="570" width="64" height="64">
+  <object id="4" name="Enemy0" type="Enemy" gid="18" x="1734.67" y="572" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
     <property name="GravityScale" value="-1"/>
@@ -10821,7 +10824,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="8" name="Enemy1" type="Enemy" gid="17" x="1175.67" y="589.333" width="64" height="64">
+  <object id="8" name="Enemy1" type="Enemy" gid="17" x="1163.67" y="564.333" width="64" height="64">
    <properties>
     <property name="EnemyId" value="1"/>
     <property name="GravityScale" value="-1"/>
@@ -10829,7 +10832,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="9" name="Enemy1" type="Enemy" gid="18" x="1175.67" y="354" width="64" height="64">
+  <object id="9" name="Enemy1" type="Enemy" gid="18" x="1167.67" y="295" width="64" height="64">
    <properties>
     <property name="EnemyId" value="1"/>
     <property name="GravityScale" value="1"/>

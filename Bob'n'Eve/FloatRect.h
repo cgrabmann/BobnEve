@@ -12,6 +12,7 @@ public:
 	Vector2f halfSize;
 
 	bool IsInsersecting(const FloatRect& otherRect) const;
+	bool IsContaining(const Vector2f& point) const;
 
 	Vector2f GetOverlap(const FloatRect& otherRect) const;
 

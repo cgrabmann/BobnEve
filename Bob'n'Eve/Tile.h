@@ -25,4 +25,5 @@
 		uint16_t id = -1;
 		uint16_t gid = -1;
 		bool* collisionSides = new bool[4] { true, true, true, true };
+		bool switchesGravity = true;
 	};

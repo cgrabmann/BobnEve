@@ -35,6 +35,10 @@ public:
 	{
 		return velocity_ * Vector2f(1, physicScale_);
 	};
+	inline bool IsContaining(const Vector2f& point) const
+	{
+		return bounds_.IsContaining(point);
+	}
 	bool IsColliding(const PhysicBodyBase& otherBody) const;
 	void FinishCollision(PhysicBodyBase& otherBody);
 	void AddCollisionIgnoreGroup(int8_t group);
