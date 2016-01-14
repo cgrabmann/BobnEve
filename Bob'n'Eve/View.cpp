@@ -5,8 +5,9 @@
 #include "Enemy.h"
 #include "Vector2f.h"
 #include "PhysicManager.h"
+#include "Finish.h"
 
-View::View() : enemies_(std::vector<Enemy*>()), players_(std::vector<Player*>()), coins_(std::vector<Coin*>()), objects_(std::vector<GameObject*>())
+View::View() : enemies_(std::vector<Enemy*>()), players_(std::vector<Player*>()), coins_(std::vector<Coin*>()), objects_(std::vector<GameObject*>()), score_(0), isActive_(true)
 {
 }
 
@@ -69,6 +70,9 @@ void View::CleanUp()
 		delete(*it);
 	}
 	coins_.clear();
+
+	score_ = 0;
+	isActive_ = true;
 }
 
 void View::Update(int16_t ms)
@@ -110,7 +114,7 @@ void View::Destroy(Enemy* enemy)
 		}
 	}
 
-	//TODO: Add 10 Points
+	score_ += 5;
 }
 
 void View::DestroyAllKilledEnemies()
@@ -125,14 +129,21 @@ void View::DestroyAllKilledEnemies()
 
 void View::Destroy(Player* player)
 {
-	//TODO: End game
+	isActive_ = false;
+}
+
+void View::Destroy(Finish* finish)
+{
+	isActive_ = false;
+
+	score_ += 50;
 }
 
 void View::Destroy(Coin* coin)
 {
 	coinsToDelete_.push_back(coin);
 
-	//TODO: Add 10 Points
+	score_ += 10;
 }
 
 void View::DestroyAllCollectedCoins()

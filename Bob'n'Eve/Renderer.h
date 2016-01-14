@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/include/SFML/Graphics/RenderWindow.hpp>
 #include "Vector2f.h"
+#include "MenuBase.h"
 
 namespace sf{
 	class RenderTarget;
@@ -15,14 +16,34 @@ public:
 	Renderer();
 	~Renderer();
 
-	sf::RenderWindow& GetWindow();
-	sf::RenderTarget& GetTarget();
+	sf::RenderWindow& GetWindow()
+	{
+		return window_;
+	}
 
-	Vector2f GetScale() const;
+	sf::RenderTarget& GetTarget()
+	{
+		return window_;
+	}
+
+	void SetMenu(MenuBase* menu)
+	{
+		menu_ = menu;
+	}
+
+	Vector2f GetScale() const
+	{
+		return scale_;
+	}
 
 	void Render();
 
 private:
+	sf::View GetGameView();
+	sf::View GetMenuView();
+
+	MenuBase* menu_;
+
 	sf::RenderWindow window_;
 
 	Vector2f scale_;

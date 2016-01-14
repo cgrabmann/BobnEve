@@ -16,7 +16,7 @@ GameObject::~GameObject()
 {
 	delete input_;
 	delete physics_;
-	delete graphics_;
+	//delete graphics_;
 }
 
 void GameObject::Update(int16_t ms)

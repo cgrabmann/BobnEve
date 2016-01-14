@@ -4,6 +4,8 @@
 #include <SFML\Graphics.hpp>
 #include "Global.h"
 #include "Vector2f.h"
+#include "AssetManager.h"
+#include <sstream>
 
 
 Renderer::Renderer() : window_(
@@ -34,20 +36,47 @@ Renderer::~Renderer()
 {
 }
 
-sf::RenderWindow& Renderer::GetWindow()
-{
-	return window_;
-}
-
-sf::RenderTarget& Renderer::GetTarget()
-{
-	return window_;
-}
-
 void Renderer::Render()
 {
 	View* view = View::Instance();
 
+	if (menu_ == nullptr)
+	{
+		window_.setView(GetGameView());
+	}
+	else
+	{
+		window_.setView(GetMenuView());
+	}
+
+	//draws all objects
+	window_.clear();
+	view->Draw(*this);
+
+	window_.setView(window_.getDefaultView());
+
+	if (menu_ != nullptr)
+	{
+		menu_->Draw(*this);
+	}
+	else
+	{
+		sf::Font font = *AssetManager::Instance()->GetFont("arial.ttf");
+		sf::Color green = sf::Color(0, 255, 33);
+		std::stringstream streamBuilder;
+		streamBuilder << view->GetScore() << " Points";
+		sf::Text score = sf::Text(streamBuilder.str(), font, 48);
+		score.setColor(green);
+		score.setPosition(10, 10);
+		window_.draw(score);
+	}
+
+	window_.display();
+}
+
+sf::View Renderer::GetGameView()
+{
+	View* view = View::Instance();
 	sf::View sfView = window_.getView();
 
 	//gets data of all important Objects
@@ -84,22 +113,34 @@ void Renderer::Render()
 	centerPos /= 2;
 	centerPos *= scale_;
 	sfView.setCenter(centerPos.ToSFML());
+	return sfView;
+}
 
-	window_.setView(sfView);
+sf::View Renderer::GetMenuView()
+{
+	sf::View sfView = window_.getView();
+	Vector2f map(Global::TileWidth * Global::MapWidth, Global::TileHeight * Global::MapHeight);
+	Vector2f size(sfView.getSize());
+
+	scale_ = (size / map);
+
+	//get the bigger zoom-out
+	scale_.x = std::min(scale_.x, scale_.y);
+	//we don't want to zoom-in
+	scale_.x = std::min(1.0f, scale_.x);
+	//we want to uniform-scale
+	scale_.y = scale_.x;
 	
-	//draws all objects
-	window_.clear();
-	view->Draw(*this);
-	window_.display();
+	Vector2f centerPos(map);
+	centerPos /= 2;
+	centerPos *= scale_;
+
+	sfView.setCenter(centerPos.ToSFML());
+	return sfView;
 }
 
 void Renderer::Draw(sf::Shape& shape)
 {
 	window_.draw(shape);
-}
-
-Vector2f Renderer::GetScale() const
-{
-	return scale_;
 }
 

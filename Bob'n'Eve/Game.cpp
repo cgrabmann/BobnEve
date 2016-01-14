@@ -6,11 +6,17 @@
 #include "View.h"
 #include "MapLoader.h"
 #include "Vector2f.h"
+#include "MainMenu.h"
+#include "AssetManager.h"
 
-Game::Game() : paused_(false)
+Game::Game() : paused_(true), board_(new LeaderBoard(""))
 {
 	PhysicManager::CreateInstance(Vector2f(0.f, 15.f));
 	MapLoader::LoadMap("Map1.tmx");
+	AssetManager::Instance()->RegisterFont("arial.ttf");
+	AssetManager::Instance()->RegisterTexture("Title.png");
+	menu_ = new MainMenu(-1, board_);
+	renderer_.SetMenu(menu_);
 }
 
 Game::~Game()
@@ -19,15 +25,18 @@ Game::~Game()
 
 void Game::Loop()
 {
-	bool wasPDown = false, wasEscDown = false;
-	bool isPDown = false, isEscDown = false;
+	bool wasSpaceDown = false, wasEscDown = false;
+	bool isSpaceDown = false, isEscDown = false;
 
 	sf::RenderWindow& window = renderer_.GetWindow();
 	sf::Clock clock;
 	clock.restart();
+	View* view;
 
 	while (window.isOpen())
 	{
+		view = View::Instance();
+
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -49,14 +58,32 @@ void Game::Loop()
 		//Esc closes the game
 		isEscDown = sf::Keyboard::isKeyPressed(sf::Keyboard::Escape);
 		if (!wasEscDown && isEscDown)
-			window.close();
+		{
+			if (menu_ == nullptr)
+			{
+				menu_ = new MainMenu(-1, board_);
+				renderer_.SetMenu(menu_);
+				paused_ = true;
+			}
+			else
+			{
+				window.close();
+			}
+
+		}
 		wasEscDown = isEscDown;
 
 		//P pauses the game
-		isPDown = sf::Keyboard::isKeyPressed(sf::Keyboard::P);
-		if (!wasPDown && isPDown)
-			paused_ = !paused_;
-		wasPDown = isPDown;
+		isSpaceDown = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
+		if (!wasSpaceDown && isSpaceDown)
+			if (menu_ != nullptr)
+			{
+				delete menu_;
+				menu_ = nullptr;
+				renderer_.SetMenu(nullptr);
+				paused_ = false;
+			}
+		wasSpaceDown = isSpaceDown;
 
 		if (!paused_
 #ifndef  _DEBUG
@@ -64,13 +91,25 @@ void Game::Loop()
 #endif
 			)
 		{
-			View::Instance()->Update(
+			view->Update(
 #ifndef  _DEBUG
 				elapsedTime.asMilliseconds()
 #else
 				16.6f
 #endif
 				);
+		}
+
+		if (!view->IsActive())
+		{
+			board_->AddEntry(view->GetScore());
+
+			menu_ = new MainMenu(view->GetScore(), board_);
+			renderer_.SetMenu(menu_);
+			paused_ = true;
+
+			view->CleanUp();
+			MapLoader::LoadMap("Map1.tmx");
 		}
 
 		renderer_.Render();
@@ -88,4 +127,5 @@ void Game::Start()
 
 void Game::Stop()
 {
+	renderer_.GetWindow().close();
 }

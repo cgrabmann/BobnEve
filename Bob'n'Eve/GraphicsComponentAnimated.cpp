@@ -8,7 +8,7 @@ GraphicsComponentAnimated::GraphicsComponentAnimated(std::vector<Frame*> frames,
 
 GraphicsComponentAnimated::~GraphicsComponentAnimated()
 {
-	frames_.clear();
+	//frames_.clear();
 }
 
 void GraphicsComponentAnimated::Update(GameObject& object, int16_t ms)

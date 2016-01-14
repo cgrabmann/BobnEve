@@ -6,7 +6,8 @@ class Vector2f
 public:
 	Vector2f() : x(0), y(0) {}
 	explicit Vector2f(const float& x, const float& y) : x(x), y(y) {}
-	explicit Vector2f(const sf::Vector2f& vec) : x(vec.x), y(vec.y) {}
+	template <class C>
+	explicit Vector2f(const sf::Vector2<C>& vec) : x(vec.x), y(vec.y) {}
 
 	float x;
 	float y;
