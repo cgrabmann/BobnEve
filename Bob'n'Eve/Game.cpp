@@ -8,14 +8,15 @@
 #include "Vector2f.h"
 #include "MainMenu.h"
 #include "AssetManager.h"
+#include "Global.h"
 
-Game::Game() : paused_(true), board_(new LeaderBoard(""))
+Game::Game() : paused_(true), board_(new LeaderBoard(Global::LEADERBOARD))
 {
 	PhysicManager::CreateInstance(Vector2f(0.f, 15.f));
 	MapLoader::LoadMap("Map1.tmx");
 	AssetManager::Instance()->RegisterFont("arial.ttf");
 	AssetManager::Instance()->RegisterTexture("Title.png");
-	menu_ = new MainMenu(-1, board_);
+	menu_ = new MainMenu(sf::seconds(-1), board_);
 	renderer_.SetMenu(menu_);
 }
 
@@ -25,9 +26,6 @@ Game::~Game()
 
 void Game::Loop()
 {
-	bool wasSpaceDown = false, wasEscDown = false;
-	bool isSpaceDown = false, isEscDown = false;
-
 	sf::RenderWindow& window = renderer_.GetWindow();
 	sf::Clock clock;
 	clock.restart();
@@ -40,8 +38,56 @@ void Game::Loop()
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			switch (event.type)
+			{
+			case sf::Event::Closed:
 				window.close();
+				break;
+			case sf::Event::LostFocus:
+				menu_ = new MainMenu(sf::seconds(-1), board_);
+				renderer_.SetMenu(menu_);
+				paused_ = true;
+				break;
+			case sf::Event::GainedFocus:
+				break;
+			case sf::Event::KeyPressed:
+				switch (event.key.code)
+				{
+				case sf::Keyboard::Escape:
+					if (menu_ == nullptr)
+					{
+						menu_ = new MainMenu(sf::seconds(-1), board_);
+						renderer_.SetMenu(menu_);
+						paused_ = true;
+					}
+					else
+					{
+						window.close();
+					}
+					break;
+				case sf::Keyboard::Space:
+					if (menu_ != nullptr)
+					{
+						delete menu_;
+						menu_ = nullptr;
+						renderer_.SetMenu(nullptr);
+						paused_ = false;
+					}
+					break;
+				case sf::Keyboard::R:
+					if (menu_ != nullptr)
+					{
+						view->CleanUp();
+						MapLoader::LoadMap("Map1.tmx");
+
+						delete menu_;
+						menu_ = nullptr;
+						renderer_.SetMenu(nullptr);
+						paused_ = false;
+					}
+					break;
+				}
+			}
 		}
 
 		// Measure time since last frame    
@@ -54,36 +100,6 @@ void Game::Loop()
 			__debugbreak();
 		}
 #endif
-
-		//Esc closes the game
-		isEscDown = sf::Keyboard::isKeyPressed(sf::Keyboard::Escape);
-		if (!wasEscDown && isEscDown)
-		{
-			if (menu_ == nullptr)
-			{
-				menu_ = new MainMenu(-1, board_);
-				renderer_.SetMenu(menu_);
-				paused_ = true;
-			}
-			else
-			{
-				window.close();
-			}
-
-		}
-		wasEscDown = isEscDown;
-
-		//P pauses the game
-		isSpaceDown = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
-		if (!wasSpaceDown && isSpaceDown)
-			if (menu_ != nullptr)
-			{
-				delete menu_;
-				menu_ = nullptr;
-				renderer_.SetMenu(nullptr);
-				paused_ = false;
-			}
-		wasSpaceDown = isSpaceDown;
 
 		if (!paused_
 #ifndef  _DEBUG
@@ -103,6 +119,7 @@ void Game::Loop()
 		if (!view->IsActive())
 		{
 			board_->AddEntry(view->GetScore());
+			board_->SaveEntires(Global::LEADERBOARD);
 
 			menu_ = new MainMenu(view->GetScore(), board_);
 			renderer_.SetMenu(menu_);
@@ -113,8 +130,8 @@ void Game::Loop()
 		}
 
 		renderer_.Render();
-	}
-}
+			}
+		}
 
 void Game::GetInput()
 {

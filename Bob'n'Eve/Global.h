@@ -22,4 +22,5 @@ public:
 
 	//Folder Path
 	static std::string AssetDir;
+	static std::string LEADERBOARD;
 };

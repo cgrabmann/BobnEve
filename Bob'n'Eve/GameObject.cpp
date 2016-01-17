@@ -7,7 +7,7 @@
 
 
 GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, Vector2f speed) : layer_(1.f), onGround_(false),
-	kill_(false), speed_(speed), input_(input), physics_(physics), graphics_(graphics)
+	speed_(speed), input_(input), physics_(physics), graphics_(graphics)
 {
 
 }

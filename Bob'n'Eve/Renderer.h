@@ -38,6 +38,8 @@ public:
 
 	void Render();
 
+	static std::string TimeToString(sf::Time time);
+
 private:
 	sf::View GetGameView();
 	sf::View GetMenuView();

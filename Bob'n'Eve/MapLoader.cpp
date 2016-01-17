@@ -145,7 +145,7 @@ void MapLoader::LoadMap(const char* path)
 	for (pugi::xml_node xmlStaticObject = map.child("layer").child("data").child("tile"); xmlStaticObject; xmlStaticObject = xmlStaticObject.next_sibling("tile"))
 	{
 		uint8_t gid = xmlStaticObject.attribute("gid").as_int();
-		if (gid != 0 && gid < tileCount)
+		if (gid != 0 && gid <= tileCount) // <= da wir bei index=1 beginnen
 		{
 			Object* object = new Object();
 
@@ -313,6 +313,15 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	bodyDef.customId_ = object->type;
 	memcpy(bodyDef.collisionSides_, object->tile->collisionSides, 4);
 
+	if (object->tile->passBob)
+	{
+		bodyDef.collisionIgnoreGroups_.push_back(2);
+	}
+	if (object->tile->passEve)
+	{
+		bodyDef.collisionIgnoreGroups_.push_back(3);
+	}
+
 	if (object->type == "Enemy")
 	{
 		bodyDef.gravityScale_ = object->gravity;
@@ -324,39 +333,33 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	{
 		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::STATIC;
-		bodyDef.collisionIgnoreGroups_.push_back(2);
-		bodyDef.collisionIgnoreGroups_.push_back(3);
 		return new PhysicsComponentCoin(bodyDef);
 	}
 	if (object->type == "Bob")
 	{
 		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
-		bodyDef.collisionIgnoreGroups_.push_back(2);
 		return new PhysicsComponentPlayer(bodyDef);
 	}
 	if (object->type == "Eve")
 	{
 		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
-		bodyDef.collisionIgnoreGroups_.push_back(3);
 		return new PhysicsComponentPlayer(bodyDef);
+	}
+	if (object->type == "JumpPad")
+	{
+		bodyDef.type_ = PhysicBody::STATIC;
+		return new PhysicsComponentStatic(bodyDef);
+	}
+	if (object->type == "Trampoline")
+	{
+		bodyDef.type_ = PhysicBody::STATIC;
+		return new PhysicsComponentStatic(bodyDef);
 	}
 	//if (object->type == "Platform" || object->type == "PassTrough")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		if (object->tile->passBob)
-		{
-			bodyDef.collisionIgnoreGroups_.push_back(2);
-		}
-		if (object->tile->passEve)
-		{
-			bodyDef.collisionIgnoreGroups_.push_back(3);
-		}
-		/*if (!strcmp(object->type, "PassThrough"))
-		{
-			return new PhysicsComponentStatic(bodyDef);
-		}*/
 		return new PhysicsComponentStatic(bodyDef);
 	}
 }

@@ -21,7 +21,7 @@ Renderer::Renderer() : window_(
 	Global::ScreenWidth = size.x;
 	Global::ScreenHeight = size.y;
 
-	window_.setKeyRepeatEnabled(true);
+	//window_.setKeyRepeatEnabled(true);
 	window_.setJoystickThreshold(15.f);
 	window_.setFramerateLimit(60);
 	window_.setMouseCursorVisible(false);
@@ -64,7 +64,7 @@ void Renderer::Render()
 		sf::Font font = *AssetManager::Instance()->GetFont("arial.ttf");
 		sf::Color green = sf::Color(0, 255, 33);
 		std::stringstream streamBuilder;
-		streamBuilder << view->GetScore() << " Points";
+		streamBuilder << "Your Time: " << TimeToString(view->GetScore());
 		sf::Text score = sf::Text(streamBuilder.str(), font, 48);
 		score.setColor(green);
 		score.setPosition(10, 10);
@@ -142,5 +142,14 @@ sf::View Renderer::GetMenuView()
 void Renderer::Draw(sf::Shape& shape)
 {
 	window_.draw(shape);
+}
+
+std::string Renderer::TimeToString(sf::Time time)
+{
+	std::stringstream streamBuilder;
+	int min = static_cast<int>(time.asSeconds()) / 60;
+	int sec = static_cast<int>(time.asSeconds()) % 60;
+	streamBuilder << min << "min " << sec << "s";
+	return streamBuilder.str();
 }
 

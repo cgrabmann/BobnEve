@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <SFML/include/SFML/System/Time.hpp>
 
 class LeaderBoard
 {
@@ -8,18 +9,20 @@ public:
 	LeaderBoard(std::string fileName);
 	~LeaderBoard();
 
-	void AddEntry(int points);
-	int* GetEntries() const
+	void AddEntry(sf::Time time);
+	sf::Time* GetEntries() const
 	{
 		return entries_;
 	}
-	void LoadEntires(std::string fileName);
+	bool LoadEntires(std::string fileName);
+	bool SaveEntires(std::string fileName) const;
+
 	int GetSize() const 
 	{
 		return size_;
 	}
 protected:
-	const int size_;
-	int* entries_;
+	int size_;
+	sf::Time* entries_;
 };
 

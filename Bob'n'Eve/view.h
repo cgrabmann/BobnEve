@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Score.h"
 #include "Finish.h"
+#include <SFML/include/SFML/System/Time.hpp>
 
 class Coin;
 class Vector2f;
@@ -31,9 +32,9 @@ public:
 	void Destroy(Coin* coin);
 	std::vector<const Vector2f> GetFocusPoints() const;
 
-	int GetScore() const
+	sf::Time GetScore() const
 	{
-		return score_;
+		return time_;
 	}
 	bool IsActive() const
 	{
@@ -58,7 +59,7 @@ private:
 	std::vector<Enemy*> enemiesToDelete_;
 	std::vector<Coin*> coinsToDelete_;
 
-	int score_;
+	sf::Time time_;
 	bool isActive_;
 
 	//std::vector<Background*> backgrounds;
