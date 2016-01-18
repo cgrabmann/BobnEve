@@ -93,7 +93,9 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CallbackCombiner.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Finish.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPadCollisionCallback.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\LeaderBoard.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MainMenu.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MenuBase.cpp" />
@@ -140,7 +142,9 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <None Include="lib\box2d.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CallbackCombiner.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Finish.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPadCollisionCallback.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\LeaderBoard.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MainMenu.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MenuBase.h" />

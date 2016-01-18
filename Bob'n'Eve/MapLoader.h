@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include <vector>
 
+class CallbackCombiner;
 class Tile;
 class TileSet;
 class Object;
@@ -20,10 +21,10 @@ private:
 	inline MapLoader(const MapLoader&) {}
 	inline ~MapLoader() {}
 
-	static void ParseObject(Object* object);
+	static void ParseObject(Object* object, CallbackCombiner& combiner);
 	static InputComponent* ParseInput(Object* object);
 	static GraphicsComponent* ParseGraphics(Object* object, const Tile* tile = nullptr);
-	static PhysicsComponentBase* ParsePhysics(Object* object);
+	static PhysicsComponentBase* ParsePhysics(Object* object, CallbackCombiner& combiner);
 	static GraphicsComponent* ParseAnimation(Object* object, uint8_t animationId);
 	static std::vector<Frame*> GetFramesByAnimationId(Object* object, uint8_t animationId);
 };
