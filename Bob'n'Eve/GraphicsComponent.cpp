@@ -15,7 +15,6 @@ GraphicsComponent::GraphicsComponent(sf::Sprite* sprite, bool running) : sprite_
 
 GraphicsComponent::~GraphicsComponent()
 {
-	delete sprite_;
 }
 
 void GraphicsComponent::Update(GameObject& object, int16_t ms)

@@ -22,7 +22,7 @@ void PhysicsComponentPlayer::Update(GameObject& object, int16_t ms)
 		for (auto entry = passThroughs_.begin(); entry != passThroughs_.end(); ++entry)
 		{
 			FloatRect temp = (*entry).first->GetBounds();
-			temp.halfSize.y = 5;
+			temp.halfSize.y = temp.halfSize.y / 2;
 			if (!gravitySwitched_ && temp.IsContaining(body_->GetPosition()))
 			{
 				body_->SetPhysicScale(body_->GetPhysicScale() * (-1));

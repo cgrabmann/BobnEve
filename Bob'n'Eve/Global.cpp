@@ -11,3 +11,5 @@ uint8_t Global::MapHeight = 0;
 uint8_t Global::MapWidth = 0;
 
 std::string Global::AssetDir = "./Assets/";
+
+std::string Global::LEADERBOARD = "Leaderboard";

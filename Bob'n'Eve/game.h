@@ -2,6 +2,8 @@
 
 #include "Renderer.h"
 #include "PhysicManager.h"
+#include "LeaderBoard.h"
+#include "MainMenu.h"
 
 class Entity;
 
@@ -24,7 +26,7 @@ protected:
 private:
 
 	bool paused_;
+	LeaderBoard* board_;
 	Renderer renderer_;
-	View* view_;
-
+	MenuBase* menu_;
 };

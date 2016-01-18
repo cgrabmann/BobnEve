@@ -55,6 +55,12 @@
     <Filter Include="Quelldateien\Components\PhysicsComponents">
       <UniqueIdentifier>{81799cae-e551-449a-9c93-b1acd79591bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Quelldateien\Menu">
+      <UniqueIdentifier>{7fdf55bc-3d71-473a-838d-911d33038e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\Menu">
+      <UniqueIdentifier>{86040872-2258-4fa6-b9de-0dc500bf6297}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BobNEve.cpp">
@@ -126,32 +132,44 @@
     <ClCompile Include="PhysicBodyDynamic.cpp">
       <Filter>Quelldateien\PhysicEngine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.cpp">
+    <ClCompile Include="FloatRect.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.cpp">
+    <ClCompile Include="Coin.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.cpp">
-      <Filter>Quelldateien\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="Platform.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsComponentCoin.cpp">
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsComponentEnemy.cpp">
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
+    </ClCompile>
     <ClCompile Include="PhysicsComponentPlayer.cpp">
-      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.cpp">
-      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Score.cpp">
+      <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.cpp">
-      <Filter>Quelldateien\GameObject\Components\PhysicsComponents</Filter>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MenuBase.cpp">
+      <Filter>Quelldateien\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MainMenu.cpp">
+      <Filter>Quelldateien\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\LeaderBoard.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Finish.cpp">
+      <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -245,13 +263,13 @@
     <ClInclude Include="PhysicBodyDynamic.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\FloatRect.h">
+    <ClInclude Include="FloatRect.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CollisionCallback.h">
+    <ClInclude Include="CollisionCallback.h">
       <Filter>Headerdateien\PhysicEngine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Coin.h">
+    <ClInclude Include="Coin.h">
       <Filter>Headerdateien\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
@@ -260,20 +278,35 @@
     <ClInclude Include="Player.h">
       <Filter>Headerdateien\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPad.h">
-      <Filter>Headerdateien\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Platform.h">
       <Filter>Headerdateien\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsComponentPlayer.h">
-      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentEnemy.h">
-      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+    <ClInclude Include="PhysicsComponentCoin.h">
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentCoin.h">
-      <Filter>Headerdateien\GameObject\Components\PhysicsComponents</Filter>
+    <ClInclude Include="PhysicsComponentEnemy.h">
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\SOP.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Score.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MenuBase.h">
+      <Filter>Headerdateien\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MainMenu.h">
+      <Filter>Headerdateien\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\LeaderBoard.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Finish.h">
+      <Filter>Headerdateien\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

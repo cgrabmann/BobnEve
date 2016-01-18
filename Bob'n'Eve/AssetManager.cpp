@@ -76,7 +76,19 @@ void AssetManager::LoadMusic()
 
 void AssetManager::RegisterTexture(const std::string& name)
 {
-	RegisterTileSet(name, 0, 0);
+	if (tileSets_.count(name) != 0)
+		return;
+
+	sf::Texture* texture = new sf::Texture();
+	if (!texture->loadFromFile(textureDir_ + name))
+	{
+		std::string CouldNotLoadTexture = "";
+		__debugbreak();
+		//assert(CouldNotLoadTexture == name);
+		texture = GetErrorTex();
+	}
+
+	tileSets_[name] = new TileSet(texture);;
 }
 
 void AssetManager::RegisterTileSet(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, const uint8_t spacing, const uint8_t margin)

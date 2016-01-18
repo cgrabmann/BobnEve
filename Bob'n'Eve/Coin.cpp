@@ -13,13 +13,9 @@ Coin::~Coin()
 void Coin::Update(int16_t ms)
 {
 	GameObject::Update(ms);
-	if (kill_)
-	{
-		View::Instance()->Destroy(this);
-	}
 }
 
 void Coin::Kill()
 {
-	kill_ = true;
+	View::Instance()->Destroy(this);
 }

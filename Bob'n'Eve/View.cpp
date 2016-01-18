@@ -5,8 +5,9 @@
 #include "Enemy.h"
 #include "Vector2f.h"
 #include "PhysicManager.h"
+#include "Finish.h"
 
-View::View() : enemies_(std::vector<Enemy*>()), players_(std::vector<Player*>()), coins_(std::vector<Coin*>()), objects_(std::vector<GameObject*>())
+View::View() : enemies_(std::vector<Enemy*>()), players_(std::vector<Player*>()), coins_(std::vector<Coin*>()), objects_(std::vector<GameObject*>()), time_(sf::Time::Zero), isActive_(true)
 {
 }
 
@@ -69,6 +70,9 @@ void View::CleanUp()
 		delete(*it);
 	}
 	coins_.clear();
+
+	time_ = sf::Time::Zero;
+	isActive_ = true;
 }
 
 void View::Update(int16_t ms)
@@ -97,6 +101,8 @@ void View::Update(int16_t ms)
 	DestroyAllCollectedCoins();
 
 	PhysicManager::Instance()->Update(ms);
+
+	time_ += sf::milliseconds(ms);
 }
 
 void View::Destroy(Enemy* enemy)
@@ -109,8 +115,6 @@ void View::Destroy(Enemy* enemy)
 			enemiesToDelete_.push_back(*it);
 		}
 	}
-
-	//TODO: Add 10 Points
 }
 
 void View::DestroyAllKilledEnemies()
@@ -125,14 +129,19 @@ void View::DestroyAllKilledEnemies()
 
 void View::Destroy(Player* player)
 {
-	//TODO: End game
+	isActive_ = false;
+}
+
+void View::Destroy(Finish* finish)
+{
+	isActive_ = false;
 }
 
 void View::Destroy(Coin* coin)
 {
 	coinsToDelete_.push_back(coin);
 
-	//TODO: Add 10 Points
+	time_ -= sf::seconds(30);
 }
 
 void View::DestroyAllCollectedCoins()
