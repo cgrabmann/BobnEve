@@ -13,9 +13,12 @@ Player::Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsCom
 
 Player::~Player()
 {
-	delete idleGraphics_;
-	delete jumpGraphics_;
-	delete runGraphics_;
+	if (graphics_ != idleGraphics_)
+		delete idleGraphics_;
+	if (graphics_ != jumpGraphics_)
+		delete jumpGraphics_;
+	if (graphics_ != runGraphics_)
+		delete runGraphics_;
 }
 
 void Player::Update(int16_t ms)
