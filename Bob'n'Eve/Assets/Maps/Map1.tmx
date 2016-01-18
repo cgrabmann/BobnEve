@@ -872,7 +872,6 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="43"/>
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
@@ -880,10 +879,11 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="43"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="43"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
    <tile gid="37"/>
    <tile gid="33"/>
    <tile gid="33"/>
@@ -3215,7 +3215,7 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="33"/>
+   <tile gid="47"/>
    <tile gid="33"/>
    <tile gid="45"/>
    <tile gid="33"/>
@@ -33234,7 +33234,7 @@
     <property name="EnemyId" value="0"/>
     <property name="GravityScale" value="-1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="7,5"/>
+    <property name="SpeedY" value="2"/>
    </properties>
   </object>
   <object id="4" name="Enemy0" type="Enemy" gid="18" x="3159.09" y="534.152" width="64" height="64">
