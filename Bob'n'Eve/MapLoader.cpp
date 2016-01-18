@@ -197,7 +197,7 @@ void MapLoader::LoadMap(const char* path)
 			object->tileSet = tileSets[object->tile->tileSetName];
 			object->size = Vector2f(xmlDynamicObject.attribute("width").as_int(), xmlDynamicObject.attribute("height").as_int());
 			object->pos = Vector2f(xmlDynamicObject.attribute("x").as_float() + object->size.x / 2, xmlDynamicObject.attribute("y").as_float() - object->size.y / 2);
-			object->type = xmlDynamicObject.attribute("tpye").empty() ? object->tile->type : xmlDynamicObject.attribute("tpye").as_string();
+			object->type = xmlDynamicObject.attribute("type").as_string();
 
 			for (pugi::xml_node xmlObjectProperty = xmlDynamicObject.child("properties").child("property"); xmlObjectProperty; xmlObjectProperty = xmlObjectProperty.next_sibling("property"))
 			{
@@ -205,19 +205,23 @@ void MapLoader::LoadMap(const char* path)
 
 				if (!strcmp(propertyName, "GravityScale"))
 				{
-					object->gravity = xmlObjectProperty.attribute("value").as_int();
+					object->gravity = xmlObjectProperty.attribute("value").as_int(0);
 				}
 				else if (!strcmp(propertyName, "EnemyId"))
 				{
-					object->id = xmlObjectProperty.attribute("value").as_int();
+					object->enemyId = xmlObjectProperty.attribute("value").as_int(-1);
 				}
 				else if (!strcmp(propertyName, "SpeedX"))
 				{
-					object->speed.x = xmlObjectProperty.attribute("value").as_float();
+					object->speed.x = xmlObjectProperty.attribute("value").as_float(0);
 				}
 				else if (!strcmp(propertyName, "SpeedY"))
 				{
-					object->speed.y = xmlObjectProperty.attribute("value").as_float();
+					object->speed.y = xmlObjectProperty.attribute("value").as_float(0);
+				}
+				else if (!strcmp(propertyName, "IsKillable"))
+				{
+					object->isKillable = xmlObjectProperty.attribute("value").as_bool(false);;
 				}
 			}
 
@@ -328,7 +332,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(1);
-		return new PhysicsComponentEnemy(bodyDef, true);
+		return new PhysicsComponentEnemy(bodyDef, object->isKillable);
 	}
 	if (object->type == "Coin")
 	{
@@ -363,7 +367,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 		bodyDef.type_ = PhysicBody::STATIC;
 		return new PhysicsComponentGeneric(bodyDef, new PassThroughCollisionCallback());
 	}
-	//if (object->type == "Platform" || object->type == "PassTrough")
+	//if (object->type == "Platform")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
 		return new PhysicsComponentStatic(bodyDef);
