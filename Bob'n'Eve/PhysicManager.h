@@ -19,6 +19,11 @@ public:
 	void Update(float ms);
 
 	void SetGravity(const Vector2f& gravity);
+	inline const Vector2f& GetGravity() const
+	{
+		return world_.GetGravity();
+	}
+
 private:
 	static PhysicManager* instance_;
 

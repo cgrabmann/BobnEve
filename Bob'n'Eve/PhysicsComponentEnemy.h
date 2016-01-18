@@ -15,5 +15,6 @@ public:
 
 private:
 	bool groundCollision_;
+	bool playerCollision_;
 };
 

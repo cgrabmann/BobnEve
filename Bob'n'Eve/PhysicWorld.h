@@ -17,6 +17,10 @@ public:
 
 	void Reserve(size_t count);
 	void SetGravity(const Vector2f& gravity);
+	inline const Vector2f& GetGravity() const
+	{
+		return gravity_;
+	}
 
 	class CollidingGroup
 	{
