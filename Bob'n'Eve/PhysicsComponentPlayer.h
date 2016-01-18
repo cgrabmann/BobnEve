@@ -17,6 +17,7 @@ public:
 private:
 	bool groundCollision_;
 	bool gravitySwitched_;
+	bool shouldDie_;
 	uint16_t lastUpdateMs_;
 	std::unordered_map<PhysicBodyBase*, int16_t> passThroughs_;
 };

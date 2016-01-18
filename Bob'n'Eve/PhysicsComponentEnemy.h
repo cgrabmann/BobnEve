@@ -7,7 +7,7 @@ class PhysicsComponentEnemy :
 	CollisionCallback
 {
 public:
-	explicit PhysicsComponentEnemy(PhysicBodyDef& bodyDef);
+	explicit PhysicsComponentEnemy(PhysicBodyDef& bodyDef, bool killable);
 	virtual ~PhysicsComponentEnemy();
 
 	void Update(GameObject& object, int16_t ms) override;
@@ -16,5 +16,6 @@ public:
 private:
 	bool groundCollision_;
 	bool playerCollision_;
+	bool killable_;
 };
 

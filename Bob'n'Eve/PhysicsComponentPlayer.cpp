@@ -4,7 +4,7 @@
 #include "PhysicManager.h"
 
 
-PhysicsComponentPlayer::PhysicsComponentPlayer(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), gravitySwitched_(false), lastUpdateMs_(0)
+PhysicsComponentPlayer::PhysicsComponentPlayer(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), gravitySwitched_(false), shouldDie_(false), lastUpdateMs_(0)
 {
 }
 
@@ -15,6 +15,11 @@ PhysicsComponentPlayer::~PhysicsComponentPlayer()
 
 void PhysicsComponentPlayer::Update(GameObject& object, int16_t ms)
 {
+	if (shouldDie_)
+	{
+		object.Kill();
+		return;
+	}
 	std::vector<PhysicBodyBase*> toErase;
 	lastUpdateMs_ = ms;
 	if (!passThroughs_.empty())
@@ -61,6 +66,10 @@ void PhysicsComponentPlayer::Update(GameObject& object, int16_t ms)
 
 void PhysicsComponentPlayer::collidesWith(PhysicBodyBase& otherBody)
 {
+	if (otherBody.GetCustomId() == "Enemyk")
+	{
+		shouldDie_ = true;
+	}
 	if (!otherBody.InSameIgnoreGroup(*body_)
 		&& otherBody.GetPosition().y * otherBody.GetPhysicScale() > body_->GetPosition().y * body_->GetPhysicScale())
 	{

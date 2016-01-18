@@ -327,7 +327,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(1);
-		return new PhysicsComponentEnemy(bodyDef);
+		return new PhysicsComponentEnemy(bodyDef, true);
 	}
 	if (object->type == "Coin")
 	{
