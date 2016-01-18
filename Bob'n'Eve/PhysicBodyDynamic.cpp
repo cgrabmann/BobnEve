@@ -1,12 +1,17 @@
 #include "PhysicBodyDynamic.h"
 #include "PhysicBodyStatic.h"
-#include <SFML/include/SFML/Window/Keyboard.hpp>
 #include "Global.h"
 #include "PhysicBodyDef.h"
 
 void PhysicBodyDynamic::SetVelocity(const Vector2f& velocity)
 {
-	velocity_ = velocity * Vector2f(1, physicScale_);
+	if (inCallback_)
+	{
+		velocityNew_ = velocity * Vector2f(1, physicScale_);
+	} else
+	{
+		velocity_ = velocity * Vector2f(1, physicScale_);
+	}
 }
 
 void PhysicBodyDynamic::SetPhysicScale(float scale)
@@ -46,6 +51,8 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 	if (InSameIgnoreGroup(otherBody))
 		return;
 
+	velocityNew_ = velocity_;
+
 	FloatRect otherBounds = otherBody.GetBounds();
 	Vector2f overlap = bounds_.GetOverlap(otherBounds);
 
@@ -60,7 +67,7 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 				return;
 
 			overlap.x = 0;
-			velocity_.y = 0;
+			velocityNew_.y = 0;
 		}
 		else
 			/* right */
@@ -69,7 +76,7 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 				return;
 
 			overlap.y = 0;
-			velocity_.x = 0;
+			velocityNew_.x = 0;
 		}
 	else
 		if (wy < -hx)
@@ -79,7 +86,7 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 				return;
 
 			overlap.x = 0;
-			velocity_.y = 0;
+			velocityNew_.y = 0;
 		}
 		else
 			/* left */
@@ -88,7 +95,7 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 				return;
 
 			overlap.y = 0;
-			velocity_.x = 0;
+			velocityNew_.x = 0;
 		}
 
 	bounds_.center -= overlap;
@@ -100,9 +107,10 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 		return;
 
 	FloatRect otherBounds = otherBody.bounds_;
-	Vector2f otherVelocity = otherBody.velocity_;
+	otherBody.velocityNew_ = otherBody.velocity_;
+	velocityNew_ = velocity_;
 
-	Vector2f averageVelocity = velocity_ + otherVelocity;
+	Vector2f averageVelocity = velocityNew_ + otherBody.velocityNew_;
 	averageVelocity /= 2;
 
 	Vector2f overlap = bounds_.GetOverlap(otherBounds);
@@ -119,8 +127,8 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 				return;
 
 			overlap.x = 0;
-			velocity_.y = averageVelocity.y;
-			otherBody.velocity_.y = averageVelocity.y;
+			velocityNew_.y = averageVelocity.y;
+			otherBody.velocityNew_.y = averageVelocity.y;
 		}
 		else
 			/* right */
@@ -129,8 +137,8 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 				return;
 
 			overlap.y = 0;
-			velocity_.x = averageVelocity.x;
-			otherBody.velocity_.x = averageVelocity.x;
+			velocityNew_.x = averageVelocity.x;
+			otherBody.velocityNew_.x = averageVelocity.x;
 		}
 	else
 		if (wy < -hx)
@@ -140,8 +148,8 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 				return;
 
 			overlap.x = 0;
-			velocity_.y = averageVelocity.y;
-			otherBody.velocity_.y = averageVelocity.y;
+			velocityNew_.y = averageVelocity.y;
+			otherBody.velocityNew_.y = averageVelocity.y;
 		}
 		else
 			/* left */
@@ -150,8 +158,8 @@ void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 				return;
 
 			overlap.y = 0;
-			velocity_.x = averageVelocity.x;
-			otherBody.velocity_.x = averageVelocity.x;
+			velocityNew_.x = averageVelocity.x;
+			otherBody.velocityNew_.x = averageVelocity.x;
 		}
 
 	bounds_.center -= overlap;

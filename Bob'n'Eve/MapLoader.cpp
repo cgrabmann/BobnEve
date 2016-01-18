@@ -26,6 +26,8 @@
 #include "PhysicsComponentEnemy.h"
 #include "PhysicsComponentPlayer.h"
 #include "PhysicsComponentCoin.h"
+#include "PhysicsComponentGeneric.h"
+#include "TrampolinCollisionCallback.h"
 
 void MapLoader::LoadMap(const char* path)
 {
@@ -355,7 +357,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	if (object->type == "Trampoline")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		return new PhysicsComponentStatic(bodyDef);
+		return new PhysicsComponentGeneric(bodyDef, new TrampolinCollisionCallback());
 	}
 	//if (object->type == "Platform" || object->type == "PassTrough")
 	{

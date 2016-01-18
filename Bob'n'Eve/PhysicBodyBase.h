@@ -40,7 +40,8 @@ public:
 		return bounds_.IsContaining(point);
 	}
 	bool IsColliding(const PhysicBodyBase& otherBody) const;
-	void FinishCollision(PhysicBodyBase& otherBody);
+	void IssueCollisionCallback(PhysicBodyBase& otherBody);
+	void FinishCollision();
 	void AddCollisionIgnoreGroup(int8_t group);
 	void RemoveCollisionIgnoreGroup(int8_t group);
 	bool IsInGroup(int8_t group) const;
@@ -66,12 +67,14 @@ protected:
 	std::string customId_;
 
 	Vector2f velocity_;
+	Vector2f velocityNew_;
 	Vector2f realVelocity_;
 	FloatRect bounds_;
 	float physicScale_;
 	std::vector<int8_t> collisionIgnoreGroups_;
 	bool* collisionSides_;
 	CollisionCallback* callback_;
+	bool inCallback_;
 };
 
 class PhysicBody

@@ -7,10 +7,15 @@ bool PhysicBodyBase::IsColliding(const PhysicBodyBase& otherBody) const
 	return bounds_.IsInsersecting(otherBody.bounds_);
 }
 
-void PhysicBodyBase::FinishCollision(PhysicBodyBase& otherBody)
+void PhysicBodyBase::IssueCollisionCallback(PhysicBodyBase& otherBody)
 {
 	if (callback_ != nullptr)
 		callback_->collidesWith(otherBody);
+}
+
+void PhysicBodyBase::FinishCollision()
+{
+	velocity_ = velocityNew_;
 }
 
 void PhysicBodyBase::AddCollisionIgnoreGroup(int8_t group)
@@ -38,7 +43,7 @@ void PhysicBodyBase::SetPhysicScale(float scale)
 }
 
 PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : customId_(def.customId_), velocity_(0.f, 0.f), realVelocity_(0.f, 0.f),
-	bounds_(def.bounds_), physicScale_(def.gravityScale_), callback_(def.callback_)
+bounds_(def.bounds_), physicScale_(def.gravityScale_), callback_(def.callback_), inCallback_(false)
 {
 	collisionIgnoreGroups_ = def.collisionIgnoreGroups_;
 	collisionSides_ = def.collisionSides_;

@@ -128,8 +128,14 @@ void PhysicWorld::ResolveCollisions()
 	{
 		CollidingGroup* group = collisions_.at(i);
 		group->body1_->CollideWith(*group->body2_);
-		group->body1_->FinishCollision(*group->body2_);
-		group->body2_->FinishCollision(*group->body1_);
+		group->body1_->inCallback_ = true;
+		group->body2_->inCallback_ = true;
+		group->body1_->IssueCollisionCallback(*group->body2_);
+		group->body2_->IssueCollisionCallback(*group->body1_);
+		group->body1_->inCallback_ = false;
+		group->body2_->inCallback_ = false;
+		group->body1_->FinishCollision();
+		group->body2_->FinishCollision();
 		delete group;
 	}
 	collisions_.clear();

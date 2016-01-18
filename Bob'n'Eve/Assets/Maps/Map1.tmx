@@ -190,8 +190,8 @@
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Animated"/>
     <property name="DisplayTime" value="125"/>
-    <property name="Pass_Bob" value="False"/>
-    <property name="Pass_Eve" value="False"/>
+    <property name="Pass_Bob" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
@@ -201,8 +201,8 @@
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
     <property name="DisplayTime" value="250"/>
-    <property name="Pass_Bob" value="False"/>
-    <property name="Pass_Eve" value="False"/>
+    <property name="Pass_Bob" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
@@ -212,8 +212,8 @@
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
     <property name="DisplayTime" value="250"/>
-    <property name="Pass_Bob" value="False"/>
-    <property name="Pass_Eve" value="False"/>
+    <property name="Pass_Bob" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
@@ -223,8 +223,8 @@
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
     <property name="DisplayTime" value="250"/>
-    <property name="Pass_Bob" value="False"/>
-    <property name="Pass_Eve" value="False"/>
+    <property name="Pass_Bob" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
@@ -234,8 +234,8 @@
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
     <property name="DisplayTime" value="250"/>
-    <property name="Pass_Bob" value="False"/>
-    <property name="Pass_Eve" value="False"/>
+    <property name="Pass_Bob" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
@@ -245,8 +245,8 @@
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Fade"/>
     <property name="DisplayTime" value="250"/>
-    <property name="Pass_Bob" value="False"/>
-    <property name="Pass_Eve" value="False"/>
+    <property name="Pass_Bob" value="true"/>
+    <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Enemy"/>
    </properties>
   </tile>
@@ -3243,7 +3243,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="58"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3460,7 +3460,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="37"/>
-   <tile gid="0"/>
+   <tile gid="66"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3483,7 +3483,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="58"/>
+   <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>

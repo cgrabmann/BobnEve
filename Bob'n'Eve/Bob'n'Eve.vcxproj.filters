@@ -171,6 +171,12 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Finish.cpp">
       <Filter>Quelldateien\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsComponentGeneric.cpp">
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TrampolinCollisionCallback.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -307,6 +313,15 @@
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Finish.h">
       <Filter>Headerdateien\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponentGeneric.h">
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\UpdateableCollisionCallback.h">
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TrampolinCollisionCallback.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
