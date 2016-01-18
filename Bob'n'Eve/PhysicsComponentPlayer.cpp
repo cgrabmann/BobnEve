@@ -4,7 +4,7 @@
 #include "PhysicManager.h"
 
 
-PhysicsComponentPlayer::PhysicsComponentPlayer(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), gravitySwitched_(false), shouldDie_(false), lastUpdateMs_(0)
+PhysicsComponentPlayer::PhysicsComponentPlayer(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), gravitySwitched_(false), shouldDie_(false)
 {
 }
 
@@ -20,8 +20,7 @@ void PhysicsComponentPlayer::Update(GameObject& object, int16_t ms)
 		object.Kill();
 		return;
 	}
-	std::vector<PhysicBodyBase*> toErase;
-	lastUpdateMs_ = ms;
+	/*std::vector<PhysicBodyBase*> toErase;
 	if (!passThroughs_.empty())
 	{
 		for (auto entry = passThroughs_.begin(); entry != passThroughs_.end(); ++entry)
@@ -59,12 +58,12 @@ void PhysicsComponentPlayer::Update(GameObject& object, int16_t ms)
 		{
 			gravitySwitched_ = false;
 		}
-	}
+	}*/
 	object.SetOnGround(groundCollision_);
 	groundCollision_ = false;
 }
 
-void PhysicsComponentPlayer::collidesWith(PhysicBodyBase& otherBody)
+void PhysicsComponentPlayer::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody)
 {
 	if (otherBody.GetCustomId() == "Enemyk")
 	{

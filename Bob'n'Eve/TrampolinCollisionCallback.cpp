@@ -3,7 +3,7 @@
 #include "PhysicBodyBase.h"
 
 
-TrampolinCollisionCallback::TrampolinCollisionCallback()
+TrampolinCollisionCallback::TrampolinCollisionCallback() : UpdateableCollisionCallback()
 {
 }
 
@@ -12,7 +12,7 @@ TrampolinCollisionCallback::~TrampolinCollisionCallback()
 {
 }
 
-void TrampolinCollisionCallback::collidesWith(PhysicBodyBase& otherBody)
+void TrampolinCollisionCallback::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody)
 {
 	if (std::find(alreadyBounced.begin(), alreadyBounced.end(), &otherBody) == alreadyBounced.end())
 	{

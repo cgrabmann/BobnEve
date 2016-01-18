@@ -97,6 +97,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\LeaderBoard.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MainMenu.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MenuBase.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PassThroughcollisionCallback.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TrampolinCollisionCallback.cpp" />
     <ClCompile Include="PhysicsComponentGeneric.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\Score.cpp" />
@@ -143,6 +144,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\LeaderBoard.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MainMenu.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MenuBase.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PassThroughcollisionCallback.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TrampolinCollisionCallback.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\UpdateableCollisionCallback.h" />
     <ClInclude Include="PhysicsComponentGeneric.h" />

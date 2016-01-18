@@ -7,6 +7,6 @@ public:
 	CollisionCallback() {}
 	virtual ~CollisionCallback() {};
 
-	virtual void collidesWith(PhysicBodyBase& otherBody) = 0;
+	virtual void collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody) = 0;
 };
 

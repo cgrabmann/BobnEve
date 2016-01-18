@@ -1,3 +1,4 @@
+#pragma once
 #include "CollisionCallback.h"
 #include <cinttypes>
 
@@ -12,7 +13,7 @@ public:
 	{
 	}
 
-	virtual void collidesWith(PhysicBodyBase& otherBody) override = 0;
+	virtual void collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody) override = 0;
 	virtual void update(GameObject& object, int16_t ms) = 0;
 
 	void add()

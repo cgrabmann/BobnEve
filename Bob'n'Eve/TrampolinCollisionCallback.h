@@ -9,7 +9,7 @@ public:
 	TrampolinCollisionCallback();
 	virtual ~TrampolinCollisionCallback();
 
-	virtual void collidesWith(PhysicBodyBase& otherBody) override;
+	virtual void collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody) override;
 	virtual void update(GameObject& object, int16_t ms) override;
 
 private:

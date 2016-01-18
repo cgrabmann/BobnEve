@@ -18,7 +18,7 @@ void PhysicsComponentCoin::Update(GameObject& object, int16_t ms)
 	}
 }
 
-void PhysicsComponentCoin::collidesWith(PhysicBodyBase& otherBody)
+void PhysicsComponentCoin::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody)
 {
 	if (otherBody.GetCustomId() == "Bob" || otherBody.GetCustomId() == "Eve")
 	{

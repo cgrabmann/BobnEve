@@ -16,10 +16,8 @@
 #include "Tile.h"
 #include "TileSet.h"
 #include "PhysicsComponentStatic.h"
-#include "PhysicsComponentDynamic.h"
 #include "Frame.h"
 #include "Object.h"
-#include <windows.h>
 #include "Coin.h"
 #include "PhysicBodyDef.h"
 #include "PhysicManager.h"
@@ -28,6 +26,7 @@
 #include "PhysicsComponentCoin.h"
 #include "PhysicsComponentGeneric.h"
 #include "TrampolinCollisionCallback.h"
+#include "PassThroughcollisionCallback.h"
 
 void MapLoader::LoadMap(const char* path)
 {
@@ -358,6 +357,11 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
 		return new PhysicsComponentGeneric(bodyDef, new TrampolinCollisionCallback());
+	}
+	if (object->type == "PassThrough")
+	{
+		bodyDef.type_ = PhysicBody::STATIC;
+		return new PhysicsComponentGeneric(bodyDef, new PassThroughCollisionCallback());
 	}
 	//if (object->type == "Platform" || object->type == "PassTrough")
 	{

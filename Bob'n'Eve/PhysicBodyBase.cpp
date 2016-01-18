@@ -10,7 +10,7 @@ bool PhysicBodyBase::IsColliding(const PhysicBodyBase& otherBody) const
 void PhysicBodyBase::IssueCollisionCallback(PhysicBodyBase& otherBody)
 {
 	if (callback_ != nullptr)
-		callback_->collidesWith(otherBody);
+		callback_->collidesWith(*this, otherBody);
 }
 
 void PhysicBodyBase::FinishCollision()

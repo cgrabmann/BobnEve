@@ -12,13 +12,12 @@ public:
 	virtual ~PhysicsComponentPlayer();
 
 	virtual void Update(GameObject& object, int16_t ms) override;
-	virtual void collidesWith(PhysicBodyBase& otherBody) override;
+	virtual void collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody) override;
 
 private:
 	bool groundCollision_;
 	bool gravitySwitched_;
 	bool shouldDie_;
-	uint16_t lastUpdateMs_;
 	std::unordered_map<PhysicBodyBase*, int16_t> passThroughs_;
 };
 

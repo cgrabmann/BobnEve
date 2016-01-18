@@ -11,7 +11,7 @@ public:
 	virtual ~PhysicsComponentEnemy();
 
 	void Update(GameObject& object, int16_t ms) override;
-	virtual void collidesWith(PhysicBodyBase& otherBody) override;
+	virtual void collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody) override;
 
 private:
 	bool groundCollision_;
