@@ -883,7 +883,7 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="33"/>
+   <tile gid="43"/>
    <tile gid="37"/>
    <tile gid="33"/>
    <tile gid="33"/>
@@ -3003,7 +3003,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="40"/>
+   <tile gid="32"/>
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
@@ -3214,9 +3214,9 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="33"/>
    <tile gid="47"/>
-   <tile gid="33"/>
+   <tile gid="47"/>
+   <tile gid="47"/>
    <tile gid="45"/>
    <tile gid="33"/>
    <tile gid="44"/>
@@ -3243,7 +3243,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="58"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3483,7 +3483,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="58"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3723,7 +3723,6 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="45"/>
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
@@ -3750,11 +3749,12 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="43"/>
+   <tile gid="33"/>
+   <tile gid="39"/>
    <tile gid="47"/>
    <tile gid="47"/>
    <tile gid="47"/>
-   <tile gid="45"/>
+   <tile gid="42"/>
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
@@ -3764,11 +3764,11 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="45"/>
+   <tile gid="41"/>
    <tile gid="51"/>
    <tile gid="51"/>
    <tile gid="51"/>
-   <tile gid="43"/>
+   <tile gid="40"/>
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
@@ -3792,11 +3792,11 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="45"/>
-   <tile gid="33"/>
+   <tile gid="34"/>
    <tile gid="51"/>
    <tile gid="51"/>
    <tile gid="51"/>
-   <tile gid="33"/>
+   <tile gid="32"/>
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="43"/>
@@ -3806,15 +3806,15 @@
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
-   <tile gid="35"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
    <tile gid="44"/>
+   <tile gid="66"/>
+   <tile gid="66"/>
+   <tile gid="66"/>
+   <tile gid="66"/>
+   <tile gid="66"/>
+   <tile gid="66"/>
+   <tile gid="66"/>
+   <tile gid="46"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -33215,26 +33215,26 @@
   <properties>
    <property name="Gravity" value="25"/>
   </properties>
-  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="229.333" y="595.666" width="64" height="96">
+  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="161.333" y="596.666" width="64" height="96">
    <properties>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="10"/>
    </properties>
   </object>
-  <object id="2" name="Eve Spawn" type="Eve" gid="9" x="125.666" y="593" width="64" height="96">
+  <object id="2" name="Eve Spawn" type="Eve" gid="9" x="79.666" y="596" width="64" height="96">
    <properties>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="10"/>
    </properties>
   </object>
-  <object id="3" name="Enemy0" type="Enemy" gid="17" x="3159.09" y="732.182" width="64" height="64">
+  <object id="3" name="Enemy0" type="Enemy" gid="17" x="378.09" y="1050.18" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
     <property name="GravityScale" value="-1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="2"/>
+    <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
   <object id="4" name="Enemy0" type="Enemy" gid="18" x="3159.09" y="534.152" width="64" height="64">

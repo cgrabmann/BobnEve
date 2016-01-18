@@ -26,7 +26,7 @@
 #include "PhysicsComponentCoin.h"
 #include "PhysicsComponentGeneric.h"
 #include "TrampolinCollisionCallback.h"
-#include "PassThroughcollisionCallback.h"
+#include "PassThroughCollisionCallback.h"
 
 void MapLoader::LoadMap(const char* path)
 {

@@ -9,7 +9,7 @@ bool PhysicBodyBase::IsColliding(const PhysicBodyBase& otherBody) const
 
 void PhysicBodyBase::IssueCollisionCallback(PhysicBodyBase& otherBody)
 {
-	if (callback_ != nullptr)
+	if (callback_)
 		callback_->collidesWith(*this, otherBody);
 }
 
@@ -40,6 +40,14 @@ bool PhysicBodyBase::IsInGroup(int8_t group) const
 void PhysicBodyBase::SetPhysicScale(float scale)
 {
 	physicScale_ = scale;
+	if (inCallback_)
+	{
+		velocityNew_ *= Vector2f(1, physicScale_);
+	}
+	else
+	{
+		velocity_ *= Vector2f(1, physicScale_);
+	}
 }
 
 PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : customId_(def.customId_), velocity_(0.f, 0.f), realVelocity_(0.f, 0.f),

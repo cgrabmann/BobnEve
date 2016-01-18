@@ -177,7 +177,7 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TrampolinCollisionCallback.cpp">
       <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PassThroughcollisionCallback.cpp">
+    <ClCompile Include="PassThroughCollisionCallback.cpp">
       <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
   </ItemGroup>
@@ -326,7 +326,7 @@
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TrampolinCollisionCallback.h">
       <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PassThroughcollisionCallback.h">
+    <ClInclude Include="PassThroughCollisionCallback.h">
       <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "PassThroughcollisionCallback.h"
+#include "PassThroughCollisionCallback.h"
 #include "PhysicBodyBase.h"
 #include "PhysicManager.h"
 
@@ -41,12 +41,12 @@ void PassThroughCollisionCallback::update(GameObject& object, int16_t ms)
 			if (info.ms <= 20)
 			{
 				info.ms += ms;
-				/*if (info.switched)
+				if (info.switched)
 				{
 					Vector2f vel = body->GetVelocity();
 					vel.y -= PhysicManager::Instance()->GetGravity().y * float(ms) / 1000;
 					body->SetVelocity(vel);
-				}*/
+				}
 			}
 			else
 			{

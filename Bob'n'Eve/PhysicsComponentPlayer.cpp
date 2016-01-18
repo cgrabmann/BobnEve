@@ -74,8 +74,8 @@ void PhysicsComponentPlayer::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBa
 	{
 		groundCollision_ = true;
 	}
-	if (otherBody.GetCustomId() == "PassThrough" && otherBody.InSameIgnoreGroup(*body_))
+	/*if (otherBody.GetCustomId() == "PassThrough" && otherBody.InSameIgnoreGroup(*body_))
 	{
 		passThroughs_[&otherBody] = 0;
-	}
+	}*/
 }

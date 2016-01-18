@@ -48,10 +48,9 @@ void PhysicBodyDynamic::Move(const Vector2f& gravity, float seconds)
 
 void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 {
+	velocityNew_ = velocity_;
 	if (InSameIgnoreGroup(otherBody))
 		return;
-
-	velocityNew_ = velocity_;
 
 	FloatRect otherBounds = otherBody.GetBounds();
 	Vector2f overlap = bounds_.GetOverlap(otherBounds);
@@ -103,12 +102,12 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 
 void PhysicBodyDynamic::CollideWithDynamic(PhysicBodyDynamic& otherBody)
 {
+	velocityNew_ = velocity_;
 	if (InSameIgnoreGroup(otherBody))
 		return;
 
 	FloatRect otherBounds = otherBody.bounds_;
 	otherBody.velocityNew_ = otherBody.velocity_;
-	velocityNew_ = velocity_;
 
 	Vector2f averageVelocity = velocityNew_ + otherBody.velocityNew_;
 	averageVelocity /= 2;
