@@ -15,11 +15,11 @@ CallbackCombiner::~CallbackCombiner()
 
 UpdateableCollisionCallback* CallbackCombiner::GetCallback(std::string& type)
 {
-	if (lastType == type)
-	{
-		return lastCallback;
-	}
-	lastType = type;
+	//if (lastType == type)
+	//{
+	//	return lastCallback;
+	//}
+	//lastType = type;
 
 	if (type == "JumpPad")
 	{
