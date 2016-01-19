@@ -9,6 +9,10 @@ public:
 	template <class C>
 	explicit Vector2f(const sf::Vector2<C>& vec) : x(vec.x), y(vec.y) {}
 
+	inline float dot(Vector2f other) const
+	{
+		return x * other.x + y * other.y;
+	}
 	float x;
 	float y;
 

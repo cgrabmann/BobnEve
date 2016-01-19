@@ -31,7 +31,7 @@ public:
 	{
 		return bounds_;
 	};
-	inline const Vector2f& GetVelocity() const
+	inline Vector2f GetVelocity() const
 	{
 		return velocity_ * Vector2f(1, physicScale_);
 	};

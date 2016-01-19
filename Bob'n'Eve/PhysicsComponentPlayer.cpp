@@ -1,10 +1,9 @@
 #include "PhysicsComponentPlayer.h"
 #include "PhysicBodyDef.h"
 #include "GameObject.h"
-#include "PhysicManager.h"
 
 
-PhysicsComponentPlayer::PhysicsComponentPlayer(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), gravitySwitched_(false), shouldDie_(false)
+PhysicsComponentPlayer::PhysicsComponentPlayer(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), shouldDie_(false)
 {
 }
 
@@ -20,45 +19,6 @@ void PhysicsComponentPlayer::Update(GameObject& object, int16_t ms)
 		object.Kill();
 		return;
 	}
-	/*std::vector<PhysicBodyBase*> toErase;
-	if (!passThroughs_.empty())
-	{
-		for (auto entry = passThroughs_.begin(); entry != passThroughs_.end(); ++entry)
-		{
-			FloatRect temp = (*entry).first->GetBounds();
-			temp.halfSize.y = temp.halfSize.y / 2;
-			if (!gravitySwitched_ && temp.IsContaining(body_->GetPosition()))
-			{
-				body_->SetPhysicScale(body_->GetPhysicScale() * (-1));
-				gravitySwitched_ = true;
-			}
-			if ((*entry).second <= 20)
-			{
-				(*entry).second += ms;
-			}
-			else
-			{
-				toErase.push_back((*entry).first);
-			}
-		}
-		for (auto entry : toErase)
-		{
-			passThroughs_.erase(entry);
-		}
-		if (gravitySwitched_)
-		{
-			Vector2f vel = GetVelocity();
-			vel.y -= PhysicManager::Instance()->GetGravity().y * float(ms) / 1000;
-			SetVelocity(vel);
-		}
-	}
-	else
-	{
-		if (gravitySwitched_)
-		{
-			gravitySwitched_ = false;
-		}
-	}*/
 	object.SetOnGround(groundCollision_);
 	groundCollision_ = false;
 }
@@ -69,13 +29,13 @@ void PhysicsComponentPlayer::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBa
 	{
 		shouldDie_ = true;
 	}
-	if (!otherBody.InSameIgnoreGroup(*body_)
-		&& otherBody.GetPosition().y * otherBody.GetPhysicScale() > body_->GetPosition().y * body_->GetPhysicScale())
+	float cosAngel = (otherBody.GetPosition() - thisBody.GetPosition()).dot(Vector2f(0,thisBody.GetPhysicScale()));
+	if (!groundCollision_ &&
+		!otherBody.InSameIgnoreGroup(*body_)
+		&& otherBody.GetPosition().y * otherBody.GetPhysicScale() > body_->GetPosition().y * body_->GetPhysicScale() // check correct y position
+		//&& cosAngel > -0.707 && cosAngel < 0.707 // check correct x position
+	)
 	{
 		groundCollision_ = true;
 	}
-	/*if (otherBody.GetCustomId() == "PassThrough" && otherBody.InSameIgnoreGroup(*body_))
-	{
-		passThroughs_[&otherBody] = 0;
-	}*/
 }
