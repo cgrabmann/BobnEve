@@ -55,6 +55,9 @@ void PhysicBodyDynamic::CollideWithStatic(PhysicBodyStatic& otherBody)
 	FloatRect otherBounds = otherBody.GetBounds();
 	Vector2f overlap = bounds_.GetOverlap(otherBounds);
 
+	if (overlap.y == 0)
+		return;
+
 	float wy = (bounds_.halfSize.x + otherBounds.halfSize.x) * (bounds_.center.y - otherBounds.center.y);
 	float hx = (bounds_.halfSize.y + otherBounds.halfSize.y) * (bounds_.center.x - otherBounds.center.x);
 

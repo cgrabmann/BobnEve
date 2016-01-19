@@ -68,7 +68,6 @@ protected:
 
 	Vector2f velocity_;
 	Vector2f velocityNew_;
-	Vector2f realVelocity_;
 	FloatRect bounds_;
 	float physicScale_;
 	std::vector<int8_t> collisionIgnoreGroups_;

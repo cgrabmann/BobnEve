@@ -50,7 +50,7 @@ void PhysicBodyBase::SetPhysicScale(float scale)
 	}
 }
 
-PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : customId_(def.customId_), velocity_(0.f, 0.f), realVelocity_(0.f, 0.f),
+PhysicBodyBase::PhysicBodyBase(const PhysicBodyDef& def) : customId_(def.customId_), velocity_(0.f, 0.f),
 bounds_(def.bounds_), physicScale_(def.gravityScale_), callback_(def.callback_), inCallback_(false)
 {
 	collisionIgnoreGroups_ = def.collisionIgnoreGroups_;
