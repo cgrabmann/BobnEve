@@ -4,6 +4,7 @@
 #include <vector>
 #include <SFML/include/SFML/Graphics/Text.hpp>
 #include <SFML/include/SFML/Graphics/Sprite.hpp>
+#include "Vector2f.h"
 
 class Renderer;
 
@@ -32,6 +33,8 @@ public:
 	{
 		isActive_ = set;
 	}
+
+	static const Vector2f DefaultSize;
 
 protected:
 	std::vector<sf::Drawable*> elements_;
