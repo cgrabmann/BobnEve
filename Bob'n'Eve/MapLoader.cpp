@@ -337,7 +337,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object, CallbackCombiner& 
 	if (object->type == "Enemy")
 	{
 		bodyDef.gravityScale_ = object->gravity;
-		bodyDef.type_ = PhysicBody::DYNAMIC;
+		bodyDef.type_ = PhysicBody::STATIC;
 		bodyDef.collisionIgnoreGroups_.push_back(1);
 		return new PhysicsComponentEnemy(bodyDef, object->isKillable);
 	}
@@ -362,7 +362,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object, CallbackCombiner& 
 	if (object->type == "JumpPad")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		return new PhysicsComponentStatic(bodyDef);
+		return new PhysicsComponentGeneric(bodyDef, combiner.GetCallback(object->type));
 	}
 	if (object->type == "Trampoline")
 	{

@@ -22,6 +22,10 @@ public:
 	}
 };
 
+inline bool operator== (const Vector2f& lVec, const Vector2f& rVec){
+	return lVec.x == rVec.x && lVec.y == rVec.y;
+}
+
 // += Operators
 inline Vector2f& operator+= (Vector2f& lVec, const Vector2f& rVec)
 {

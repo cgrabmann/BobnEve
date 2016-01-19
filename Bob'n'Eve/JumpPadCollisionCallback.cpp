@@ -14,16 +14,58 @@ JumpPadCollisionCallback::~JumpPadCollisionCallback()
 
 void JumpPadCollisionCallback::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody)
 {
-	if (std::find(alreadyBounced.begin(), alreadyBounced.end(), &otherBody) == alreadyBounced.end())
+
+	float yOffset = thisBody.GetPosition().y - otherBody.GetPosition().y;
+
+	if (yOffset > 0)
 	{
-		Vector2f vel = otherBody.GetVelocity();
-		vel.y = -vel.y;
-		otherBody.SetVelocity(vel);
-		alreadyBounced.push_back(&otherBody);
+		if (standingOnPad.count(&otherBody) == 0)
+		{
+			standingOnPad[&otherBody] = otherBody.GetVelocity().y;
+		}
 	}
+	else
+	{
+		if (standingUnderPad.count(&otherBody) == 0)
+		{
+			standingUnderPad[&otherBody] = otherBody.GetVelocity().y;
+		}
+	}
+	
 }
 
 void JumpPadCollisionCallback::update(GameObject& object, int16_t ms)
 {
-	alreadyBounced.clear();
+	if (standingOnPad.empty() || standingUnderPad.empty())
+	{
+		standingOnPad.clear();
+		standingUnderPad.clear();
+		return;
+	}
+
+	float velOn = 0.f;
+	float velUnder = 0.f;
+	for (std::unordered_map<PhysicBodyBase*, float>::iterator it = standingOnPad.begin(); it != standingOnPad.end(); ++it)
+	{
+		if (velOn < (*it).second)
+			velOn = (*it).second;
+	}
+	for (std::unordered_map<PhysicBodyBase*, float>::iterator it = standingUnderPad.begin(); it != standingUnderPad.end(); ++it)
+	{
+		if (velUnder < (*it).second)
+			velUnder = (*it).second;
+
+		Vector2f vel = (*it).first->GetVelocity();
+		vel.y = -velOn;
+		(*it).first->SetVelocity(vel);
+	}
+	for (std::unordered_map<PhysicBodyBase*, float>::iterator it = standingOnPad.begin(); it != standingOnPad.end(); ++it)
+	{
+		Vector2f vel = (*it).first->GetVelocity();
+		vel.y = -velUnder;
+		(*it).first->SetVelocity(vel);
+	}
+
+	standingOnPad.clear();
+	standingUnderPad.clear();
 }

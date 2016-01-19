@@ -1,6 +1,6 @@
 #pragma once
 #include "UpdateableCollisionCallback.h"
-#include <vector>
+#include <unordered_map>
 
 class JumpPadCollisionCallback :
 	public UpdateableCollisionCallback
@@ -13,6 +13,7 @@ public:
 	virtual void update(GameObject& object, int16_t ms) override;
 
 private:
-	std::vector<PhysicBodyBase*> alreadyBounced;
+	std::unordered_map<PhysicBodyBase*, float> standingOnPad;
+	std::unordered_map<PhysicBodyBase*, float> standingUnderPad;
 };
 
