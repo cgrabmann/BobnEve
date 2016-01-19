@@ -13,7 +13,6 @@ PhysicsComponentEnemy::~PhysicsComponentEnemy()
 
 void PhysicsComponentEnemy::Update(GameObject& object, int16_t ms)
 {
-
 	if (playerCollision_)
 	{
 		object.Kill();

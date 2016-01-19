@@ -2,7 +2,7 @@
 #include "PhysicBodyDef.h"
 #include "GameObject.h"
 
-PhysicsComponentCoin::PhysicsComponentCoin(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), playerCollision_(false)
+PhysicsComponentCoin::PhysicsComponentCoin(PhysicBodyDef& bodyDef) : PhysicsComponentStatic(bodyDef.SetCallback(this)), playerCollision_(false)
 {
 }
 

@@ -14,19 +14,19 @@ public:
 
 	virtual void Update(GameObject& object, int16_t ms);
 
-	inline Vector2f PhysicsComponentBase::GetPosition() const
+	inline Vector2f GetPosition() const
 	{
 		return body_->GetPosition();
 	}
 
-	inline Vector2f PhysicsComponentBase::GetVelocity() const
+	virtual inline Vector2f PhysicsComponentBase::GetVelocity() const
 	{
 		return body_->GetVelocity();
 	}
-	Vector2f GetOrientation() const;
+	virtual Vector2f GetOrientation() const;
 
-	void SetVelocity(const Vector2f& velocity);
-	void SetVelocity(float velX, float velY);
+	virtual void SetVelocity(const Vector2f& velocity);
+	virtual void SetVelocity(float velX, float velY);
 
 protected:
 	explicit PhysicsComponentBase(const PhysicBodyDef& bodyDef);

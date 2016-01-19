@@ -86,21 +86,14 @@ void Game::Loop()
 						paused_ = false;
 					}
 					break;
+				default: break;
 				}
+			default: break;
 			}
 		}
 
 		// Measure time since last frame    
 		sf::Time elapsedTime = clock.restart();
-
-#ifdef false
-		if (elapsedTime.asMilliseconds() > 250 && elapsedTime.asMilliseconds() < 1000)
-		{
-			//Lag spike
-			__debugbreak();
-		}
-#endif
-
 		if (!paused_
 #ifndef  _DEBUG
 			&& window.hasFocus() 

@@ -27,6 +27,7 @@
 #include "PhysicsComponentGeneric.h"
 #include "TrampolinCollisionCallback.h"
 #include "PassThroughCollisionCallback.h"
+#include "CallbackCombiner.h"
 
 void MapLoader::LoadMap(const char* path)
 {
@@ -50,7 +51,9 @@ void MapLoader::LoadMap(const char* path)
 	tileSets.reserve(4);
 	std::unordered_map<uint16_t, Tile*> tiles;
 	tiles.reserve(32);
-
+	
+	UpdateableCollisionCallback* lastCallback;
+	std::string lastType;
 
 	for (pugi::xml_node xmlTileset = map.child("tileset"); xmlTileset; xmlTileset = xmlTileset.next_sibling("tileset"))
 	{
@@ -85,7 +88,7 @@ void MapLoader::LoadMap(const char* path)
 
 				if (!strcmp(propertyName, "Animation_Id"))
 				{
-					tile->animationId = xmlProperty.attribute("value").as_int();
+					tile->animationId = xmlProperty.attribute("value").as_int(-1);
 				}
 				else if (!strcmp(propertyName, "Animation_Mirror"))
 				{
@@ -138,6 +141,8 @@ void MapLoader::LoadMap(const char* path)
 		}
 	}
 
+	CallbackCombiner combiner;
+
 	View::Instance()->CleanUp();
 	uint8_t xPos = 0;
 	uint8_t yPos = 0;
@@ -159,7 +164,7 @@ void MapLoader::LoadMap(const char* path)
 			object->gravity = 0;
 			object->enemyId = -1;
 
-			ParseObject(object);
+			ParseObject(object, combiner);
 
 			delete object;
 		}
@@ -169,6 +174,7 @@ void MapLoader::LoadMap(const char* path)
 		{
 			xPos = 0;
 			yPos++;
+			combiner.ClearCallback();
 		}
 	}
 
@@ -197,7 +203,7 @@ void MapLoader::LoadMap(const char* path)
 			object->tileSet = tileSets[object->tile->tileSetName];
 			object->size = Vector2f(xmlDynamicObject.attribute("width").as_int(), xmlDynamicObject.attribute("height").as_int());
 			object->pos = Vector2f(xmlDynamicObject.attribute("x").as_float() + object->size.x / 2, xmlDynamicObject.attribute("y").as_float() - object->size.y / 2);
-			object->type = xmlDynamicObject.attribute("tpye").empty() ? object->tile->type : xmlDynamicObject.attribute("tpye").as_string();
+			object->type = xmlDynamicObject.attribute("type").as_string();
 
 			for (pugi::xml_node xmlObjectProperty = xmlDynamicObject.child("properties").child("property"); xmlObjectProperty; xmlObjectProperty = xmlObjectProperty.next_sibling("property"))
 			{
@@ -205,23 +211,28 @@ void MapLoader::LoadMap(const char* path)
 
 				if (!strcmp(propertyName, "GravityScale"))
 				{
-					object->gravity = xmlObjectProperty.attribute("value").as_int();
+					object->gravity = xmlObjectProperty.attribute("value").as_int(0);
 				}
 				else if (!strcmp(propertyName, "EnemyId"))
 				{
-					object->id = xmlObjectProperty.attribute("value").as_int();
+					object->enemyId = xmlObjectProperty.attribute("value").as_int(-1);
 				}
 				else if (!strcmp(propertyName, "SpeedX"))
 				{
-					object->speed.x = xmlObjectProperty.attribute("value").as_float();
+					object->speed.x = xmlObjectProperty.attribute("value").as_float(0);
 				}
 				else if (!strcmp(propertyName, "SpeedY"))
 				{
-					object->speed.y = xmlObjectProperty.attribute("value").as_float();
+					object->speed.y = xmlObjectProperty.attribute("value").as_float(0);
+				}
+				else if (!strcmp(propertyName, "IsKillable"))
+				{
+					object->isKillable = xmlObjectProperty.attribute("value").as_bool(false);;
 				}
 			}
 
-			ParseObject(object);
+			combiner.ClearCallback();
+			ParseObject(object, combiner);
 
 			delete object;
 		}
@@ -232,23 +243,23 @@ void MapLoader::LoadMap(const char* path)
 	tiles.clear();
 }
 
-void MapLoader::ParseObject(Object* object)
+void MapLoader::ParseObject(Object* object, CallbackCombiner& combiner)
 {
 	if (object->type == "Enemy")
 	{
-		View::Instance()->Register(new Enemy(ParseInput(object), ParsePhysics(object), ParseGraphics(object), object->enemyId, object->speed));
+		View::Instance()->Register(new Enemy(ParseInput(object), ParsePhysics(object, combiner), ParseGraphics(object), object->enemyId, object->speed));
 	}
 	else if (object->type == "Coin")
 	{
-		View::Instance()->Register(new Coin(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+		View::Instance()->Register(new Coin(ParseInput(object), ParsePhysics(object, combiner), ParseGraphics(object)));
 	}
 	else if (object->type == "Bob" || object->type == "Eve")
 	{
-		View::Instance()->Register(new Player(ParseInput(object), ParsePhysics(object), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2), object->speed));
+		View::Instance()->Register(new Player(ParseInput(object), ParsePhysics(object, combiner), ParseAnimation(object, 0), ParseAnimation(object, 1), ParseAnimation(object, 2), object->speed));
 	}
 	else // if (object->type == "Platform" || object->type == "PassTrough")
 	{
-		View::Instance()->Register(new Platform(ParseInput(object), ParsePhysics(object), ParseGraphics(object)));
+		View::Instance()->Register(new Platform(ParseInput(object), ParsePhysics(object, combiner), ParseGraphics(object)));
 	}
 }
 
@@ -307,7 +318,7 @@ GraphicsComponent* MapLoader::ParseAnimation(Object* object, uint8_t animationId
 	return new GraphicsComponent();
 }
 
-PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
+PhysicsComponentBase* MapLoader::ParsePhysics(Object* object, CallbackCombiner& combiner)
 {
 	PhysicBodyDef bodyDef;
 	bodyDef.bounds_ = FloatRect(object->pos, object->size / 2);
@@ -328,7 +339,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(1);
-		return new PhysicsComponentEnemy(bodyDef, true);
+		return new PhysicsComponentEnemy(bodyDef, object->isKillable);
 	}
 	if (object->type == "Coin")
 	{
@@ -356,14 +367,14 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object)
 	if (object->type == "Trampoline")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		return new PhysicsComponentGeneric(bodyDef, new TrampolinCollisionCallback());
+		return new PhysicsComponentGeneric(bodyDef, combiner.GetCallback(object->type));
 	}
 	if (object->type == "PassThrough")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		return new PhysicsComponentGeneric(bodyDef, new PassThroughCollisionCallback());
+		return new PhysicsComponentGeneric(bodyDef, combiner.GetCallback(object->type));
 	}
-	//if (object->type == "Platform" || object->type == "PassTrough")
+	//if (object->type == "Platform")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
 		return new PhysicsComponentStatic(bodyDef);

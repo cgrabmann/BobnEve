@@ -20,4 +20,5 @@ private:
 	size_t enemyId = -1;
 	std::string type;
 	Vector2f speed = Vector2f(0, 0);
+	bool isKillable = false;
 };

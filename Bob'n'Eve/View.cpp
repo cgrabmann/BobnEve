@@ -141,7 +141,7 @@ void View::Destroy(Coin* coin)
 {
 	coinsToDelete_.push_back(coin);
 
-	time_ -= sf::seconds(30);
+	time_ -= sf::seconds(10);
 }
 
 void View::DestroyAllCollectedCoins()

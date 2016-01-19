@@ -180,6 +180,12 @@
     <ClCompile Include="PassThroughCollisionCallback.cpp">
       <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CallbackCombiner.cpp">
+      <Filter>Quelldateien\MapLoader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPadCollisionCallback.cpp">
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -327,6 +333,12 @@
       <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
     <ClInclude Include="PassThroughCollisionCallback.h">
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\CallbackCombiner.h">
+      <Filter>Headerdateien\MapLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPadCollisionCallback.h">
       <Filter>Headerdateien\Components\PhysicsComponents</Filter>
     </ClInclude>
   </ItemGroup>

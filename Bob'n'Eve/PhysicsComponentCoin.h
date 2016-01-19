@@ -1,9 +1,9 @@
 #pragma once
-#include "PhysicsComponentBase.h"
 #include "CollisionCallback.h"
+#include "PhysicsComponentStatic.h"
 
 class PhysicsComponentCoin :
-	public PhysicsComponentBase,
+	public PhysicsComponentStatic,
 		CollisionCallback
 {
 public:
