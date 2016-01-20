@@ -268,7 +268,7 @@ void MapLoader::ParseObject(Object* object, CallbackCombiner& combiner)
 
 InputComponent* MapLoader::ParseInput(Object* object)
 {
-	if (object->type == "Enemy")
+	if (object->type == "Enemy" || object->type == "EnemyK")
 	{
 		return new InputComponent();
 	}
@@ -337,7 +337,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object, CallbackCombiner& 
 		bodyDef.collisionIgnoreGroups_.push_back(3);
 	}
 
-	if (object->type == "Enemy")
+	if (object->type == "Enemy" || object->type == "EnemyK")
 	{
 		bodyDef.gravityScale_ = object->gravity;
 		bodyDef.type_ = PhysicBody::DYNAMIC;
