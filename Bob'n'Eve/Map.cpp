@@ -104,6 +104,7 @@ void Map::Update(int16_t ms)
 		(*it)->Update(ms);
 	}
 
+	if (finish_)
 	finish_->Update(ms);
 
 	DestroyAllKilledEnemies();
@@ -189,6 +190,7 @@ void Map::Draw(Renderer& renderer) const
 		(*it)->Draw(renderer);
 	}
 
+	if (finish_)
 	finish_->Draw(renderer);
 }
 
