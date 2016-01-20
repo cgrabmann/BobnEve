@@ -101,39 +101,39 @@ void MapLoader::LoadMap(const char* path)
 				}
 				else if (!strcmp(propertyName, "Pass_Bob"))
 				{
-					tile->passBob = xmlProperty.attribute("value").as_bool();;
+					tile->passBob = xmlProperty.attribute("value").as_bool();
 				}
 				else if (!strcmp(propertyName, "Pass_Eve"))
 				{
-					tile->passEve = xmlProperty.attribute("value").as_bool();;
+					tile->passEve = xmlProperty.attribute("value").as_bool();
 				}
 				else if (!strcmp(propertyName, "Type"))
 				{
-					tile->type = xmlProperty.attribute("value").as_string();;
+					tile->type = xmlProperty.attribute("value").as_string();
 				}
 				else if (!strcmp(propertyName, "DisplayTime"))
 				{
-					tile->displayTime = xmlProperty.attribute("value").as_int();;
+					tile->displayTime = xmlProperty.attribute("value").as_int();
 				}
 				else if (!strcmp(propertyName, "Collision_Top"))
 				{
-					tile->collisionSides[Sides::Top] = xmlProperty.attribute("value").as_bool();;
+					tile->collisionSides[Sides::Top] = xmlProperty.attribute("value").as_bool();
 				}
 				else if (!strcmp(propertyName, "Collision_Right"))
 				{
-					tile->collisionSides[Sides::Right] = xmlProperty.attribute("value").as_bool();;
+					tile->collisionSides[Sides::Right] = xmlProperty.attribute("value").as_bool();
 				}
 				else if (!strcmp(propertyName, "Collision_Bottom"))
 				{
-					tile->collisionSides[Sides::Bottom] = xmlProperty.attribute("value").as_bool();;
+					tile->collisionSides[Sides::Bottom] = xmlProperty.attribute("value").as_bool();
 				}
 				else if (!strcmp(propertyName, "Collision_Left"))
 				{
-					tile->collisionSides[Sides::Left] = xmlProperty.attribute("value").as_bool();;
+					tile->collisionSides[Sides::Left] = xmlProperty.attribute("value").as_bool();
 				}
 				else if (!strcmp(propertyName, "SwitchesGravity"))
 				{
-					tile->switchesGravity = xmlProperty.attribute("value").as_bool();;
+					tile->switchesGravity = xmlProperty.attribute("value").as_bool();
 				}
 			}
 
