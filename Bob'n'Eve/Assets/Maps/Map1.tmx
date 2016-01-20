@@ -2742,7 +2742,7 @@
    <tile gid="39"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="31"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="31"/>
@@ -3461,13 +3461,13 @@
    <tile gid="0"/>
    <tile gid="37"/>
    <tile gid="0"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
-   <tile gid="66"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
+   <tile gid="0"/>
    <tile gid="37"/>
    <tile gid="0"/>
    <tile gid="37"/>
@@ -3700,11 +3700,11 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="42"/>
-   <tile gid="59"/>
-   <tile gid="59"/>
-   <tile gid="59"/>
-   <tile gid="59"/>
-   <tile gid="59"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
+   <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
    <tile gid="33"/>
@@ -33215,18 +33215,18 @@
   <properties>
    <property name="Gravity" value="25"/>
   </properties>
-  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="827.333" y="966.666" width="64" height="96">
-   <properties>
-    <property name="GravityScale" value="-1"/>
-    <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="10"/>
-   </properties>
-  </object>
-  <object id="2" name="Eve Spawn" type="Eve" gid="9" x="830.666" y="473" width="64" height="96">
+  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="122.333" y="579.666" width="64" height="96">
    <properties>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="10"/>
+    <property name="SpeedY" value="11"/>
+   </properties>
+  </object>
+  <object id="2" name="Eve Spawn" type="Eve" gid="9" x="580.666" y="450" width="64" height="96">
+   <properties>
+    <property name="GravityScale" value="1"/>
+    <property name="SpeedX" value="10"/>
+    <property name="SpeedY" value="11"/>
    </properties>
   </object>
   <object id="3" name="Enemy0" type="Enemy" gid="17" x="378.09" y="1050.18" width="64" height="64">

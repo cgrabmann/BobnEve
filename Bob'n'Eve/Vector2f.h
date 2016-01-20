@@ -1,5 +1,10 @@
 #pragma once
 #include <SFML/include/SFML/System/Vector2.hpp>
+#include <math.h>
+
+class Vector2f;
+
+Vector2f operator/ (const Vector2f& vec, float mult);
 
 class Vector2f
 {
@@ -12,6 +17,12 @@ public:
 	inline float dot(Vector2f other) const
 	{
 		return x * other.x + y * other.y;
+	}
+
+	inline Vector2f normalize() const
+	{
+		float f = sqrtf(x * x + y * y);
+		return (*this / f);
 	}
 	float x;
 	float y;
@@ -153,12 +164,12 @@ inline Vector2f& operator/= (Vector2f& lVec, const Vector2f& rVec)
 }
 
 // / Operators
-inline Vector2f operator/ (const Vector2f& vec, const float& mult)
+inline Vector2f operator/ (const Vector2f& vec, float mult)
 {
 	Vector2f out(vec);
 	return out /= mult;
 }
-inline Vector2f operator/ (const float& mult, const Vector2f& vec)
+inline Vector2f operator/ (float mult, const Vector2f& vec)
 {
 	return (vec / mult);
 }

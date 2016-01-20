@@ -15,6 +15,8 @@ public:
 	virtual void collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody) override;
 
 private:
+	static const float cos45;
+
 	bool groundCollision_;
 	bool shouldDie_;
 };

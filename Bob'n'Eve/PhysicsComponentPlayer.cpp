@@ -2,6 +2,9 @@
 #include "PhysicBodyDef.h"
 #include "GameObject.h"
 
+#define PI 3.14159265
+
+const float PhysicsComponentPlayer::cos45 = cos(38.6598 * PI / 180.f);
 
 PhysicsComponentPlayer::PhysicsComponentPlayer(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), shouldDie_(false)
 {
@@ -29,11 +32,11 @@ void PhysicsComponentPlayer::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBa
 	{
 		shouldDie_ = true;
 	}
-	float cosAngel = (otherBody.GetPosition() - thisBody.GetPosition()).dot(Vector2f(0,thisBody.GetPhysicScale()));
+	float cosAngel = (otherBody.GetPosition() - thisBody.GetPosition()).normalize().dot(Vector2f(0,thisBody.GetPhysicScale()).normalize());
 	if (!groundCollision_ &&
 		!otherBody.InSameIgnoreGroup(*body_)
 		&& otherBody.GetPosition().y * otherBody.GetPhysicScale() > body_->GetPosition().y * body_->GetPhysicScale() // check correct y position
-		//&& cosAngel > -0.707 && cosAngel < 0.707 // check correct x position
+		&& (cosAngel > cos45 || cosAngel < -cos45) // check correct x position
 	)
 	{
 		groundCollision_ = true;

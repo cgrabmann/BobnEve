@@ -337,7 +337,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object, CallbackCombiner& 
 	if (object->type == "Enemy")
 	{
 		bodyDef.gravityScale_ = object->gravity;
-		bodyDef.type_ = PhysicBody::STATIC;
+		bodyDef.type_ = PhysicBody::DYNAMIC;
 		bodyDef.collisionIgnoreGroups_.push_back(1);
 		return new PhysicsComponentEnemy(bodyDef, object->isKillable);
 	}
@@ -372,7 +372,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object, CallbackCombiner& 
 	if (object->type == "PassThrough")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
-		return new PhysicsComponentGeneric(bodyDef, combiner.GetCallback(object->type));
+		return new PhysicsComponentGeneric(bodyDef, new PassThroughCollisionCallback());
 	}
 	//if (object->type == "Platform")
 	{
