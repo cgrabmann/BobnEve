@@ -22,7 +22,7 @@ MainMenu::MainMenu(Map::MapState status, sf::Time time, LeaderBoard* board)
 	case Map::Active:
 	{
 		sf::Sprite* title = AssetManager::Instance()->GetSprite("Title.png");
-		CenterSprite(title, 50);
+		CenterSprite(title, 75);
 		elements_.push_back(title);
 	}
 	break;
@@ -41,8 +41,8 @@ MainMenu::MainMenu(Map::MapState status, sf::Time time, LeaderBoard* board)
 	break;
 	case Map::GameOver:
 	{
-		sf::Text* scoreHeader = new sf::Text("Game Over!", font_, 128);
-		scoreHeader->setColor(pink);
+		sf::Text* scoreHeader = new sf::Text("Game Over!", font_, 256);
+		scoreHeader->setColor(green);
 		CenterText(scoreHeader, 50);
 		elements_.push_back(scoreHeader);
 	}
