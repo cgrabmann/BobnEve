@@ -76,8 +76,13 @@ MainMenu::MainMenu(Map::MapState status, sf::Time time, LeaderBoard* board)
 	streamBuilder << "R to restart - ESC to quit";
 	sf::Text* start = new sf::Text(streamBuilder.str(), font_, 64);
 	start->setColor(pink);
-	CenterText(start, 950);
+	CenterText(start, 900);
 	elements_.push_back(start);
+
+	sf::Text* copyright = new sf::Text("© Grabmann Clemens - Radlwimmer Stefan - Reiter Jacqueline", font_, 48);
+	copyright->setColor(green);
+	CenterText(copyright, 1000);
+	elements_.push_back(copyright);
 }
 
 void MainMenu::Update(int16_t ms)

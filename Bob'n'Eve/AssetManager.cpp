@@ -88,7 +88,7 @@ void AssetManager::RegisterTexture(const std::string& name)
 		texture = GetErrorTex();
 	}
 
-	tileSets_[name] = new TileSet(texture);;
+	tileSets_[name] = new TileSet(texture);
 }
 
 void AssetManager::RegisterTileSet(const std::string& name, const uint32_t tileWidth, const uint32_t tileHeight, const uint8_t spacing, const uint8_t margin)
@@ -105,7 +105,7 @@ void AssetManager::RegisterTileSet(const std::string& name, const uint32_t tileW
 		texture = GetErrorTex();
 	}
 
-	tileSets_[name] = new TileSet(texture, tileWidth, tileHeight, spacing, margin);;
+	tileSets_[name] = new TileSet(texture, tileWidth, tileHeight, spacing, margin);
 }
 
 void AssetManager::RegisterSound(const std::string& name)
