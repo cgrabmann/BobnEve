@@ -824,6 +824,7 @@
    <properties>
     <property name="Animation_Id" value="0"/>
     <property name="Animation_Type" value="Static"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
@@ -833,6 +834,7 @@
    <properties>
     <property name="Animation_Id" value="1"/>
     <property name="Animation_Type" value="Static"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
@@ -843,7 +845,7 @@
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Animated"/>
-    <property name="DisplayTime" value="400"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
@@ -853,7 +855,7 @@
    <properties>
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Type" value="Animated"/>
-    <property name="DisplayTime" value="400"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
@@ -863,7 +865,7 @@
    <properties>
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Type" value="Animated"/>
-    <property name="DisplayTime" value="400"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
@@ -873,7 +875,7 @@
    <properties>
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Type" value="Animated"/>
-    <property name="DisplayTime" value="400"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="true"/>
     <property name="Pass_Eve" value="false"/>
     <property name="Type" value="Bob"/>
@@ -886,6 +888,7 @@
    <properties>
     <property name="Animation_Id" value="0"/>
     <property name="Animation_Type" value="Static"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Eve"/>
@@ -895,6 +898,7 @@
    <properties>
     <property name="Animation_Id" value="1"/>
     <property name="Animation_Type" value="Static"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Eve"/>
@@ -905,7 +909,7 @@
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Mirror" value="true"/>
     <property name="Animation_Type" value="Animated"/>
-    <property name="DisplayTime" value="400"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Eve"/>
@@ -915,7 +919,7 @@
    <properties>
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Type" value="Animated"/>
-    <property name="DisplayTime" value="400"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Eve"/>
@@ -925,7 +929,7 @@
    <properties>
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Type" value="Animated"/>
-    <property name="DisplayTime" value="400"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Eve"/>
@@ -935,7 +939,7 @@
    <properties>
     <property name="Animation_Id" value="2"/>
     <property name="Animation_Type" value="Animated"/>
-    <property name="DisplayTime" value="400"/>
+    <property name="DisplayTime" value="125"/>
     <property name="Pass_Bob" value="false"/>
     <property name="Pass_Eve" value="true"/>
     <property name="Type" value="Eve"/>
@@ -1028,62 +1032,9 @@
    <tile gid="17"/>
    <tile gid="17"/>
    <tile gid="17"/>
-   <tile gid="27"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
    <tile gid="17"/>
    <tile gid="17"/>
    <tile gid="27"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="27"/>
-   <tile gid="21"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
-   <tile gid="17"/>
    <tile gid="17"/>
    <tile gid="17"/>
    <tile gid="17"/>
@@ -1125,6 +1076,59 @@
    <tile gid="17"/>
    <tile gid="17"/>
    <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="27"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="17"/>
+   <tile gid="23"/>
    <tile gid="21"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -3438,7 +3442,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="17"/>
+   <tile gid="16"/>
    <tile gid="17"/>
    <tile gid="17"/>
    <tile gid="17"/>
@@ -15205,7 +15209,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="21"/>
-   <tile gid="21"/>
+   <tile gid="26"/>
    <tile gid="50"/>
    <tile gid="50"/>
    <tile gid="50"/>
@@ -15378,19 +15382,19 @@
     <property name="SpeedY" value="10"/>
    </properties>
   </object>
-  <object id="2" name="Eve Spawn" type="Eve" gid="74" x="333.666" y="514.667" width="64" height="96">
+  <object id="2" name="Eve Spawn" type="Eve" gid="74" x="360.454" y="553.818" width="64" height="96">
    <properties>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="10"/>
    </properties>
   </object>
-  <object id="3" name="Enemy0" type="Enemy" gid="80" x="3155.09" y="741.849" width="96" height="96">
+  <object id="3" name="Enemy0" type="Enemy" gid="80" x="3153.76" y="753.849" width="96" height="96">
    <properties>
     <property name="EnemyId" value="0"/>
-    <property name="GravityScale" value="-1"/>
+    <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="7,5"/>
+    <property name="SpeedY" value="2,5"/>
    </properties>
   </object>
   <object id="4" name="Enemy0" type="EnemyK" gid="81" x="3149.09" y="547.152" width="96" height="96">
@@ -15414,7 +15418,7 @@
     <property name="EnemyId" value="1"/>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="12"/>
+    <property name="SpeedY" value="10"/>
    </properties>
   </object>
   <object id="70" name="Enemy3" type="Enemy" gid="80" x="5429.73" y="703.637" width="96" height="96">
@@ -15446,7 +15450,7 @@
     <property name="EnemyId" value="4"/>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="12"/>
+    <property name="SpeedY" value="10"/>
    </properties>
   </object>
   <object id="21" name="Enemy2" type="Enemy" gid="80" x="6402.67" y="963.152" width="96" height="96">
@@ -15462,7 +15466,7 @@
     <property name="EnemyId" value="2"/>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
-    <property name="SpeedY" value="12"/>
+    <property name="SpeedY" value="10"/>
    </properties>
   </object>
   <object id="23" name="Enemy5" type="Enemy" gid="80" x="2353.45" y="3118.62" width="96" height="96">
@@ -15473,7 +15477,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="24" name="Enemy6" type="EnemyK" gid="81" x="2359.45" y="3375.92" width="96" height="96">
+  <object id="24" name="Enemy5" type="EnemyK" gid="81" x="2359.45" y="3375.92" width="96" height="96">
    <properties>
     <property name="EnemyId" value="5"/>
     <property name="GravityScale" value="1"/>
@@ -15521,7 +15525,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="30" name="Enemy6" type="EnemyK" gid="81" x="9461.45" y="740.11" width="96" height="96">
+  <object id="30" name="Enemy12" type="EnemyK" gid="81" x="9461.45" y="740.11" width="96" height="96">
    <properties>
     <property name="EnemyId" value="6"/>
     <property name="GravityScale" value="-1"/>
@@ -15577,65 +15581,65 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="37" name="Enemy6" type="EnemyK" gid="80" x="6125" y="3615" width="96" height="96">
+  <object id="37" name="Enemy12" type="EnemyK" gid="80" x="6125" y="3615" width="96" height="96">
    <properties>
-    <property name="EnemyId" value="6"/>
+    <property name="EnemyId" value="12"/>
     <property name="GravityScale" value="0"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="38" name="Enemy6" type="EnemyK" gid="81" x="6123" y="4127" width="96" height="96">
+  <object id="38" name="Enemy12" type="EnemyK" gid="81" x="6123" y="4127" width="96" height="96">
    <properties>
-    <property name="EnemyId" value="6"/>
+    <property name="EnemyId" value="12"/>
     <property name="GravityScale" value="0"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="39" name="Enemy7" type="EnemyK" gid="81" x="6636" y="4127" width="96" height="96">
+  <object id="39" name="Enemy14" type="EnemyK" gid="81" x="6636" y="4127" width="96" height="96">
    <properties>
-    <property name="EnemyId" value="7"/>
+    <property name="EnemyId" value="14"/>
     <property name="GravityScale" value="0"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="40" name="Enemy7" type="EnemyK" gid="80" x="6638" y="3615" width="96" height="96">
+  <object id="40" name="Enemy14" type="EnemyK" gid="80" x="6638" y="3615" width="96" height="96">
    <properties>
-    <property name="EnemyId" value="7"/>
+    <property name="EnemyId" value="14"/>
     <property name="GravityScale" value="0"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="41" name="Enemy8" type="EnemyK" gid="81" x="6379.5" y="3615" width="96" height="96">
+  <object id="41" name="Enemy13" type="EnemyK" gid="81" x="6379.5" y="3615" width="96" height="96">
    <properties>
-    <property name="EnemyId" value="8"/>
+    <property name="EnemyId" value="13"/>
     <property name="GravityScale" value="0"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="42" name="Enemy9" type="EnemyK" gid="80" x="6896.5" y="4127" width="96" height="96">
+  <object id="42" name="Enemy15" type="EnemyK" gid="80" x="6896.5" y="4127" width="96" height="96">
    <properties>
-    <property name="EnemyId" value="7"/>
+    <property name="EnemyId" value="15"/>
     <property name="GravityScale" value="0"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="43" name="Enemy9" type="EnemyK" gid="81" x="6892.5" y="3615" width="96" height="96">
+  <object id="43" name="Enemy15" type="EnemyK" gid="81" x="6892.5" y="3615" width="96" height="96">
    <properties>
-    <property name="EnemyId" value="7"/>
+    <property name="EnemyId" value="15"/>
     <property name="GravityScale" value="0"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="44" name="Enemy8" type="EnemyK" gid="80" x="6383.5" y="4127" width="96" height="96">
+  <object id="44" name="Enemy13" type="EnemyK" gid="80" x="6383.5" y="4127" width="96" height="96">
    <properties>
-    <property name="EnemyId" value="8"/>
+    <property name="EnemyId" value="13"/>
     <property name="GravityScale" value="0"/>
     <property name="SpeedX" value="10"/>
     <property name="SpeedY" value="7,5"/>
