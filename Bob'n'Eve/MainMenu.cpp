@@ -69,7 +69,7 @@ MainMenu::MainMenu(Map::MapState status, sf::Time time, LeaderBoard* board)
 	}
 
 	streamBuilder.str("");
-	if (status != Map::MapState::GameOver)
+	if (status == Map::MapState::Active)
 	{
 		streamBuilder << "Space to game - ";
 	}

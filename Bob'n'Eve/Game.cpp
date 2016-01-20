@@ -62,7 +62,7 @@ void Game::Loop()
 					}
 					break;
 				case sf::Keyboard::Space:
-					if (menu_ != nullptr && view->GetStatus() != Map::MapState::GameOver)
+					if (menu_ != nullptr && view->GetStatus() == Map::MapState::Active)
 					{
 						Resume(view);
 					}

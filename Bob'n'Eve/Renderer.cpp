@@ -98,7 +98,7 @@ sf::View Renderer::GetGameView()
 	//checks if one of the players leave the screen and scales the picture
 
 	// "Frame" for detection
-	size -= (Vector2f(400, 200) * scale_);
+	size -= (Vector2f(600, 300) * scale_);
 	Vector2f distance(maxPos - minPos);
 	scale_ = (size / distance);
 	//get the bigger zoom-out
