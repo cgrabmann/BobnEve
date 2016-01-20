@@ -32,13 +32,15 @@ void PhysicsComponentPlayer::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBa
 	{
 		shouldDie_ = true;
 	}
-	float cosAngel = (otherBody.GetPosition() - thisBody.GetPosition()).normalize().dot(Vector2f(0,thisBody.GetPhysicScale()).normalize());
-	if (!groundCollision_ &&
-		!otherBody.InSameIgnoreGroup(*body_)
-		&& otherBody.GetPosition().y * otherBody.GetPhysicScale() > body_->GetPosition().y * body_->GetPhysicScale() // check correct y position
-		&& (cosAngel > cos45 || cosAngel < -cos45) // check correct x position
-	)
+	if (!groundCollision_ && !otherBody.InSameIgnoreGroup(*body_) &&
+		!otherBody.GetBounds().IsInsersecting(thisBody.GetBounds()))
 	{
-		groundCollision_ = true;
+		float cosAngel = (otherBody.GetPosition() - thisBody.GetPosition()).normalize().dot(Vector2f(0, thisBody.GetPhysicScale()));
+		if (//otherBody.GetPosition().y * otherBody.GetPhysicScale() > body_->GetPosition().y * body_->GetPhysicScale() && // check correct y position
+			(cosAngel > cos45) // check correct x position
+			)
+		{
+			groundCollision_ = true;
+		}
 	}
 }
