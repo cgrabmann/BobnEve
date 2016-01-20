@@ -15,6 +15,9 @@ JumpPadCollisionCallback::~JumpPadCollisionCallback()
 void JumpPadCollisionCallback::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBase& otherBody)
 {
 
+	if (otherBody.GetCustomId() == "Enemy" || otherBody.GetCustomId() == "EnemyK")
+		return;
+
 	float yOffset = thisBody.GetPosition().y - otherBody.GetPosition().y;
 
 	if (yOffset > 0)

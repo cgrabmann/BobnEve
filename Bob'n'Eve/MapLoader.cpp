@@ -386,6 +386,7 @@ PhysicsComponentBase* MapLoader::ParsePhysics(Object* object, CallbackCombiner& 
 	//if (object->type == "Platform")
 	{
 		bodyDef.type_ = PhysicBody::STATIC;
+		combiner.GetCallback(object->type);
 		return new PhysicsComponentStatic(bodyDef);
 	}
 }
