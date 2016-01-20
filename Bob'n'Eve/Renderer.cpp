@@ -46,14 +46,14 @@ void Renderer::Render()
 	}
 	else
 	{
-		window_.setView(GetMenuView());
+		window_.setView(GetMapView());
 	}
 
 	//draws all objects
 	window_.clear();
 	view->Draw(*this);
 
-	window_.setView(window_.getDefaultView());
+	window_.setView(GetMenuView());
 
 	if (menu_ != nullptr)
 	{
@@ -81,7 +81,7 @@ sf::View Renderer::GetGameView()
 
 	//gets data of all important Objects
 	std::vector<const Vector2f> focusPoints = view->GetFocusPoints();
-	Vector2f size(sfView.getSize()), minPos(focusPoints.at(0)), maxPos(focusPoints.at(0));
+	Vector2f size(Global::ScreenWidth, Global::ScreenHeight), minPos(focusPoints.at(0)), maxPos(focusPoints.at(0));
 	for (std::vector<const Vector2f>::const_iterator it = focusPoints.begin(); it != focusPoints.end(); ++it)
 	{
 		if ((*it).x < minPos.x)
@@ -116,11 +116,11 @@ sf::View Renderer::GetGameView()
 	return sfView;
 }
 
-sf::View Renderer::GetMenuView()
+sf::View Renderer::GetMapView()
 {
 	sf::View sfView = window_.getView();
 	Vector2f map(Global::TileWidth * Global::MapWidth, Global::TileHeight * Global::MapHeight);
-	Vector2f size(sfView.getSize());
+	Vector2f size(Global::ScreenWidth, Global::ScreenHeight);
 
 	scale_ = (size / map);
 
@@ -136,6 +136,14 @@ sf::View Renderer::GetMenuView()
 	centerPos *= scale_;
 
 	sfView.setCenter(centerPos.ToSFML());
+	return sfView;
+}
+
+sf::View Renderer::GetMenuView()
+{
+	sf::View sfView = window_.getDefaultView();
+	sfView.setSize(MenuBase::DefaultSize.ToSFML());
+	sfView.setCenter((MenuBase::DefaultSize / 2).ToSFML());
 	return sfView;
 }
 

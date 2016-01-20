@@ -43,11 +43,13 @@ void Game::Loop()
 			case sf::Event::Closed:
 				window.close();
 				break;
+#ifndef  _DEBUG
 			case sf::Event::LostFocus:
 				menu_ = new MainMenu(sf::seconds(-1), board_);
 				renderer_.SetMenu(menu_);
 				paused_ = true;
 				break;
+#endif
 			case sf::Event::GainedFocus:
 				break;
 			case sf::Event::KeyPressed:

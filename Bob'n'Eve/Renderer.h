@@ -42,6 +42,7 @@ public:
 
 private:
 	sf::View GetGameView();
+	sf::View GetMapView();
 	sf::View GetMenuView();
 
 	MenuBase* menu_;

@@ -3,6 +3,7 @@
 #include "MainMenu.h"
 #include "Global.h"
 
+const Vector2f MenuBase::DefaultSize = Vector2f(1920, 1080);
 
 MenuBase::MenuBase(): isActive_(true)
 {
