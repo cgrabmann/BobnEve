@@ -13,15 +13,21 @@ class Platform;
 class Player;
 class Enemy;
 
-class View
+class Map
 {
 public:
-	static View* Instance();
+	enum MapState
+	{
+		Active, Victory, GameOver
+	};
+
+	static Map* Instance();
 
 	void Register(Enemy* enemy);
 	void Register(Player* player);
 	void Register(Coin* coin);
 	void Register(GameObject* object);
+	void Register(Finish* finish);
 	void CleanUp();
 
 	void Update(int16_t ms);
@@ -32,35 +38,36 @@ public:
 	void Destroy(Coin* coin);
 	std::vector<const Vector2f> GetFocusPoints() const;
 
-	sf::Time GetScore() const
+	sf::Time GetTime() const
 	{
 		return time_;
 	}
-	bool IsActive() const
+	MapState GetStatus() const
 	{
-		return isActive_;
+		return status_;
 	}
 
 protected:
-	View();
-	~View();
+	Map();
+	~Map();
 
 	void DestroyAllKilledEnemies();
 	void DestroyAllCollectedCoins();
 
 private:
-	static View* instance_;
+	static Map* instance_;
 
 	std::vector<Enemy*> enemies_;
 	std::vector<Player*> players_;
 	std::vector<Coin*> coins_;
 	std::vector<GameObject*> objects_;
+	Finish* finish_;
 
 	std::vector<Enemy*> enemiesToDelete_;
 	std::vector<Coin*> coinsToDelete_;
 
 	sf::Time time_;
-	bool isActive_;
+	MapState status_;
 
 	//std::vector<Background*> backgrounds;
 
@@ -69,10 +76,10 @@ private:
 	public:
 		~CGuard()
 		{
-			if (NULL != View::instance_)
+			if (NULL != Map::instance_)
 			{
-				delete View::instance_;
-				View::instance_ = NULL;
+				delete Map::instance_;
+				Map::instance_ = NULL;
 			}
 		}
 	};

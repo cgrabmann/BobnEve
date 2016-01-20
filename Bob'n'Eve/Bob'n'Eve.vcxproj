@@ -99,6 +99,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\LeaderBoard.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MainMenu.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MenuBase.cpp" />
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentFinish.cpp" />
     <ClCompile Include="PassThroughCollisionCallback.cpp" />
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TrampolinCollisionCallback.cpp" />
     <ClCompile Include="PhysicsComponentGeneric.cpp" />
@@ -130,7 +131,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="GraphicsComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="View.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="BobNEve.cpp" />
     <ClCompile Include="main.cpp" />
@@ -148,6 +149,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\LeaderBoard.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MainMenu.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\MenuBase.h" />
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentFinish.h" />
     <ClInclude Include="PassThroughCollisionCallback.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\TrampolinCollisionCallback.h" />
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\UpdateableCollisionCallback.h" />
@@ -187,7 +189,7 @@ xcopy /Y /S /E /I "$(SolutionDir)Bob'n'Eve\Assets" "$(SolutionDir)$(Configuratio
     <ClInclude Include="Platform.h" />
     <ClInclude Include="GraphicsComponent.h" />
     <ClInclude Include="Renderer.h" />
-    <ClInclude Include="View.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="BobNEve.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Game.h" />

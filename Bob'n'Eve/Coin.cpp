@@ -1,5 +1,5 @@
 #include "Coin.h"
-#include "View.h"
+#include "Map.h"
 
 Coin::Coin(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics)
 	: GameObject(input, physics, graphics, Vector2f(0,0))
@@ -17,5 +17,5 @@ void Coin::Update(int16_t ms)
 
 void Coin::Kill()
 {
-	View::Instance()->Destroy(this);
+	Map::Instance()->Destroy(this);
 }

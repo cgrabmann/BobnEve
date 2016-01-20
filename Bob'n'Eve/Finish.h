@@ -8,5 +8,6 @@ public:
 	~Finish();
 
 	virtual void Kill() override;
+	virtual void Update(int16_t ms) override;
 };
 

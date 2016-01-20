@@ -2,8 +2,7 @@
 #include "PhysicBodyDef.h"
 #include "GameObject.h"
 
-PhysicsComponentEnemy::PhysicsComponentEnemy(PhysicBodyDef& bodyDef, bool killable) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), playerCollision_(false),
-	killable_(killable)
+PhysicsComponentEnemy::PhysicsComponentEnemy(PhysicBodyDef& bodyDef) : PhysicsComponentBase(bodyDef.SetCallback(this)), groundCollision_(false), playerCollision_(false)
 {
 }
 
@@ -28,7 +27,7 @@ void PhysicsComponentEnemy::collidesWith(PhysicBodyBase& thisBody, PhysicBodyBas
 	{
 		groundCollision_ = true;
 	}
-	if (killable_ && (otherBody.GetCustomId() == "Bob" || otherBody.GetCustomId() == "Eve"))
+	if (thisBody.GetCustomId() == "Enemy" && (otherBody.GetCustomId() == "Bob" || otherBody.GetCustomId() == "Eve"))
 	{
 		playerCollision_ = true;
 	}

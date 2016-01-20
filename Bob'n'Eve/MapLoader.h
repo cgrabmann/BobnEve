@@ -8,7 +8,7 @@ class CallbackCombiner;
 class Tile;
 class TileSet;
 class Object;
-class View;
+class Map;
 class Frame;
 
 class MapLoader

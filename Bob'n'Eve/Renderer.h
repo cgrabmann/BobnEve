@@ -8,7 +8,7 @@ namespace sf{
 	class Shape;
 }
 
-class View;
+class Map;
 
 class Renderer
 {

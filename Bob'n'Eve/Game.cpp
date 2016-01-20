@@ -1,9 +1,7 @@
+#pragma once
 #include "Game.h"
-
 #include <SFML/Graphics.hpp>
-
 #include "Renderer.h"
-#include "View.h"
 #include "MapLoader.h"
 #include "Vector2f.h"
 #include "MainMenu.h"
@@ -13,10 +11,10 @@
 Game::Game() : paused_(true), board_(new LeaderBoard(Global::LEADERBOARD))
 {
 	PhysicManager::CreateInstance(Vector2f(0.f, 15.f));
-	MapLoader::LoadMap("Map1.tmx");
+	MapLoader::LoadMap("Map_Final.tmx");
 	AssetManager::Instance()->RegisterFont("arial.ttf");
 	AssetManager::Instance()->RegisterTexture("Title.png");
-	menu_ = new MainMenu(sf::seconds(-1), board_);
+	menu_ = new MainMenu(Map::MapState::Active, sf::seconds(-1), board_);
 	renderer_.SetMenu(menu_);
 }
 
@@ -29,11 +27,11 @@ void Game::Loop()
 	sf::RenderWindow& window = renderer_.GetWindow();
 	sf::Clock clock;
 	clock.restart();
-	View* view;
+	Map* view;
 
 	while (window.isOpen())
 	{
-		view = View::Instance();
+		view = Map::Instance();
 
 		sf::Event event;
 		while (window.pollEvent(event))
@@ -45,9 +43,7 @@ void Game::Loop()
 				break;
 #ifndef  _DEBUG
 			case sf::Event::LostFocus:
-				menu_ = new MainMenu(sf::seconds(-1), board_);
-				renderer_.SetMenu(menu_);
-				paused_ = true;
+				Pause(view);
 				break;
 #endif
 			case sf::Event::GainedFocus:
@@ -58,9 +54,7 @@ void Game::Loop()
 				case sf::Keyboard::Escape:
 					if (menu_ == nullptr)
 					{
-						menu_ = new MainMenu(sf::seconds(-1), board_);
-						renderer_.SetMenu(menu_);
-						paused_ = true;
+						Pause(view);
 					}
 					else
 					{
@@ -68,24 +62,18 @@ void Game::Loop()
 					}
 					break;
 				case sf::Keyboard::Space:
-					if (menu_ != nullptr)
+					if (menu_ != nullptr && view->GetStatus() != Map::MapState::GameOver)
 					{
-						delete menu_;
-						menu_ = nullptr;
-						renderer_.SetMenu(nullptr);
-						paused_ = false;
+						Resume(view);
 					}
 					break;
 				case sf::Keyboard::R:
 					if (menu_ != nullptr)
 					{
 						view->CleanUp();
-						MapLoader::LoadMap("Map1.tmx");
+						MapLoader::LoadMap("Map_Final.tmx");
 
-						delete menu_;
-						menu_ = nullptr;
-						renderer_.SetMenu(nullptr);
-						paused_ = false;
+						Resume(view);
 					}
 					break;
 				default: break;
@@ -109,24 +97,22 @@ void Game::Loop()
 				16.6f
 #endif
 				);
-		}
 
-		if (!view->IsActive())
-		{
-			board_->AddEntry(view->GetScore());
-			board_->SaveEntires(Global::LEADERBOARD);
+			if (view->GetStatus() != Map::MapState::Active)
+			{
+				if (view->GetStatus() == Map::MapState::Victory)
+				{
+					board_->AddEntry(view->GetTime());
+					board_->SaveEntires(Global::LEADERBOARD);
+				}
 
-			menu_ = new MainMenu(view->GetScore(), board_);
-			renderer_.SetMenu(menu_);
-			paused_ = true;
-
-			view->CleanUp();
-			MapLoader::LoadMap("Map1.tmx");
+				Pause(view);
+			}
 		}
 
 		renderer_.Render();
-			}
-		}
+	}
+}
 
 void Game::GetInput()
 {
@@ -140,4 +126,19 @@ void Game::Start()
 void Game::Stop()
 {
 	renderer_.GetWindow().close();
+}
+
+void Game::Pause(Map* view)
+{
+	menu_ = new MainMenu(view->GetStatus(), view->GetTime(), board_);
+	renderer_.SetMenu(menu_);
+	paused_ = true;
+}
+
+void Game::Resume(Map* view)
+{
+	delete menu_;
+	menu_ = nullptr;
+	renderer_.SetMenu(nullptr);
+	paused_ = false;
 }

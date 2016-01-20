@@ -807,6 +807,42 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="67" name="Finish" tilewidth="64" tileheight="64" spacing="2" margin="1" tilecount="3">
+  <image source="../Textures/Finish.png" width="198" height="66"/>
+  <tile id="0">
+   <properties>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Pass_Eve" value="false"/>
+    <property name="Type" value="Finish"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Pass_Eve" value="false"/>
+    <property name="Type" value="Finish"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="Animation_Id" value="0"/>
+    <property name="Animation_Mirror" value="false"/>
+    <property name="Animation_Type" value="Animated"/>
+    <property name="DisplayTime" value="125"/>
+    <property name="Pass_Bob" value="false"/>
+    <property name="Pass_Eve" value="false"/>
+    <property name="Type" value="Finish"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Static" width="160" height="90" opacity="0.94">
   <data>
    <tile gid="40"/>
@@ -2717,7 +2753,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="67"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -15215,7 +15251,7 @@
   <properties>
    <property name="Gravity" value="25"/>
   </properties>
-  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="229.333" y="595.666" width="64" height="96">
+  <object id="1" name="Bob Spawn" type="Bob" gid="1" x="280.333" y="589.666" width="64" height="96">
    <properties>
     <property name="GravityScale" value="1"/>
     <property name="SpeedX" value="10"/>
@@ -15238,7 +15274,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="4" name="Enemy0" type="Enemy" gid="18" x="3159.09" y="534.152" width="64" height="64">
+  <object id="4" name="Enemy0" type="EnemyK" gid="18" x="3159.09" y="534.152" width="64" height="64">
    <properties>
     <property name="EnemyId" value="0"/>
     <property name="GravityScale" value="1"/>
@@ -15255,7 +15291,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="9" name="Enemy1" type="Enemy" gid="18" x="6144.67" y="708.485" width="64" height="64">
+  <object id="9" name="Enemy0" type="EnemyK" gid="18" x="6144.67" y="708.485" width="64" height="64">
    <properties>
     <property name="EnemyId" value="1"/>
     <property name="GravityScale" value="1"/>
@@ -15272,7 +15308,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="18" name="Enemy3" type="Enemy" gid="18" x="5451.73" y="979.091" width="64" height="64">
+  <object id="18" name="Enemy0" type="EnemyK" gid="18" x="5451.73" y="979.091" width="64" height="64">
    <properties>
     <property name="EnemyId" value="3"/>
     <property name="GravityScale" value="-1"/>
@@ -15289,7 +15325,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="20" name="Enemy4" type="Enemy" gid="18" x="5896.67" y="708.485" width="64" height="64">
+  <object id="20" name="Enemy0" type="EnemyK" gid="18" x="5896.67" y="708.485" width="64" height="64">
    <properties>
     <property name="EnemyId" value="4"/>
     <property name="GravityScale" value="1"/>
@@ -15306,7 +15342,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="22" name="Enemy2" type="Enemy" gid="18" x="6404.67" y="718.485" width="64" height="64">
+  <object id="22" name="Enemy0" type="EnemyK" gid="18" x="6404.67" y="718.485" width="64" height="64">
    <properties>
     <property name="EnemyId" value="2"/>
     <property name="GravityScale" value="1"/>
@@ -15323,7 +15359,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="24" name="Enemy5" type="Enemy" gid="18" x="2379.45" y="1704.92" width="64" height="64">
+  <object id="24" name="Enemy0" type="EnemyK" gid="18" x="2379.45" y="1704.92" width="64" height="64">
    <properties>
     <property name="EnemyId" value="5"/>
     <property name="GravityScale" value="1"/>
@@ -15331,7 +15367,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="25" name="Enemy7" type="Enemy" gid="18" x="4515.45" y="1697.11" width="64" height="64">
+  <object id="25" name="Enemy0" type="EnemyK" gid="18" x="4515.45" y="1697.11" width="64" height="64">
    <properties>
     <property name="EnemyId" value="7"/>
     <property name="GravityScale" value="1"/>
@@ -15348,7 +15384,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="27" name="Enemy8" type="Enemy" gid="18" x="4007.45" y="1687.11" width="64" height="64">
+  <object id="27" name="Enemy0" type="EnemyK" gid="18" x="4007.45" y="1687.11" width="64" height="64">
    <properties>
     <property name="EnemyId" value="8"/>
     <property name="GravityScale" value="1"/>
@@ -15374,7 +15410,7 @@
     <property name="SpeedY" value="7,5"/>
    </properties>
   </object>
-  <object id="30" name="Enemy6" type="Enemy" gid="18" x="4229.45" y="2169.11" width="64" height="64">
+  <object id="30" name="Enemy0" type="EnemyK" gid="18" x="4229.45" y="2169.11" width="64" height="64">
    <properties>
     <property name="EnemyId" value="6"/>
     <property name="GravityScale" value="1"/>

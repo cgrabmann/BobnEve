@@ -78,9 +78,6 @@
     <ClCompile Include="PhysicManager.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="View.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -186,6 +183,12 @@
     <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPadCollisionCallback.cpp">
       <Filter>Quelldateien\Components\PhysicsComponents</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentFinish.cpp">
+      <Filter>Quelldateien\Components\PhysicsComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="lib\Box2D.lib" />
@@ -207,9 +210,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="View.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -340,6 +340,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\JumpPadCollisionCallback.h">
       <Filter>Headerdateien\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Bob%27n%27Eve\Bob%27n%27Eve\PhysicsComponentFinish.h">
+      <Filter>Headerdateien\Components\PhysicsComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

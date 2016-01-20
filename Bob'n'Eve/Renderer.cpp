@@ -1,5 +1,5 @@
 #include "Renderer.h"
-#include "View.h"
+#include "Map.h"
 
 #include <SFML\Graphics.hpp>
 #include "Global.h"
@@ -38,7 +38,7 @@ Renderer::~Renderer()
 
 void Renderer::Render()
 {
-	View* view = View::Instance();
+	Map* view = Map::Instance();
 
 	if (menu_ == nullptr)
 	{
@@ -64,7 +64,7 @@ void Renderer::Render()
 		sf::Font font = *AssetManager::Instance()->GetFont("arial.ttf");
 		sf::Color green = sf::Color(0, 255, 33);
 		std::stringstream streamBuilder;
-		streamBuilder << "Your Time: " << TimeToString(view->GetScore());
+		streamBuilder << "Your Time: " << TimeToString(view->GetTime());
 		sf::Text score = sf::Text(streamBuilder.str(), font, 48);
 		score.setColor(green);
 		score.setPosition(10, 10);
@@ -76,7 +76,7 @@ void Renderer::Render()
 
 sf::View Renderer::GetGameView()
 {
-	View* view = View::Instance();
+	Map* view = Map::Instance();
 	sf::View sfView = window_.getView();
 
 	//gets data of all important Objects

@@ -19,6 +19,9 @@ public:
 	void Start();
 	void Stop();
 
+	void Pause(Map* view);
+	void Resume(Map* view);
+
 protected:
 	void Loop();
 	void GetInput();

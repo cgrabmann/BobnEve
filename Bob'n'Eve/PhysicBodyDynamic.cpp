@@ -35,9 +35,9 @@ void PhysicBodyDynamic::Move(const Vector2f& gravity, float seconds)
 
 	//Friction
 	if (velocity_.x < 0)
-		velocity_.x += 20.f * seconds;
+		velocity_.x += 60.f * seconds;
 	if (velocity_.x > 0)
-		velocity_.x -= 20.f * seconds;
+		velocity_.x -= 60.f * seconds;
 	if (velocity_.x >= -1.f && velocity_.x <= 1.f)
 		velocity_.x = 0.f;
 

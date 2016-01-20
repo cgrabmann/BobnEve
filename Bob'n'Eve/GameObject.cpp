@@ -3,7 +3,7 @@
 #include "GraphicsComponent.h"
 #include "InputComponent.h"
 #include "Global.h"
-#include "View.h"
+#include "Map.h"
 
 
 GameObject::GameObject(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* graphics, Vector2f speed) : layer_(1.f), onGround_(false),

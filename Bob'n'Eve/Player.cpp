@@ -1,7 +1,7 @@
 #pragma once
 #include "Player.h"
 #include "GraphicsComponent.h"
-#include "View.h"
+#include "Map.h"
 
 Player::Player(InputComponent* input, PhysicsComponentBase* physics, GraphicsComponent* idleGraphics, GraphicsComponent* jumpGraphics, GraphicsComponent* runGraphics, Vector2f speed)
 	: GameObject(input, physics, idleGraphics, speed)
@@ -45,5 +45,5 @@ void Player::Update(int16_t ms)
 
 void Player::Kill()
 {
-	View::Instance()->Destroy(this);
+	Map::Instance()->Destroy(this);
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "View.h"
+#include "Map.h"
 #include "Player.h"
 #include "Coin.h"
 #include "Enemy.h"
@@ -7,45 +7,50 @@
 #include "PhysicManager.h"
 #include "Finish.h"
 
-View::View() : enemies_(std::vector<Enemy*>()), players_(std::vector<Player*>()), coins_(std::vector<Coin*>()), objects_(std::vector<GameObject*>()), time_(sf::Time::Zero), isActive_(true)
+Map::Map() : enemies_(std::vector<Enemy*>()), players_(std::vector<Player*>()), coins_(std::vector<Coin*>()), objects_(std::vector<GameObject*>()), time_(sf::Time::Zero), status_(Active)
 {
 }
 
-View::~View()
+Map::~Map()
 {	
 }
 
-View* View::instance_ = NULL;
+Map* Map::instance_ = NULL;
 
-View* View::Instance()
+Map* Map::Instance()
 {
 	static CGuard g;   // Speicherbereinigung
 	if (!instance_)
-		instance_ = new View();
+		instance_ = new Map();
 	return instance_;
 }
 
-void View::Register(GameObject* object)
+void Map::Register(GameObject* object)
 {
 	objects_.push_back(object);
 }
 
-void View::Register(Enemy* enemy)
+void Map::Register(Finish* finish)
+{
+	finish_ = finish;
+}
+
+void Map::Register(Enemy* enemy)
 {
 	enemies_.push_back(enemy);
 }
 
-void View::Register(Coin* coin)
+void Map::Register(Coin* coin)
 {
 	coins_.push_back(coin);
 }
 
-void View::Register(Player* player)
+void Map::Register(Player* player)
 {
 	players_.push_back(player);
 }
 
-void View::CleanUp()
+void Map::CleanUp()
 {
 	for (std::vector<GameObject*>::iterator it = objects_.begin(); it != objects_.end(); ++it)
 	{
@@ -71,11 +76,13 @@ void View::CleanUp()
 	}
 	coins_.clear();
 
+	//delete finish_;
+
 	time_ = sf::Time::Zero;
-	isActive_ = true;
+	status_ = Active;
 }
 
-void View::Update(int16_t ms)
+void Map::Update(int16_t ms)
 {
 	for (std::vector<GameObject*>::iterator it = objects_.begin(); it != objects_.end(); ++it)
 	{
@@ -97,6 +104,8 @@ void View::Update(int16_t ms)
 		(*it)->Update(ms);
 	}
 
+	finish_->Update(ms);
+
 	DestroyAllKilledEnemies();
 	DestroyAllCollectedCoins();
 
@@ -105,7 +114,7 @@ void View::Update(int16_t ms)
 	time_ += sf::milliseconds(ms);
 }
 
-void View::Destroy(Enemy* enemy)
+void Map::Destroy(Enemy* enemy)
 {
 	int id = enemy->GetId();
 	for (std::vector<Enemy*>::iterator it = enemies_.begin(); it != enemies_.end(); ++it)
@@ -117,7 +126,7 @@ void View::Destroy(Enemy* enemy)
 	}
 }
 
-void View::DestroyAllKilledEnemies()
+void Map::DestroyAllKilledEnemies()
 {
 	for (Enemy* enemy : enemiesToDelete_)
 	{
@@ -127,24 +136,28 @@ void View::DestroyAllKilledEnemies()
 	enemiesToDelete_.clear();
 }
 
-void View::Destroy(Player* player)
+void Map::Destroy(Player* player)
 {
-	isActive_ = false;
+	status_ = GameOver;
 }
 
-void View::Destroy(Finish* finish)
+void Map::Destroy(Finish* finish)
 {
-	isActive_ = false;
+	status_ = Victory;
 }
 
-void View::Destroy(Coin* coin)
+void Map::Destroy(Coin* coin)
 {
 	coinsToDelete_.push_back(coin);
 
-	time_ -= sf::seconds(10);
+	time_ -= sf::seconds(10); 
+	if (time_.asMicroseconds() < 0)
+	{
+		time_ = sf::seconds(0);
+	}
 }
 
-void View::DestroyAllCollectedCoins()
+void Map::DestroyAllCollectedCoins()
 {
 	for (Coin* coin : coinsToDelete_)
 	{
@@ -154,7 +167,7 @@ void View::DestroyAllCollectedCoins()
 	coinsToDelete_.clear();
 }
 
-void View::Draw(Renderer& renderer) const
+void Map::Draw(Renderer& renderer) const
 {
 	for (std::vector<GameObject*>::const_iterator it = objects_.begin(); it != objects_.end(); ++it)
 	{
@@ -175,9 +188,11 @@ void View::Draw(Renderer& renderer) const
 	{
 		(*it)->Draw(renderer);
 	}
+
+	finish_->Draw(renderer);
 }
 
-std::vector<const Vector2f> View::GetFocusPoints() const
+std::vector<const Vector2f> Map::GetFocusPoints() const
 {
 	std::vector<const Vector2f> focusPoints;
 	for (std::vector<Player*>::const_iterator it = players_.begin(); it != players_.end(); ++it)

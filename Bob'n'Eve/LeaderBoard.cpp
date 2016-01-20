@@ -20,18 +20,19 @@ LeaderBoard::~LeaderBoard()
 
 void LeaderBoard::AddEntry(sf::Time time)
 {
-	if (time.asSeconds() < entries_[size_ - 1].asSeconds() || entries_[size_ - 1].asMicroseconds() == 0)
+	float x = time.asSeconds(), y = entries_[size_ - 1].asSeconds();
+	if (time.asSeconds() < entries_[size_ - 1].asSeconds() || fabs(entries_[size_ - 1].asSeconds()) < 1)
 	{
 		entries_[size_ - 1] = time;
 
 		struct {
 			bool operator()(sf::Time a, sf::Time b)
 			{
-				return a < b;
+				return a.asMicroseconds() < b.asMicroseconds();
 			}
-		} customGreater;
+		} customess;
 
-		std::sort(entries_, entries_ + size_, customGreater);
+		std::sort(entries_, entries_ + size_, customess);
 	}
 }
 
